@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbAdecuaciones>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LavadoVestiduras)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PulidoEncerado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mecanica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lavado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Motor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Traslado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Preparacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Otros)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCarroNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LavadoVestiduras)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PulidoEncerado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mecanica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lavado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Motor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Traslado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preparacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Otros)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdCarros)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdAdecuaciones">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdAdecuaciones">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdAdecuaciones">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

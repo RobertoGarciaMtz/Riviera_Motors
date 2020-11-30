@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1>Catalogos</h1>
+    <ul class="nav nav-second-level">
+        <li class="active"><a asp-controller="CBancos" asp-action="Create"><span>CrearBancos, </span> </a></li>
+        <li class="active"><a asp-controller="CCarroExtras" asp-action="Create"><span>CrearExtras,               </span></a></li>
+        <li class="active"><a asp-controller="CEstados" asp-action="Create"><span>Crearestados,               </span></a></li>
+        <li class="active"><a asp-controller="CFormaPago" asp-action="Create"><span>CrearFormaPago,               </span></a></li>
+        <li class="active"><a asp-controller="CGuiaAutometricaEbc" asp-action="Create"><span>CrearGuias,       </span></a></li>
+        <li class="active"><a asp-controller="CMarcaCarro" asp-action="Create"><span>CrearMarcaCarro,               </span></a></li>
+        <li class="active"><a asp-controller="CMedioPublicitario" asp-action="Create"><span>Crearmediopublicitario,               </span></a></li>
+        <li class="active"><a asp-controller="CModeloCarro" asp-action="Create"><span>CrearModeloCarro, </span> </a></li>
+        <li class="active"><a asp-controller="CPreAcondicionamiento" asp-action="Create"><span>CrearPreAcondicionamiento, </span> </a></li>
+        <li class="active"><a asp-controller="CTipoGasto" asp-action="Create"><span>CrearTipoGasto, </span> </a></li>
+        <li class="active"><a asp-controller="CVersionCarro" asp-action="Create"><span>CrearVersionCarro,</span> </a></li>
+
+    </ul>
+
+    <h2>Tablas</h2>
+    <div>
+        <ul class="nav-second-level">
+            <li class="active"><a asp-controller="TbAdecuaciones" asp-action="Create"><span>Adecuaciones </span> </a></li>
+            <li class="active"><a asp-controller="TbGastos" asp-action="Create"><span>CrearGastos </span> </a></li>
+            <li class="active"><a asp-controller="TbCarros" asp-action="Create"><span>CrearCarros </span> </a></li>
+
+        </ul>
+
+    </div>
+</div>

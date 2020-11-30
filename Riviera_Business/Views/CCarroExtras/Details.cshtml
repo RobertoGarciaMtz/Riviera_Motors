@@ -1,0 +1,78 @@
+﻿@model Riviera_Business.Models.CCarroExtra
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>CCarroExtra</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Manuales)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Manuales)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CarnetServicio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CarnetServicio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Duplicado)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Duplicado)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LlantaRefaccion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LlantaRefaccion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Herramientas)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Herramientas)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Gato)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Gato)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Antena)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Antena)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Usuario)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdCarroNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdCarroNavigation.IdCarros)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdEstadoNavigation.IdEstados)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdCarroExtra">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

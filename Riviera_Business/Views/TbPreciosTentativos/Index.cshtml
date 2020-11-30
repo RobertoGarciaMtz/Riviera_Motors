@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbPreciosTentativos>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ub)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Porcentaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstadoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCarroNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoVenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ub)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Porcentaje)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoNavigation.IdEstados)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdCarros)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdPreciosTentativos">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdPreciosTentativos">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdPreciosTentativos">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

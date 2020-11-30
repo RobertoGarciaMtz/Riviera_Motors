@@ -1,0 +1,107 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbPapelesCarro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FactOrigen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RefactCompleta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tenencias4Anos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Baja)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Verificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaUlltimaVerificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Repuve)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmisor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transunionfolio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCarroNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FactOrigen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RefactCompleta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tenencias4Anos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Baja)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Verificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaUlltimaVerificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Repuve)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEmisor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Transunionfolio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdCarros)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdPapelesCarro">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdPapelesCarro">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdPapelesCarro">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Riviera_Business.Models.CGuiaAutometricaEbc>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Toma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Venta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Media)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GuiaAutometricaEbc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCarroNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Toma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Venta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Media)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GuiaAutometricaEbc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdCarros)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdGuiaAutometrica">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdGuiaAutometrica">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdGuiaAutometrica">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

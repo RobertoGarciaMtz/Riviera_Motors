@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Riviera_Business.Models.CVersionCarro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VersionCarro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdModeloNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VersionCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdModeloNavigation.IdModeloCarro)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdVersionCarro">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdVersionCarro">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdVersionCarro">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

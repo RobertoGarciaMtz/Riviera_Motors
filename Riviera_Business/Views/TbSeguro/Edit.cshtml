@@ -1,0 +1,44 @@
+﻿@model Riviera_Business.Models.TbSeguro
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>TbSeguro</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdSeguro" />
+            <div class="form-group">
+                <label asp-for="NomSeguro" class="control-label"></label>
+                <input asp-for="NomSeguro" class="form-control" />
+                <span asp-validation-for="NomSeguro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdControl" class="control-label"></label>
+                <select asp-for="IdControl" class="form-control" asp-items="ViewBag.Control"></select>
+                <span asp-validation-for="IdControl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PolizaSeguro" class="control-label"></label>
+                <input asp-for="PolizaSeguro" class="form-control" />
+                <span asp-validation-for="PolizaSeguro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

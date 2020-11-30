@@ -1,0 +1,54 @@
+﻿@model Riviera_Business.Models.CPreAcondicionamiento
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>CPreAcondicionamiento</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Mec)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Mec)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Refac)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Refac)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Esteticos)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Esteticos)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Hyp)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Hyp)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Trasl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Trasl)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TbCarrosIdCarrosNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TbCarrosIdCarrosNavigation.IdCarros)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdPreAcondicionamiento">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

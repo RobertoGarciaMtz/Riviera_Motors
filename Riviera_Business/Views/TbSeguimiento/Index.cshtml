@@ -1,0 +1,143 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbSeguimiento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiaSemana)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sexo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AsesorAsignado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContestaNc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cita)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Asistio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Toma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PruebaManejo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTipoCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anticipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Venta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comentarios)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CMedioPublicitarioNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCarroNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaSemana)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AsesorAsignado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContestaNc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Asistio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Toma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PruebaManejo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTipoCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anticipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Venta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comentarios)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CMedioPublicitarioNavigation.IdMedioPublicitario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdCarros)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdSeguimiento">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdSeguimiento">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdSeguimiento">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
