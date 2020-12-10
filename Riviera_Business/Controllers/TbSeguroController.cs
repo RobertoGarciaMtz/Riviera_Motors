@@ -27,7 +27,7 @@ namespace Riviera_Business.Controllers
         public ActionResult Details(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            ViewBag.Control = context.TbControl.Select(cont => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = cont.LineaCaptura, Value = cont.IdMovimiento.ToString() });
+            ViewBag.Control = context.TbControl.Select(cont => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = cont.FolioFiscal, Value = cont.IdMovimiento.ToString() });
             if (context.TbSeguro.Where(seg => seg.IdSeguro == id).First() is TbSeguro e)
             {
                 return View(e);
@@ -39,7 +39,7 @@ namespace Riviera_Business.Controllers
         public ActionResult Create()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            ViewBag.Control = context.TbControl.Select(cont => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = cont.LineaCaptura, Value = cont.IdMovimiento.ToString() });
+            ViewBag.Control = context.TbControl.Select(cont => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = cont.FolioFiscal, Value = cont.IdMovimiento.ToString() });
             return View();
         }
 
@@ -65,7 +65,7 @@ namespace Riviera_Business.Controllers
         public ActionResult Edit(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            ViewBag.Control = context.TbControl.Select(cont => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = cont.LineaCaptura, Value = cont.IdMovimiento.ToString() });
+            ViewBag.Control = context.TbControl.Select(cont => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = cont.FolioFiscal, Value = cont.IdMovimiento.ToString() });
             if (context.TbSeguro.Where(seg=>seg.IdSeguro == id ).First() is TbSeguro e)
             {
                 return View(e);

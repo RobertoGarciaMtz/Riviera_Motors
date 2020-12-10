@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Riviera_Business.Models;
-
-
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Riviera_Business.Controllers
 {
@@ -42,8 +41,11 @@ namespace Riviera_Business.Controllers
         public ActionResult Create()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            ViewBag.Carros = context.TbCarros.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.NoSerie, Value = s.IdCarros.ToString() });
+            var lista = context.TbCarros.Where(x => x.IdCarros >= 0)
+    .Select(x => new { noserie = x.IdCarros.ToString(), desc = x.IdCarros.ToString() + "-NumeroSerie:" + x.NoSerie + "-Color:" + x.ColorExt + "-NumMotor:" + x.NoMotor });
+            ViewBag.Caracarro = new SelectList(lista, "noserie", "desc");
             return View();
+            
         }
 
         // POST: HomeController1/Create
@@ -68,7 +70,9 @@ namespace Riviera_Business.Controllers
         public ActionResult Edit(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            ViewBag.Carros = context.TbCarros.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.NoSerie, Value = s.IdCarros.ToString() });
+            var lista = context.TbCarros.Where(x => x.IdCarros >= 0)
+            .Select(x => new { noserie = x.IdCarros.ToString(), desc = x.IdCarros.ToString() + "-NumeroSerie:" + x.NoSerie + "-Color:" + x.ColorExt + "-NumMotor:" + x.NoMotor });
+            ViewBag.Caracarro = new SelectList(lista, "noserie", "desc");
             if (context.CPreAcondicionamiento.Where(s => s.IdPreAcondicionamiento == id).First() is CPreAcondicionamiento e)
             {
 

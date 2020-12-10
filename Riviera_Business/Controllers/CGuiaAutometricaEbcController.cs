@@ -17,7 +17,7 @@ namespace Riviera_Business.Controllers
             var list = context.CGuiaAutometricaEbc.ToList();
             foreach (CGuiaAutometricaEbc ti in list)
             {
-                ti.IdCarroNavigation = context.TbCarros.Where(te => te.IdCarros == ti.IdCarro).FirstOrDefault();
+                ti.IdVersionNavigation = context.CVersionCarro.Where(te => te.IdVersionCarro == ti.IdVersion).FirstOrDefault();
                 ti.IdEstadoNavigation = context.CEstados.Where(te => te.IdEstados == ti.IdEstado).FirstOrDefault();
             }
             return View(list);
@@ -33,22 +33,29 @@ namespace Riviera_Business.Controllers
                 return View(id);
             }
             return NotFound();
-            return View();
+            
         }
 
         // GET: HomeController1/Create
-        public ActionResult Create()
+        public ActionResult CreaAutometrica()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.Descripcion, Value = s.IdEstados.ToString() });
-            ViewBag.Carros = context.TbCarros.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.NoSerie, Value = s.IdCarros.ToString() });
+            ViewBag.Version = context.CVersionCarro.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.VersionCarro, Value = s.IdVersionCarro.ToString() });
             return View();
         }
 
+        public ActionResult CreaEBC()
+        {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            ViewBag.Estados = context.CEstados.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.Descripcion, Value = s.IdEstados.ToString() });
+            ViewBag.Version = context.CVersionCarro.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.VersionCarro, Value = s.IdVersionCarro.ToString() });
+            return View();
+        }
         // POST: HomeController1/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CGuiaAutometricaEbc a)
+        public ActionResult CreaEBC(CGuiaAutometricaEbc a)
         {
             try
             {
@@ -64,12 +71,30 @@ namespace Riviera_Business.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreaAutometrica(CGuiaAutometricaEbc a)
+        {
+            try
+            {
+                var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+                context.CGuiaAutometricaEbc.Add(a);
+                context.SaveChanges();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         // GET: HomeController1/Edit/5
         public ActionResult Edit(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.Descripcion, Value = s.IdEstados.ToString() });
-            ViewBag.Carros = context.TbCarros.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.NoSerie, Value = s.IdCarros.ToString() });
+            ViewBag.Version = context.CVersionCarro.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.VersionCarro, Value = s.IdVersionCarro.ToString() });
             if (context.CGuiaAutometricaEbc.Where(s => s.IdGuiaAutometrica == id).First() is CGuiaAutometricaEbc e)
             {
                 return View(id);
@@ -91,7 +116,7 @@ namespace Riviera_Business.Controllers
                     objectEdit.Toma = a.Toma;
                     objectEdit.Venta = a.Venta;
                     objectEdit.Media = a.Media;
-                    objectEdit.IdCarro = a.IdCarro;
+                    objectEdit.IdVersion = a.IdVersion;
                     context.CGuiaAutometricaEbc.Update(objectEdit);
                     context.SaveChanges();
                 }

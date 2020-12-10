@@ -8,7 +8,6 @@ namespace Riviera_Business.Models
         public CMarcaCarro()
         {
             CModeloCarro = new HashSet<CModeloCarro>();
-            TbCarros = new HashSet<TbCarros>();
         }
 
         public int IdMarcaCarro { get; set; }
@@ -16,6 +15,5 @@ namespace Riviera_Business.Models
         public string Usuario { get; set; }
 
         public virtual ICollection<CModeloCarro> CModeloCarro { get; set; }
-        public virtual ICollection<TbCarros> TbCarros { get; set; }
     }
 }

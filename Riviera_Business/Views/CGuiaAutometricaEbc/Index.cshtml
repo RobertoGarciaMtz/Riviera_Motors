@@ -7,9 +7,10 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="CreaEBC">LlenarGuia EBC</a>
+    <a asp-action="CreaAutometrica">Llenar Autometrica</a>
 </p>
-<table class="table">
+<table class="table" id="dataTable">
     <thead>
         <tr>
             <th>
@@ -25,10 +26,13 @@
                 @Html.DisplayNameFor(model => model.GuiaAutometricaEbc)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Usuario)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCarroNavigation)
+                @Html.DisplayNameFor(model => model.IdVersionNavigation)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IdEstadoNavigation)
@@ -49,16 +53,26 @@
                 @Html.DisplayFor(modelItem => item.Media)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.GuiaAutometricaEbc)
+                @if (item.GuiaAutometricaEbc == 1)
+                {
+                    <label value="@item.GuiaAutometricaEbc">Autometrica</label>
+                }
+                else
+                {
+                    <label value="@item.GuiaAutometricaEbc">EBC</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Usuario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdCarros)
+                @Html.DisplayFor(modelItem => item.IdVersionNavigation.VersionCarro)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdGuiaAutometrica">Edit</a> |

@@ -9,14 +9,20 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table" id="dataTable">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.PiezasRotas)
+                @Html.DisplayNameFor(model => model.LlantaDi)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DescripcionPiezas)
+                @Html.DisplayNameFor(model => model.LlantaDd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LlanraTi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LlantaTd)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Usuario)
@@ -34,16 +40,82 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.PiezasRotas)
+                @if (item.LlantaDi == 1)
+                {
+                    <label value="@item.LlantaDi">N</label>
+                }
+                @if (item.LlantaDi == 2)
+                {
+                    <label value="@item.LlantaDi">1/2</label>
+                }
+                @if (item.LlantaDi == 3)
+                {
+                    <label value="@item.LlantaDi">1/4</label>
+                }
+                @if (item.LlantaDi == 4)
+                {
+                    <label value="@item.LlantaDi">L</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DescripcionPiezas)
+                @if (item.LlantaDd == 1)
+                {
+                    <label value="@item.LlantaDd">N</label>
+                }
+                @if (item.LlantaDd == 2)
+                {
+                    <label value="@item.LlantaDd">1/2</label>
+                }
+                @if (item.LlantaDd == 3)
+                {
+                    <label value="@item.LlantaDd">1/4</label>
+                }
+                @if (item.LlantaDd == 4)
+                {
+                    <label value="@item.LlantaDd">L</label>
+                }
+            </td>
+            <td>
+                @if (item.LlanraTi == 1)
+                {
+                    <label value="@item.LlanraTi">N</label>
+                }
+                @if (item.LlanraTi== 2)
+                {
+                    <label value="@item.LlanraTi">1/2</label>
+                }
+                @if (item.LlanraTi== 3)
+                {
+                    <label value="@item.LlanraTi">1/4</label>
+                }
+                @if (item.LlanraTi == 4)
+                {
+                    <label value="@item.LlanraTi">L</label>
+                }
+            </td>
+            <td>
+                @if (item.LlantaTd == 1)
+                {
+                    <label value="@item.LlantaTd">N</label>
+                }
+                @if (item.LlantaTd == 2)
+                {
+                    <label value="@item.LlantaTd">1/2</label>
+                }
+                @if (item.LlantaTd == 3)
+                {
+                    <label value="@item.LlantaTd">1/4</label>
+                }
+                @if (item.LlantaTd == 4)
+                {
+                    <label value="@item.LlantaTd">L</label>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Usuario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdMovimiento)
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdCarros)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)

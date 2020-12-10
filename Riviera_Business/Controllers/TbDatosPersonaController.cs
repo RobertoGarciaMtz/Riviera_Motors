@@ -28,9 +28,9 @@ namespace Riviera_Business.Controllers
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Personamoral = context.TbDatosPersonaMoral.Select(pm => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = pm.DenominacionRazonSocial, Value = pm.IdDatosPm.ToString() });
-            if (context.TbDatosPersona.Where(td => td.IdDatosPersona == id).First() is TbDatosPersona a)
+            if (context.TbDatosPersona.Where(td => td.IdDatosPersona == id).First() is TbDatosPersona e)
             {
-                return View(id);
+                return View(e);
             }
             return NotFound();
             
@@ -69,9 +69,9 @@ namespace Riviera_Business.Controllers
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estado = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
             ViewBag.Personamoral = context.TbDatosPersonaMoral.Select(pm => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = pm.DenominacionRazonSocial, Value = pm.IdDatosPm.ToString() });
-            if (context.TbDatosPersona.Where(td=>td.IdDatosPersona ==id).First() is TbDatosPersona a)
+            if (context.TbDatosPersona.Where(td=>td.IdDatosPersona ==id).First() is TbDatosPersona e)
             {
-                return View(id);
+                return View(e);
             }
             return NotFound();
         }

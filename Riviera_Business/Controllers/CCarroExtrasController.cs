@@ -16,10 +16,10 @@ public class CCarroExtrasController : Controller
         var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
         var list = context.CCarroExtra.ToList();
         foreach (CCarroExtra ti in list)
-        {
+            {
             ti.IdEstadoNavigation = context.CEstados.Where(te => te.IdEstados == ti.IdEstado).FirstOrDefault();
             ti.IdCarroNavigation = context.TbCarros.Where(ce => ce.IdCarros == ti.IdCarro).FirstOrDefault();
-        }
+            }
             return View(list);
         }
 
@@ -38,13 +38,31 @@ public class CCarroExtrasController : Controller
         public ActionResult Create()
         {
         var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-        ViewBag.Estados = context.CEstados.Select(es => new SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
-        ViewBag.Carros = context.TbCarros.Select(ca => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ca.ClaveVehicular, Value = ca.IdCarros.ToString() });
+        ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
+        var  lista = context.TbCarros.Where(x => x.IdCarros >=0 )
+            .Select(x => new {noserie=x.IdCarros.ToString(), desc = x.IdCarros.ToString() + "-NumeroSerie:" + x.NoSerie + "-Color:" + x.ColorExt + "-NumMotor:" + x.NoMotor });
+        ViewBag.Caracarro = new SelectList(lista, "noserie","desc");
         return View();
         }
+[HttpGet]
+    public List<CVersionCarro> RecuperarVersion1(int id)
+    {
+        var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+        var list = context.CVersionCarro.ToList();
+        List<CVersionCarro> cModelos = new List<CVersionCarro>();
+        foreach (CVersionCarro lista in list)
+        {
+            if (lista.IdVersionCarro == id) { 
+                cModelos.Add(lista);
+                return cModelos;
+            }
+        }
+        
+        return null;
 
-        // POST: HomeController1/Create
-        [HttpPost]
+    }
+    // POST: HomeController1/Create
+    [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CCarroExtra a)
         {
@@ -66,7 +84,9 @@ public class CCarroExtrasController : Controller
         {
         var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
         ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
-        ViewBag.Carros = context.TbCarros.Select(ca => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ca.ClaveVehicular, Value = ca.IdCarros.ToString() });
+        var lista = context.TbCarros.Where(x => x.IdCarros >= 0)
+            .Select(x => new { noserie = x.IdCarros.ToString(), desc = x.IdCarros.ToString() + "-NumeroSerie:" + x.NoSerie + "-Color:" + x.ColorExt + "-NumMotor:" + x.NoMotor });
+        ViewBag.Caracarro = new SelectList(lista, "noserie", "desc");
         if (context.CCarroExtra.Where(s => s.IdCarroExtra == id).First() is CCarroExtra e)
         {
             return View(e);

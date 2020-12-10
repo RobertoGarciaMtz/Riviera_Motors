@@ -58,7 +58,18 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FactOrigen)
+                @if (item.FactOrigen == 1)
+                {
+                    <label value="@item.FactOrigen">Entregada</label>
+                }
+                @if (item.FactOrigen == 2)
+                {
+                    <label value="@item.FactOrigen">No Entregada</label>
+                }
+                @if (item.FactOrigen == 3)
+                {
+                    <label value="@item.FactOrigen">Problemas</label>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.RefactCompleta)
@@ -67,7 +78,18 @@
                 @Html.DisplayFor(modelItem => item.Tenencias4Anos)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Baja)
+                @if (item.Baja == 1)
+                {
+                    <label value="@item.Baja">Entregada</label>
+                }
+                @if (item.Baja == 2)
+                {
+                    <label value="@item.Baja">No Entregada</label>
+                }
+                @if (item.Baja == 3)
+                {
+                    <label value="@item.Baja">Problemas</label>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Verificacion)
@@ -91,10 +113,10 @@
                 @Html.DisplayFor(modelItem => item.Usuario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdCarros)
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdPapelesCarro">Edit</a> |

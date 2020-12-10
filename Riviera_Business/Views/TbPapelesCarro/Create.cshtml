@@ -14,7 +14,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FactOrigen" class="control-label"></label>
-                <input asp-for="FactOrigen" class="form-control" />
+                <select asp-for="FactOrigen">
+                    <option value="1">Entregada</option>
+                    <option value="2">No entregada</option>
+                    <option value="3">Problemas</option>
+                </select>
                 <span asp-validation-for="FactOrigen" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -29,12 +33,20 @@
             </div>
             <div class="form-group">
                 <label asp-for="Baja" class="control-label"></label>
-                <input asp-for="Baja" class="form-control" />
+                <select asp-for="Baja">
+                    <option value="1">Entregada</option>
+                    <option value="2">No entregada</option>
+                    <option value="3">Problemas</option>
+                </select>
                 <span asp-validation-for="Baja" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Verificacion" class="control-label"></label>
-                <input asp-for="Verificacion" class="form-control" />
+                <select asp-for="Verificacion">
+                    <option value="1">Tiene</option>
+                    <option value="2">No Tiene</option>
+                    <option value="3">Problemas</option>
+                </select>
                 <span asp-validation-for="Verificacion" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -54,7 +66,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="Transunionfolio" class="control-label"></label>
-                <input asp-for="Transunionfolio" class="form-control" />
+                <select asp-for="Transunionfolio">
+                    <option value="1">Entregada</option>
+                    <option value="2">No entregada</option>
+                    <option value="3">Problemas</option>
+                </select>
                 <span asp-validation-for="Transunionfolio" class="text-danger"></span>
             </div>
             <div class="form-group">

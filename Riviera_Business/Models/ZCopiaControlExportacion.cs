@@ -9,13 +9,6 @@ namespace Riviera_Business.Models
     public partial class ZCopiaControlExportacion 
     {
 
-            public ZCopiaControlExportacion()
-            {
-                TbCarrosTransaccion = new HashSet<TbCarrosTransaccion>();
-                TbComprobantes = new HashSet<TbComprobantes>();
-                TbCondiciones = new HashSet<TbCondiciones>();
-                TbSeguro = new HashSet<TbSeguro>();
-            }
 
             public int IdMovimiento { get; set; }
             public float? Medias { get; set; }
@@ -69,13 +62,6 @@ namespace Riviera_Business.Models
         ////////////////////////////////////////////////////////7
         ///
 
-        public virtual CEstados IdEstadoNavigation { get; set; }
-            public virtual CFormaPago IdFormaPagoNavigation { get; set; }
-            public virtual ICollection<TbCarrosTransaccion> TbCarrosTransaccion { get; set; }
-            public virtual ICollection<TbComprobantes> TbComprobantes { get; set; }
-            public virtual ICollection<TbCondiciones> TbCondiciones { get; set; }
-            public virtual ICollection<TbSeguro> TbSeguro { get; set; }
-        public virtual TbDatosPersona IdPersonaNavigation { get; set; }
     }
     }
 

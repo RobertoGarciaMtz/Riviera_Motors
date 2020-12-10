@@ -7,9 +7,9 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Agregar Otra Persona</a>
 </p>
-<table class="table">
+<table class="table"  id="dataTable">
     <thead>
         <tr>
             <th>
@@ -157,10 +157,10 @@
                 @Html.DisplayFor(modelItem => item.Puesto)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdPmDpNavigation.IdDatosPm)
+                @Html.DisplayFor(modelItem => item.IdPmDpNavigation.DenominacionRazonSocial)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdDatosPersona">Edit</a> |

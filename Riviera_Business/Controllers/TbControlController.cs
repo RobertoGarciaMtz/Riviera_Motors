@@ -21,14 +21,29 @@ namespace Riviera_Business.Controllers
             {
                 ti.IdEstadoNavigation = context.CEstados.Where(ce=> ce.IdEstados ==ti.IdEstado).FirstOrDefault();
                 ti.IdFormaPagoNavigation = context.CFormaPago.Where(fp => fp.IdFormaPago == ti.IdFormaPago).FirstOrDefault();
+                ti.IdBancoNavigation = context.CBanco.Where(bc => bc.IdBanco == bc.IdBanco).FirstOrDefault();
+                ///
+                //if (ti.TipoCompraCanal == 1)
+                //{
+                  //  var persona = context.TbDatosPersona.Where(dp => dp.IdDatosPersona == ti.IdProveedor).FirstOrDefault();
+                    //ti.persona.IdDatosPersona = persona.IdDatosPersona;
+                //}
             }
-            return View();
+            return View(list);
         }
 
         // GET: HomeController1/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
+            ViewBag.Formapago = context.CFormaPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdFormaPago.ToString() });
+            ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
+            if (context.TbControl.Where(tc => tc.IdMovimiento == id).First() is TbControl e)
+            {
+                return View(e);
+            }
+            return NotFound();
         }
 
         // GET: HomeController1/Create
@@ -37,6 +52,7 @@ namespace Riviera_Business.Controllers
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(es=> new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem {Text=es.Descripcion,Value=es.IdEstados.ToString() });
             ViewBag.Formapago = context.CFormaPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdFormaPago.ToString() });
+            ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
 
             return View();
         }
@@ -65,6 +81,7 @@ namespace Riviera_Business.Controllers
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
             ViewBag.Formapago = context.CFormaPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdFormaPago.ToString() });
+            ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
             if (context.TbControl.Where(tc =>tc.IdMovimiento ==id).First() is TbControl e)
             {
                 return View(e);
@@ -83,30 +100,37 @@ namespace Riviera_Business.Controllers
                 var objectEdit = context.TbControl.FirstOrDefault(tc => tc.IdMovimiento == a.IdMovimiento);
                 if (objectEdit!=null)
                 {
-                    objectEdit.Banco = a.Banco;
+                    objectEdit.BajaCambProp = a.BajaCambProp;
+                    objectEdit.CantidadDebida = a.CantidadDebida;
                     objectEdit.ClienteVenta = a.ClienteVenta;
                     objectEdit.CompraVenta = a.CompraVenta;
-                    objectEdit.Factura = a.Factura;
-                    objectEdit.FechaActual = a.FechaActual;
+                    objectEdit.ComprobantesPago = a.ComprobantesPago;
+                    objectEdit.ComprobarId = a.ComprobarId;
+                    objectEdit.ConstanciaFiscal = a.ConstanciaFiscal;
+                    objectEdit.Contrato = a.Contrato;
+                    objectEdit.CurpPf = a.CurpPf;
+                    objectEdit.Debiendo = a.Debiendo;
                     objectEdit.FechaES = a.FechaES;
                     objectEdit.FechaFactura = a.FechaFactura;
+                    objectEdit.FechaFacturaToma = a.FechaFacturaToma;
+                    objectEdit.FolioFiscal = a.FolioFiscal;
+                    objectEdit.GastoTotalEnCarro = a.GastoTotalEnCarro;
+                    objectEdit.IdBanco = a.IdBanco;
                     objectEdit.IdCarros = a.IdCarros;
                     objectEdit.IdCliente = a.IdCliente;
-                    objectEdit.IdEstado = a.IdEstado;
                     objectEdit.IdFormaPago = a.IdFormaPago;
-                    objectEdit.Isan = a.Isan;
                     objectEdit.Iva = a.Iva;
-                    objectEdit.LineaCaptura = a.LineaCaptura;
-                    objectEdit.Medias = a.Medias;
+                    objectEdit.LeyAntilavado = a.LeyAntilavado;
                     objectEdit.MetodoPago = a.MetodoPago;
-                    objectEdit.Pagada = a.Pagada;
-                    objectEdit.PNeto = a.PNeto;
+                    objectEdit.NoFacturaArv = a.NoFacturaArv;
+                    objectEdit.PagadaCobrada = a.PagadaCobrada;
                     objectEdit.PrecioPactado = a.PrecioPactado;
-                    objectEdit.Repuve = a.Repuve;
                     objectEdit.SubTotal = a.SubTotal;
                     objectEdit.TipoVenta = a.TipoVenta;
                     objectEdit.Total = a.Total;
                     objectEdit.VoBoFacturarSat = a.VoBoFacturarSat;
+                    objectEdit.VoBoLeyAntiLavado = a.VoBoLeyAntiLavado;
+                    
                 }
                 return RedirectToAction(nameof(Index));
             }

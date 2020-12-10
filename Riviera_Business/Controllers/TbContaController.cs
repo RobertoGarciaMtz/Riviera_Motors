@@ -19,13 +19,18 @@ namespace Riviera_Business.Controllers
             {
                 ti.IdBancoNavigation = context.CBanco.Where(te => te.IdBanco == ti.IdBanco).FirstOrDefault();
             }
-            return View();
+            return View(list);
         }
 
         // GET: HomeController1/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            if (context.TbConta.Where(tc => tc.IdConta == id).First() is TbConta e)
+            {
+                return View(e);
+            }
+            return NotFound();
         }
 
         // GET: HomeController1/Create

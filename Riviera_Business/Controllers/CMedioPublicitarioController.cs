@@ -25,7 +25,13 @@ namespace Riviera_Business.Controllers
         // GET: HomeController1/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            ViewBag.Estados = context.CEstados.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.Descripcion, Value = s.IdEstados.ToString() });
+            if (context.CMedioPublicitario.Where(s => s.IdMedioPublicitario == id).First() is CMedioPublicitario e)
+            {
+                return View(e);
+            }
+            return NotFound();
         }
 
         // GET: HomeController1/Create

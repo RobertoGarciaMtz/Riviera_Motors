@@ -115,10 +115,10 @@
                 @Html.DisplayFor(modelItem => item.SalidaAgencia)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdPersonaNavigation.IdDatosPersona)
+                @Html.DisplayFor(modelItem => item.IdPersonaNavigation.Curp)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdExportacion">Edit</a> |

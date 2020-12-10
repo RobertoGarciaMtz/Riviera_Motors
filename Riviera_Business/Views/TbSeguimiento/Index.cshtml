@@ -31,10 +31,10 @@
                 @Html.DisplayNameFor(model => model.Sexo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AsesorAsignado)
+                @Html.DisplayNameFor(model => model.IdAsesor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ContestaNc)
+                @Html.DisplayNameFor(model => model.Contesto)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Cita)
@@ -94,10 +94,10 @@
                 @Html.DisplayFor(modelItem => item.Sexo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AsesorAsignado)
+                @Html.DisplayFor(modelItem => item.IdAsesor)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ContestaNc)
+                @Html.DisplayFor(modelItem => item.Contesto)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Cita)
@@ -124,13 +124,13 @@
                 @Html.DisplayFor(modelItem => item.Comentarios)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CMedioPublicitarioNavigation.IdMedioPublicitario)
+                @Html.DisplayFor(modelItem => item.CMedioPublicitarioNavigation.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdCarros)
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdSeguimiento">Edit</a> |

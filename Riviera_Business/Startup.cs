@@ -26,7 +26,7 @@ namespace Riviera_Business
         {
             services.AddControllersWithViews();
             services.Add(new ServiceDescriptor(typeof(Models.riviera_businessContext),
-                         new Models.riviera_businessContext(v: Configuration.GetConnectionString("riviera_business"))));
+         new Models.riviera_businessContext(v: Configuration.GetConnectionString("riviera_business"))));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -13,7 +13,7 @@ namespace Riviera_Business.Models
         public string Mecanica { get; set; }
         public int? Lavado { get; set; }
         public string Motor { get; set; }
-        public int? Traslado { get; set; }
+        public string Traslado { get; set; }
         public string Preparacion { get; set; }
         public string Otros { get; set; }
         public string Usuario { get; set; }

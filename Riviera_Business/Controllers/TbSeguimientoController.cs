@@ -20,6 +20,7 @@ namespace Riviera_Business.Controllers
                 ti.CMedioPublicitarioNavigation = context.CMedioPublicitario.Where(me => me.IdMedioPublicitario == ti.CMedioPublicitario).FirstOrDefault();
                 ti.IdCarroNavigation = context.TbCarros.Where(car => car.IdCarros == ti.IdCarro).FirstOrDefault();
                 ti.IdEstadoNavigation = context.CEstados.Where(es => es.IdEstados == ti.IdEstado).FirstOrDefault();
+                ti.IdAsesorNavigation = context.CAsesores.Where(ase => ase.IdAsesores == ti.IdAsesor).FirstOrDefault();
             }
             return View(list);
         }
@@ -45,6 +46,7 @@ namespace Riviera_Business.Controllers
             ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
             ViewBag.Carros = context.TbCarros.Select(car => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = car.NoSerie, Value = car.IdCarros.ToString() });
             ViewBag.Mediopubli = context.CMedioPublicitario.Select(mp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = mp.Nombre, Value = mp.IdMedioPublicitario.ToString() });
+            ViewBag.Asesor = context.CAsesores.Select(ase => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ase.Nombre, Value = ase.IdAsesores.ToString() });
             return View();
         }
 
@@ -73,6 +75,7 @@ namespace Riviera_Business.Controllers
             ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
             ViewBag.Carros = context.TbCarros.Select(car => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = car.NoSerie, Value = car.IdCarros.ToString() });
             ViewBag.Mediopubli = context.CMedioPublicitario.Select(mp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = mp.Nombre, Value = mp.IdMedioPublicitario.ToString() });
+            ViewBag.Asesor = context.CAsesores.Select(ase => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ase.Nombre, Value = ase.IdAsesores.ToString() });
             if (context.TbSeguimiento.Where(se=> se.IdSeguimiento == id).First() is TbSeguimiento e)
             {
                 return View(e);
@@ -92,12 +95,12 @@ namespace Riviera_Business.Controllers
                 if (objectEdit!= null)
                 {
                     objectEdit.Anticipo = a.Anticipo;
-                    objectEdit.AsesorAsignado = a.AsesorAsignado;
+                    objectEdit.IdAsesor = a.IdAsesor;
                     objectEdit.Asistio = a.Asistio;
                     objectEdit.Cita = a.Cita;
                     objectEdit.CMedioPublicitario = a.CMedioPublicitario;
                     objectEdit.Comentarios = a.Comentarios;
-                    objectEdit.ContestaNc = a.ContestaNc;
+                    objectEdit.Contesto = a.Contesto;
                     objectEdit.Correo = a.Correo;
                     objectEdit.DiaSemana = a.DiaSemana;
                     objectEdit.Fecha = a.Fecha;

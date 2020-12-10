@@ -76,7 +76,7 @@ namespace Riviera_Business.Controllers
             ViewBag.Gastos = context.CTipoGasto.Select(ga => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ga.Descripcion, Value = ga.IdTipoGasto.ToString() });
             if (context.TbGastos.Where(gas => gas.IdGastos == id).First() is TbGastos e) { 
                 return View(e);
-        }
+              }
             return NotFound();
         }
 

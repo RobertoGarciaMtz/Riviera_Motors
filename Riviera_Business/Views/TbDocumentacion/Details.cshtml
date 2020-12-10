@@ -1,0 +1,90 @@
+﻿@model Riviera_Business.Models.TbDocumentacion
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TbDocumentacion</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdentificacionVig)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdentificacionVig)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Curp)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Curp)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CifSat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CifSat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ComprobDomicilio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ComprobDomicilio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ConocimientoDuenoBeneficiario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ConocimientoDuenoBeneficiario)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ActaConstitutivaBoletaRpc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ActaConstitutivaBoletaRpc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PoderLegarExp)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PoderLegarExp)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ConstanciaConocimiento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ConstanciaConocimiento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Usuario)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Usuario)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MesCorrespondiente)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MesCorrespondiente)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdDatosPersonaNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdDatosPersonaNavigation.IdDatosPersona)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdEstadoNavigation.IdEstados)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IdDocumentos">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

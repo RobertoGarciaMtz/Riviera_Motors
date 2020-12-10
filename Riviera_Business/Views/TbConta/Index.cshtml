@@ -37,7 +37,14 @@
                 @Html.DisplayFor(modelItem => item.Cantidad)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CargoAbono)
+                @if (item.CargoAbono == 1)
+                {
+                    <label value="@item.CargoAbono">Cargo</label>
+                }
+                else
+                {
+                    <label value="@item.CargoAbono">Abono</label>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Descripcion)
@@ -46,7 +53,7 @@
                 @Html.DisplayFor(modelItem => item.FechaTramite)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdBancoNavigation.IdBanco)
+                @Html.DisplayFor(modelItem => item.IdBancoNavigation.Nombre)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdConta">Edit</a> |

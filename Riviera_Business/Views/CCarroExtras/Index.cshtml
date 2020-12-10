@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Index";
 }
-
 <h1>Index</h1>
 
 <p>
@@ -19,7 +18,7 @@
                 @Html.DisplayNameFor(model => model.CarnetServicio)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Duplicado)
+                Duplicado Llaves
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LlantaRefaccion)
@@ -37,7 +36,7 @@
                 @Html.DisplayNameFor(model => model.Usuario)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCarroNavigation)
+                Numero Serie
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IdEstadoNavigation)
@@ -49,34 +48,85 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Manuales)
+                @if (item.Manuales == 1)
+                {
+                    <label value="@item.Manuales">Si</label>
+                }
+                else
+                {
+                    <label value="@item.Manuales">No</label>
+                }
+                
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CarnetServicio)
+                @if (item.CarnetServicio == 1)
+                {
+                    <label value="@item.CarnetServicio">Si</label>
+                }
+                else
+                {
+                    <label value="@item.CarnetServicio">No</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Duplicado)
+                @if (item.Duplicado == 1)
+                {
+                    <label value="@item.Duplicado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.Duplicado">No</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LlantaRefaccion)
+                @if (item.LlantaRefaccion == 1)
+                {
+                    <label value="@item.LlantaRefaccion">Si</label>
+                }
+                else
+                {
+                    <label value="@item.LlantaRefaccion">No</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Herramientas)
+                @if (item.Herramientas == 1)
+                {
+                    <label value="@item.Herramientas">Si</label>
+                }
+                else
+                {
+                    <label value="@item.Herramientas">No</label>
+                }
+                
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Gato)
+                @if (item.Gato == 1)
+                {
+                    <label value="@item.Gato">Si</label>
+                }
+                else
+                {
+                    <label value="@item.Gato">No</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Antena)
+                @if (item.Antena == 1)
+                {
+                    <label value="@item.Antena">Si</label>
+                }
+                else
+                {
+                    <label value="@item.Antena">No</label>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Usuario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdCarros)
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdCarroExtra">Edit</a> |

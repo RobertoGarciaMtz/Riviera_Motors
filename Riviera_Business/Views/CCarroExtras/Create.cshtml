@@ -1,55 +1,80 @@
 ﻿@model Riviera_Business.Models.CCarroExtra
 
 @{
-    ViewData["Title"] = "CreateCCarroExtra";
+    ViewData["Title"] = "Create";
 }
 
-<h1>CreateCCarroExtra</h1>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+
+</script>
+<h1>Create</h1>
 
 <h4>CCarroExtra</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateCCarroExtra">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Manuales" class="control-label"></label>
-                <input asp-for="Manuales" class="form-control" />
+                <select asp-for="Manuales" >
+                    <option  value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
                 <span asp-validation-for="Manuales" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CarnetServicio" class="control-label"></label>
-                <input asp-for="CarnetServicio" class="form-control" />
+                <select asp-for="CarnetServicio">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
                 <span asp-validation-for="CarnetServicio" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Duplicado" class="control-label"></label>
-                <input asp-for="Duplicado" class="form-control" />
+                <select asp-for="Duplicado">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
                 <span asp-validation-for="Duplicado" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="LlantaRefaccion" class="control-label"></label>
-                <input asp-for="LlantaRefaccion" class="form-control" />
+                <select asp-for="LlantaRefaccion">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
                 <span asp-validation-for="LlantaRefaccion" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Herramientas" class="control-label"></label>
-                <input asp-for="Herramientas" class="form-control" />
+                <select asp-for="Herramientas">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
                 <span asp-validation-for="Herramientas" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Gato" class="control-label"></label>
-                <input asp-for="Gato" class="form-control" />
+                <select asp-for="Gato">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
                 <span asp-validation-for="Gato" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Antena" class="control-label"></label>
-                <input asp-for="Antena" class="form-control" />
+                <select asp-for="Antena">
+                    <option value="1">Si</option>
+                    <option value="2">No</option>
+                </select>
                 <span asp-validation-for="Antena" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IdEstado" class="control-label"></label>
-                <select asp-for="IdEstado" class ="form-control" asp-items="ViewBag.Estados"></select>
+                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estados"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Usuario" class="control-label"></label>
@@ -57,8 +82,12 @@
                 <span asp-validation-for="Usuario" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdCarro" class="control-label"></label>
-                <select asp-for="IdCarro" class ="form-control" asp-items="ViewBag.Carros"></select>
+                <label >Referencia del Automovil</label>
+                <select asp-for="IdCarro" class="form-control" id="prueba" onchange="obtvalor" asp-items="ViewBag.Caracarro"></select>
+            </div>
+            <div class="form-group">
+                <label>Modelo</label>
+                <input id="IdVersionn" >
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

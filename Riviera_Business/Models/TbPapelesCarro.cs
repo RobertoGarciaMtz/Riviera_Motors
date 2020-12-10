@@ -19,6 +19,7 @@ namespace Riviera_Business.Models
         public int? IdEstado { get; set; }
         public string Usuario { get; set; }
         public int IdCarro { get; set; }
+        public DateTime? Fecha { get; set; }
 
         public virtual TbCarros IdCarroNavigation { get; set; }
         public virtual CEstados IdEstadoNavigation { get; set; }

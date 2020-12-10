@@ -14,29 +14,41 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdCondiciones" />
             <div class="form-group">
-                <label asp-for="PiezasRotas" class="control-label"></label>
-                <input asp-for="PiezasRotas" class="form-control" />
-                <span asp-validation-for="PiezasRotas" class="text-danger"></span>
+                <select asp-for="LlantaDi">
+                    <option value="1">N</option>
+                    <option value="2">1/2</option>
+                    <option value="3">1/4</option>
+                    <option value="4">L</option>
+                </select>
+                <span asp-validation-for="LlantaDi" class="text-danger"></span>
+                <label asp-for="LlanraTi" class="control-label"></label>
+                <select asp-for="LlanraTi">
+                    <option value="1">N</option>
+                    <option value="2">1/2</option>
+                    <option value="3">1/4</option>
+                    <option value="4">L</option>
+                </select>
+                <span asp-validation-for="LlanraTi" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DescripcionPiezas" class="control-label"></label>
-                <input asp-for="DescripcionPiezas" class="form-control" />
-                <span asp-validation-for="DescripcionPiezas" class="text-danger"></span>
+                <label asp-for="LlantaDd" class="control-label"></label>
+                <select asp-for="LlantaDd">
+                    <option value="1">N</option>
+                    <option value="2">1/2</option>
+                    <option value="3">1/4</option>
+                    <option value="4">L</option>
+                </select>
+                <span asp-validation-for="LlantaDd" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdEstado" class="control-label"></label>
-                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estados"></select>
-                <span asp-validation-for="IdEstado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdCarro" class="control-label"></label>
-                <select asp-for="IdCarro" class="form-control" asp-items="ViewBag.Control"></select>
-                <span asp-validation-for="IdCarro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Usuario" class="control-label"></label>
-                <input asp-for="Usuario" class="form-control" />
-                <span asp-validation-for="Usuario" class="text-danger"></span>
+                <label asp-for="LlantaTd" class="control-label"></label>
+                <select asp-for="LlantaTd">
+                    <option value="1">N</option>
+                    <option value="2">1/2</option>
+                    <option value="3">1/4</option>
+                    <option value="4">L</option>
+                </select>
+                <span asp-validation-for="LlantaTd" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

@@ -4,6 +4,37 @@
     ViewData["Title"] = "Create";
 }
 
+<script> 
+    function esconderdemas(select) {
+        if (select.value == 1) {
+            document.getElementById("esconder1").style.display = "none";
+            document.getElementById("esconder2").style.display = "none";
+            document.getElementById("esconder3").style.display = "none";
+            document.getElementById("esconder4").style.display = "none";
+            document.getElementById("esconder5").style.display = "none";
+            document.getElementById("esconder11").style.display = "none";
+            document.getElementById("esconder22").style.display = "none";
+            document.getElementById("esconder33").style.display = "none";
+            document.getElementById("esconder44").style.display = "none";
+            document.getElementById("esconder55").style.display = "none";
+        }
+        else {
+            document.getElementById("esconder1").style.display = "block";
+            document.getElementById("esconder2").style.display = "block";
+            document.getElementById("esconder3").style.display = "block";
+            document.getElementById("esconder4").style.display = "block";
+            document.getElementById("esconder5").style.display = "block";
+            document.getElementById("esconder11").style.display = "block";
+            document.getElementById("esconder22").style.display = "block";
+            document.getElementById("esconder33").style.display = "block";
+            document.getElementById("esconder44").style.display = "block";
+            document.getElementById("esconder55").style.display = "block";
+        }
+    }
+
+
+</script>
+
 <h1>Create</h1>
 
 <h4>TbDatosPersona</h4>
@@ -93,8 +124,12 @@
                 <span asp-validation-for="NumeroTelefono" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FisicaOMoral" class="control-label"></label>
-                <input asp-for="FisicaOMoral" class="form-control" />
+                <label asp-for="FisicaOMoral" id="FM" class="control-label"></label>
+                <select asp-for="FisicaOMoral" class="form-control" onchange="esconderdemas(this)">
+                    <option value="0">-----</option>
+                    <option value="1">Persona</option>
+                    <option value="2">Representante</option>
+                </select>
                 <span asp-validation-for="FisicaOMoral" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -107,27 +142,27 @@
                 <span asp-validation-for="Usuario" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FechaPoderNotorial" class="control-label"></label>
-                <input asp-for="FechaPoderNotorial" class="form-control" />
+                <label asp-for="FechaPoderNotorial" id="esconder1" class="control-label"></label>
+                <input asp-for="FechaPoderNotorial"  id="esconder11" class="form-control" />
                 <span asp-validation-for="FechaPoderNotorial" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NoPoderNotorial" class="control-label"></label>
-                <input asp-for="NoPoderNotorial" class="form-control" />
+                <label asp-for="NoPoderNotorial" id="esconder2" class="control-label"></label>
+                <input asp-for="NoPoderNotorial" id="esconder22" class="form-control" />
                 <span asp-validation-for="NoPoderNotorial" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AutoridadEmite" class="control-label"></label>
-                <input asp-for="AutoridadEmite" class="form-control" />
+                <label asp-for="AutoridadEmite" id="esconder3" class="control-label"></label>
+                <input asp-for="AutoridadEmite"  id="esconder33"class="form-control" />
                 <span asp-validation-for="AutoridadEmite" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdPmDp" class="control-label"></label>
-                <select asp-for="IdPmDp" class ="form-control" asp-items="ViewBag.Personamoral"></select>
+                <label asp-for="IdPmDp" id="esconder4" class="control-label"></label>
+                <select asp-for="IdPmDp" id="esconder44" class ="form-control" asp-items="ViewBag.Personamoral"></select>
             </div>
             <div class="form-group">
-                <label asp-for="Puesto" class="control-label"></label>
-                <input asp-for="Puesto" class="form-control" />
+                <label asp-for="Puesto" id="esconder5" class="control-label"></label>
+                <input asp-for="Puesto" id="esconder55" class="form-control" />
                 <span asp-validation-for="Puesto" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -1,24 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace Riviera_Business.Models
 {
     public partial class ZCopiaControlPersonas
     {
 
-        public ZCopiaControlPersonas()
-        {
-            TbCarrosTransaccion = new HashSet<TbCarrosTransaccion>();
-            TbComprobantes = new HashSet<TbComprobantes>();
-            TbCondiciones = new HashSet<TbCondiciones>();
-            TbSeguro = new HashSet<TbSeguro>();
-            TbDatosPersonaMoral = new HashSet<TbDatosPersonaMoral>();
-            TbExportacion = new HashSet<TbExportacion>();
-            TbLeyAntilavado = new HashSet<TbLeyAntilavado>();
-        }
+        [Key]
         public int IdMovimiento { get; set; }
         public float? Medias { get; set; }
         public string ClienteVenta { get; set; }
@@ -72,15 +65,7 @@ namespace Riviera_Business.Models
         public string NoPoderNotorial { get; set; }
         public string AutoridadEmite { get; set; }
 
-        public virtual CEstados IdEstadoNavigation { get; set; }
-        public virtual CFormaPago IdFormaPagoNavigation { get; set; }
-        public virtual ICollection<TbCarrosTransaccion> TbCarrosTransaccion { get; set; }
-        public virtual ICollection<TbComprobantes> TbComprobantes { get; set; }
-        public virtual ICollection<TbCondiciones> TbCondiciones { get; set; }
-        public virtual ICollection<TbSeguro> TbSeguro { get; set; }
-        public virtual ICollection<TbDatosPersonaMoral> TbDatosPersonaMoral { get; set; }
-        public virtual ICollection<TbExportacion> TbExportacion { get; set; }
-        public virtual ICollection<TbLeyAntilavado> TbLeyAntilavado { get; set; }
+
 
     }
 }

@@ -7,8 +7,8 @@ namespace Riviera_Business.Models
     {
         public TbDatosPersona()
         {
+            TbDocumentacion = new HashSet<TbDocumentacion>();
             TbExportacion = new HashSet<TbExportacion>();
-            TbLeyAntilavado = new HashSet<TbLeyAntilavado>();
         }
 
         public int IdDatosPersona { get; set; }
@@ -39,7 +39,7 @@ namespace Riviera_Business.Models
 
         public virtual CEstados IdEstadoNavigation { get; set; }
         public virtual TbDatosPersonaMoral IdPmDpNavigation { get; set; }
+        public virtual ICollection<TbDocumentacion> TbDocumentacion { get; set; }
         public virtual ICollection<TbExportacion> TbExportacion { get; set; }
-        public virtual ICollection<TbLeyAntilavado> TbLeyAntilavado { get; set; }
     }
 }

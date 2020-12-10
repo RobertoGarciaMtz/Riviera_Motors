@@ -1,0 +1,77 @@
+﻿@model Riviera_Business.Models.CGuiaAutometricaEbc
+
+@{
+    ViewData["Title"] = "CreaAutometrica";
+}
+
+<script>
+    $(document).ready(function () {
+        document.getElementById("TipoGuia").style.display = "none";
+    });
+</script>
+
+<h1>CreaAutometrica</h1>
+
+<h4>CGuiaAutometrica</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreaAutometrica">
+            <div class="form-group" id="TipoGuia">
+                <label class="control-label">Guia Autometrica</label>
+
+                <select asp-for="GuiaAutometricaEbc"  class="form-control" >
+                    <option value="1">Guia Autometrica</option>
+                </select>
+                
+                <span asp-validation-for="GuiaAutometricaEbc" class="text-danger"></span>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Toma" class="control-label"></label>
+                <input asp-for="Toma" class="form-control" />
+                <span asp-validation-for="Toma" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Venta" class="control-label"></label>
+                <input asp-for="Venta" class="form-control" />
+                <span asp-validation-for="Venta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Media" class="control-label"></label>
+                <input asp-for="Media" class="form-control" />
+                <span asp-validation-for="Media" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdEstado" class="control-label"></label>
+                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estados"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Usuario" class="control-label"></label>
+                <input asp-for="Usuario" class="form-control" />
+                <span asp-validation-for="Usuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label"></label>
+                <input asp-for="Fecha" class="form-control" />
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdVersion" class="control-label"></label>
+                <select asp-for="IdVersion" class="form-control" asp-items="ViewBag.Version"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

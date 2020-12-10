@@ -4,71 +4,156 @@
     ViewData["Title"] = "Details";
 }
 
+<script>
+    function marcaChanged(select) {
+        var idSelected = select.value;
+        $.ajax({
+            url: "/CCarroExtra/RecuperarVersion1",
+            method: "GET",
+            data: { "id": idSelected },
+            success: function (e) {
+                let selectModelo = document.getElementById("obtVersion");
+                let html = "";
+                for (var i = 0; i < e.length; i++) {
+                    html += "<option value ='" + e[i].IdVersion + "' >" + e[i].VersionCarro + "</option>";
+                }
+                selectModelo.innerHTML = html;
+            }
+        });
+    }
+</script>
 <h1>Details</h1>
 
 <div>
     <h4>CCarroExtra</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Manuales)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Manuales)
+        <dd class="col-sm-10">
+            @if (Model.Manuales == 1)
+            {
+                <label value="@Model.Manuales">Si</label>
+            }
+            else
+            {
+                <label value="@Model.Manuales">No</label>
+            }
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CarnetServicio)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CarnetServicio)
+        <dd class="col-sm-10">
+            @if (Model.CarnetServicio == 1)
+            {
+                <label value="@Model.CarnetServicio">Si</label>
+            }
+            else
+            {
+                <label value="@Model.CarnetServicio">No</label>
+            }
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Duplicado)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Duplicado)
+        <dd class="col-sm-10">
+            @if (Model.Duplicado == 1)
+            {
+                <label value="@Model.Duplicado">Si</label>
+            }
+            else
+            {
+                <label value="@Model.Duplicado">No</label>
+            }
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.LlantaRefaccion)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LlantaRefaccion)
+        <dd class="col-sm-10">
+            @if (Model.LlantaRefaccion == 1)
+            {
+                <label value="@Model.LlantaRefaccion">Si</label>
+            }
+            else
+            {
+                <label value="@Model.LlantaRefaccion">No</label>
+            }
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Herramientas)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Herramientas)
+        <dd class="col-sm-10">
+            @if (Model.Herramientas == 1)
+            {
+                <label value="@Model.Herramientas">Si</label>
+            }
+            else
+            {
+                <label value="@Model.Herramientas">No</label>
+            }
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Gato)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Gato)
+        <dd class="col-sm-10">
+            @if (Model.Gato == 1)
+            {
+                <label value="@Model.Gato">Si</label>
+            }
+            else
+            {
+                <label value="@Model.Gato">No</label>
+            }
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Antena)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Antena)
+        <dd class="col-sm-10">
+            @if (Model.Antena == 1)
+            {
+                <label value="@Model.Antena">Si</label>
+            }
+            else
+            {
+                <label value="@Model.Antena">No</label>
+            }
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Usuario)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Usuario)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdCarroNavigation)
+        <dt class="col-sm-2">
+            Numero Serie
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdCarroNavigation.IdCarros)
+        <dd class="col-sm-10" >
+            @Html.DisplayFor(model => model.IdCarroNavigation.NoSerie)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            Kilometraje
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdCarroNavigation.Kms)
+        </dd>
+        <dt class="col-sm-2">
+            Version
+        </dt>
+        <dd class="col-sm-10" id="obtVersion" onload="recuperarVersion" value="model.IdCarroNavigation.IdVersion">
+            
+        </dd>
+        <dt class="col-sm-2">
+            Color Externo
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdCarroNavigation.ColorExt)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IdEstadoNavigation)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdEstadoNavigation.IdEstados)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdEstadoNavigation.Descripcion)
         </dd>
     </dl>
 </div>

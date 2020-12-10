@@ -55,7 +55,14 @@
                 @Html.DisplayFor(modelItem => item.Fecha)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LavadoVestiduras)
+                @if (item.LavadoVestiduras == 1)
+                {
+                    <label value="@item.LavadoVestiduras">Si</label>
+                }
+                else
+                {
+                    <label value="@item.LavadoVestiduras">No</label>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PulidoEncerado)
@@ -64,7 +71,14 @@
                 @Html.DisplayFor(modelItem => item.Mecanica)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Lavado)
+                @if (item.Lavado == 1)
+                {
+                    <label value="@item.Lavado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.Lavado">No</label>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Motor)
@@ -82,7 +96,7 @@
                 @Html.DisplayFor(modelItem => item.Usuario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdCarros)
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdAdecuaciones">Edit</a> |
