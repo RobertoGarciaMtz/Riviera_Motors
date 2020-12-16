@@ -19,6 +19,12 @@ namespace Riviera_Business.Controllers
             foreach(CPreAcondicionamiento ti in list)
             {
                 ti.TbCarrosIdCarrosNavigation = context.TbCarros.Where(te => te.IdCarros == ti.TbCarrosIdCarros).FirstOrDefault();
+                ti.TbCarrosIdCarrosNavigation.IdVersionNavigation = context.CVersionCarro.Where
+                    (ver=> ver.IdVersionCarro==ti.TbCarrosIdCarrosNavigation.IdVersionNavigation.IdVersionCarro).FirstOrDefault();
+                ti.TbCarrosIdCarrosNavigation.IdVersionNavigation.IdModeloNavigation = context.CModeloCarro.Where
+                    (mod => mod.IdModeloCarro == ti.TbCarrosIdCarrosNavigation.IdVersionNavigation.IdModeloNavigation.IdModeloCarro).FirstOrDefault();
+                ti.TbCarrosIdCarrosNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation = context.CMarcaCarro.Where
+                    (mar => mar.IdMarcaCarro == ti.TbCarrosIdCarrosNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.IdMarcaCarro).FirstOrDefault();
             }
             return View(list);
         }

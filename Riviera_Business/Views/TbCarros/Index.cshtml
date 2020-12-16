@@ -4,6 +4,16 @@
     ViewData["Title"] = "Index";
 }
 
+
+<script>
+    $('#tableid').on('click', 'button', function () {
+        $(this).parent().parent().remove();
+    });
+
+    $('#tableid').on('change', 'select', function () {
+        if ($(this).val()) { $(this).next().show(); }
+    });
+</script>
 <h1>Index</h1>
 
 <p>
@@ -14,7 +24,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.IdProveedor)
+                Proveedor
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TipoCompraCanal)
@@ -58,9 +68,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.ClaveVehicular)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Usuario)
-            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.DuenoAnterior)
             </th>
@@ -77,94 +85,101 @@
                 @Html.DisplayNameFor(model => model.FechaOferta)
             </th>
             <th>
+                Version Automovil
+            </th>
+            <th>
+                Modelo Automovil
+            </th>
+            <th>
                 Marca Automovil
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
-            </th>
-            <th>
-                Version
+                @Html.DisplayNameFor(model => model.IdEstadoNavigation.Descripcion)
             </th>
         </tr>
     </thead>
 <tbody>
 @foreach (var item in Model) {
-        <tr>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoCompraCanal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Kms)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FolioFiscal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaFactToma)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Antiguedad)
-            </td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdProveedor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoCompraCanal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FolioFiscal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaFactToma)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Antiguedad)
+        </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Modelo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ColorExt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ColorInt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NoSerie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NoMotor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumEconomicoOpc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MvaOpc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Transmicion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClaveVehicular)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Usuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DuenoAnterior)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Origen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ubicacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PropuestaCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaOferta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdVersionNavigation.VersionCarro)
-            </td>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdCarros">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdCarros">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdCarros">Delete</a>
-            </td>
-        </tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modelo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ColorExt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ColorInt)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoSerie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoMotor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumEconomicoOpc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MvaOpc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Transmicion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClaveVehicular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DuenoAnterior)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Origen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ubicacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PropuestaCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaOferta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdVersionNavigation.VersionCarro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.IdCarros">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.IdCarros">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.IdCarros">Delete</a>
+        </td>
+    </tr>
     }
     </tbody>
 </table>

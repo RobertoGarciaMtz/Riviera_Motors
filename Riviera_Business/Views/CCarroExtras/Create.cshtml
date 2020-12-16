@@ -83,12 +83,9 @@
             </div>
             <div class="form-group">
                 <label >Referencia del Automovil</label>
-                <select asp-for="IdCarro" class="form-control" id="prueba" onchange="obtvalor" asp-items="ViewBag.Caracarro"></select>
+                <select asp-for="IdCarro" class="form-control" id="prueba" onchange="obtMMV(this)" asp-items="ViewBag.Caracarro"></select>
             </div>
-            <div class="form-group">
-                <label>Modelo</label>
-                <input id="IdVersionn" >
-            </div>
+            <a id="regresaversion" ></a>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

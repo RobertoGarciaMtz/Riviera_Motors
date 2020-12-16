@@ -28,7 +28,16 @@
                 @Html.DisplayNameFor(model => model.Usuario)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCarroNavigation)
+                Num Serie
+            </th>
+            <th>
+                Version
+            </th>
+            <th>
+                Modelo
+            </th>
+            <th>
+                Marca
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IdEstadoNavigation)
@@ -80,11 +89,11 @@
                 {
                     <label value="@item.LlanraTi">N</label>
                 }
-                @if (item.LlanraTi== 2)
+                @if (item.LlanraTi == 2)
                 {
                     <label value="@item.LlanraTi">1/2</label>
                 }
-                @if (item.LlanraTi== 3)
+                @if (item.LlanraTi == 3)
                 {
                     <label value="@item.LlanraTi">1/4</label>
                 }
@@ -115,7 +124,16 @@
                 @Html.DisplayFor(modelItem => item.Usuario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdCarros)
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.VersionCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)

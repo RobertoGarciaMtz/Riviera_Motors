@@ -16,7 +16,16 @@
                 @Html.DisplayNameFor(model => model.Fecha)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCarroNavigation)
+                Num Serie
+            </th>
+            <th>
+                Version
+            </th>
+            <th>
+                Modelo
+            </th>
+            <th>
+                Marca
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IdEstadoNavigation)
@@ -31,7 +40,16 @@
                 @Html.DisplayFor(modelItem => item.Fecha)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.VersionCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)

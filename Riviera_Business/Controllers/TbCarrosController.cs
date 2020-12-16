@@ -20,6 +20,9 @@ namespace Riviera_Business.Controllers
             {
                 ti.IdEstadoNavigation = context.CEstados.Where(tc => tc.IdEstados == ti.IdEstado).FirstOrDefault();
                 ti.IdVersionNavigation = context.CVersionCarro.Where(tc => tc.IdVersionCarro == ti.IdVersion).FirstOrDefault();
+                ti.IdVersionNavigation.IdModeloNavigation = context.CModeloCarro.Where(mod => mod.IdModeloCarro == ti.IdVersionNavigation.IdModelo).FirstOrDefault();
+                ti.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation = context.CMarcaCarro.Where
+                    (mar => mar.IdMarcaCarro == ti.IdVersionNavigation.IdModeloNavigation.IdMarca).FirstOrDefault();
             }           
             return View(list);
         }
@@ -67,14 +70,7 @@ namespace Riviera_Business.Controllers
             }
         }
 
-        [HttpPost]
-        public List<CMarcaCarro> RecuperarMarca(CMarcaCarro m)
-        {
-            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            List<CMarcaCarro> cModelos = new List<CMarcaCarro>();
-            var list = context.CMarcaCarro.Where(y => y.IdMarcaCarro >= 0).ToList();
-            return cModelos;
-        }
+ 
 
         // POST: HomeController1/Create
         [HttpPost]
@@ -82,26 +78,17 @@ namespace Riviera_Business.Controllers
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             List<CModeloCarro> cModelos = new List<CModeloCarro>();
-            var list = context.CModeloCarro.Where(y => y.IdModeloCarro >= 0).ToList();
-            foreach (CModeloCarro lista in list)
-            {
-                if (lista.IdMarca == id)
-                    cModelos.Add(lista);
-            }
-            return cModelos;
+            var list = context.CModeloCarro.Where(x => x.IdMarca == id).ToList();
+
+            return list;
         }
         [HttpPost]
         public List<CVersionCarro> RecuperarVersion1(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             List<CVersionCarro> cVersion = new List<CVersionCarro>();
-            var list = context.CVersionCarro.Where(y => y.IdVersionCarro >= 0).ToList();
-            foreach (CVersionCarro lista in list)
-            {
-                if (lista.IdModelo == id)
-                    cVersion.Add(lista);
-            }
-            return cVersion;
+            var list = context.CVersionCarro.Where(y => y.IdModelo == id).ToList();
+            return list;
         }
 
         // GET: HomeController1/Edit/5
@@ -162,25 +149,5 @@ namespace Riviera_Business.Controllers
             }
         }
 
-        // GET: HomeController1/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: HomeController1/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

@@ -28,16 +28,33 @@
                 @Html.DisplayNameFor(model => model.EstadoNavigation)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCarroNavigation)
+                Num Serie
             </th>
-            <th></th>
+            <th>
+                Version
+            </th>
+            <th>
+                Modelo
+            </th>
+            <th>Marca</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TipoVenta)
+                @if (item.TipoVenta == 1)
+                {
+                    <label>Precio Retail</label>
+                }
+                @if (item.TipoVenta == 2)
+                {
+                    <label>Precio InterAgencia</label>
+                }
+                @if (item.TipoVenta == 3)
+                {
+                    <label>Precio Expo</label>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Cantidad)
@@ -46,13 +63,22 @@
                 @Html.DisplayFor(modelItem => item.Ub)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Porcentaje)
+                @Html.DisplayFor(modelItem => item.Porcentaje)%
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.EstadoNavigation.Descripcion)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.VersionCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdPreciosTentativos">Edit</a> |

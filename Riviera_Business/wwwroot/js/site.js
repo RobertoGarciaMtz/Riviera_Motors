@@ -3,47 +3,60 @@
 
 // Write your JavaScript code.
 
-function obtMarca(select) {
-    var idMarca = select.value;
-    ajax({
-        url: "TbCarros/RecuperarMarca",
-        method: "POST"
-    });
-}
 
-function marcaChanged(select) {
+    function marcaChanged(select) {
+        var idSelected = select.value;
+        $.ajax({
+            url: "/TbCarros/RecuperarModelo1",
+            method: "POST",
+            data: { "id": idSelected },
+            success: function (e) {
+                let selectModelo = document.getElementById("IdModelo");
+                let html = "";
+                for (var i = 0; i < e.length; i++) {
+                    html += "<option value ='" + e[i].idModeloCarro + "' >" + e[i].modeloCarro + "</option>";
+                }
+                selectModelo.innerHTML = html;
+            }
+        });
+    }
+
+function modeloChange(select) {
+    
     var idSelected = select.value;
+    alert(idSelected);
     $.ajax({
-        url: "/TbCarros/RecuperarModelo1",
+        url: "/TbCarros/RecuperarVersion1",
         method: "POST",
         data: { "id": idSelected },
         success: function (e) {
-            let selectModelo = document.getElementById("IdModelo");
+            //alert("alert");
+            alert("HOLA 2");
+            let selectModelo = document.getElementById("IdVersion");
             let html = "";
             for (var i = 0; i < e.length; i++) {
-                html += "<option value ='" + e[i].idModeloCarro + "' >" + e[i].modeloCarro + "</option>";
+                html += "<option value ='" + e[i].Id_Version_Carro + "' >" + e[i].Version_Carro + "</option>";
             }
             selectModelo.innerHTML = html;
         }
     });
 }
 
-
-function modeloChange(select) {
-    var idSelect = select.value;
+function obtMMV(select) {
+    alert("alert");
+    var idSelected = select.value;
     $.ajax({
-        url: "/TbCarros/RecuperarVersion1",
+        url: "/CCarroExtra/ObtenerMMV",
         method: "POST",
-        data: { "id": idSelect },
-        success: function (f) {
-            let selectModelo2 = document.getElementById("IdVersionn");
+        data: { "id": idSelected },
+        success: function (e) {
+            alert("alert");
+            alert(e[i].Id_Version_Carro);
+            let selectModelo = document.getElementById("regresaversion");
             let html = "";
-            for (var i = 0; i < f.length; i++) {
-                html += "<option value='" + f[i].idVersionCarro + "' >" + f[i].VersionCarro + "</option>";
-            }
-            selectModelo2.innerHTML = html;
+                html = "<option value ='" + e[i].Id_Version_Carro + "' >" + e[i].Version_Carro + "</option>";
+            selectModelo.innerHTML = html;
         }
     });
 }
-
 

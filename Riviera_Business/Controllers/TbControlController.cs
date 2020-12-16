@@ -47,7 +47,7 @@ namespace Riviera_Business.Controllers
         }
 
         // GET: HomeController1/Create
-        public ActionResult Create()
+        public ActionResult CompraAut()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(es=> new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem {Text=es.Descripcion,Value=es.IdEstados.ToString() });
@@ -60,7 +60,7 @@ namespace Riviera_Business.Controllers
         // POST: HomeController1/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(TbControl a)
+        public ActionResult CompraAut(TbControl a)
         {
             try
             {
@@ -74,6 +74,34 @@ namespace Riviera_Business.Controllers
                 return View();
             }
         }
+
+        public ActionResult VentaAut()
+        {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
+            ViewBag.Formapago = context.CFormaPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdFormaPago.ToString() });
+            ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult VentaAut(TbControl a)
+        {
+            try
+            {
+                var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+                context.TbControl.Add(a);
+                context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
 
         // GET: HomeController1/Edit/5
         public ActionResult Edit(int id)

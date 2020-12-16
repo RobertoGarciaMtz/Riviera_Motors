@@ -14,7 +14,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="TipoVenta" class="control-label"></label>
-                <input asp-for="TipoVenta" class="form-control" />
+                <select asp-for="TipoVenta">
+                    <option value="1">Venta Retail </option>
+                    <option value="2">Venta Inter Agencia</option>
+                    <option value="3">Venta Expo</option>
+                </select>
                 <span asp-validation-for="TipoVenta" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -31,13 +31,13 @@
                 @Html.DisplayNameFor(model => model.Sexo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdAsesor)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Contesto)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Cita)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCita)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Asistio)
@@ -52,10 +52,13 @@
                 @Html.DisplayNameFor(model => model.IdTipoCompra)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Venta)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Anticipo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Venta)
+                @Html.DisplayNameFor(model => model.CantidadAnticipo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Comentarios)
@@ -64,7 +67,19 @@
                 @Html.DisplayNameFor(model => model.CMedioPublicitarioNavigation)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCarroNavigation)
+                @Html.DisplayNameFor(model => model.IdAsesorNavigation)
+            </th>
+            <th>
+                Num Serie
+            </th>
+            <th>
+                Version
+            </th>
+            <th>
+                Modelo
+            </th>
+            <th>
+                Marca
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IdEstadoNavigation)
@@ -94,13 +109,13 @@
                 @Html.DisplayFor(modelItem => item.Sexo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdAsesor)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Contesto)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Cita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCita)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Asistio)
@@ -115,10 +130,13 @@
                 @Html.DisplayFor(modelItem => item.IdTipoCompra)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Venta)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Anticipo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Venta)
+                @Html.DisplayFor(modelItem => item.CantidadAnticipo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Comentarios)
@@ -127,7 +145,19 @@
                 @Html.DisplayFor(modelItem => item.CMedioPublicitarioNavigation.Nombre)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.IdAsesorNavigation.Nombre)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.VersionCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)

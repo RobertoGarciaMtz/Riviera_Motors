@@ -9,23 +9,27 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Riviera_Business.Models;
 public class CCarroExtrasController : Controller
+{
+    // GET: HomeController1
+    public ActionResult Index()
     {
-        // GET: HomeController1
-        public ActionResult Index()
-        {
         var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
         var list = context.CCarroExtra.ToList();
         foreach (CCarroExtra ti in list)
-            {
+        {
             ti.IdEstadoNavigation = context.CEstados.Where(te => te.IdEstados == ti.IdEstado).FirstOrDefault();
             ti.IdCarroNavigation = context.TbCarros.Where(ce => ce.IdCarros == ti.IdCarro).FirstOrDefault();
-            }
-            return View(list);
+            ti.IdCarroNavigation.IdVersionNavigation = context.CVersionCarro.Where(tc => tc.IdVersionCarro == ti.IdCarroNavigation.IdVersion).FirstOrDefault();
+            ti.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation = context.CModeloCarro.Where(mod => mod.IdModeloCarro == ti.IdCarroNavigation.IdVersionNavigation.IdModelo).FirstOrDefault();
+            ti.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation = context.CMarcaCarro.Where
+                (mar => mar.IdMarcaCarro == ti.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarca).FirstOrDefault();
         }
+        return View(list);
+    }
 
-        // GET: HomeController1/Details/5
-        public ActionResult Details(int id)
-        {
+    // GET: HomeController1/Details/5
+    public ActionResult Details(int id)
+    {
         var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
         if (context.CCarroExtra.Where(s => s.IdCarroExtra == id).First() is CCarroExtra e)
         {
@@ -34,54 +38,64 @@ public class CCarroExtrasController : Controller
         return NotFound();
     }
 
-        // GET: HomeController1/Create
-        public ActionResult Create()
-        {
-        var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-        ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
-        var  lista = context.TbCarros.Where(x => x.IdCarros >=0 )
-            .Select(x => new {noserie=x.IdCarros.ToString(), desc = x.IdCarros.ToString() + "-NumeroSerie:" + x.NoSerie + "-Color:" + x.ColorExt + "-NumMotor:" + x.NoMotor });
-        ViewBag.Caracarro = new SelectList(lista, "noserie","desc");
-        return View();
-        }
-[HttpGet]
-    public List<CVersionCarro> RecuperarVersion1(int id)
+    [HttpPost]
+    public CVersionCarro ObtenerMMV(int id)
     {
         var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-        var list = context.CVersionCarro.ToList();
-        List<CVersionCarro> cModelos = new List<CVersionCarro>();
+        var carroid = context.TbCarros.Where(car => car.IdCarros == id).FirstOrDefault();
+        var version = context.CVersionCarro.Where(ver => ver.IdVersionCarro == carroid.IdVersion).FirstOrDefault();
+        return version;
+    }
+
+    // GET: HomeController1/Create
+    public ActionResult Create()
+    {
+        var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+        ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
+        var lista = context.TbCarros.Where(x => x.IdCarros >= 0)
+            .Select(x => new { noserie = x.IdCarros.ToString(), desc = x.IdCarros.ToString() + "-NumeroSerie:" + x.NoSerie + "-Color:" + x.ColorExt + "-NumMotor:" + x.NoMotor });
+        ViewBag.Caracarro = new SelectList(lista, "noserie", "desc");
+        return View();
+    }
+
+    [HttpGet]
+    public string  ObtenerVersion(int id)
+    {
+        var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+        var list = context.CVersionCarro.Where(y => y.IdVersionCarro >= 0).ToList();
+        Console.WriteLine("Valor del id {0}", id);
         foreach (CVersionCarro lista in list)
         {
-            if (lista.IdVersionCarro == id) { 
-                cModelos.Add(lista);
-                return cModelos;
-            }
+            if (lista.IdVersionCarro == id)
+            {
+                string verCarro = lista.VersionCarro;
+                return verCarro;
+            }   
         }
-        
         return null;
-
     }
+
     // POST: HomeController1/Create
     [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(CCarroExtra a)
+    [ValidateAntiForgeryToken]
+    public ActionResult Create(CCarroExtra a)
+    {
+        try
         {
-            try
-            {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             context.CCarroExtra.Add(a);
             context.SaveChanges();
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction(nameof(Index));
         }
-
-        // GET: HomeController1/Edit/5
-        public ActionResult Edit(int id)
+        catch
         {
+            return View();
+        }
+    }
+
+    // GET: HomeController1/Edit/5
+    public ActionResult Edit(int id)
+    {
         var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
         ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
         var lista = context.TbCarros.Where(x => x.IdCarros >= 0)
@@ -92,15 +106,15 @@ public class CCarroExtrasController : Controller
             return View(e);
         }
         return NotFound();
-        }
+    }
 
-        // POST: HomeController1/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, CCarroExtra a)
+    // POST: HomeController1/Edit/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Edit(int id, CCarroExtra a)
+    {
+        try
         {
-            try
-            {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             var ObjectEdit = context.CCarroExtra.FirstOrDefault(ce => ce.IdCarroExtra == a.IdCarroExtra);
             if (ObjectEdit != null)
@@ -125,27 +139,6 @@ public class CCarroExtrasController : Controller
         {
             return View();
         }
-         }
-
-        // GET: HomeController1/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: HomeController1/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 
+}

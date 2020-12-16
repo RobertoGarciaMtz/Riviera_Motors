@@ -43,7 +43,16 @@
                 @Html.DisplayNameFor(model => model.Usuario)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCarroNavigation)
+                Num Serie
+            </th>
+            <th>
+                Version
+            </th>
+            <th>
+                Modelo
+            </th>
+            <th>
+                Marca
             </th>
             <th></th>
         </tr>
@@ -97,6 +106,15 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.VersionCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdAdecuaciones">Edit</a> |

@@ -32,7 +32,13 @@
                 @Html.DisplayNameFor(model => model.Usuario)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdVersionNavigation)
+                Version
+            </th>
+            <th>
+                Modelo
+            </th>
+            <th>
+                Marca
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IdEstadoNavigation)
@@ -70,6 +76,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdVersionNavigation.VersionCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)

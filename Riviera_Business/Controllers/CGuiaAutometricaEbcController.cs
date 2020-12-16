@@ -18,6 +18,8 @@ namespace Riviera_Business.Controllers
             foreach (CGuiaAutometricaEbc ti in list)
             {
                 ti.IdVersionNavigation = context.CVersionCarro.Where(te => te.IdVersionCarro == ti.IdVersion).FirstOrDefault();
+                ti.IdVersionNavigation.IdModeloNavigation = context.CModeloCarro.Where(mod => mod.IdModeloCarro == ti.IdVersionNavigation.IdModelo).FirstOrDefault();
+                ti.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation = context.CMarcaCarro.Where(mar => mar.IdMarcaCarro == ti.IdVersionNavigation.IdModeloNavigation.IdMarca).FirstOrDefault();
                 ti.IdEstadoNavigation = context.CEstados.Where(te => te.IdEstados == ti.IdEstado).FirstOrDefault();
             }
             return View(list);
