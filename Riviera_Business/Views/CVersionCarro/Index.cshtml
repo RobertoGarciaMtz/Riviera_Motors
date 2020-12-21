@@ -21,7 +21,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.IdModeloNavigation)
             </th>
-            <th></th>
+            <th>
+                Modelo
+            </th>
+            <th>
+                Marca
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -35,6 +40,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdModeloNavigation.ModeloCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdModeloNavigation.ModeloCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdVersionCarro">Edit</a> |

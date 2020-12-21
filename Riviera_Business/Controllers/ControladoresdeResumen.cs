@@ -11,8 +11,13 @@ namespace Riviera_Business.Controllers
     public class ControladoresdeResumen : Controller
     {
         // GET: HomeController1
-        public ActionResult Index()
+        public ActionResult Desempeno()
         {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            var list = context.TbSeguimiento.ToList();
+            var list2 = context.CAsesores.ToList();
+            var list3 = context.TbControl.ToList();
+            
             return View();
         }
 

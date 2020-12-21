@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
-
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Riviera_Business.Models;
@@ -38,13 +37,14 @@ public class CCarroExtrasController : Controller
         return NotFound();
     }
 
-    [HttpPost]
-    public CVersionCarro ObtenerMMV(int id)
+
+    [HttpGet]
+    public CVersionCarro recuperarVersion (int id)
     {
         var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-        var carroid = context.TbCarros.Where(car => car.IdCarros == id).FirstOrDefault();
-        var version = context.CVersionCarro.Where(ver => ver.IdVersionCarro == carroid.IdVersion).FirstOrDefault();
+        var version = context.CVersionCarro.Where(ver => ver.IdVersionCarro == id).FirstOrDefault();
         return version;
+
     }
 
     // GET: HomeController1/Create
@@ -58,22 +58,7 @@ public class CCarroExtrasController : Controller
         return View();
     }
 
-    [HttpGet]
-    public string  ObtenerVersion(int id)
-    {
-        var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-        var list = context.CVersionCarro.Where(y => y.IdVersionCarro >= 0).ToList();
-        Console.WriteLine("Valor del id {0}", id);
-        foreach (CVersionCarro lista in list)
-        {
-            if (lista.IdVersionCarro == id)
-            {
-                string verCarro = lista.VersionCarro;
-                return verCarro;
-            }   
-        }
-        return null;
-    }
+ 
 
     // POST: HomeController1/Create
     [HttpPost]
@@ -106,6 +91,18 @@ public class CCarroExtrasController : Controller
             return View(e);
         }
         return NotFound();
+    }
+
+
+
+    [HttpPost]
+    public CVersionCarro RecuperarVersion(int id)
+    {
+        var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+        TbCarros carrito = context.TbCarros.Where(car => car.IdCarros == id).FirstOrDefault();
+        CVersionCarro cversion = context.CVersionCarro.Where(cver => cver.IdVersionCarro == carrito.IdVersion).FirstOrDefault();
+        carrito.IdVersionNavigation = null;
+        return cversion;
     }
 
     // POST: HomeController1/Edit/5

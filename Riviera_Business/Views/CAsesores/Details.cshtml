@@ -20,7 +20,14 @@
             @Html.DisplayNameFor(model => model.TipoVenta)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TipoVenta)
+            @if (Model.TipoVenta == 1)
+            {
+                <label value="@Model.TipoVenta">Retail</label>
+            }
+            else
+            {
+                <label value="@Model.TipoVenta">InterAgencias</label>
+            }
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IdEstadoNavigation)

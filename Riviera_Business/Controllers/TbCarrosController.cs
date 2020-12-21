@@ -74,20 +74,25 @@ namespace Riviera_Business.Controllers
 
         // POST: HomeController1/Create
         [HttpPost]
-        public List<CModeloCarro> RecuperarModelo1(int id)
+        public  List<CModeloCarro>  RecuperarModelo1(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             List<CModeloCarro> cModelos = new List<CModeloCarro>();
             var list = context.CModeloCarro.Where(x => x.IdMarca == id).ToList();
-
             return list;
         }
+
         [HttpPost]
         public List<CVersionCarro> RecuperarVersion1(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             List<CVersionCarro> cVersion = new List<CVersionCarro>();
             var list = context.CVersionCarro.Where(y => y.IdModelo == id).ToList();
+            foreach (CVersionCarro v in list)
+            {
+                v.IdModeloNavigation = null;
+            }
+            Console.WriteLine(list);
             return list;
         }
 

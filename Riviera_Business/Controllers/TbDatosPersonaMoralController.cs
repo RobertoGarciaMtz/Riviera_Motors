@@ -19,7 +19,7 @@ namespace Riviera_Business.Controllers
             {
                 ti.IdEstadoNavigation = context.CEstados.Where(ce=>ce.IdEstados == ti.IdEstado).FirstOrDefault();
             }
-            return View();
+            return View(list);
         }
 
         // GET: HomeController1/Details/5

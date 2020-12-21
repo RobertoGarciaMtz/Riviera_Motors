@@ -55,29 +55,86 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.IdentificacionVig)
+                @if (item.IdentificacionVig == 1)
+                {
+                    <label value="@item.IdentificacionVig">Si</label>
+                }
+                else
+                {
+                    <label value="@item.IdentificacionVig">No</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Curp)
+                @if (item.Curp == 1)
+                {
+                    <label value="@item.Curp">Si</label>
+                }
+                else
+                {
+                    <label value="@item.Curp">No</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CifSat)
+                @if (item.CifSat == 1)
+                {
+                    <label value="@item.CifSat">Si</label>
+                }
+                else
+                {
+                    <label value="@item.CifSat">No</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ComprobDomicilio)
+                @if (item.ComprobDomicilio == 1)
+                {
+                    <label value="@item.ComprobDomicilio">Si</label>
+                }
+                else
+                {
+                    <label value="@item.ComprobDomicilio">No</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ConocimientoDuenoBeneficiario)
+                @if (item.ConocimientoDuenoBeneficiario == 1)
+                {
+                    <label value="@item.ConocimientoDuenoBeneficiario">Si</label>
+                }
+                else
+                {
+                    <label value="@item.ConocimientoDuenoBeneficiario">No</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ActaConstitutivaBoletaRpc)
+                @if (item.ActaConstitutivaBoletaRpc == 1)
+                {
+                    <label value="@item.ActaConstitutivaBoletaRpc">Si</label>
+                }
+                else
+                {
+                    <label value="@item.ActaConstitutivaBoletaRpc">No</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PoderLegarExp)
+                @if (item.PoderLegarExp == 1)
+                {
+                    <label value="@item.PoderLegarExp">Si</label>
+                }
+                else
+                {
+                    <label value="@item.PoderLegarExp">No</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ConstanciaConocimiento)
+                @if (item.ConstanciaConocimiento == 1)
+                {
+                    <label value="@item.ConstanciaConocimiento">Si</label>
+                }
+                else
+                {
+                    <label value="@item.ConstanciaConocimiento">No</label>
+                }
             </td>
+            <!-----------------------hasta aca llega ---------------------------------->
             <td>
                 @Html.DisplayFor(modelItem => item.Usuario)
             </td>

@@ -43,7 +43,7 @@
                 @Html.DisplayNameFor(model => model.Asistio)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Toma)
+                @Html.DisplayNameFor(model=>model.Toma)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PruebaManejo)
@@ -52,7 +52,7 @@
                 @Html.DisplayNameFor(model => model.IdTipoCompra)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Venta)
+                Termino en Venta
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Anticipo)
@@ -109,31 +109,91 @@
                 @Html.DisplayFor(modelItem => item.Sexo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Contesto)
+                @if (item.Contesto == 1)
+                {
+                    <label value="@item.Contesto">Si</label>
+                }
+                else
+                {
+                    <label value="@item.Contesto">No</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cita)
+                @if (item.Cita== 1)
+                {
+                    <label value="@item.Cita">Si</label>
+                }
+                else
+                {
+                    <label value="@item.Cita">No</label>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FechaCita)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Asistio)
+                @if (item.Asistio == 1)
+                {
+                    <label value="@item.Asistio">Si</label>
+                }
+                else
+                {
+                    <label value="@item.Asistio">No</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Toma)
+                
+                @if (item.Toma == 1)
+                {
+                    <label value="@item.Toma">Si</label>
+                }
+                else
+                {
+                    <label value="@item.Toma">No</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PruebaManejo)
+                
+                @if (item.PruebaManejo == 1)
+                {
+                    <label value="@item.PruebaManejo">Si</label>
+                }
+                else
+                {
+                    <label value="@item.PruebaManejo">No</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdTipoCompra)
+                
+                @if (item.IdTipoCompra == 1)
+                {
+                    <label value="@item.IdTipoCompra">Retail</label>
+                }
+                else
+                {
+                    <label value="@item.IdTipoCompra">InterAgencias</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Venta)
+                
+                @if (item.Venta == 1)
+                {
+                    <label value="@item.Venta">Si</label>
+                }
+                else
+                {
+                    <label value="@item.Venta">No</label>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Anticipo)
+                @if (item.Anticipo == 1)
+                {
+                    <label value="@item.Anticipo">Si</label>
+                }
+                else
+                {
+                    <label value="@item.Anticipo">No</label>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CantidadAnticipo)

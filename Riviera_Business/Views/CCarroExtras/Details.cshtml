@@ -132,10 +132,10 @@
         </dd>
         <dt class="col-sm-2">
             Version
+            <p onkeypress="recuperarVersion(this)" value="model.IdCarroNavigation.IdVersion"></p>
         </dt>
         <dd class="col-sm-10" >
-            <p onloadstart="recuperarVersion(this)" value="model.IdCarroNavigation.IdVersion"></p>
-            <p id="VersionCarro" ></p>
+            <p id="VersionCarroo" ></p>
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IdEstadoNavigation)
@@ -149,3 +149,21 @@
     <a asp-action="Edit" asp-route-id="@Model.IdCarroExtra">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+<script>
+    function recuperarVersion(select) {
+        var idSelected = select.value;
+        alert("Si pude entrar");
+        $.ajax({
+            url: "/CCarroExtra/recuperarVersion",
+            method: "GET",
+            data: { "id": idSelected },
+            success: function (e) {
+                $("#VersionCarroo").append({
+                    value: e.Version_Carro,
+                    text.e.Id_Version_Carro;
+                })
+            }
+        });
+    }
+</script>

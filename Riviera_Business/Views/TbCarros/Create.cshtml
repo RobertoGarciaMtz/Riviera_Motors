@@ -45,7 +45,7 @@
             </div>
             <div class="form-group">
                 <label for="IdVersion" id="VersionCar" class="control-label">Versión: </label>
-                <select id="IdVersion" class="form-control" ></select>
+                <select id="IdVersion" class="form-control"></select>
             </div>
             <!------------------------------------------------------------->
             <div class="form-group">
@@ -176,6 +176,44 @@
 }*@
 
 <script>
+
+    function marcaChanged(select) {
+        var idSelected = select.value;
+        $.ajax({
+            url: "/TbCarros/RecuperarModelo1",
+            method: "POST",
+            data: { "id": idSelected },
+            success: function (e) {
+                let selectModelo = document.getElementById("IdModelo");
+                let html = "";
+                for (var i = 0; i < e.length; i++) {
+                    html += "<option value ='" + e[i].idModeloCarro + "' >" + e[i].modeloCarro + "</option>";
+                }
+                selectModelo.innerHTML = html;
+            }
+        });
+    }
+
+
+    function modeloChange(select) {
+        var idSelected = select.value;
+        $.ajax({
+            url: "/TbCarros/RecuperarVersion1",
+            method: "POST",
+            data: { "id": idSelected },
+            success: function (z) {
+                //alert("alert");
+                console.log(z);
+                let selectVersion = document.getElementById("IdVersion");
+
+                let html = "";
+                for (var i = 0; i < z.length; i++) {
+                    html += "<option value ='" + z[i].idVersionCarro + "' >" + z[i].versionCarro + "</option>";
+                }
+                selectVersion.innerHTML = html;
+            }
+        });
+    }
 
     $('#tableid').on('click', 'button', function () {
         $(this).parent().parent().remove();

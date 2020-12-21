@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Riviera_Business.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Riviera_Business.Controllers
 {
@@ -18,6 +19,7 @@ namespace Riviera_Business.Controllers
             foreach (CVersionCarro ti in list)
             {
                 ti.IdModeloNavigation = context.CModeloCarro.Where(te => te.IdModeloCarro == ti.IdModelo).FirstOrDefault();
+                ti.IdModeloNavigation.IdMarcaNavigation = context.CMarcaCarro.Where(mar => mar.IdMarcaCarro == ti.IdModeloNavigation.IdMarca).FirstOrDefault();
             }
             return View(list);
         }
@@ -26,6 +28,7 @@ namespace Riviera_Business.Controllers
         public ActionResult Details(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+
             if (context.CVersionCarro.Where(s => s.IdVersionCarro == id).First() is CVersionCarro e)
             {
                 return View(e);
@@ -38,6 +41,9 @@ namespace Riviera_Business.Controllers
         public ActionResult Create()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            var lista = context.CModeloCarro.Where(x => x.IdModeloCarro >= 0)
+    .Select(x => new { noserie = x.IdModeloCarro.ToString(), desc = x.IdModeloCarro.ToString() + "-Modelo:" + x.ModeloCarro + "-Marca:" + x.IdMarcaNavigation.NombreMarca });
+            ViewBag.Caracarro = new SelectList(lista, "noserie", "desc");
             ViewBag.Modelo = context.CModeloCarro.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.ModeloCarro, Value = s.IdModeloCarro.ToString() });
             return View();
         }

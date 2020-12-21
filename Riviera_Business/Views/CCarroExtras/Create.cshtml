@@ -4,10 +4,6 @@
     ViewData["Title"] = "Create";
 }
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-
-</script>
 <h1>Create</h1>
 
 <h4>CCarroExtra</h4>
@@ -18,8 +14,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Manuales" class="control-label"></label>
-                <select asp-for="Manuales" >
-                    <option  value="1">Si</option>
+                <select asp-for="Manuales">
+                    <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
                 <span asp-validation-for="Manuales" class="text-danger"></span>
@@ -82,10 +78,11 @@
                 <span asp-validation-for="Usuario" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label >Referencia del Automovil</label>
-                <select asp-for="IdCarro" class="form-control" id="prueba" onchange="obtMMV(this)" asp-items="ViewBag.Caracarro"></select>
+                <label>Referencia del Automovil</label>
+                <select asp-for="IdCarro"  onchange="obtenerMMV(this)"  class="form-control" id="prueba" asp-items="ViewBag.Caracarro"></select>
             </div>
-            <a id="regresaversion" ></a>
+            <label>Version del Carro</label>
+            <p  id="regresaversion"></p>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -97,6 +94,25 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+@*@section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@
+<script>
+    function obtenerMMV(select) {
+        var idSelected = select.value;
+        $.ajax({
+            url: "/CCarroExtras/RecuperarVersion",
+            method: "POST",
+            data: { "id": idSelected },
+            success: function (z) {
+                console.log(z)
+                let selectVersion = document.getElementById("regresaversion");
+                let html = "";
+                html += "<option value ='" + z.idVersionCarro + "' >" + z.versionCarro + "</option>";
+                selectVersion.innerHTML = html;
+            }
+          
+        });
+    }
+    
+</script>

@@ -51,7 +51,17 @@ namespace Riviera_Business.Controllers
     .Select(x => new { noserie = x.IdCarros.ToString(), desc = x.IdCarros.ToString() + "-NumeroSerie:" + x.NoSerie + "-Color:" + x.ColorExt + "-NumMotor:" + x.NoMotor });
             ViewBag.Caracarro = new SelectList(lista, "noserie", "desc");
             return View();
-            
+        }
+
+
+        [HttpPost]
+        public CVersionCarro RecuperarVersion(int id)
+        {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            TbCarros carrito = context.TbCarros.Where(car => car.IdCarros == id).FirstOrDefault();
+            CVersionCarro cversion = context.CVersionCarro.Where(cver => cver.IdVersionCarro == carrito.IdVersion).FirstOrDefault();
+            carrito.IdVersionNavigation = null;
+            return cversion;
         }
 
         // POST: HomeController1/Create
