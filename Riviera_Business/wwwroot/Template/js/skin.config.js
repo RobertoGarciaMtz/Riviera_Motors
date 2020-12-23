@@ -196,31 +196,3 @@ $('.s-skin-3').click(function () {
     $("body").removeClass("skin-2");
     $("body").addClass("skin-3");
 });
-
-if (localStorageSupport) {
-    var collapse = localStorage.getItem("collapse_menu");
-    var fixedsidebar = localStorage.getItem("fixedsidebar");
-    var fixednavbar = localStorage.getItem("fixednavbar");
-    var fixednavbar2 = localStorage.getItem("fixednavbar2");
-    var boxedlayout = localStorage.getItem("boxedlayout");
-    var fixedfooter = localStorage.getItem("fixedfooter");
-
-    if (collapse == 'on') {
-        $('#collapsemenu').prop('checked', 'checked')
-    }
-    if (fixedsidebar == 'on') {
-        $('#fixedsidebar').prop('checked', 'checked')
-    }
-    if (fixednavbar == 'on') {
-        $('#fixednavbar').prop('checked', 'checked')
-    }
-    if (fixednavbar2 == 'on') {
-        $('#fixednavbar2').prop('checked', 'checked')
-    }
-    if (boxedlayout == 'on') {
-        $('#boxedlayout').prop('checked', 'checked')
-    }
-    if (fixedfooter == 'on') {
-        $('#fixedfooter').prop('checked', 'checked')
-    }
-}

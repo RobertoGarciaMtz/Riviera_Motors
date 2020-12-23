@@ -2,7 +2,6 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-
 $(document).ready(function () {
     function marcaChanged(select) {
         var idSelected = select.value;
@@ -43,52 +42,3 @@ $(document).ready(function () {
         });
     }
 })
-/*
-function obtMMV(select) {
-    var idSelected = select.value;
-    alert();
-    $.ajax({
-        url: "/CCarroExtras/ObtenerVersion",
-        method: "POST",
-
-        data: { "id": idSelected },
-        dataType: 'Text',
-        success: function (e) {
-            alert("Entroconvalor" + e)
-            let selectModelo = document.getElementById("regresaversion");
-            let html = "";
-            document.getElementById("regresaversion").innerHTML = selectModelo;
-            document.getElementById("regresaversion") = e;
-        }
-            error: function (e) {
-            alert('Error occured');
-        }
-    });
-}*/
-
-/**
- 
- DE REPUESTO 
-
-
-function marcaChanged(select) {
-    var idSelected = select.value;
-    alert("Si llego lejos");
-    $.ajax({
-        url: "/TbCarros/RecuperarModelo1",
-        method: "POST",
-        data: { "id": idSelected },
-        success: function (e) {
-            let selectModelo = document.getElementById("IdModelo");
-            let html = "";
-            for (var i = 0; i < e.length; i++) {
-                $('#IdModeloo').append(
-                    $('<option>', {
-                        value: e[i].idModeloCarro,
-                        Text: e[i].modeloCarro
-                        }
-                    ))}
-        }
-    });
-}
-*/

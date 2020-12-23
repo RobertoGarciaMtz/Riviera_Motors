@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Riviera_Business.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Riviera_Business.Controllers
 {
@@ -18,8 +19,7 @@ namespace Riviera_Business.Controllers
             foreach (CGuiaAutometricaEbc ti in list)
             {
                 ti.IdVersionNavigation = context.CVersionCarro.Where(te => te.IdVersionCarro == ti.IdVersion).FirstOrDefault();
-                ti.IdVersionNavigation.IdModeloNavigation = context.CModeloCarro.Where(mod => mod.IdModeloCarro == ti.IdVersionNavigation.IdModelo).FirstOrDefault();
-                ti.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation = context.CMarcaCarro.Where(mar => mar.IdMarcaCarro == ti.IdVersionNavigation.IdModeloNavigation.IdMarca).FirstOrDefault();
+                
                 ti.IdEstadoNavigation = context.CEstados.Where(te => te.IdEstados == ti.IdEstado).FirstOrDefault();
             }
             return View(list);
@@ -43,15 +43,45 @@ namespace Riviera_Business.Controllers
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.Descripcion, Value = s.IdEstados.ToString() });
-            ViewBag.Version = context.CVersionCarro.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.VersionCarro, Value = s.IdVersionCarro.ToString() });
+            ViewBag.Marca = context.CMarcaCarro.Select(mar => new SelectListItem { Text = mar.NombreMarca, Value = mar.IdMarcaCarro.ToString() });
+            ViewBag.Version = context.CVersionCarro.Select(ver => new SelectListItem { Text = ver.VersionCarro, Value = ver.IdVersionCarro.ToString() });
             return View();
+        }
+        [HttpPost]
+        public List<CModeloCarro> recuperarmodelo(int id)
+        {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            List<CModeloCarro> cModelos = new List<CModeloCarro>();
+            var list = context.CModeloCarro.Where(ab => ab.IdMarca == id).ToList();
+            foreach (CModeloCarro ti in list)
+            {
+                ti.IdMarcaNavigation = null;
+                ti.CVersionCarro = null;
+            }
+            return list ;
+        }
+
+        [HttpPost]
+        public List<CVersionCarro> recuperarversion(int id)
+        {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            List<CVersionCarro> cVersion = new List<CVersionCarro>();
+            var list = context.CVersionCarro.Where(ab => ab.IdVersionCarro== id).ToList();
+            foreach (CVersionCarro ti in list)
+            {
+                ti.IdModeloNavigation = null;
+                ti.TbCarros= null;
+                ti.CGuiaAutometricaEbc = null;
+                
+            }
+            return list;
         }
 
         public ActionResult CreaEBC()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.Descripcion, Value = s.IdEstados.ToString() });
-            ViewBag.Version = context.CVersionCarro.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.VersionCarro, Value = s.IdVersionCarro.ToString() });
+            ViewBag.Marca = context.CMarcaCarro.Select(mar => new SelectListItem {Text=mar.NombreMarca,Value =mar.IdMarcaCarro.ToString() });
             return View();
         }
         // POST: HomeController1/Create
@@ -64,7 +94,7 @@ namespace Riviera_Business.Controllers
                 var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
                 context.CGuiaAutometricaEbc.Add(a);
                 context.SaveChanges();
-               
+                Console.WriteLine("por alguna razon no entramos");
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -82,7 +112,6 @@ namespace Riviera_Business.Controllers
                 var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
                 context.CGuiaAutometricaEbc.Add(a);
                 context.SaveChanges();
-
                 return RedirectToAction(nameof(Index));
             }
             catch

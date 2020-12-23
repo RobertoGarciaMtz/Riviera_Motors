@@ -70,15 +70,20 @@ namespace Riviera_Business.Controllers
             }
         }
 
- 
+
 
         // POST: HomeController1/Create
         [HttpPost]
-        public  List<CModeloCarro>  RecuperarModelo1(int id)
-        {
+        public List<CModeloCarro> RecuperarModelo1(int id){
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             List<CModeloCarro> cModelos = new List<CModeloCarro>();
             var list = context.CModeloCarro.Where(x => x.IdMarca == id).ToList();
+            Console.WriteLine(list);
+            foreach (CModeloCarro v in list)
+            {
+                v.IdMarcaNavigation = null;
+                v.CVersionCarro = null;
+            }
             return list;
         }
 
@@ -91,6 +96,8 @@ namespace Riviera_Business.Controllers
             foreach (CVersionCarro v in list)
             {
                 v.IdModeloNavigation = null;
+                v.CGuiaAutometricaEbc = null;
+                v.TbCarros = null;
             }
             Console.WriteLine(list);
             return list;

@@ -38,14 +38,6 @@ public class CCarroExtrasController : Controller
     }
 
 
-    [HttpGet]
-    public CVersionCarro recuperarVersion (int id)
-    {
-        var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-        var version = context.CVersionCarro.Where(ver => ver.IdVersionCarro == id).FirstOrDefault();
-        return version;
-
-    }
 
     // GET: HomeController1/Create
     public ActionResult Create()
@@ -101,7 +93,12 @@ public class CCarroExtrasController : Controller
         var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
         TbCarros carrito = context.TbCarros.Where(car => car.IdCarros == id).FirstOrDefault();
         CVersionCarro cversion = context.CVersionCarro.Where(cver => cver.IdVersionCarro == carrito.IdVersion).FirstOrDefault();
-        carrito.IdVersionNavigation = null;
+        if (cversion != null)
+        {
+            cversion.TbCarros = null;
+            cversion.IdModeloNavigation = null;
+            cversion.CGuiaAutometricaEbc = null;
+        }        
         return cversion;
     }
 

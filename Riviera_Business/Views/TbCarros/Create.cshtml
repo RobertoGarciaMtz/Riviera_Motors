@@ -177,11 +177,17 @@
 
 <script>
 
+    $.when(marcaChanged(), modeloChange()).done(){
+
+    });
+
     function marcaChanged(select) {
         var idSelected = select.value;
-        $.ajax({
+        console.log(select);
+        $.ajaxStop({
             url: "/TbCarros/RecuperarModelo1",
             method: "POST",
+            async:false,
             data: { "id": idSelected },
             success: function (e) {
                 let selectModelo = document.getElementById("IdModelo");
@@ -197,15 +203,15 @@
 
     function modeloChange(select) {
         var idSelected = select.value;
-        $.ajax({
+        $.ajaxStop({
             url: "/TbCarros/RecuperarVersion1",
             method: "POST",
+            async: false,
             data: { "id": idSelected },
             success: function (z) {
-                //alert("alert");
                 console.log(z);
+                
                 let selectVersion = document.getElementById("IdVersion");
-
                 let html = "";
                 for (var i = 0; i < z.length; i++) {
                     html += "<option value ='" + z[i].idVersionCarro + "' >" + z[i].versionCarro + "</option>";

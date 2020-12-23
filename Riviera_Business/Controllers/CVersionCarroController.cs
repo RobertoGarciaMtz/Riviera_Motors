@@ -41,11 +41,28 @@ namespace Riviera_Business.Controllers
         public ActionResult Create()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            ViewBag.Marcas = context.CMarcaCarro.Select(mar => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = mar.NombreMarca, Value = mar.IdMarcaCarro.ToString() });
             var lista = context.CModeloCarro.Where(x => x.IdModeloCarro >= 0)
     .Select(x => new { noserie = x.IdModeloCarro.ToString(), desc = x.IdModeloCarro.ToString() + "-Modelo:" + x.ModeloCarro + "-Marca:" + x.IdMarcaNavigation.NombreMarca });
             ViewBag.Caracarro = new SelectList(lista, "noserie", "desc");
             ViewBag.Modelo = context.CModeloCarro.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.ModeloCarro, Value = s.IdModeloCarro.ToString() });
             return View();
+        }
+
+        [HttpPost]
+        public List<CModeloCarro> recuperarmodelo(int id)
+        {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            List<CModeloCarro> cModelos = new List<CModeloCarro>();
+            var list = context.CModeloCarro.Where(x => x.IdMarca == id).ToList();
+            Console.WriteLine(list);
+            foreach (CModeloCarro v in list)
+            {
+                v.IdMarcaNavigation = null;
+                v.CVersionCarro = null;
+            }
+            return list;
+
         }
 
         // POST: HomeController1/Create

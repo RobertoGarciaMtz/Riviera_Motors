@@ -3,7 +3,58 @@
 @{
     ViewData["Title"] = "CreaEBC";
 }
-<script>
+
+<script >
+    function obtMarca(select) {
+        
+        var idselected = select.value;
+        console.log(select);
+        return $.ajax({
+            url: "/CGuiaAutometricaEbc/recuperarmodelo",
+            method: "POST",
+            data: { "id": idselected },
+            success: function (e) {
+                let selectModelo = document.getElementById("IdModelo");
+                let html = "";
+                for (var i = 0; i < e.length; i++) {
+                    html += "<option value ='" + e[i].idModeloCarro + "' >" + e[i].modeloCarro + "</option>";
+                }
+                console.log("Yasalio1");
+                selectModelo.innerHTML = html;
+            }
+        });
+    }
+
+
+    function obtVersion(select) {
+        var idselected = select.value;
+        console.log(select);
+        return $.ajax({
+            url: "/CGuiaAutometricaEbc/recuperarversion",
+            method: "POST",
+            data: { "id": idselected },
+            success: function (z) {
+                let selectModelo = document.getElementById("IdVersion");
+                let html = "";
+                for (var i = 0; i < z.length; i++) {
+                    html += "<option value ='" + z[i].idVersionCarro + "' >" + z[i].versionCarro + "</option>";
+                    console.log("Yasalio2");
+                }
+                selectModelo.innerHTML = html;
+                console.log("Yasalio3");
+            }
+        });
+    }
+
+    function calcularmedia() {
+        var valor = document.getElementById("valor1").value;
+        var valor2 = document.getElementById("valor2").value;
+        var valor_convert = parseFloat(valor);
+        var valor_convert2 = parseFloat(valor2);
+        var resultado = (valor_convert + valor_convert2) / 2;
+        var elem = document.getElementById("resultados");
+        elem.value = resultado;
+    }
 
 </script>
 <h1>CreaEBC</h1>
@@ -15,25 +66,27 @@
         <form asp-action="CreaEBC">
             <div class="form-group" id="TipoGuia">
                 <label class="control-label">Guia EBC</label>
-                <select asp-for="GuiaAutometricaEbc" class="form-control" value="2" >
-                    <option value="2">EBC</option>    
+                <select asp-for="GuiaAutometricaEbc" class="form-control" value="2">
+                    <option value="2">EBC</option>
                 </select>
                 <span asp-validation-for="GuiaAutometricaEbc" class="text-danger"></span>
             </div>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Toma" class="control-label"></label>
-                <input asp-for="Toma" class="form-control" />
+                <input asp-for="Toma" class="form-control" id="valor1" />
                 <span asp-validation-for="Toma" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Venta" class="control-label"></label>
-                <input asp-for="Venta" class="form-control" />
+                <input asp-for="Venta" class="form-control" id="valor2" />
                 <span asp-validation-for="Venta" class="text-danger"></span>
             </div>
+            <button type="button" onclick="calcularmedia(this)">Calcular Media</button>
             <div class="form-group">
                 <label asp-for="Media" class="control-label"></label>
-                <input asp-for="Media" class="form-control" />
+                <input asp-for="Media" class="form-control" id="resultados" />
+
                 <span asp-validation-for="Media" class="text-danger"></span>
             </div>
 
@@ -52,8 +105,16 @@
                 <span asp-validation-for="Fecha" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label class="control-label">Seleccionar Marca</label>
+                <select class="form-control" id="Marcacarro" onchange="obtMarca(this)" asp-items="ViewBag.Marca"></select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Seleccionar Modelo</label>
+                <select class="form-control" id="IdModelo" onchange="obtVersion(this)"></select>
+            </div>
+            <div class="form-group">
                 <label asp-for="IdVersion" class="control-label"></label>
-                <select asp-for="IdVersion" onchange="obtvalor" id="prueba" class="form-control" asp-items="ViewBag.Version"></select>
+                <select asp-for="IdVersion" id="IdVersion" class="form-control"></select>
             </div>
 
             <div class="form-group">
@@ -70,3 +131,4 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

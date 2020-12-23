@@ -61,7 +61,12 @@ namespace Riviera_Business.Controllers
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             TbCarros carrito = context.TbCarros.Where(car => car.IdCarros == id).FirstOrDefault();
             CVersionCarro cversion = context.CVersionCarro.Where(cver => cver.IdVersionCarro == carrito.IdVersion).FirstOrDefault();
-            carrito.IdVersionNavigation = null;
+            if (cversion != null)
+            {
+                cversion.TbCarros = null;
+                cversion.IdModeloNavigation = null;
+                cversion.CGuiaAutometricaEbc = null;
+            }
             return cversion;
         }
 
@@ -139,25 +144,6 @@ namespace Riviera_Business.Controllers
             }
         }
 
-        // GET: HomeController1/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
 
-        // POST: HomeController1/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
