@@ -80,7 +80,7 @@ namespace Riviera_Business.Controllers
             try
             {
                 var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-                var objectEdit = context.TbProveedor.FirstOrDefault(pr => pr.IdProveedor == id);
+                var objectEdit = context.TbProveedor.FirstOrDefault(pr => pr.IdProveedor == a.IdProveedor);
                 if (objectEdit != null)
                 {
                     objectEdit.Contacto = a.Contacto;
@@ -103,25 +103,6 @@ namespace Riviera_Business.Controllers
             }
         }
 
-        // GET: HomeController1/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
 
-        // POST: HomeController1/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

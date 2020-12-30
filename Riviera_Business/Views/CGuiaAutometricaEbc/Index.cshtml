@@ -4,7 +4,15 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+
+<h1>Lista</h1>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js">
+    (document).ready(function () {
+        ('#dataTable').DataTable({
+            data:dataTable
+        });
+    });
+</script>
 
 <p>
     <a asp-action="CreaEBC">LlenarGuia EBC</a>
@@ -47,51 +55,52 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Toma)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Venta)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Media)
-            </td>
-            <td>
-                @if (item.GuiaAutometricaEbc == 1)
-                {
-                    <label value="@item.GuiaAutometricaEbc">Autometrica</label>
-                }
-                else
-                {
-                    <label value="@item.GuiaAutometricaEbc">EBC</label>
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Usuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdVersionNavigation.VersionCarro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdGuiaAutometrica">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdGuiaAutometrica">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdGuiaAutometrica">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Toma)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Venta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Media)
+                </td>
+                <td>
+                    @if (item.GuiaAutometricaEbc == 1)
+                    {
+                        <label value="@item.GuiaAutometricaEbc">Autometrica</label>
+                    }
+                    else
+                    {
+                        <label value="@item.GuiaAutometricaEbc">EBC</label>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdVersionNavigation.VersionCarro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdGuiaAutometrica">Corregir</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdGuiaAutometrica">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdGuiaAutometrica">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

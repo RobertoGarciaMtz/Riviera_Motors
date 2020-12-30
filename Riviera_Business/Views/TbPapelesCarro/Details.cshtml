@@ -4,10 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Detalles</h1>
 
 <div>
-    <h4>TbPapelesCarro</h4>
+    <h4>Papeles Carro</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -95,18 +95,7 @@
             @Html.DisplayNameFor(model => model.Transunionfolio)
         </dt>
         <dd class="col-sm-10">
-            @if (Model.Transunionfolio == 1)
-            {
-                <label value="Model.Transunionfolio">Tiene</label>
-            }
-            @if (Model.Transunionfolio == 2)
-            {
-                <label value="Model.Transunionfolio">No Tiene</label>
-            }
-            @if (Model.Transunionfolio == 3)
-            {
-                <label value="Model.Verificacion">Problemas</label>
-            }
+            @Html.DisplayFor(model=> model.Transunionfolio)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Mes)
@@ -124,6 +113,7 @@
             @Html.DisplayNameFor(model => model.IdCarroNavigation)
         </dt>
         <dd class = "col-sm-10">
+            Con
             @Html.DisplayFor(model => model.IdCarroNavigation.NoSerie)
         </dd>
         <dt class = "col-sm-2">

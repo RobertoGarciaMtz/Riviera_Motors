@@ -104,7 +104,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdFormaPago" class="control-label"></label>
-                <select asp-for="IdFormaPago" class ="form-control" asp-items="ViewBag.IdFormaPago"></select>
+                <select asp-for="IdFormaPago" class ="form-control" asp-items="ViewBag.Formapago"></select>
             </div>
             <div class="form-group">
                 <label asp-for="MetodoPago" class="control-label"></label>
@@ -112,13 +112,13 @@
                 <span asp-validation-for="MetodoPago" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FechaES" class="control-label"></label>
+                <label asp-for="FechaES" class="control-label">Fecha de Llegada</label>
                 <input asp-for="FechaES" class="form-control" />
                 <span asp-validation-for="FechaES" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IdEstado" class="control-label"></label>
-                <select asp-for="IdEstado" class ="form-control" asp-items="ViewBag.IdEstado"></select>
+                <select asp-for="IdEstado" class ="form-control" asp-items="ViewBag.Estados"></select>
             </div>
             <div class="form-group">
                 <label asp-for="PrecioPactado" class="control-label"></label>
@@ -172,21 +172,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdBanco" class="control-label"></label>
-                <select asp-for="IdBanco" class ="form-control" asp-items="ViewBag.IdBanco"></select>
+                <select asp-for="IdBanco" class ="form-control" asp-items="ViewBag.Banco"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="AnticipoSN" class="control-label"></label>
-                <input asp-for="AnticipoSN" class="form-control" />
-                <span asp-validation-for="AnticipoSN" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Anticipo" class="control-label"></label>
-                <input asp-for="Anticipo" class="form-control" />
-                <span asp-validation-for="Anticipo" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="IdAsesorVenta" class="control-label"></label>
-                <select asp-for="IdAsesorVenta" class ="form-control" asp-items="ViewBag.IdAsesorVenta"></select>
+                <select asp-for="IdAsesorVenta" class ="form-control" asp-items="ViewBag.Asesor"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

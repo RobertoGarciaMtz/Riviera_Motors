@@ -4,10 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
+<h1>Detalles</h1>
+<p>Si la persona es Fisica No es necesario haber llenado los datos a partir de Fecha Poder Notorial </p>
 <div>
-    <h4>TbDatosPersona</h4>
+    <h4>Datos Persona</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -109,8 +109,15 @@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.FisicaOMoral)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FisicaOMoral)
+        <dd class="col-sm-10">
+            @if (Model.FisicaOMoral == 1)
+            {
+                <label value="@Model.FisicaOMoral">Persona</label>
+            }
+            else
+            {
+                <label value="@Model.FisicaOMoral">Representante</label>
+            } 
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Usuario)

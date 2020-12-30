@@ -6,14 +6,15 @@
 
 
 
-<h1>CreateRetail</h1>
+<h1>Agregar Oferta Auto</h1>
 
-<h4>TbCarros</h4>
+<h4>Inter o Retail</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div class="form-group">
+                <p>Seleccionar si fue Interagencias o Retail</p>
                 <label asp-for="TipoCompraCanal" class="control-label"></label>
                 <select asp-for="TipoCompraCanal" class="form-control">
                     <option value="1">Inter Agencias</option>
@@ -159,14 +160,14 @@
                 <span asp-validation-for="Usuario" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Agregar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Lista de Automoviles Ofertados</a>
 </div>
 
 
@@ -177,17 +178,14 @@
 
 <script>
 
-    $.when(marcaChanged(), modeloChange()).done(){
 
-    });
 
     function marcaChanged(select) {
         var idSelected = select.value;
         console.log(select);
-        $.ajaxStop({
+        $.ajax({
             url: "/TbCarros/RecuperarModelo1",
             method: "POST",
-            async:false,
             data: { "id": idSelected },
             success: function (e) {
                 let selectModelo = document.getElementById("IdModelo");
@@ -203,14 +201,13 @@
 
     function modeloChange(select) {
         var idSelected = select.value;
-        $.ajaxStop({
+        $.ajax({
             url: "/TbCarros/RecuperarVersion1",
             method: "POST",
-            async: false,
             data: { "id": idSelected },
             success: function (z) {
                 console.log(z);
-                
+
                 let selectVersion = document.getElementById("IdVersion");
                 let html = "";
                 for (var i = 0; i < z.length; i++) {
@@ -221,12 +218,6 @@
         });
     }
 
-    $('#tableid').on('click', 'button', function () {
-        $(this).parent().parent().remove();
-    });
 
-    $('#tableid').on('change', 'select', function () {
-        if ($(this).val()) { $(this).next().show(); }
-    });
 
 </script>

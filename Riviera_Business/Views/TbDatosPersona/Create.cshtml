@@ -35,14 +35,23 @@
 
 </script>
 
-<h1>Create</h1>
+<h1>Agregar</h1>
 
-<h4>TbDatosPersona</h4>
+<h4>Datos Personales</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FisicaOMoral" id="FM" class="control-label">Seleccionar si es fisica o Representante</label>
+                <select asp-for="FisicaOMoral" class="form-control" onchange="esconderdemas(this)">
+                    <option value="0">-----</option>
+                    <option value="1">Persona</option>
+                    <option value="2">Representante</option>
+                </select>
+                <span asp-validation-for="FisicaOMoral" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Nombre" class="control-label"></label>
                 <input asp-for="Nombre" class="form-control" />
@@ -124,17 +133,8 @@
                 <span asp-validation-for="NumeroTelefono" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FisicaOMoral" id="FM" class="control-label"></label>
-                <select asp-for="FisicaOMoral" class="form-control" onchange="esconderdemas(this)">
-                    <option value="0">-----</option>
-                    <option value="1">Persona</option>
-                    <option value="2">Representante</option>
-                </select>
-                <span asp-validation-for="FisicaOMoral" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="IdEstado" class="control-label"></label>
-                <select asp-for="IdEstado" class ="form-control" asp-items="ViewBag.Estado"></select>
+                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estado"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Usuario" class="control-label"></label>
@@ -143,7 +143,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="FechaPoderNotorial" id="esconder1" class="control-label"></label>
-                <input asp-for="FechaPoderNotorial"  id="esconder11" class="form-control" />
+                <input asp-for="FechaPoderNotorial" id="esconder11" class="form-control" />
                 <span asp-validation-for="FechaPoderNotorial" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -153,12 +153,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="AutoridadEmite" id="esconder3" class="control-label"></label>
-                <input asp-for="AutoridadEmite"  id="esconder33"class="form-control" />
+                <input asp-for="AutoridadEmite" id="esconder33" class="form-control" />
                 <span asp-validation-for="AutoridadEmite" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IdPmDp" id="esconder4" class="control-label"></label>
-                <select asp-for="IdPmDp" id="esconder44" class ="form-control" asp-items="ViewBag.Personamoral"></select>
+                <select asp-for="IdPmDp" id="esconder44" class="form-control" asp-items="ViewBag.Personamoral"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Puesto" id="esconder5" class="control-label"></label>
@@ -166,14 +166,14 @@
                 <span asp-validation-for="Puesto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Agregar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Lista Personas/Clientes</a>
 </div>
 
 @section Scripts {

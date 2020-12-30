@@ -139,7 +139,14 @@
                 @Html.DisplayFor(modelItem => item.NumeroTelefono)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FisicaOMoral)
+                @if (item.FisicaOMoral == 1)
+                {
+                    <label value="@item.FisicaOMoral">Persona Unica</label>
+                }
+                else
+                {
+                    <label value="@item.FisicaOMoral">Representante</label>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Usuario)

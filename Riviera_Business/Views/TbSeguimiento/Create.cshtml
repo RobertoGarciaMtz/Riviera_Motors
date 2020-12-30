@@ -8,9 +8,11 @@
 <script>
 
 </script>
-<h1>Create</h1>
+<h1>Agregar</h1>
 
-<h4>TbSeguimiento</h4>
+<h4>Seguimiento</h4>
+<p>En este apartado se guardaran las pesonas que vengan a muestreo 
+    con todas los datos necesarios </p>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -148,16 +150,17 @@
                 <select asp-for="IdEstado" class ="form-control" asp-items="ViewBag.Estados"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Lista Seguimiento</a>
 </div>
-
+<p style="font-size:small">Todos los datos son necesarios para llevar un mejor control
+    y administracion </p>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -102,6 +102,22 @@ public class CCarroExtrasController : Controller
         return cversion;
     }
 
+
+    [HttpPost]
+    public CModeloCarro RecuperarModelo(int id)
+    {
+        var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+        CVersionCarro versionn= context.CVersionCarro.Where(ver=>ver.IdVersionCarro==id).FirstOrDefault();
+        CModeloCarro modeloo = context.CModeloCarro.Where(mod => mod.IdModeloCarro == versionn.IdModelo).FirstOrDefault();
+        if (modeloo != null)
+        {
+            modeloo.IdMarcaNavigation = null;
+            modeloo.CVersionCarro = null;
+            modeloo.ModeloCarro = null;
+        }
+        return modeloo;
+    }
+
     // POST: HomeController1/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]

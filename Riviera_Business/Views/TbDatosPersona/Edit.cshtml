@@ -4,9 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Editar</h1>
 
-<h4>TbDatosPersona</h4>
+<h4>Datos Personales</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -95,6 +95,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="FisicaOMoral" class="control-label"></label>
+                <select asp-for="FisicaOMoral" class="form-control">
+                    <option value="1">Persona</option>
+                    <option value="2">Representante</option>
+                </select>
                 <input asp-for="FisicaOMoral" class="form-control" />
                 <span asp-validation-for="FisicaOMoral" class="text-danger"></span>
             </div>

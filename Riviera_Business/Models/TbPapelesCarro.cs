@@ -14,7 +14,7 @@ namespace Riviera_Business.Models
         public DateTime? FechaUlltimaVerificacion { get; set; }
         public string Repuve { get; set; }
         public string IdEmisor { get; set; }
-        public int? Transunionfolio { get; set; }
+        public string Transunionfolio { get; set; }
         public string Mes { get; set; }
         public int? IdEstado { get; set; }
         public string Usuario { get; set; }

@@ -61,7 +61,10 @@ namespace Riviera_Business.Controllers
             {
                 var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
                 context.TbCarros.Add(a);
+                Console.WriteLine("Valor del id" + a.IdVersion);
+                Console.WriteLine("Aqui si entramos");
                 context.SaveChanges();
+                Console.WriteLine("Aqui no entramos ");
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -153,6 +156,36 @@ namespace Riviera_Business.Controllers
 
                     context.SaveChanges();
                 }
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            if (context.TbCarros.Where(tc => tc.IdCarros == id).First() is TbCarros e)
+            {
+                return View(e);
+            }
+            return NotFound();
+        }
+
+        // POST: HomeController1/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, TbCarros a)
+        {
+            try
+            {
+                var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+                TbCarros objectdel = a;
+
+                context.TbCarros.Remove(objectdel);
+                context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch

@@ -60,7 +60,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Usuario)
             </td>
-            <td>
+            <td id="ocultar">
                 @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
             </td>
             <td>
@@ -75,7 +75,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
             </td>
-            <td>
+            <td id="valor">
                 @Html.DisplayFor(modelItem => item.IdTipoGastoNavigation.Descripcion)
             </td>
             <td>
@@ -87,3 +87,12 @@
 }
     </tbody>
 </table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    
+    $(document).ready(function () {
+        console.log("Si entramos");
+        $("#valor").remove(function () {
+            $("#ocultar").hide;
+        })
+    });
+</script>

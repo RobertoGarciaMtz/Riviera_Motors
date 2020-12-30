@@ -15,6 +15,11 @@ namespace Riviera_Business.Models
         {
         }
 
+        public riviera_businessContext()
+        {
+        }
+
+
         public virtual DbSet<CAsesores> CAsesores { get; set; }
         public virtual DbSet<CBanco> CBanco { get; set; }
         public virtual DbSet<CCarroExtra> CCarroExtra { get; set; }
@@ -1685,7 +1690,10 @@ namespace Riviera_Business.Models
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.Transunionfolio).HasColumnType("int(11)");
+                entity.Property(e => e.Transunionfolio)
+                    .HasColumnType("varchar(35)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
 
                 entity.Property(e => e.Usuario)
                     .HasColumnType("varchar(45)")

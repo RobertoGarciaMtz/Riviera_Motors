@@ -10,9 +10,9 @@
     });
 </script>
 
-<h1>CreaAutometrica</h1>
+<h1>Llenar Guia Autometrica</h1>
 
-<h4>CGuiaAutometrica</h4>
+<h4>Guias</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -52,6 +52,7 @@
                 <span asp-validation-for="Usuario" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <a>Seleccionar inicio de mes al que corresponda</a>
                 <label asp-for="Fecha" class="control-label"></label>
                 <input asp-for="Fecha" class="form-control" />
                 <span asp-validation-for="Fecha" class="text-danger"></span>
@@ -61,7 +62,7 @@
                 <select asp-for="IdVersion" class="form-control" asp-items="ViewBag.Version"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Agregar Guia de Auto" class="btn btn-primary" />
             </div>
         </form>
     </div>

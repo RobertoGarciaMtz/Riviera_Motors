@@ -306,3 +306,4 @@ C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\Dashboards\Dashboard_5.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\Home\Ejemplo.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\ControladoresdeResumen\Desempeno.cshtml.g.cs
+C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbControl\VentaRetail.cshtml.g.cs

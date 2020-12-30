@@ -93,8 +93,15 @@ namespace Riviera_Business.Controllers
             {
                 var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
                 context.CGuiaAutometricaEbc.Add(a);
+                Console.WriteLine("PAra comrpbar si se pudo agregar o no");
+                Console.WriteLine("valor de version que trae " + a.IdVersion);
+                Console.WriteLine("valor de la media" + a.Media);
+                Console.WriteLine("Valor de id de guia " + a.IdGuiaAutometrica);
+                Console.WriteLine("Valor de a" + a.Fecha);
+                Console.WriteLine("Valor de a" + a.GuiaAutometricaEbc);
+                Console.WriteLine("Valor de a" + a.IdVersionNavigation);
                 context.SaveChanges();
-                Console.WriteLine("por alguna razon no entramos");
+                Console.WriteLine("Entramos pero no procedemos");
                 return RedirectToAction(nameof(Index));
             }
             catch

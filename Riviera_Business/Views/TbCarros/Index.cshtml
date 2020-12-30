@@ -4,8 +4,8 @@
     ViewData["Title"] = "Index";
 }
 
-
-<script>
+<link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css" />
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js" type="text/javascript" charset="utf8">
     $('#tableid').on('click', 'button', function () {
         $(this).parent().parent().remove();
     });
@@ -13,14 +13,25 @@
     $('#tableid').on('change', 'select', function () {
         if ($(this).val()) { $(this).next().show(); }
     });
+
+    (document).ready(function () {
+        ('#dataTable').DataTable({
+            data: dataTable
+        });
 </script>
 <h1>Index</h1>
 
 <p>
     <a asp-action="Create">Llenar otra Oferta</a>
-    
 </p>
+
+<p style="font-size:large;font-family:Arial;color:firebrick">Descripcion </p>
+<p>En este apartado se terminaran de llenar o eliminar los datos de las ofertas de los automoviles</p>
+<p>En caso de haber sido aceptado se prodecera a pulsar el boton editar para terminar de llenar los datos y cambiar el estado 
+    esto para proceder con su Valuacion</p>
+<p>En caso de no  haber sido aceptadoo se procedera a pulsar el boton de eliminar y dentro tendra mas instrucciones</p>
 <table class="table" id="dataTable">
+    
     <thead>
         <tr>
             <th>
