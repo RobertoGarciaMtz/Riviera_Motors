@@ -16,17 +16,43 @@ namespace Riviera_Business.Controllers
         public ActionResult Index()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            var list = context.TbControl.ToList();
+            var list = context.TbControl.Where(lis=>lis.CompraVenta==2).ToList();
             foreach (TbControl ti in list)
             {
                 ti.IdEstadoNavigation = context.CEstados.Where(ce=> ce.IdEstados ==ti.IdEstado).FirstOrDefault();
                 ti.IdFormaPagoNavigation = context.CFormaPago.Where(fp => fp.IdFormaPago == ti.IdFormaPago).FirstOrDefault();
                 ti.IdBancoNavigation = context.CBanco.Where(bc => bc.IdBanco == bc.IdBanco).FirstOrDefault();
+
+                /*
+            //if (ti.TipoVenta == 1)
+            //{
+              //  var persona = context.TbDatosPersona.Where(dp => dp.IdDatosPersona == ti.IdProveedor).FirstOrDefault();
+                //ti.TbControl.IdCliente = context.TbDatosPersona.IdDatosPersona;
+
+            }
+            if(ti.TipoVenta==2){
+                var persona = contextTbDatosPersonaMoral.Where(dpm=>dpm.IdDatosPm==ti.IdProveedor).FirstOrDefault();
+                ti.TbControl.IdCliente = context.TbDatosPersonaMoral.IdDatosPM;
+                }
+             */
+            }
+            return View(list);
+        }
+
+        public ActionResult IndexdeCompras()
+        {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            var list = context.TbControl.Where(li=>li.CompraVenta==1).ToList();
+            foreach (TbControl ti in list)
+            {
+                ti.IdEstadoNavigation = context.CEstados.Where(ce => ce.IdEstados == ti.IdEstado).FirstOrDefault();
+                ti.IdFormaPagoNavigation = context.CFormaPago.Where(fp => fp.IdFormaPago == ti.IdFormaPago).FirstOrDefault();
+                ti.IdBancoNavigation = context.CBanco.Where(bc => bc.IdBanco == bc.IdBanco).FirstOrDefault();
                 ///
                 //if (ti.TipoCompraCanal == 1)
                 //{
-                  //  var persona = context.TbDatosPersona.Where(dp => dp.IdDatosPersona == ti.IdProveedor).FirstOrDefault();
-                    //ti.persona.IdDatosPersona = persona.IdDatosPersona;
+                //  var persona = context.TbDatosPersona.Where(dp => dp.IdDatosPersona == ti.IdProveedor).FirstOrDefault();
+                //ti.persona.IdDatosPersona = persona.IdDatosPersona;
                 //}
             }
             return View(list);
@@ -135,6 +161,46 @@ namespace Riviera_Business.Controllers
             }
         }
 
+
+        /// <summary>
+        /// ///////////POSIBLE FUNCION FUTURA//////////////////
+
+        /// <returns></returns>
+        [HttpGet]
+        public List<TbControl> Esconder(int opcion)
+        {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            if (opcion == 1)
+            {
+                List<TbControl> comprados = new List<TbControl>();
+                var lista1 = context.TbControl.Where(cont => cont.CompraVenta == opcion).ToList();
+                foreach (TbControl ti in lista1)
+                {
+                    ti.IdAsesorVentaNavigation = null;
+                    ti.IdBancoNavigation = null;
+                    ti.IdEstadoNavigation = null;
+                    ti.IdFormaPagoNavigation = null;
+                    ti.TbCarrosTransaccion = null;
+                    ti.TbSeguro = null;
+                }
+                return lista1;
+            }
+            if (opcion == 2)
+            {
+                var lista2 = context.TbControl.Where(cont2 => cont2.CompraVenta == opcion).ToList();
+                foreach (TbControl ti in lista2)
+                {
+                    ti.IdAsesorVentaNavigation = null;
+                    ti.IdBancoNavigation = null;
+                    ti.IdEstadoNavigation = null;
+                    ti.IdFormaPagoNavigation = null;
+                    ti.TbCarrosTransaccion = null;
+                    ti.TbSeguro = null;
+                }
+                return lista2;
+            }
+            return null;
+        }
 
         // GET: HomeController1/Edit/5
         public ActionResult Edit(int id)

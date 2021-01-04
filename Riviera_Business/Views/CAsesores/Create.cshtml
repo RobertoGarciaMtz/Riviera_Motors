@@ -7,7 +7,14 @@
 <h1>Create</h1>
 
 <h4>CAsesores</h4>
+<script href="js">
+    $(.document).ready(function () {
+        $("#texto").on("load", function () {
+         });
+    });
+</script>
 <hr />
+<p id="texto">Para agregar asesores en caso de haber llegado alguien nuevo</p>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -37,7 +44,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Lista de Asesores</a>
 </div>
 
 @section Scripts {

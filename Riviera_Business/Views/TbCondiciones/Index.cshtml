@@ -9,6 +9,7 @@
 <p>
     <a asp-action="Create">Agregar Nuevo</a>
 </p>
+<p>Seleccionar el Automovil al que se le haran los gastos para posteriormente especificarlo </p>
 <table class="table" id="dataTable">
     <thead>
         <tr>
@@ -141,7 +142,7 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdCondiciones">Editar</a> |
                 <a asp-action="Details" asp-route-id="@item.IdCondiciones">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdCondiciones">Delete</a>
+                <a asp-controller="TbGastos" asp-action="Create">Gastos Extra</a>
             </td>
         </tr>
 }

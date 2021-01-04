@@ -22,6 +22,8 @@ namespace Riviera_Business.Controllers
             return View(list);
         }
 
+      
+
         // GET: HomeController1/Details/5
         public ActionResult Details(int id)
         {

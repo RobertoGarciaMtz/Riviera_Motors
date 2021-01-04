@@ -1,0 +1,239 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbControl>
+
+@{
+    ViewData["Title"] = "IndexdeCompras";
+}
+
+<h1>IndexdeCompras</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompraVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoFacturaArv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFacturaToma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FolioFiscal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCarros)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFactura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Iva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PagadaCobrada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GastoTotalEnCarro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VoBoFacturarSat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VoBoLeyAntiLavado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClienteVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuarios)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MetodoPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaES)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioPactado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Debiendo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadDebida)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contrato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LeyAntilavado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BajaCambProp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComprobarId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConstanciaFiscal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurpPf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComprobantesPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnticipoSN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anticipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdAsesorVentaNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdBancoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdFormaPagoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompraVenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoVenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoFacturaArv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaFacturaToma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FolioFiscal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarros)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaFactura)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Iva)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PagadaCobrada)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GastoTotalEnCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VoBoFacturarSat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VoBoLeyAntiLavado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClienteVenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuarios)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MetodoPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaES)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioPactado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Debiendo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadDebida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contrato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeyAntilavado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BajaCambProp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComprobarId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConstanciaFiscal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurpPf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComprobantesPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnticipoSN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anticipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdAsesorVentaNavigation.IdAsesores)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdBancoNavigation.IdBanco)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdFormaPagoNavigation.IdFormaPago)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdMovimiento">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdMovimiento">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdMovimiento">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

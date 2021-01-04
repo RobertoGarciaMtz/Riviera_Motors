@@ -4,8 +4,6 @@
     ViewData["Title"] = "Create";
 }
 
-
-
 <h1>Agregar Oferta Auto</h1>
 
 <h4>Inter o Retail</h4>
@@ -17,6 +15,7 @@
                 <p>Seleccionar si fue Interagencias o Retail</p>
                 <label asp-for="TipoCompraCanal" class="control-label"></label>
                 <select asp-for="TipoCompraCanal" class="form-control">
+                    <option value="0">------------</option>
                     <option value="1">Inter Agencias</option>
                     <option value="2">Retail</option>
                 </select>
@@ -28,11 +27,6 @@
                 <span asp-validation-for="FechaOferta" class="text-danger"></span>
             </div>
             <!-----------------------------
-    <div class ="form-group">
-    <label for="IdMarca" id="MarcaCar" class="control-label"> Version:</label>
-    <select asp-for="IdMarca"
-
-
     -------------------------------->
 
             <div class="form-group">
@@ -46,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label for="IdVersion" id="VersionCar" class="control-label">Versión: </label>
-                <select id="IdVersion" class="form-control"></select>
+                <select asp-for="IdVersion" id="IdVersion" class="form-control" asp-items="ViewBag.Version"></select>
             </div>
             <!------------------------------------------------------------->
             <div class="form-group">
@@ -177,12 +171,8 @@
 }*@
 
 <script>
-
-
-
     function marcaChanged(select) {
         var idSelected = select.value;
-        console.log(select);
         $.ajax({
             url: "/TbCarros/RecuperarModelo1",
             method: "POST",
@@ -198,7 +188,6 @@
         });
     }
 
-
     function modeloChange(select) {
         var idSelected = select.value;
         $.ajax({
@@ -206,8 +195,6 @@
             method: "POST",
             data: { "id": idSelected },
             success: function (z) {
-                console.log(z);
-
                 let selectVersion = document.getElementById("IdVersion");
                 let html = "";
                 for (var i = 0; i < z.length; i++) {
@@ -215,9 +202,6 @@
                 }
                 selectVersion.innerHTML = html;
             }
-        });
+        });   
     }
-
-
-
 </script>

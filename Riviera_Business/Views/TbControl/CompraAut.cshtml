@@ -20,8 +20,9 @@
                 <span asp-validation-for="CompraVenta" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TipoVenta" class="control-label"></label>
+                <label asp-for="TipoVenta" class="control-label">Tipo Compra</label>
                 <select asp-for="TipoVenta">
+                    <option value="0">----------</option>
                     <option value="1">Inter Agencias</option>
                     <option value="2">Retail</option>
                 </select>
@@ -68,11 +69,17 @@
                 <span asp-validation-for="Total" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PagadaCobrada" class="control-label"></label>
-                <input asp-for="PagadaCobrada" class="form-control" />
+                <label asp-for="PagadaCobrada" class="control-label">Pagado</label>
+                <select asp-for="PagadaCobrada" class="form-control">
+                    <option value="0">---------</option>
+                    <option value="1">Totalmente</option>
+                    <option value="1">Parcialmente</option>
+                    <option value="1">Debiendo</option>
+                </select>
                 <span asp-validation-for="PagadaCobrada" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <p>Opcional</p>
                 <label asp-for="GastoTotalEnCarro" class="control-label"></label>
                 <input asp-for="GastoTotalEnCarro" class="form-control" />
                 <span asp-validation-for="GastoTotalEnCarro" class="text-danger"></span>
@@ -91,16 +98,6 @@
                 <label asp-for="VoBoLeyAntiLavado" class="control-label"></label>
                 <input asp-for="VoBoLeyAntiLavado" class="form-control" />
                 <span asp-validation-for="VoBoLeyAntiLavado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ClienteVenta" class="control-label"></label>
-                <input asp-for="ClienteVenta" class="form-control" />
-                <span asp-validation-for="ClienteVenta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Usuarios" class="control-label"></label>
-                <input asp-for="Usuarios" class="form-control" />
-                <span asp-validation-for="Usuarios" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IdFormaPago" class="control-label"></label>
@@ -136,11 +133,6 @@
                 <span asp-validation-for="CantidadDebida" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Contrato" class="control-label"></label>
-                <input asp-for="Contrato" class="form-control" />
-                <span asp-validation-for="Contrato" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="LeyAntilavado" class="control-label"></label>
                 <input asp-for="LeyAntilavado" class="form-control" />
                 <span asp-validation-for="LeyAntilavado" class="text-danger"></span>
@@ -166,17 +158,12 @@
                 <span asp-validation-for="CurpPf" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ComprobantesPago" class="control-label"></label>
-                <input asp-for="ComprobantesPago" class="form-control" />
-                <span asp-validation-for="ComprobantesPago" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="IdBanco" class="control-label"></label>
                 <select asp-for="IdBanco" class ="form-control" asp-items="ViewBag.Banco"></select>
             </div>
 
             <div class="form-group">
-                <label asp-for="IdAsesorVenta" class="control-label"></label>
+                <label asp-for="IdAsesorVenta" class="control-label">Asesor de la compra</label>
                 <select asp-for="IdAsesorVenta" class ="form-control" asp-items="ViewBag.Asesor"></select>
             </div>
             <div class="form-group">
@@ -187,7 +174,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="IndexdeCompras">Back to List</a>
 </div>
 
 @section Scripts {

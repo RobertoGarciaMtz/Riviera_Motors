@@ -23,6 +23,14 @@ namespace Riviera_Business.Controllers
                 ti.IdVersionNavigation.IdModeloNavigation = context.CModeloCarro.Where(mod => mod.IdModeloCarro == ti.IdVersionNavigation.IdModelo).FirstOrDefault();
                 ti.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation = context.CMarcaCarro.Where
                     (mar => mar.IdMarcaCarro == ti.IdVersionNavigation.IdModeloNavigation.IdMarca).FirstOrDefault();
+
+                /*
+                 if(ti.TipoCompraCanal== 1){//1 Interagencias
+                    ti.IdProveedor= context.TbDatosPersona.Where=(dp=>dp.Id)
+                }
+                if(ti.TipoCompraCanal ==2){ // 2 Retail
+                }
+                 */
             }           
             return View(list);
         }

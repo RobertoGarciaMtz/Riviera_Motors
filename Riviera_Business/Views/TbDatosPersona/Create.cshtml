@@ -44,7 +44,7 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="FisicaOMoral" id="FM" class="control-label">Seleccionar si es fisica o Representante</label>
+                <label asp-for="FisicaOMoral" id="FM" class="control-label">Seleccionar si es unica o Representante</label>
                 <select asp-for="FisicaOMoral" class="form-control" onchange="esconderdemas(this)">
                     <option value="0">-----</option>
                     <option value="1">Persona</option>

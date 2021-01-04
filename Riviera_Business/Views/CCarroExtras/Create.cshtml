@@ -8,6 +8,8 @@
 
 <h4>Extras del Automovil</h4>
 <hr />
+<p>En este apartado se llenaran los aditamentos con los que llego el automovil
+    habiendo sido comprado</p>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -79,21 +81,22 @@
             </div>
             <div class="form-group">
                 <label>Referencia del Automovil</label>
-                <select asp-for="IdCarro"  onchange="obtenerMMV(this)"  class="form-control" id="prueba" asp-items="ViewBag.Caracarro"></select>
+                <select asp-for="IdCarro" onchange="obtenerMMV(this)" class="form-control" id="prueba" asp-items="ViewBag.Caracarro"></select>
             </div>
             <label>Version del Carro</label>
-            <p  id="regresaversion" onchange="obtenermodelo(this)"></p>
+            <p id="regresaversion" onchange="obtenermodelo(this)"></p>
             <p id="regresamodelo"></p>
             <div class="form-group">
                 <input type="submit" value="Terminar Llenado" class="btn btn-primary" />
+            </div>
+            <div>
+                <a asp-action="Index">Lista de chequeo autos</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Lista de chequeo autos</a>
-</div>
+
 
 @*@section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

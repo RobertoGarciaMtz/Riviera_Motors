@@ -17,6 +17,12 @@ namespace Riviera_Business.Controllers
             var list = context.TbGastos.ToList();
             foreach(TbGastos ti in list)
             {
+                if(ti.IdCarro== null)
+                {
+                    ti.IdEstadoNavigation = context.CEstados.Where(es => es.IdEstados == ti.IdEstado).FirstOrDefault();
+                    ti.IdTipoGastoNavigation = context.CTipoGasto.Where(es => es.IdTipoGasto == ti.IdTipoGasto).FirstOrDefault();
+                }
+                else { 
                 ti.IdCarroNavigation = context.TbCarros.Where(car => car.IdCarros == ti.IdCarro).FirstOrDefault();
                 ti.IdCarroNavigation.IdVersionNavigation = context.CVersionCarro.Where(tc => tc.IdVersionCarro == ti.IdCarroNavigation.IdVersion).FirstOrDefault();
                 ti.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation = context.CModeloCarro.Where(mod => mod.IdModeloCarro == ti.IdCarroNavigation.IdVersionNavigation.IdModelo).FirstOrDefault();
@@ -24,6 +30,7 @@ namespace Riviera_Business.Controllers
                     (mar => mar.IdMarcaCarro == ti.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarca).FirstOrDefault();
                 ti.IdEstadoNavigation = context.CEstados.Where(es => es.IdEstados == ti.IdEstado).FirstOrDefault();
                 ti.IdTipoGastoNavigation = context.CTipoGasto.Where(es => es.IdTipoGasto == ti.IdTipoGasto).FirstOrDefault();
+                }
             }
             return View(list);
         }

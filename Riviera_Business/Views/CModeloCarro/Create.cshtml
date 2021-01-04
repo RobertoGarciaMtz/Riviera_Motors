@@ -8,6 +8,7 @@
 
 <h4>Modelo o Unidad Carro</h4>
 <hr />
+<p>Agregar un nuevo modelo en caso de no existir</p>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -16,6 +17,7 @@
                 <label asp-for="IdMarca" class="control-label"></label>
                 <select asp-for="IdMarca" class="form-control" asp-items="ViewBag.Marcas"></select>
             </div>
+            <p></p>
             <div class="form-group">
                 <label asp-for="ModeloCarro" class="control-label"></label>
                 <input asp-for="ModeloCarro" class="form-control" />

@@ -116,8 +116,14 @@
             @Html.DisplayFor(modelItem => item.IdProveedor)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TipoCompraCanal)
-        </td>
+            @if (item.IdProveedor == 1)
+            {
+                <label value="@item.IdProveedor">InterAgencias</label>
+            }
+            else
+            {
+                <label value="@item.IdProveedor">Retail</label>
+            }
         <td>
             @Html.DisplayFor(modelItem => item.Kms)
         </td>

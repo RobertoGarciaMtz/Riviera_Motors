@@ -8,6 +8,9 @@
 
 <h4>Condiciones Llantas</h4>
 <hr />
+<p>Una vez el carro dentro, comprobar la condicion de las llantas y posteriormente
+    llenar los gastos que se le realizaran</p>
+    <p>Dando click en el apartado de Gastos </p>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
@@ -73,6 +76,7 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+<a asp-controller="TbGastos" asp-action="Create">Gastos Realizados en el automovil</a>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
