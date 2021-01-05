@@ -5,23 +5,25 @@
 }
 
 <script>
-    function recuperarVersion(select) {
-        var idSelected = select.value;
-        alert("Si pude entrar");
-        $.ajax({
-            url: "/CCarroExtra/RecuperarVersion",
-            method: "POST",
-            data: { "id": idSelected },
-            success: function (e) {
-                let selectModelo = document.getElementById("VersionCarroo");
-                console.log(e);
-                    let html = "";
-                html += "<option value ='" + e.idVersionCarro + "' >" + e.versionCarro + "</option>";
-                selectModelo.innerHTML = html;
-                }
-        });
-    }
-
+    $(document).ready(function () {
+        $("traerdatos").on("load",function () {
+             function recuperarVersion(this) {
+                var idSelected = select.value;
+                Console.log("Si entramos")
+                $.ajax({
+                    url: "/CCarroExtra/RecuperarVersion",
+                    method: "POST",
+                    data: { "id": idSelected },
+                    success: function (e) {
+                        let selectModelo = document.getElementById("VersionCarroo");
+                        console.log(e);
+                        let html = "";
+                        html += "<option value ='" + e.idVersionCarro + "' >" + e.versionCarro + "</option>";
+                        selectModelo.innerHTML = html;
+                    }
+                });
+            });
+    });
 </script>
 <h1>Details</h1>
 
@@ -136,7 +138,7 @@
             Version
         </dt>
         <dd class="col-sm-10">
-            <a onload="recuperarVersion(this)" value="@Html.DisplayFor(model=>model.IdCarro)"></a>
+            <a  id="traerdatos" value="@Html.DisplayFor(model=>model.IdCarro)"></a>
             <p id="VersionCarroo"></p>
         </dd>
         <dt class="col-sm-2">

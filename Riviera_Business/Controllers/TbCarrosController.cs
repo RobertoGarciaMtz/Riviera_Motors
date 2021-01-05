@@ -71,12 +71,14 @@ namespace Riviera_Business.Controllers
                 context.TbCarros.Add(a);
                 Console.WriteLine("Valor del id" + a.IdVersion);
                 Console.WriteLine("Aqui si entramos");
+                Console.WriteLine("Aqui si entramos"+a);
                 context.SaveChanges();
                 Console.WriteLine("Aqui no entramos ");
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception e)
             {
+                Console.WriteLine("Aqui si entramos" + e);
                 return View(a);
             }
         }

@@ -1,167 +1,141 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebApplication2</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-        }
-
-        .navbar {
-            overflow: hidden;
-            background-color: #333;
-            font-family: Arial,Arial, Helvetica, sans-serif;
-        }
-
-            .navbar a {
-                float: left;
-                font-size: 16px;
-                color: white;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-            }
-
-        .dropdown {
-            float: left;
-            overflow: hidden;
-        }
-
-            .dropdown.dropbtn {
-                font-size: 16px;
-                border: none;
-                outline: none;
-                color: white;
-                padding: 14px 16px;
-                background-color: inherit;
-                font: inherit;
-                margin: 0;
-            }
-
-            .navbar a:hover, .dropdown:hover .dropbtn {
-                background-color: red;
-            }
-
-        .topnav {
-            overflow: hidden;
-            background-color: #f1f1f1;
-        }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Dashboard</title>
 
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            width: 100%;
-            left: 0;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
+    <!-- Theme style -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>    
+    <link href="~/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
 
-            .dropdown-content.header {
-                background: red;
-                padding: 16px;
-                color: white;
-            }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        /* Create three equal columns that floats next to each other */
-        .column {
-            float: left;
-            width: 33.33%;
-            padding: 10px;
-            background-color: #ccc;
-            height: 250px;
-        }
-
-            .column a {
-                float: none;
-                color: black;
-                padding: 16px;
-                text-decoration: none;
-                display: block;
-                text-align: left;
-            }
-
-                .column a:hover {
-                    background-color: #ddd;
-                }
-
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-    </style>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="~/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css">
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Usuarios" asp-action="Create">Riviera Business</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Menu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TbCarros" asp-action="Index">Mostrar los Autos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TbDatosPersona" asp-action="Index">Clientes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="CEstados" asp-action="Index">Estados</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="CMarcaCarro" asp-action="Index">Movimientos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TbControl" asp-action="VentaAut">Marcas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="CGuiaAutometricaEbc" asp-action="Index">Precio de libros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TbSeguimiento" asp-action="Index">Muestreos realizados</a>
-                        </li>
-                        <li>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <!-- Wrapper-->
+    <div id="wrapper" class="">
 
-                        </li>
-                    </ul>
-                </div>
+        <!-- Navigation -->
+        <partial name="_Navigation" />
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <div class="col-md-1"></div>
+            <div class="col-md-11">
+
+                <!-- Main view  -->
+                @RenderBody()
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        </div>
+        <!-- End page wrapper-->
+
     </div>
+    <!-- End wrapper-->
+
+    <script>
+
+        //$(document).ready(function(){
+
+        //    $("#IdMarca").on("change", function () {
+
+        //        var id = $(this).val();
+
+        //        $.ajax({
+        //            url: "/TbCarros/getModelo",
+        //            data: { idMarca: id },
+        //            method: "POST",
+        //            success: function (result) {
+        //                alert(result);
+        //                var html;
+        //                for (var i = 0; i < result.length; i++) {
+        //                    html += "<option value='"+result[i].idMarca+"'>"+ result[i].Modelo +"</option>"
+        //                }
+        //                $("#idModelo").html(result);
+        //            }
+        //        });
+        //    });
+
+        //    $("#IdMarca").change(function () {
+        //        alert("Cambio");
+        //    });
+
+        //});
+
+        /* $('#tableid').on('click', 'button', function () {
+            $(this).parent().parent().remove();
+        }); */
+
+        $('#tableid').on('change', 'select', function () {
+            if ($(this).val()) { $(this).next().show(); }
+        });
+
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                scrollX: "true"
+            });
+        });
+
+    </script>
 
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+    @RenderSection("scripts", required: false)
+
+    <!-- jQuery -->
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="~/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="~/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/plugins/moment/moment.min.js"></script>
+    <script src="~/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/dist/js/adminlte.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/dist/js/demo.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/dist/js/pages/dashboard.js"></script>
+
 </body>
 </html>
+
+
