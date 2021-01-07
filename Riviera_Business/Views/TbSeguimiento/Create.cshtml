@@ -34,13 +34,8 @@
                 <span asp-validation-for="Correo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CMedioPublicitario" class="control-label"></label>
-                <select asp-for="CMedioPublicitario" class ="form-control" asp-items="ViewBag.Mediopubli"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="DiaSemana" class="control-label"></label>
-                <input asp-for="DiaSemana" class="form-control" />
-                <span asp-validation-for="DiaSemana" class="text-danger"></span>
+                <label asp-for="CMedioPublicitario" class="control-label">Contacto o Medio</label>
+                <select asp-for="CMedioPublicitario" class="form-control" asp-items="ViewBag.Mediopubli"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Fecha" class="control-label"></label>
@@ -54,18 +49,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdAsesor" class="control-label"></label>
-                <select asp-for="IdAsesor" class ="form-control" asp-items="ViewBag.Asesor"></select>
+                <select asp-for="IdAsesor" class="form-control" asp-items="ViewBag.Asesor"></select>
             </div>
             <div class="form-group">
-                <label asp-for="IdCarro" class="control-label"></label>
-                <select asp-for="IdCarro" onchange="obtversion(this)" class ="form-control" asp-items=" ViewBag.Carros" ></select>
+                <label asp-for="IdCarro" class="control-label">Carro Interes</label>
+                <select asp-for="IdCarro" onchange="obtversion(this)" class="form-control" asp-items=" ViewBag.Carros"></select>
             </div>
-            <div class="form-group">
-                <p  id="recibidor"/>
-            </div>
+
             <!----------------------------------------------------------
-                ------------------------
-                -------------------------->
+        ------------------------
+        -------------------------->
             <div class="form-group">
                 <label asp-for="Contesto" class="control-label"></label>
                 <select asp-for="Contesto">
@@ -147,12 +140,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdEstado" class="control-label"></label>
-                <select asp-for="IdEstado" class ="form-control" asp-items="ViewBag.Estados"></select>
+                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estados"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>
         </form>
+        <!--<div class="form-group">
+        <p id="recibidor" />
+    </div>-->
     </div>
 </div>
 

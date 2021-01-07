@@ -13,6 +13,13 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <select asp-for="PersonaFM">
+                    <option value="1">Fisica</option>
+                    <option value="2">Moral/Representante</option>
+                </select>
+                <span asp-validation-for="PersonaFM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="IdentificacionVig" class="control-label"></label>
                 <select asp-for="IdentificacionVig">
                     <option value="1">Si</option>
@@ -78,7 +85,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdEstado" class="control-label"></label>
-                <select asp-for="IdEstado" class ="form-control" asp-items="ViewBag.Estado"></select>
+                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estado"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Usuario" class="control-label"></label>
@@ -87,7 +94,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdDatosPersona" class="control-label"></label>
-                <select asp-for="IdDatosPersona" class ="form-control" asp-items="ViewBag.Datospersona"></select>
+                <select asp-for="IdDatosPersona" class="form-control" asp-items="ViewBag.Datospersona"></select>
             </div>
             <div class="form-group">
                 <label asp-for="MesCorrespondiente" class="control-label"></label>

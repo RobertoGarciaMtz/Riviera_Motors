@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table" id="dataTable">
     <thead>
         <tr>
             <th>
@@ -31,7 +31,14 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.DepositoRetiro)
+                @if (item.DepositoRetiro == 1)
+                {
+                    <label value="@item.DepositoRetiro">Deposito</label>
+                }
+                else
+                {
+                    <label value="@item.DepositoRetiro">Retiro</label>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Fecha)

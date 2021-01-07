@@ -6,19 +6,14 @@
 
 
 <h1>Lista</h1>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js">
-    (document).ready(function () {
-        ('#dataTable').DataTable({
-            data:dataTable
-        });
-    });
-</script>
+
 
 <p>
     <a asp-action="CreaEBC">LlenarGuia EBC</a>
     <a asp-action="CreaAutometrica">Llenar Autometrica</a>
 </p>
-<p>Contiene todos los Automoviles con todos sus respectivos precios y Guias </p>
+<p>Contiene todos los Automoviles registrados con todos sus respectivos precios y Guias  
+    tambien el mes la fecha a la que pertenecen</p>
 <table class="table" id="dataTable">
     <thead>
         <tr>
@@ -52,7 +47,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.IdEstadoNavigation)
             </th>
-            <th></th>
+            <th>Opciones</th>
         </tr>
     </thead>
     <tbody>

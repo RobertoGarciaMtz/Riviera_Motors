@@ -10,7 +10,6 @@ namespace Riviera_Business.Models
         public string Telefono { get; set; }
         public string Correo { get; set; }
         public int CMedioPublicitario { get; set; }
-        public string DiaSemana { get; set; }
         public DateTime? Fecha { get; set; }
         public string Sexo { get; set; }
         public int? IdAsesor { get; set; }

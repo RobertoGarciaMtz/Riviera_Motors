@@ -122,7 +122,6 @@ namespace Riviera_Business.Controllers
                     objectEdit.Comentarios = a.Comentarios;
                     objectEdit.Contesto = a.Contesto;
                     objectEdit.Correo = a.Correo;
-                    objectEdit.DiaSemana = a.DiaSemana;
                     objectEdit.Fecha = a.Fecha;
                     objectEdit.IdCarro = a.IdCarro;
                     objectEdit.IdEstado = a.IdEstado;

@@ -2,17 +2,60 @@
     ViewData["Title"] = "Home Page";
 }
 
-<link  href="~/css/site.css" rel="import">
+<link href="~/css/site.css" rel="import">
 
+<style>
+    .parrafodesc {
+        font-size: medium;
+        font-family: 'Arial Rounded MT';
+        color: #000000;
+        align-content: center;
+        display: grid;
+    }
 
+    .houdini {
+        display: inline;
+        color: greenyellow;
+        border: medium;
+        border: dotted;
+    }
+</style>
 
+<script>
+    $("document").ready(function () {
+        $("#hide").on("click", function () {
+            $(".houdini").hide();
+        })
 
+        $("#show").on("click", function () {
+            $(".houdini").show();
+        })
+    });
+</script>
 
 <div class="text-center">
     <h1 class="display-4">Riviera Motors</h1>
-    <p>Sistema Centralizado Beta.</p>
-
+    <img src="dist/img/isologo.png" alt="AdminLTE Logo" height="60" width="60" style="opacity: .8">
+    <p style="font-size:x-large; font-family:'Agency FB';color:peru">Sistema Centralizado Riviera Business </p>
+    <p class="parrafodesc">
+        El proposito de este sistema es agilizar todos los procesos que conlleva la empresa,
+        asi como poder utilizarse de manera ordenada y sin la necesidad de traer de manera manual
+        datos utilizados en otras tablas
+    </p>
+    <h3> Menu de uso exclusivo para el jefe</h3>
+    <p>Este menu contiene los solicitados pedidos por el Jefe</p>
     <div>
+        <ul class="nav-second-level">
+            <li class="active"><a asp-controller="ControladoresdeResumen">Desempeño de Asesores de Ventas</a></li>
+            <li class="active"><a asp-controller="ControladoresdeResumen">Linea de Tiempo de un solo Auto </a></li>
+            <li class="active"><a asp-controller="ControladoresdeResumen">Estadisticas de lo MAS</a></li>
+            <li class="active"><a asp-controller="ControladoresdeResumen">Consumo y utilidades</a></li>
+        </ul>
+    </div>
+
+    <button id="hide">ocultar</button> <button id="show">mostrar</button>
+
+    <div class="houdini">
         <h1>Catalogos</h1>
         <div>
             <ul class=" nav-second-level">
@@ -63,9 +106,30 @@
         </div>
     </div>
     <a asp-controller="Home" asp-action="Ejemplo">al menu</a>
-
-
-   
 </div>
 
 
+<!--
+    como trraer datos con jquery
+    jQuery(document).ready(function(){
+    $('.like').click(function() {
+       var $this = $(this);
+       $.ajax({
+            url: base_url+'quotes/quotes_rating',
+            type: 'GET',
+            data: {'id': id},
+            dataType: 'html',
+            success: function(d){
+              $this.html(d); //will set html of clicked link
+            }, error: function(){ //code for error }
+     });
+});
+
+    CONTROLADOR
+    public function quotes_rating() {
+    $id = $this->input->get('id');
+    $this->quotes_model->write_likes($id);
+        }
+    ------------------------------------------------------
+
+-->

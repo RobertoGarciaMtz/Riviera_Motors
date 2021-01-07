@@ -14,7 +14,10 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="DepositoRetiro" class="control-label"></label>
-                <input asp-for="DepositoRetiro" class="form-control" />
+                <select asp-for="DepositoRetiro" class="form-control">
+                    <option value="1">Deposito</option>
+                    <option value="2">Retiro</option>
+                </select>
                 <span asp-validation-for="DepositoRetiro" class="text-danger"></span>
             </div>
             <div class="form-group">

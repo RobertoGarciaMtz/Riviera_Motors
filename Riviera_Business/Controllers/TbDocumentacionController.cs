@@ -94,6 +94,7 @@ namespace Riviera_Business.Controllers
                     objectEdit.ConocimientoDuenoBeneficiario = a.ConocimientoDuenoBeneficiario;
                     objectEdit.ConstanciaConocimiento = a.ConstanciaConocimiento;
                     objectEdit.Curp = a.Curp;
+                    objectEdit.PersonaFM = a.PersonaFM;
                     objectEdit.IdDatosPersona = a.IdDatosPersona;
                     objectEdit.IdentificacionVig = a.IdentificacionVig;
                     objectEdit.IdEstado = a.IdEstado;

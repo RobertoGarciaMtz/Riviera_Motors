@@ -9,9 +9,12 @@
 <p>
     <a asp-action="Create">Agregar mas Documentacion Cliente</a>
 </p>
-<table class="table">
+<table class="table" id="dataTable">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonaFM)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.IdentificacionVig)
             </th>
@@ -54,6 +57,16 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                @if (item.PersonaFM == 1)
+                {
+                    <label value="@item.PersonaFM">Fisica</label>
+                }
+                else
+                {
+                    <label value="@item.PersonaFM">Moral/Representante</label>
+                }
+            </td>
             <td>
                 @if (item.IdentificacionVig == 1)
                 {

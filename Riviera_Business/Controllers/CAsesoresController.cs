@@ -86,7 +86,8 @@ namespace Riviera_Business.Controllers
                 {
                     objectEdit.Nombre = a.Nombre;
                     objectEdit.IdEstado = a.IdEstado;
-                    context.CAsesores.Update(a);
+                    objectEdit.TipoVenta = a.TipoVenta;
+                    context.CAsesores.Update(objectEdit);
                     context.SaveChanges();
                 }
                 return RedirectToAction(nameof(Index));

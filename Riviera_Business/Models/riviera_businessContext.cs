@@ -15,11 +15,6 @@ namespace Riviera_Business.Models
         {
         }
 
-        public riviera_businessContext()
-        {
-        }
-
-
         public virtual DbSet<CAsesores> CAsesores { get; set; }
         public virtual DbSet<CBanco> CBanco { get; set; }
         public virtual DbSet<CCarroExtra> CCarroExtra { get; set; }
@@ -58,6 +53,7 @@ namespace Riviera_Business.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+
                 optionsBuilder.UseMySql("server=localhost;database=riviera_business;user=root;password=1234", x => x.ServerVersion("8.0.13-mysql"));
             }
         }
@@ -805,6 +801,11 @@ namespace Riviera_Business.Models
                     .HasColumnName("Id_Condiciones")
                     .HasColumnType("int(11)");
 
+                entity.Property(e => e.Comentarios)
+                    .HasColumnType("text")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
                 entity.Property(e => e.IdCarro)
                     .HasColumnName("Id_Carro")
                     .HasColumnType("int(11)");
@@ -1388,6 +1389,10 @@ namespace Riviera_Business.Models
                     .HasColumnName("Mes_Correspondiente")
                     .HasColumnType("int(11)");
 
+                entity.Property(e => e.PersonaFM)
+                    .HasColumnName("Persona_F_M")
+                    .HasColumnType("int(11)");
+
                 entity.Property(e => e.PoderLegarExp)
                     .HasColumnName("Poder_Legar_Exp")
                     .HasColumnType("int(11)");
@@ -1865,12 +1870,6 @@ namespace Riviera_Business.Models
 
                 entity.Property(e => e.Correo)
                     .HasColumnType("varchar(120)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
-                entity.Property(e => e.DiaSemana)
-                    .HasColumnName("Dia_Semana")
-                    .HasColumnType("varchar(45)")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 

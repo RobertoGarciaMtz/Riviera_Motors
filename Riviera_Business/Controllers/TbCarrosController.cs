@@ -31,7 +31,7 @@ namespace Riviera_Business.Controllers
                 if(ti.TipoCompraCanal ==2){ // 2 Retail
                 }
                  */
-            }           
+            }
             return View(list);
         }
 
@@ -47,7 +47,63 @@ namespace Riviera_Business.Controllers
             }
             return NotFound();
         }
-
+        /*-------------------------------------------------------
+         */
+        [HttpGet]
+        public ActionResult Extras()
+        {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
+            ViewBag.Version = context.CVersionCarro.Select(ma => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ma.VersionCarro, Value = ma.IdVersionCarro.ToString() });
+            ViewBag.Modelo = context.CModeloCarro.Select(mo => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = mo.ModeloCarro, Value = mo.IdModeloCarro.ToString() });
+            ViewBag.Marca = context.CMarcaCarro.Select(mo => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = mo.NombreMarca, Value = mo.IdMarcaCarro.ToString() });
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Extras(ZMMVCarro copia)
+        {
+            try
+            {
+                var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+                var carrito = context.TbCarros.LastOrDefault();
+                TbCarros objectEdit= new TbCarros();
+                if (carrito != null)
+                {
+                    objectEdit.Modelo = copia.Modelo;
+                    objectEdit.Antiguedad = copia.Antiguedad;
+                    objectEdit.TipoCompraCanal = copia.TipoCompraCanal;
+                    objectEdit.ClaveVehicular = copia.ClaveVehicular;
+                    objectEdit.IdVersion = copia.IdVersion;
+                    objectEdit.ColorExt = copia.ColorExt;
+                    objectEdit.ColorInt = copia.ColorInt;
+                    objectEdit.DuenoAnterior = copia.DuenoAnterior;
+                    objectEdit.FechaFactToma = copia.FechaFactToma;
+                    objectEdit.FolioFiscal = copia.FolioFiscal;
+                    objectEdit.IdEstado = copia.IdEstado;
+                    objectEdit.Kms = copia.Kms;
+                    objectEdit.MvaOpc = copia.MvaOpc;
+                    objectEdit.NoMotor = copia.NoMotor;
+                    objectEdit.NoSerie = copia.NoSerie;
+                    objectEdit.NumEconomicoOpc = copia.NumEconomicoOpc;
+                    objectEdit.Origen = copia.Origen;
+                    objectEdit.PropuestaCliente = copia.PropuestaCliente;
+                    objectEdit.Transmicion = copia.Transmicion;
+                    objectEdit.IdProveedor = copia.IdProveedor;
+                    objectEdit.Ubicacion = copia.Ubicacion;
+                    objectEdit.FechaOferta = copia.FechaOferta;
+                    /*------------------------------------------------------------*/
+                    context.TbCarros.Add(objectEdit);
+                    context.SaveChanges();
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View(copia);
+            }
+        }
+        /*
+         -------------------------------------------------*/
         // GET: HomeController1/Create
         public ActionResult Create()
         {
@@ -163,7 +219,6 @@ namespace Riviera_Business.Controllers
                     objectEdit.Ubicacion = a.Ubicacion;
                     objectEdit.FechaOferta = a.FechaOferta;
                     context.TbCarros.Update(objectEdit);
-
                     context.SaveChanges();
                 }
                 return RedirectToAction(nameof(Index));

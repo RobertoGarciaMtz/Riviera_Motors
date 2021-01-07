@@ -6,10 +6,19 @@
 
 <h1>Index</h1>
 
+<script>
+    $('#tableid').on('click', 'button', function () {
+        $(this).parent().parent().remove();
+    });
+
+    $('#tableid').on('change', 'select', function () {
+        if ($(this).val()) { $(this).next().show(); }
+    });
+</script>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table" id="dataTable">
     <thead>
         <tr>
             <th>
@@ -49,7 +58,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Monto)
+                $@Html.DisplayFor(modelItem => item.Monto)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Descripcion)
@@ -87,12 +96,3 @@
 }
     </tbody>
 </table>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-    
-    $(document).ready(function () {
-        console.log("Si entramos");
-        $("#valor").remove(function () {
-            $("#ocultar").hide;
-        })
-    });
-</script>

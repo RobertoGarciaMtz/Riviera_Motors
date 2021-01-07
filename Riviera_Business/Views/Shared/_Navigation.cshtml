@@ -129,7 +129,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="dist/img/isologo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Riviera Business</span>
     </a>
 
@@ -137,11 +137,8 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-            </div>
             <div class="info">
-                <a href="#" class="d-block" id="nombreusuario">Roberto Garcia</a>
+                <a asp-controller="Usuarios" asp-action="Create" class="d-block" id="nombreusuario">Usuario</a>
             </div>
         </div>
 
@@ -192,11 +189,10 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                    <a asp-controller="TbSeguimiento" asp-action="Create" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Widgets
-                            <span class="right badge badge-danger">New</span>
+                            Seguimiento o Consulta
                         </p>
                     </a>
                 </li>
@@ -205,33 +201,33 @@
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Datos Automovil Oferta
-                            <i class="fas fa-angle-left right"></i>
+                            <i class="fas fa-angle-left "></i>
                             <!--<span class="badge badge-info right">6</span>-->
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a asp-controller="TbCarros" asp-action="Create" class="nav-link">
+                            <a asp-controller="TbCarros" asp-action="Extras" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Nueva Oferta</p>
+                                <p>Agergar Oferta Compra</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a asp-controller="TbPapelesCarro" asp-action="Create" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Papeles Automovil</p>
+                                <p>Llenar Papeles Automovil</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a asp-controller="CCarroExtras" asp-action="Create" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Extras Automovil</p>
+                                <p>Llenar Extras Automovil</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a asp-controller="TbDatosPersona" asp-action="Create" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Agregar Persona Nueva</p>
+                                <p>Agregar Cliente</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -250,7 +246,7 @@
                         <li class="nav-item">
                             <a asp-controller="TbDocumentacion" asp-action="Create" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Documentacion Personas</p>
+                                <p>Llenar Documentacion Personas</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -265,33 +261,45 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                            Charts
+                            Compra/Venta Autorizada
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/charts/chartjs.html" class="nav-link">
+                            <a asp-controller="TbControl" asp-action="IndexdeCompras" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>ChartJS</p>
+                                <p>Lista Comprados/Inventario</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/flot.html" class="nav-link">
+                            <a asp-controller="TbControl" asp-action="CompraAut" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Flot</p>
+                                <p>Registrar Compra</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/inline.html" class="nav-link">
+                            <a asp-controller="TbControl" asp-action="Index" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Inline</p>
+                                <p>Lista de Vendidos</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/charts/uplot.html" class="nav-link">
+                            <a asp-controller="TbControl" asp-action="VentaAut" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>uPlot</p>
+                                <p>Registrar Venta</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="TbSeguro" asp-action="Create" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Si vehiculo salio asegurado</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="TbGastos" asp-action="Create" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Gasto realizado a Auto</p>
                             </a>
                         </li>
                     </ul>
@@ -300,57 +308,57 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tree"></i>
                         <p>
-                            UI Elements
+                            Catalogos
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/UI/general.html" class="nav-link">
+                            <a asp-controller="CAsesores" asp-action="Index" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>General</p>
+                                <p>Manejar Asesores</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/UI/icons.html" class="nav-link">
+                            <a asp-controller="CBancos" asp-action="Index" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Icons</p>
+                                <p>Lista Bancos</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/UI/buttons.html" class="nav-link">
+                            <a asp-controller="CConcepto" asp-action="Create" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Buttons</p>
+                                <p>Agregar mas conceptos Pago</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/UI/sliders.html" class="nav-link">
+                            <a asp-controller="CEstadps" asp-action="Create" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Sliders</p>
+                                <p>Estados de utilidad</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/UI/modals.html" class="nav-link">
+                            <a asp-controller="CFormaPago" asp-action="Create" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Modals & Alerts</p>
+                                <p>Agregar nueva forma pago</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/UI/navbar.html" class="nav-link">
+                            <a asp-controller="CMedioPublicitario" asp-action="Create" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Navbar & Tabs</p>
+                                <p>Agregar Medio Publi</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/UI/timeline.html" class="nav-link">
+                            <a asp-controller="CPreAcondicionamiento" asp-action="Create" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Timeline</p>
+                                <p>Preacondicionamiento</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/UI/ribbons.html" class="nav-link">
+                            <a asp-controller="TbAdecuaciones" asp-action="Create" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Ribbons</p>
+                                <p>Adecuaciones realizadas</p>
                             </a>
                         </li>
                     </ul>
@@ -359,33 +367,39 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
-                            Forms
+                            Cuentas de la Empresa
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/forms/general.html" class="nav-link">
+                            <a asp-controller="CuentasPendientesCP" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>General Elements</p>
+                                <p>Cuentas por cobrar</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/forms/advanced.html" class="nav-link">
+                            <a asp-controller="CuentasPendientesCP" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Advanced Elements</p>
+                                <p>Cuentas por Pagar</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/forms/editors.html" class="nav-link">
+                            <a asp-controller="CuentasPendientesCP" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Editors</p>
+                                <p>Otras cuentas</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/forms/validation.html" class="nav-link">
+                            <a asp-controller="CuentasPendientesCP" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Validation</p>
+                                <p>Todas las cuentas</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="ControladoresdeResumen" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Negocio</p>
                             </a>
                         </li>
                     </ul>
@@ -394,54 +408,52 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
-                            Tables
+                            Guias 
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/tables/simple.html" class="nav-link">
+                            <a asp-controller="CGuiaAutometricaEBC" asp-action="CreaAutometrica" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Simple Tables</p>
+                                <p>Llenar Guia Autometrica</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/tables/data.html" class="nav-link">
+                            <a asp-controller="CGuiaAutometricaEBC" asp-action="CreaEBC" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>DataTables</p>
+                                <p>Llenar Guia EBC</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/tables/jsgrid.html" class="nav-link">
+                            <a asp-controller="CGuiaAutometricaEBC" asp-action="Index" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>jsGrid</p>
+                                <p>Lista delas Guias con Automoviles</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-controller="TbPreciosTentativos" asp-action="Index" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Llenado Para precios tentativos</p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-header">EXAMPLES</li>
+                
                 <li class="nav-item">
-                    <a href="pages/calendar.html" class="nav-link">
-                        <i class="nav-icon far fa-calendar-alt"></i>
-                        <p>
-                            Calendar
-                            <span class="badge badge-info right">2</span>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/gallery.html" class="nav-link">
+                    <a asp-controller="TbMovimientosBancarios" asp-action="Create" class="nav-link">
                         <i class="nav-icon far fa-image"></i>
                         <p>
-                            Gallery
+                            Movimientos Bancarios
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/kanban.html" class="nav-link">
+                    <a asp-controller="TbConta" asp-action="Create" class="nav-link">
                         <i class="nav-icon fas fa-columns"></i>
                         <p>
-                            Kanban Board
+                            Para contaduria
                         </p>
                     </a>
                 </li>

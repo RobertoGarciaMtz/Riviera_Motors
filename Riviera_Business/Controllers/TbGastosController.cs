@@ -17,7 +17,7 @@ namespace Riviera_Business.Controllers
             var list = context.TbGastos.ToList();
             foreach(TbGastos ti in list)
             {
-                if(ti.IdCarro== null)
+                if(ti.IdTipoGasto== 1 || ti.IdTipoGasto==2)
                 {
                     ti.IdEstadoNavigation = context.CEstados.Where(es => es.IdEstados == ti.IdEstado).FirstOrDefault();
                     ti.IdTipoGastoNavigation = context.CTipoGasto.Where(es => es.IdTipoGasto == ti.IdTipoGasto).FirstOrDefault();

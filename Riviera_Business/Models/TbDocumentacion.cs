@@ -18,6 +18,7 @@ namespace Riviera_Business.Models
         public string Usuario { get; set; }
         public int? IdDatosPersona { get; set; }
         public int? MesCorrespondiente { get; set; }
+        public int? PersonaFM { get; set; }
 
         public virtual TbDatosPersona IdDatosPersonaNavigation { get; set; }
         public virtual CEstados IdEstadoNavigation { get; set; }

@@ -9,7 +9,9 @@
 <p>
     <a asp-action="Create">Agregar Modelo o Unidad</a>
 </p>
-<table class="table">
+<p>Todos los modelos manejados por una empresa 
+    Nota: Si se quiere buscar por Marca de automoviles escribir en el buscador</p>
+<table class="table" id="dataTable">
     <thead>
         <tr>
             <th>
@@ -21,7 +23,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.IdMarcaNavigation)
             </th>
-            <th></th>
+            <th>Opciones</th>
         </tr>
     </thead>
     <tbody>
