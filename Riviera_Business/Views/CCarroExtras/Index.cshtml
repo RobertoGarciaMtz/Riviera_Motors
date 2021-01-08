@@ -60,73 +60,100 @@
             <td>
                 @if (item.Manuales == 1)
                 {
-                    <label value="@item.Manuales">Si</label>
+                    <label value="@item.Manuales">Entregado</label>
                 }
-                else
+                @if (item.Manuales == 2)
                 {
-                    <label value="@item.Manuales">No</label>
+                    <label value="@item.Manuales">No entregado</label>
+                }
+                @if (item.Manuales == 3)
+                {
+                    <label value="@item.Manuales">En Espera</label>
                 }
 
             </td>
             <td>
                 @if (item.CarnetServicio == 1)
                 {
-                    <label value="@item.CarnetServicio">Si</label>
+                    <label value="@item.CarnetServicio">Entregado</label>
                 }
-                else
+                @if (item.CarnetServicio == 2)
                 {
-                    <label value="@item.CarnetServicio">No</label>
+                    <label value="@item.CarnetServicio">No Entregado</label>
+                }
+                @if (item.CarnetServicio == 3)
+                {
+                    <label value="@item.CarnetServicio">En Espera</label>
                 }
             </td>
             <td>
                 @if (item.Duplicado == 1)
                 {
-                    <label value="@item.Duplicado">Si</label>
+                    <label value="@item.Duplicado">Entregado</label>
                 }
-                else
+                @if (item.Duplicado == 2)
                 {
-                    <label value="@item.Duplicado">No</label>
+                    <label value="@item.Duplicado">No Entregado</label>
+                }
+                @if (item.Duplicado == 3)
+                {
+                    <label value="@item.Duplicado">En espera</label>
                 }
             </td>
             <td>
                 @if (item.LlantaRefaccion == 1)
                 {
-                    <label value="@item.LlantaRefaccion">Si</label>
+                    <label value="@item.LlantaRefaccion">Entregado</label>
                 }
-                else
+                @if (item.LlantaRefaccion == 2)
                 {
-                    <label value="@item.LlantaRefaccion">No</label>
+                    <label value="@item.LlantaRefaccion">No Entregado</label>
+                }
+                @if (item.LlantaRefaccion == 3)
+                {
+                    <label value="@item.LlantaRefaccion">En Espera</label>
                 }
             </td>
             <td>
                 @if (item.Herramientas == 1)
                 {
-                    <label value="@item.Herramientas">Si</label>
+                    <label value="@item.Herramientas">Entregado</label>
                 }
-                else
+                @if (item.Herramientas == 2)
                 {
-                    <label value="@item.Herramientas">No</label>
+                    <label value="@item.Herramientas">No Entregado</label>
                 }
-
+                @if (item.Herramientas == 3)
+                {
+                    <label value="@item.Herramientas">En Espera</label>
+                }
             </td>
             <td>
                 @if (item.Gato == 1)
                 {
-                    <label value="@item.Gato">Si</label>
+                    <label value="@item.Gato">Entregado</label>
                 }
-                else
+                @if (item.Gato == 2)
                 {
-                    <label value="@item.Gato">No</label>
+                    <label value="@item.Gato">No Entregado</label>
+                }
+                @if (item.Gato == 3)
+                {
+                    <label value="@item.Gato">En Espera</label>
                 }
             </td>
             <td>
                 @if (item.Antena == 1)
                 {
-                    <label value="@item.Antena">Si</label>
+                    <label value="@item.Antena">Entregado</label>
                 }
-                else
+                @if (item.Antena == 2)
                 {
-                    <label value="@item.Antena">No</label>
+                    <label value="@item.Antena">No Entregado</label>
+                }
+                @if (item.Antena == 3)
+                {
+                    <label value="@item.Antena">En Espera</label>
                 }
             </td>
             <td>

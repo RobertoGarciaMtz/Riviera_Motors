@@ -10,8 +10,23 @@ namespace Riviera_Business.Controllers
 {
     public class ControladoresdeResumen : Controller
     {
-        // GET: HomeController1
+
         public ActionResult Desempeno()
+        {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            var list = context.TbSeguimiento.ToList();
+            var listasesor = context.CAsesores.ToList();
+            foreach (TbSeguimiento ti in list)
+            {
+               var asesor1 = context.TbSeguimiento.Where(ass => ass.IdAsesor == listasesor[1].IdAsesores).Count();
+                var asesor2 = context.TbSeguimiento.Where(ass => ass.IdAsesor == listasesor[2].IdAsesores).Count();
+                var asesor3 = context.TbSeguimiento.Where(ass => ass.IdAsesor == listasesor[3].IdAsesores).Count();
+
+            }
+            return View(list);
+        }
+        // GET: HomeController1
+        public ActionResult Desempeno1()
         {
             //los necesarios
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -20,7 +35,7 @@ namespace Riviera_Business.Controllers
             var list3 = context.TbControl.ToList();
             var list4 = context.TbPapelesCarro.ToList();
             //para contar de los asesores
-            int mascitas = context.TbSeguimiento.Where(seg=>seg.IdAsesor ==1).Count();
+            int mascitas = context.TbSeguimiento.Where(seg => seg.IdAsesor == 1).Count();
             int mascitas2 = context.TbSeguimiento.Where(seg => seg.IdAsesor == 2).Count();
             int mascitas3 = context.TbSeguimiento.Where(seg => seg.IdAsesor == 3).Count();
             int mascitas4 = context.TbSeguimiento.Where(seg => seg.IdAsesor == 4).Count();
@@ -39,6 +54,13 @@ namespace Riviera_Business.Controllers
                     c++;
             }
             return View();
+        }
+        [HttpGet]
+        public int mayorcitas()
+        {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            int val=context.TbSeguimiento.Where(seg=>seg.IdAsesor==1).Count();
+            return val;
         }
         /// <summary>
         /// ////////////

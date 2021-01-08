@@ -20,11 +20,11 @@ namespace Riviera_Business.Controllers
             {
                 ti.TbCarrosIdCarrosNavigation = context.TbCarros.Where(te => te.IdCarros == ti.TbCarrosIdCarros).FirstOrDefault();
                 ti.TbCarrosIdCarrosNavigation.IdVersionNavigation = context.CVersionCarro.Where
-                    (ver=> ver.IdVersionCarro==ti.TbCarrosIdCarrosNavigation.IdVersionNavigation.IdVersionCarro).FirstOrDefault();
+                    (ver=> ver.IdVersionCarro==ti.TbCarrosIdCarrosNavigation.IdVersion).FirstOrDefault();
                 ti.TbCarrosIdCarrosNavigation.IdVersionNavigation.IdModeloNavigation = context.CModeloCarro.Where
-                    (mod => mod.IdModeloCarro == ti.TbCarrosIdCarrosNavigation.IdVersionNavigation.IdModeloNavigation.IdModeloCarro).FirstOrDefault();
+                    (mod => mod.IdModeloCarro == ti.TbCarrosIdCarrosNavigation.IdVersionNavigation.IdModelo).FirstOrDefault();
                 ti.TbCarrosIdCarrosNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation = context.CMarcaCarro.Where
-                    (mar => mar.IdMarcaCarro == ti.TbCarrosIdCarrosNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.IdMarcaCarro).FirstOrDefault();
+                    (mar => mar.IdMarcaCarro == ti.TbCarrosIdCarrosNavigation.IdVersionNavigation.IdModeloNavigation.IdMarca).FirstOrDefault();
             }
             return View(list);
         }

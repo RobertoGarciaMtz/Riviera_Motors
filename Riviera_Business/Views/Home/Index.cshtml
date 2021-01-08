@@ -17,18 +17,31 @@
         display: inline;
         color: greenyellow;
         border: medium;
+        border: solid;
+    }
+    .houdini2 {
+        display: inline;
+        color: greenyellow;
+        border: medium;
         border: dotted;
     }
 </style>
 
 <script>
     $("document").ready(function () {
-        $("#hide").on("click", function () {
+        $("#hidec").on("click", function () {
             $(".houdini").hide();
         })
 
-        $("#show").on("click", function () {
+        $("#showc").on("click", function () {
             $(".houdini").show();
+        })
+
+        $("#hidet").on("click", function () {
+            $(".houdini2").hide();
+        })
+        $("#showt").on("click", function () {
+            $(".houdini2").show();
         })
     });
 </script>
@@ -40,24 +53,26 @@
     <p class="parrafodesc">
         El proposito de este sistema es agilizar todos los procesos que conlleva la empresa,
         asi como poder utilizarse de manera ordenada y sin la necesidad de traer de manera manual
-        datos utilizados en otras tablas
+        datos utilizados en otras tablas.
     </p>
+    <p>Ademas de poder visualizar los datos de manera ordenadas con filtros y tener una rapida busqueda</p>
     <h3> Menu de uso exclusivo para el jefe</h3>
     <p>Este menu contiene los solicitados pedidos por el Jefe</p>
     <div>
         <ul class="nav-second-level">
-            <li class="active"><a asp-controller="ControladoresdeResumen">Desempeño de Asesores de Ventas</a></li>
+            <li class="active"><a asp-controller="ControladoresdeResumen" asp-action="Desempeno">Desempeño de Asesores de Ventas</a></li>
             <li class="active"><a asp-controller="ControladoresdeResumen">Linea de Tiempo de un solo Auto </a></li>
             <li class="active"><a asp-controller="ControladoresdeResumen">Estadisticas de lo MAS</a></li>
             <li class="active"><a asp-controller="ControladoresdeResumen">Consumo y utilidades</a></li>
         </ul>
     </div>
 
-    <button id="hide">ocultar</button> <button id="show">mostrar</button>
+    <button id="hidec">ocultar ca</button> <button id="showc">mostrarca</button>
+    <button id="hidet">ocultar tb</button> <button id="showt">mostrar tb</button>
 
-    <div class="houdini">
+    <div>
         <h1>Catalogos</h1>
-        <div>
+        <div class="houdini">
             <ul class=" nav-second-level">
                 <li class="active"><a asp-controller="CAsesores" asp-action="Create"><span>Agregar o modificar Asesores, </span> </a></li>
                 <li class="active"><a asp-controller="CBancos" asp-action="Create"><span>Agregar Bancos Nuevos, </span> </a></li>
@@ -76,7 +91,7 @@
             </ul>
         </div>
         <h2>Tablas</h2>
-        <div>
+        <div class="houdini2">
             <ul class="nav-second-level">
                 <li class="active"><a asp-controller="TbAdecuaciones" asp-action="Create"><span>Bitacora de Adecuaciones </span> </a></li>
                 <li class="active"><a asp-controller="TbCarros" asp-action="Create"><span>Agregar Nueva Oferta  Toma</span> </a></li>

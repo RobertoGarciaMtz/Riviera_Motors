@@ -65,7 +65,19 @@ namespace Riviera_Business.Models
         public string NoPoderNotorial { get; set; }
         public string AutoridadEmite { get; set; }
 
-
-
+        /*---------------------------------------------------------------------*/
+        public int IdDatosPm { get; set; }
+        public string DenominacionRazonSocial { get; set; }
+        public DateTime? FechaConstitucion { get; set; }
+        public string NoActa { get; set; }
+        public string FechaRegistroPublicoComercio { get; set; }
+        public string NoRegistroPublicoComercio { get; set; }
+        
+        public string ActividadGiroMercantilObjeto { get; set; }
+        
+        public string NumInterior { get; set; }
+        public string NumExterior { get; set; }
+        public string NumTelefono { get; set; }
+        public string CorreoElectronico { get; set; }
     }
 }

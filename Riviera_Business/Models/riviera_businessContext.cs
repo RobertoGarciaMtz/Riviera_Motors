@@ -10,6 +10,10 @@ namespace Riviera_Business.Models
         {
         }
 
+        public riviera_businessContext()
+        {
+        }
+
         public riviera_businessContext(DbContextOptions<riviera_businessContext> options)
             : base(options)
         {

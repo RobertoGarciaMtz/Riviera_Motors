@@ -17,12 +17,12 @@ namespace Riviera_Business.Controllers
             var list = context.TbGastos.ToList();
             foreach(TbGastos ti in list)
             {
-                if(ti.IdTipoGasto== 1 || ti.IdTipoGasto==2)
+                if( ti.IdTipoGasto==2)
                 {
                     ti.IdEstadoNavigation = context.CEstados.Where(es => es.IdEstados == ti.IdEstado).FirstOrDefault();
                     ti.IdTipoGastoNavigation = context.CTipoGasto.Where(es => es.IdTipoGasto == ti.IdTipoGasto).FirstOrDefault();
                 }
-                else { 
+                if(ti.IdTipoGasto==3) { 
                 ti.IdCarroNavigation = context.TbCarros.Where(car => car.IdCarros == ti.IdCarro).FirstOrDefault();
                 ti.IdCarroNavigation.IdVersionNavigation = context.CVersionCarro.Where(tc => tc.IdVersionCarro == ti.IdCarroNavigation.IdVersion).FirstOrDefault();
                 ti.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation = context.CModeloCarro.Where(mod => mod.IdModeloCarro == ti.IdCarroNavigation.IdVersionNavigation.IdModelo).FirstOrDefault();

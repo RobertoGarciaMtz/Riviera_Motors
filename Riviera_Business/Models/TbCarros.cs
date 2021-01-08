@@ -5,6 +5,8 @@ namespace Riviera_Business.Models
 {
     public partial class TbCarros
     {
+        
+
         public TbCarros()
         {
             CCarroExtra = new HashSet<CCarroExtra>();

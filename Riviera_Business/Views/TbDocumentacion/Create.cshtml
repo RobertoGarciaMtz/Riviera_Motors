@@ -4,6 +4,25 @@
     ViewData["Title"] = "Create";
 }
 
+<script>
+    function ocultar(select) {
+        if (select.value == 1) {
+            document.getElementById("desp1").style.display = "none";
+            document.getElementById("desp11").style.display = "none";
+            document.getElementById("desp11").value = 0;
+            document.getElementById("desp2").style.display = "none";
+            document.getElementById("desp22").style.display = "none";
+            document.getElementById("desp22").value = 0;
+        }
+        if (select.value == 2) {
+            document.getElementById("desp1").style.display = "block";
+            document.getElementById("desp11").style.display = "block";
+            
+            document.getElementById("desp2").style.display = "block";
+            document.getElementById("desp22").style.display = "block";
+        }
+    }
+</script>
 <h1>Agregar</h1>
 
 <h4>Documentacion</h4>
@@ -13,7 +32,7 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <select asp-for="PersonaFM">
+                <select asp-for="PersonaFM" onchange="ocultar(this)" class="form-control">
                     <option value="1">Fisica</option>
                     <option value="2">Moral/Representante</option>
                 </select>
@@ -21,7 +40,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdentificacionVig" class="control-label"></label>
-                <select asp-for="IdentificacionVig">
+                <select asp-for="IdentificacionVig" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
@@ -29,7 +48,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Curp" class="control-label"></label>
-                <select asp-for="Curp">
+                <select asp-for="Curp" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
@@ -37,7 +56,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="CifSat" class="control-label"></label>
-                <select asp-for="CifSat">
+                <select asp-for="CifSat" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
@@ -45,7 +64,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ComprobDomicilio" class="control-label"></label>
-                <select asp-for="ComprobDomicilio">
+                <select asp-for="ComprobDomicilio" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
@@ -53,23 +72,25 @@
             </div>
             <div class="form-group">
                 <label asp-for="ConocimientoDuenoBeneficiario" class="control-label"></label>
-                <select asp-for="ConocimientoDuenoBeneficiario">
+                <select asp-for="ConocimientoDuenoBeneficiario" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
                 <span asp-validation-for="ConocimientoDuenoBeneficiario" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ActaConstitutivaBoletaRpc" class="control-label"></label>
-                <select asp-for="ActaConstitutivaBoletaRpc">
+                <label asp-for="ActaConstitutivaBoletaRpc" id="desp1" class="control-label"></label>
+                <select asp-for="ActaConstitutivaBoletaRpc" id="desp11" class="form-control">
+                    <option value="0">---</option>
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
                 <span asp-validation-for="ActaConstitutivaBoletaRpc" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PoderLegarExp" class="control-label"></label>
-                <select asp-for="PoderLegarExp">
+                <label asp-for="PoderLegarExp" id="desp2" class="control-label"></label>
+                <select asp-for="PoderLegarExp" id="desp22" class="form-control">
+                    <option value="0">----</option>
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
@@ -77,7 +98,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ConstanciaConocimiento" class="control-label"></label>
-                <select asp-for="ConstanciaConocimiento">
+                <select asp-for="ConstanciaConocimiento" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>

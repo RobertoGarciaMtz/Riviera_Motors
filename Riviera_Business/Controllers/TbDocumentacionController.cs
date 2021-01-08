@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Riviera_Business.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Riviera_Business.Controllers
 {
@@ -28,7 +29,7 @@ namespace Riviera_Business.Controllers
         public ActionResult Details(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            ViewBag.Datospersona = context.TbDatosPersona.Select(dp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = dp.Curp, Value = dp.IdDatosPersona.ToString() });
+            ViewBag.Datospersona = context.TbDatosPersona.Select(dp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = dp.Nombre, Value = dp.IdDatosPersona.ToString() });
             ViewBag.Estado = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
             if (context.TbDocumentacion.Where(le => le.IdDocumentos == id).First() is TbDocumentacion e)
             {
@@ -41,8 +42,10 @@ namespace Riviera_Business.Controllers
         public ActionResult Create()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            ViewBag.Datospersona = context.TbDatosPersona.Select(dp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = dp.Curp, Value = dp.IdDatosPersona.ToString() });
             ViewBag.Estado = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
+          var lista = context.TbDatosPersona.Where(x => x.IdDatosPersona>= 0)
+          .Select(x => new { nombrecc = x.IdDatosPersona.ToString(), desc = x.Nombre + "Ap:" + x.ApellidoPaterno + "Am:" + x.ApellidoMaterno+ "Curp:" + x.Curp });
+        ViewBag.Datospersona = new SelectList(lista, "nombrecc", "desc");
             return View();
         }
 

@@ -74,7 +74,7 @@ namespace Riviera_Business.Controllers
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Carros = context.TbCarros.Select(car => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = car.NoSerie, Value = car.IdCarros.ToString() });
             ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
-            if(context.TbPapelesCarro.Where(pa=>pa.IdCarro ==id).First() is TbPapelesCarro e)
+            if(context.TbPapelesCarro.Where(pa=>pa.IdPapelesCarro ==id).First() is TbPapelesCarro e)
             {
                 return View(e);
             }

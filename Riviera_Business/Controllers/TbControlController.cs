@@ -287,5 +287,64 @@ namespace Riviera_Business.Controllers
                 return View();
             }
         }
+
+         public ActionResult LlenadoExtra()
+        {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
+            ViewBag.Formapago = context.CFormaPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdFormaPago.ToString() });
+            ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult LlenadoExtra(TbControl a)
+        {
+            try
+            {
+                var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+                TbControl copia = new TbControl();
+                copia.Anticipo = a.Anticipo;
+                copia.AnticipoSN = a.AnticipoSN;
+                copia.BajaCambProp = a.BajaCambProp;
+                copia.CantidadDebida = a.CantidadDebida;
+                copia.ClienteVenta = a.ClienteVenta;
+                copia.CompraVenta = a.CompraVenta;
+                copia.ComprobantesPago = a.ComprobantesPago;
+                copia.ComprobarId = a.ComprobarId;
+                copia.ConstanciaFiscal = a.ConstanciaFiscal;
+                copia.Contrato = a.Contrato;
+                copia.CurpPf = a.CurpPf;
+                copia.Debiendo = a.Debiendo;
+                copia.FechaES = a.FechaES;
+                copia.FechaFactura = a.FechaFactura;
+                copia.FechaFacturaToma = a.FechaFacturaToma;
+                copia.FolioFiscal = a.FolioFiscal;
+                copia.GastoTotalEnCarro = a.GastoTotalEnCarro;
+                copia.IdAsesorVenta = a.IdAsesorVenta;
+                copia.IdBanco = a.IdBanco;
+                copia.IdCarros = a.IdCarros;
+                copia.IdCliente = a.IdCliente;
+                copia.IdCliente = a.IdCliente;
+                copia.IdEstado = a.IdEstado;
+                copia.IdFormaPago = a.IdFormaPago;
+                copia.Iva = a.Iva;
+                copia.LeyAntilavado = a.LeyAntilavado;
+                copia.MetodoPago = a.MetodoPago;
+                copia.NoFacturaArv = a.NoFacturaArv;
+                copia.PagadaCobrada = a.PagadaCobrada;
+                copia.PrecioPactado = a.PrecioPactado;
+                copia.SubTotal = a.SubTotal;
+                copia.TipoVenta = a.TipoVenta;
+                copia.Total = a.Total;
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                Console.WriteLine("Hubo un error");
+                return View(a);
+            }
+        }
     }
 }

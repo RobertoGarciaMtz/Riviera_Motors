@@ -19,8 +19,10 @@ namespace Riviera_Business.Controllers
             foreach (CGuiaAutometricaEbc ti in list)
             {
                 ti.IdVersionNavigation = context.CVersionCarro.Where(te => te.IdVersionCarro == ti.IdVersion).FirstOrDefault();
-                
+                ti.IdVersionNavigation.IdModeloNavigation = context.CModeloCarro.Where(te => te.IdModeloCarro == ti.IdVersionNavigation.IdModelo).FirstOrDefault();
+                ti.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation = context.CMarcaCarro.Where(te => te.IdMarcaCarro == ti.IdVersionNavigation.IdModeloNavigation.IdMarca).FirstOrDefault();
                 ti.IdEstadoNavigation = context.CEstados.Where(te => te.IdEstados == ti.IdEstado).FirstOrDefault();
+
             }
             return View(list);
         }
@@ -135,7 +137,7 @@ namespace Riviera_Business.Controllers
             ViewBag.Version = context.CVersionCarro.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.VersionCarro, Value = s.IdVersionCarro.ToString() });
             if (context.CGuiaAutometricaEbc.Where(s => s.IdGuiaAutometrica == id).First() is CGuiaAutometricaEbc e)
             {
-                return View(id);
+                return View(e);
             }
             return NotFound();
         }

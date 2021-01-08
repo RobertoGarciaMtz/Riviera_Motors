@@ -4,12 +4,24 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Lista Seguimiento</h1>
 
 <p>
     <a asp-action="Create">Agregar nuevo muestreo</a>
 </p>
-<table class="table" id="dataTable">
+<table border="0" cellspacing="5" cellpadding="5">
+    <tbody>
+        <tr>
+            <td>Telefono:</td>
+            <td><input type="text" id="min" name="min"></td>
+        </tr>
+        <tr>
+            <td>Fecha:</td>
+            <td><input type="text" id="max" name="max"></td>
+        </tr>
+    </tbody>
+</table>
+<table class="table" id="table-seguimiento">
     <thead>
         <tr>
             <th>
@@ -225,3 +237,32 @@
 }
     </tbody>
 </table>
+
+
+<script>
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            var min = parseInt($('#min').val(), 10);
+            var max = parseInt($('#max').val(), 10);
+            var age = parseFloat(data[1]) || 0; // use data for the age column
+
+            if ((isNaN(min) && isNaN(max)) ||
+                (isNaN(min) && age <= max) ||
+                (min <= age && isNaN(max)) ||
+                (min <= age && age <= max)) {
+                return true;
+            }
+            return false;
+        }
+    );
+
+    $(document).ready(function () {
+        var table = $("#table-seguimiento").DataTable({
+            scrollX: "true"
+        });
+        $('#min, #max').keyup(function () {
+            table.draw();
+        });
+    });
+
+</script>

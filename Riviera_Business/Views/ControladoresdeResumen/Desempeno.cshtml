@@ -1,4 +1,4 @@
-﻿@model Riviera_Business.Models.TbSeguimiento
+﻿@model IEnumerable<Riviera_Business.Models.TbSeguimiento>
 
 @{
     ViewData["Title"] = "Desempeno";
@@ -6,134 +6,144 @@
 
 <h1>Desempeno</h1>
 
-<div>
-    <h4>TbSeguimiento</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NombreCompleto)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NombreCompleto)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefono)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Telefono)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Correo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Correo)
-        </dd>
-
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Fecha)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Fecha)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Sexo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Sexo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Contesto)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Contesto)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cita)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cita)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaCita)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaCita)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Asistio)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Asistio)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Toma)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Toma)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PruebaManejo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PruebaManejo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdTipoCompra)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdTipoCompra)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Venta)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Venta)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Anticipo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Anticipo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CantidadAnticipo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CantidadAnticipo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Comentarios)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Comentarios)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CMedioPublicitarioNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CMedioPublicitarioNavigation.IdMedioPublicitario)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdAsesorNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdAsesorNavigation.IdAsesores)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdCarroNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdCarroNavigation.IdCarros)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdEstadoNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdEstadoNavigation.IdEstados)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.IdSeguimiento">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sexo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contesto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cita)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCita)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Asistio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Toma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PruebaManejo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTipoCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Venta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anticipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadAnticipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comentarios)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CMedioPublicitarioNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdAsesorNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCarroNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sexo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Contesto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCita)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Asistio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Toma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PruebaManejo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTipoCompra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Venta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anticipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadAnticipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comentarios)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CMedioPublicitarioNavigation.IdMedioPublicitario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdAsesorNavigation.IdAsesores)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdCarros)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdSeguimiento">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdSeguimiento">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdSeguimiento">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

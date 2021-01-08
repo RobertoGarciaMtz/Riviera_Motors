@@ -26,11 +26,12 @@ namespace Riviera_Business.Controllers
 
                 /*
                  if(ti.TipoCompraCanal== 1){//1 Interagencias
-                    ti.IdProveedor= context.TbDatosPersona.Where=(dp=>dp.Id)
+                    ti.IdProveedor= context.TbDatosPersona.Where(dp => dp.IdDatosPersona == ti.IdProveedor).FirstOrDefault();
                 }
-                if(ti.TipoCompraCanal ==2){ // 2 Retail
-                }
-                 */
+                
+               if(ti.TipoCompraCanal ==2){ // 2 Retail
+               }
+                */
             }
             return View(list);
         }
@@ -47,8 +48,8 @@ namespace Riviera_Business.Controllers
             }
             return NotFound();
         }
-        /*-------------------------------------------------------
-         */
+        /*----------------------------------------_________________________________________---------------
+          Seccion requerida para recuperar los datos de los proveedores*/
         [HttpGet]
         public ActionResult Extras()
         {
@@ -57,18 +58,47 @@ namespace Riviera_Business.Controllers
             ViewBag.Version = context.CVersionCarro.Select(ma => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ma.VersionCarro, Value = ma.IdVersionCarro.ToString() });
             ViewBag.Modelo = context.CModeloCarro.Select(mo => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = mo.ModeloCarro, Value = mo.IdModeloCarro.ToString() });
             ViewBag.Marca = context.CMarcaCarro.Select(mo => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = mo.NombreMarca, Value = mo.IdMarcaCarro.ToString() });
+            
             return View();
         }
+
+        [HttpPost]
+        public List<ModeloApoyo> getProveedores(int tipo) {
+            List<ModeloApoyo> list = new List<ModeloApoyo>();
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            if (tipo == 1)
+            {
+                var lista = context.TbDatosPersonaMoral.ToList();
+                foreach (TbDatosPersonaMoral campo in lista)
+                {
+                    var apoyo = new ModeloApoyo();
+                    apoyo.tipo = campo.IdDatosPm;
+                    apoyo.valor = campo.DenominacionRazonSocial;
+                    list.Add(apoyo);
+                }
+            }
+            else {
+                var lista = context.TbDatosPersona.ToList();
+                foreach (TbDatosPersona campo in lista)
+                {
+                    var apoyo = new ModeloApoyo();
+                    apoyo.tipo = campo.IdDatosPersona;
+                    apoyo.valor = campo.Rfc;
+                    list.Add(apoyo);
+                }
+            }
+
+            return list;
+        }
+
         [HttpPost]
         public ActionResult Extras(ZMMVCarro copia)
         {
             try
             {
                 var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-                var carrito = context.TbCarros.LastOrDefault();
+                
                 TbCarros objectEdit= new TbCarros();
-                if (carrito != null)
-                {
                     objectEdit.Modelo = copia.Modelo;
                     objectEdit.Antiguedad = copia.Antiguedad;
                     objectEdit.TipoCompraCanal = copia.TipoCompraCanal;
@@ -94,16 +124,17 @@ namespace Riviera_Business.Controllers
                     /*------------------------------------------------------------*/
                     context.TbCarros.Add(objectEdit);
                     context.SaveChanges();
-                }
+                
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch(Exception e)
             {
+                Console.WriteLine(e);
                 return View(copia);
             }
         }
         /*
-         -------------------------------------------------*/
+         --------------------------__________________________________________-----------------------*/
         // GET: HomeController1/Create
         public ActionResult Create()
         {

@@ -29,8 +29,15 @@
                 @Html.DisplayNameFor(model => model.Trasl)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TbCarrosIdCarrosNavigation)
+                Num Serie
             </th>
+            <th>
+                Version
+            </th>
+            <th>
+                Modelo
+            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -52,8 +59,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Trasl)
             </td>
+            <td>@Html.DisplayFor(modelTtem => item.TbCarrosIdCarrosNavigation.NoSerie)</td>
             <td>
-                @Html.DisplayFor(modelItem => item.TbCarrosIdCarrosNavigation.NoSerie)
+                @Html.DisplayFor(modelItem => item.TbCarrosIdCarrosNavigation.IdVersionNavigation.VersionCarro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TbCarrosIdCarrosNavigation.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdPreAcondicionamiento">Corregir</a> |

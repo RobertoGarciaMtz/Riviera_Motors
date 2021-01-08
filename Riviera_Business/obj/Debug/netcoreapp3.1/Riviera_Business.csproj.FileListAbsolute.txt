@@ -305,7 +305,6 @@ C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\Dashboards\Dashboard_4_1.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\Dashboards\Dashboard_5.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\Home\Ejemplo.cshtml.g.cs
-C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\ControladoresdeResumen\Desempeno.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbControl\VentaRetail.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbControl\IndexdeCompras.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbMovimientosBancarios\Index.cshtml.g.cs
@@ -315,3 +314,6 @@ C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbCarrosTransaccion\Create.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbCarrosTransaccion\Edit.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbCarros\Extras.cshtml.g.cs
+C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\ControladoresdeResumen\CuentasCPO.cshtml.g.cs
+C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\ControladoresdeResumen\Elmas.cshtml.g.cs
+C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\ControladoresdeResumen\Desempeno.cshtml.g.cs
