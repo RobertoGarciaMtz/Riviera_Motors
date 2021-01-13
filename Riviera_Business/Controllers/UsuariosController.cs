@@ -95,7 +95,12 @@ namespace Riviera_Business.Controllers
         // GET: HomeController1/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            if (context.Usuarios.Where(tc => tc.IdUsuarios == id).First() is Usuarios e)
+            {
+                return View(e);
+            }
+            return NotFound();
         }
 
         // POST: HomeController1/Delete/5

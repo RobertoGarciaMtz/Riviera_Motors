@@ -51,9 +51,6 @@
                 @Html.DisplayNameFor(model => model.PagadaCobrada)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GastoTotalEnCarro)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.IdCliente)
             </th>
             <th>
@@ -69,7 +66,7 @@
                 @Html.DisplayNameFor(model => model.Usuarios)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MetodoPago)
+                @Html.DisplayNameFor(model => model.IdMetodoPago)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FechaES)
@@ -111,7 +108,7 @@
                 @Html.DisplayNameFor(model => model.IdEstadoNavigation)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdFormaPagoNavigation)
+                Metodo Pago
             </th>
             <th></th>
         </tr>
@@ -153,9 +150,6 @@
                 @Html.DisplayFor(modelItem => item.PagadaCobrada)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.GastoTotalEnCarro)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.IdCliente)
             </td>
             <td>
@@ -171,7 +165,7 @@
                 @Html.DisplayFor(modelItem => item.Usuarios)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MetodoPago)
+                @Html.DisplayFor(modelItem => item.FormaPago)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FechaES)
@@ -213,7 +207,7 @@
                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdFormaPagoNavigation.Nombre)
+                @Html.DisplayFor(modelItem => item.IdMetodoPagoNavigation.Nombre)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdMovimiento">Edit</a> |

@@ -29,8 +29,8 @@
                 <label asp-for="TipoCompraCanal" class="control-label"></label>
                 <select asp-for="TipoCompraCanal" class="form-control">
                     <option value="0">------------</option>
-                    <option value="1">Inter Agencias</option>
-                    <option value="2">Retail</option>
+                    <option value="1">Flotilla</option>
+                    <option value="2">Individual</option>
                 </select>
                 <span asp-validation-for="TipoCompraCanal" class="text-danger"></span>
             </div>
@@ -41,6 +41,17 @@
             </div>
             <!-----------------------------
     -------------------------------->
+
+            <div class="form-group">
+                <label  class="control-label">Seleccionar Marca</label>
+                <select onchange="marcaChanged(this)" class="form-control" asp-items="ViewBag.Marca"></select>
+                <span  class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label  class="control-label">Seleccionar Modelo</label>
+                <select id="IdModelo" onchange="modeloChange(this)" class="form-control" asp-items="ViewBag.Modelo"></select>
+                <span  class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="IdVersion" class="control-label"></label>
                 <select asp-for="IdVersion" class="form-control" asp-items="ViewBag.Version"></select>
@@ -58,7 +69,7 @@
                 <span asp-validation-for="Transmicion" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Modelo" class="control-label"></label>
+                <label asp-for="Modelo" class="control-label">Año</label>
                 <input asp-for="Modelo" class="form-control" />
                 <span asp-validation-for="Modelo" class="text-danger"></span>
             </div>
@@ -67,32 +78,6 @@
                 <label asp-for="Kms" class="control-label"></label>
                 <input asp-for="Kms" class="form-control" />
                 <span asp-validation-for="Kms" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="ColorExt" class="control-label"></label>
-                <input asp-for="ColorExt" class="form-control" />
-                <span asp-validation-for="ColorExt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ColorInt" class="control-label"></label>
-                <input asp-for="ColorInt" class="form-control" />
-                <span asp-validation-for="ColorInt" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Origen" class="control-label"></label>
-                <input asp-for="Origen" class="form-control" />
-                <span asp-validation-for="Origen" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DuenoAnterior" class="control-label"></label>
-                <input asp-for="DuenoAnterior" class="form-control" />
-                <span asp-validation-for="DuenoAnterior" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Ubicacion" class="control-label"></label>
-                <input asp-for="Ubicacion" class="form-control" />
-                <span asp-validation-for="Ubicacion" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PropuestaCliente" class="control-label"></label>
@@ -107,30 +92,9 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="FolioFiscal" class="control-label"></label>
-                <input asp-for="FolioFiscal" class="form-control" />
-                <span asp-validation-for="FolioFiscal" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaFactToma" class="control-label"></label>
-                <input asp-for="FechaFactToma" class="form-control" />
-                <span asp-validation-for="FechaFactToma" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Antiguedad" class="control-label"></label>
-                <input asp-for="Antiguedad" class="form-control" />
-                <span asp-validation-for="Antiguedad" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
                 <label asp-for="NoSerie" class="control-label"></label>
                 <input asp-for="NoSerie" class="form-control" />
                 <span asp-validation-for="NoSerie" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NoMotor" class="control-label"></label>
-                <input asp-for="NoMotor" class="form-control" />
-                <span asp-validation-for="NoMotor" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="NumEconomicoOpc" class="control-label"></label>
@@ -146,15 +110,6 @@
                 <label asp-for="ClaveVehicular" class="control-label"></label>
                 <input asp-for="ClaveVehicular" class="form-control" />
                 <span asp-validation-for="ClaveVehicular" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdEstado" class="control-label"></label>
-                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estados"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Usuario" class="control-label"></label>
-                <input asp-for="Usuario" class="form-control" />
-                <span asp-validation-for="Usuario" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Agregar" class="btn btn-primary" />
@@ -174,6 +129,12 @@
 }*@
 
 <script>
+    $(document).ready(function (){
+        let listan = marcachanged();
+        let listan2 = modeloChange();
+
+        
+    })
     function marcaChanged(select) {
         var idSelected = select.value;
         $.ajax({
@@ -183,9 +144,11 @@
             success: function (e) {
                 let selectModelo = document.getElementById("IdModelo");
                 let html = "";
+                let nlista = e;
                 for (var i = 0; i < e.length; i++) {
                     html += "<option value ='" + e[i].idModeloCarro + "' >" + e[i].modeloCarro + "</option>";
                 }
+                return e;
                 selectModelo.innerHTML = html;
             }
         });
@@ -207,4 +170,7 @@
             }
         });   
     }
+
+
+
 </script>

@@ -182,10 +182,6 @@ C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\CCarroExtras\Index.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\CBancos\Details.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\CEstados\Details.cshtml.g.cs
-C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\CFormaPago\Index.cshtml.g.cs
-C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\CFormaPago\Create.cshtml.g.cs
-C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\CFormaPago\Details.cshtml.g.cs
-C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\CFormaPago\Edit.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\CGuiaAutometricaEbc\Index.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\CGuiaAutometricaEbc\Edit.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\CGuiaAutometricaEbc\Details.cshtml.g.cs
@@ -317,3 +313,6 @@ C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\ControladoresdeResumen\CuentasCPO.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\ControladoresdeResumen\Elmas.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\ControladoresdeResumen\Desempeno.cshtml.g.cs
+C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\Login_\Index.cshtml.g.cs
+C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\Signup\Index.cshtml.g.cs
+C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Delete.cshtml.g.cs

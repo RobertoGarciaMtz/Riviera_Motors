@@ -49,8 +49,8 @@
                 <label asp-for="FisicaOMoral" id="FM" class="control-label">Seleccionar si es unica o Representante</label>
                 <select asp-for="FisicaOMoral" class="form-control" onchange="esconderdemas(this)">
                     <option value="0">-----</option>
-                    <option value="1">Persona</option>
-                    <option value="2">Representante</option>
+                    <option value="1">Persona Fisica</option>
+                    <option value="2">Representante Empresa</option>
                 </select>
                 <span asp-validation-for="FisicaOMoral" class="text-danger"></span>
             </div>

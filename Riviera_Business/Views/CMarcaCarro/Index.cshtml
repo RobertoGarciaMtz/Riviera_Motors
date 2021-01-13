@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Agregar Marca</a>
 </p>
-<p>Todas las marcas manejadas por la empresa</p>
+<p>Todas las marcas manejadas por la empresa (No son inventario)</p>
 <table class="table" id="dataTable">
     <thead>
         <tr>
@@ -39,3 +39,5 @@
 }
     </tbody>
 </table>
+<p>Para ir a inventario dar click en el enlace:</p>
+<a asp-controller="TbCarros" asp-action="Index">Inventario</a>

@@ -75,12 +75,12 @@
             </div>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Toma" class="control-label"></label>
+                <label asp-for="Toma" class="control-label">Precio de toma</label>
                 <input asp-for="Toma" class="form-control" id="valor1" />
                 <span asp-validation-for="Toma" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Venta" class="control-label"></label>
+                <label asp-for="Venta" class="control-label">Precio de Venta</label>
                 <input asp-for="Venta" class="form-control" id="valor2" />
                 <span asp-validation-for="Venta" class="text-danger"></span>
             </div>
@@ -106,17 +106,19 @@
                 <input asp-for="Fecha" class="form-control" />
                 <span asp-validation-for="Fecha" class="text-danger"></span>
             </div>
+            <!--<div class="form-group">
+        <label class="control-label">Seleccionar Marca</label>
+        <select class="form-control" id="Marcacarro" onchange="obtMarca(this)" asp-items="ViewBag.Marca"></select>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Seleccionar Modelo</label>
+        <select class="form-control" id="IdModelo" onchange="obtVersion(this)"></select>
+    </div>
+        -->
             <div class="form-group">
-                <label class="control-label">Seleccionar Marca</label>
-                <select class="form-control" id="Marcacarro" onchange="obtMarca(this)" asp-items="ViewBag.Marca"></select>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Seleccionar Modelo</label>
-                <select class="form-control" id="IdModelo" onchange="obtVersion(this)"></select>
-            </div>
-            <div class="form-group">
+                <p>Seleccionar el Automovil al que pertenece</p>
                 <label asp-for="IdVersion" class="control-label"></label>
-                <select asp-for="IdVersion" id="IdVersion" class="form-control"></select>
+                <select asp-for="IdVersion" id="IdVersion" class="form-control" asp-items="ViewBag.Version"></select>
             </div>
 
             <div class="form-group">

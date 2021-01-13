@@ -26,10 +26,14 @@ namespace Riviera_Business.Models
         public float? CantidadAnticipo { get; set; }
         public string Comentarios { get; set; }
         public int? IdEstado { get; set; }
+        public int? DejoCarroCuenta { get; set; }
+        public int? AnoAutomovil { get; set; }
+        public int? Version { get; set; }
 
         public virtual CMedioPublicitario CMedioPublicitarioNavigation { get; set; }
         public virtual CAsesores IdAsesorNavigation { get; set; }
         public virtual TbCarros IdCarroNavigation { get; set; }
         public virtual CEstados IdEstadoNavigation { get; set; }
+        public virtual CVersionCarro VersionNavigation { get; set; }
     }
 }

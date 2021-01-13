@@ -9,12 +9,20 @@
 <p>
     <a asp-action="Create">Agregar Adecuaciones</a>
 </p>
+<table border="0" cellspacing="5" cellpadding="5">
+    <tbody>
+        <tr>
+            <td>Fecha:</td>
+            <td><input type="text" id="min" name="min"></td>
+        </tr>
+    </tbody>
+</table>
 <p>Lista de adecuaciones realizadas para los automoviles seleccionados</p>
 <table class="table" id="dataTable">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Fecha)
+                Fecha Registro
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LavadoVestiduras)

@@ -1,5 +1,5 @@
 ﻿<!-- Navbar -->
-
+<script></script>
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -142,7 +142,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-                <a asp-controller="Usuarios" asp-action="Create" class="d-block" id="nombreusuario">Usuario</a>
+                <a asp-controller="Usuarios" asp-action="Index" class="d-block" id="nombreusuario">Lista Usuario</a>
+            </div>
+            <div class="info">
+                <a asp-controller="Signup" asp-action="Index" class="d-block" id="nombreusuario">Usuario</a>
             </div>
         </div>
 
@@ -250,7 +253,7 @@
                         <li class="nav-item">
                             <a asp-controller="TbDocumentacion" asp-action="Create" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Llenar Documentacion Personas</p>
+                                <p>Documentacion Clientes</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -377,25 +380,25 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a asp-controller="CuentasPendientesCP" class="nav-link">
+                            <a asp-controller="CuentasPendientesCP" asp-action="CuentasCobrar" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Cuentas por cobrar</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-controller="CuentasPendientesCP" class="nav-link">
+                            <a asp-controller="CuentasPendientesCP"  asp-action="CuentasPagar" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Cuentas por Pagar</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-controller="CuentasPendientesCP" class="nav-link">
+                            <a asp-controller="CuentasPendientesCP" asp-action="OtrasCuentas" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Otras cuentas</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a asp-controller="CuentasPendientesCP" class="nav-link">
+                            <a asp-controller="CuentasPendientesCP" asp-action="Index" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Todas las cuentas</p>
                             </a>

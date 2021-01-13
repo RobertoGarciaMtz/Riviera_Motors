@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Riviera_Business.Models;
 
+using Microsoft.AspNetCore.Authorization;
+
 namespace Riviera_Business.Controllers
 {
     public class TbGastosController : Controller

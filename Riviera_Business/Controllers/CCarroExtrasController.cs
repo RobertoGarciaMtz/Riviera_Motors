@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Riviera_Business.Models;
+using Microsoft.AspNetCore.Authorization;
 public class CCarroExtrasController : Controller
 {
     // GET: HomeController1
+    
     public ActionResult Index()
     {
         var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -27,6 +29,7 @@ public class CCarroExtrasController : Controller
     }
 
     // GET: HomeController1/Details/5
+    
     public ActionResult Details(int id)
     {
         var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -40,6 +43,7 @@ public class CCarroExtrasController : Controller
 
 
     // GET: HomeController1/Create
+    
     public ActionResult Create()
     {
         var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -71,6 +75,7 @@ public class CCarroExtrasController : Controller
     }
 
     // GET: HomeController1/Edit/5
+    
     public ActionResult Edit(int id)
     {
         var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;

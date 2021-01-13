@@ -6,18 +6,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Riviera_Business.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Riviera_Business.Controllers
 {
     public class CuentasPendientesCPController : Controller
     {
         // GET: HomeController1
+        
         public ActionResult Index()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             var list = context.CuentasPendientesCP.ToList();
             foreach (CuentasPendientesCP ti in list)
             {
+                
                 ti.IdCarroNavigation = context.TbCarros.Where(car => car.IdCarros == ti.IdCarro).FirstOrDefault();
                 ti.IdConceptoNavigation = context.CConcepto.Where(con => con.IdCConcepto == ti.IdConcepto).FirstOrDefault();
                     ti.IdEstadoNavigation = context.CEstados.Where(te => te.IdEstados == ti.IdEstado).FirstOrDefault();
@@ -25,11 +28,13 @@ namespace Riviera_Business.Controllers
                 ti.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation = context.CModeloCarro.Where(mod => mod.IdModeloCarro == ti.IdCarroNavigation.IdVersionNavigation.IdModelo).FirstOrDefault();
                 ti.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation = context.CMarcaCarro.Where
                     (mar => mar.IdMarcaCarro == ti.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarca).FirstOrDefault();
+                
             }
             return View(list);
         }
 
         // GET: HomeController1/Details/5
+        
         public ActionResult Details(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -42,6 +47,7 @@ namespace Riviera_Business.Controllers
         }
 
         // GET: HomeController1/Create
+        
         public ActionResult CuentasCobrar()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -52,7 +58,7 @@ namespace Riviera_Business.Controllers
             ViewBag.Caracarro = new SelectList(lista, "noserie", "desc");
             return View();
         }
-
+        
         public ActionResult CuentasPagar()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -63,6 +69,7 @@ namespace Riviera_Business.Controllers
             ViewBag.Caracarro = new SelectList(lista, "noserie", "desc");
             return View();
         }
+        
         public ActionResult OtrasCuentas()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -93,8 +100,9 @@ namespace Riviera_Business.Controllers
         }
 
 
-        
+
         // GET: HomeController1/Edit/5
+        
         public ActionResult Edit(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;

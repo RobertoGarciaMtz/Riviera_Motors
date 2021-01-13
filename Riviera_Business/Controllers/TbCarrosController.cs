@@ -174,13 +174,22 @@ namespace Riviera_Business.Controllers
 
         // POST: HomeController1/Create
         [HttpPost]
-        public List<CModeloCarro> RecuperarModelo1(int id){
-            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            List<CModeloCarro> cModelos = new List<CModeloCarro>();
+        public List<CModeloCarro> RecuperarModelo1(int id) {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;            
+            List<CModeloCarro> listaCorrecta = new List<CModeloCarro>();
+            var lista = context.CModeloCarro.ToList();
+            /*foreach(CModeloCarro a in lista){
+                if(a.IdMarca == id)
+                {
+                    listaCorrecta.Add(a);
+                }
+            }
+            Console.WriteLine("Imprimir lista correcta");
+            Console.WriteLine(listaCorrecta);
+            return listaCorrecta;*/
             var list = context.CModeloCarro.Where(x => x.IdMarca == id).ToList();
             Console.WriteLine(list);
-            foreach (CModeloCarro v in list)
-            {
+            foreach (CModeloCarro v in list){
                 v.IdMarcaNavigation = null;
                 v.CVersionCarro = null;
             }
@@ -188,18 +197,25 @@ namespace Riviera_Business.Controllers
         }
 
         [HttpPost]
-        public List<CVersionCarro> RecuperarVersion1(int id)
-        {
+        public List<CVersionCarro> RecuperarVersion1(int id) {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             List<CVersionCarro> cVersion = new List<CVersionCarro>();
+            var lista = context.CVersionCarro.ToList();
+            /*
+              foreach(CVersionCarro a in lista){
+                  if(a.IdModelo== id)
+                  {
+                      cVersion.Add(a);
+                  }
+              }
+            return cVersion;*/
             var list = context.CVersionCarro.Where(y => y.IdModelo == id).ToList();
-            foreach (CVersionCarro v in list)
-            {
-                v.IdModeloNavigation = null;
-                v.CGuiaAutometricaEbc = null;
-                v.TbCarros = null;
-            }
-            Console.WriteLine(list);
+             foreach (CVersionCarro v in list){
+                 v.IdModeloNavigation = null;
+                 v.CGuiaAutometricaEbc = null;
+                 v.TbCarros = null;
+             }
+            Console.WriteLine(cVersion);
             return list;
         }
 

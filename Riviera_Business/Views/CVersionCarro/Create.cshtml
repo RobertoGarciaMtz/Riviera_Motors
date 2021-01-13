@@ -14,15 +14,15 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label class="control-label">Marca</label>
+                <label class="control-label">Seleccionar Marca</label>
                 <select id="marcacarro" onchange="obtmarca(this)"  class="form-control" asp-items="ViewBag.Marcas"></select>
             </div>
             <div class="form-group">
-                <label asp-for="IdModelo" class="control-label">Modelo</label>
+                <label asp-for="IdModelo" class="control-label">Seleccionar Modelo</label>
                 <select asp-for="IdModelo" class ="form-control" id="IdModelo" asp-items="ViewBag.Modelo"></select>
             </div>
             <div class="form-group">
-                <label asp-for="VersionCarro" class="control-label"></label>
+                <label asp-for="VersionCarro" class="control-label">Seleccionar Version</label>
                 <input asp-for="VersionCarro" class="form-control" />
                 <span asp-validation-for="VersionCarro" class="text-danger"></span>
             </div>

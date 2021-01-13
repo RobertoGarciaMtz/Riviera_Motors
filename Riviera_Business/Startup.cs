@@ -24,7 +24,19 @@ namespace Riviera_Business
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddSession();
+
             services.AddControllersWithViews();
+
+            services.AddAuthentication("PKAT")
+                .AddCookie("PKAT", options => {
+                    options.ReturnUrlParameter = "returnURL";
+                    options.ExpireTimeSpan = TimeSpan.FromDays(1);
+                    options.LoginPath = "/Login/Index";
+                    options.LogoutPath = "/Login/Logout";
+                });
+
             services.Add(new ServiceDescriptor(typeof(Models.riviera_businessContext),
          new Models.riviera_businessContext(V: Configuration.GetConnectionString("riviera_business"))));
         }
@@ -45,6 +57,8 @@ namespace Riviera_Business
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseSession();
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -53,7 +67,7 @@ namespace Riviera_Business
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Login_}/{action=Index}/{id?}");
             });
         }
     }

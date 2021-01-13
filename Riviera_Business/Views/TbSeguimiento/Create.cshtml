@@ -60,37 +60,37 @@
         ------------------------
         -------------------------->
             <div class="form-group">
-                <label asp-for="Contesto" class="control-label"></label>
-                <select asp-for="Contesto">
+                <label asp-for="Contesto" class="control-label">Verificacion Telefonica</label>
+                <select asp-for="Contesto" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
                 <span asp-validation-for="Contesto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Cita" class="control-label"></label>
-                <select asp-for="Cita">
+                <label asp-for="Cita" class="control-label">Cita Confirmada</label>
+                <select asp-for="Cita" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
                 <span asp-validation-for="Cita" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FechaCita" class="control-label"></label>
+                <label asp-for="FechaCita" class="control-label">Cita Agendada</label>
                 <input asp-for="FechaCita" class="form-control" />
                 <span asp-validation-for="FechaCita" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Asistio" class="control-label"></label>
-                <select asp-for="Asistio">
+                <select asp-for="Asistio" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
                 <span asp-validation-for="Asistio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Toma" class="control-label"></label>
-                <select asp-for="Toma">
+                <label asp-for="Toma" class="control-label">Deja Vehiculo a Cuenta</label>
+                <select asp-for="Toma" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
@@ -98,23 +98,23 @@
             </div>
             <div class="form-group">
                 <label asp-for="PruebaManejo" class="control-label"></label>
-                <select asp-for="PruebaManejo">
+                <select asp-for="PruebaManejo" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
                 <span asp-validation-for="PruebaManejo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdTipoCompra" class="control-label"></label>
-                <select asp-for="IdTipoCompra">
-                    <option value="1">Retail</option>
-                    <option value="2">InterAgencias</option>
+                <label asp-for="IdTipoCompra" class="control-label">Contado o Financiado</label>
+                <select asp-for="IdTipoCompra" class="form-control">
+                    <option value="1">Contado</option>
+                    <option value="2">Financiado</option>
                 </select>
                 <span asp-validation-for="IdTipoCompra" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Venta" class="control-label">Termino en Venta</label>
-                <select asp-for="Venta">
+                <select asp-for="Venta" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
@@ -122,7 +122,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Anticipo" class="control-label">Dejo Anticipo</label>
-                <select asp-for="Anticipo">
+                <select asp-for="Anticipo" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>

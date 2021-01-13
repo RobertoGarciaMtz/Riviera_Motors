@@ -19,6 +19,14 @@
 <p>
     <a class="btn btn-success" asp-action="Create">Llenar otra Oferta</a>
 </p>
+<table border="0" cellspacing="5" cellpadding="5">
+    <tbody>
+        <tr>
+            <td>Fecha:</td>
+            <td><input type="text" id="min" name="min"></td>
+        </tr>
+    </tbody>
+</table>
 <div class="container">
     <div class="row">
         <div class="col-md-1"></div>
@@ -30,7 +38,7 @@
                 esto para proceder con su Valuacion
             </p>
             <p>En caso de no  haber sido aceptadoo se procedera a pulsar el boton de eliminar y dentro tendra mas instrucciones</p>
-</div>
+    </div>
         <div class="col-md-12">
             <table class="table" id="dataTable">
 
@@ -43,7 +51,7 @@
                             @Html.DisplayNameFor(model => model.TipoCompraCanal)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Kms)
+                            Kilometraje
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.FolioFiscal)
@@ -70,10 +78,10 @@
                             @Html.DisplayNameFor(model => model.NoMotor)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.NumEconomicoOpc)
+                            Numero Economico
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.MvaOpc)
+                            MVA
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Transmicion)
@@ -83,7 +91,7 @@
                         </th>
 
                         <th>
-                            @Html.DisplayNameFor(model => model.DuenoAnterior)
+                            Num Dueños
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Origen)

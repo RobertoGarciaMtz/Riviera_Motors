@@ -70,11 +70,6 @@
                 <span asp-validation-for="PagadaCobrada" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GastoTotalEnCarro" class="control-label"></label>
-                <input asp-for="GastoTotalEnCarro" class="form-control" />
-                <span asp-validation-for="GastoTotalEnCarro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="IdCliente" class="control-label"></label>
                 <input asp-for="IdCliente" class="form-control" />
                 <span asp-validation-for="IdCliente" class="text-danger"></span>
@@ -100,14 +95,14 @@
                 <span asp-validation-for="Usuarios" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdFormaPago" class="control-label"></label>
-                <select asp-for="IdFormaPago" class="form-control" asp-items="ViewBag.FormaPago"></select>
-                <span asp-validation-for="IdFormaPago" class="text-danger"></span>
+                <label asp-for="FormaPago" class="control-label"></label>
+                <input asp-for="FormaPago" class="form-control" ></input>
+                <span asp-validation-for="FormaPago" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MetodoPago" class="control-label"></label>
-                <input asp-for="MetodoPago" class="form-control" />
-                <span asp-validation-for="MetodoPago" class="text-danger"></span>
+                <label asp-for="IdMetodoPago" class="control-label"></label>
+                <select asp-for="IdMetodoPago" class="form-control"asp-items="ViewBag.Metodopago" />
+                <span asp-validation-for="IdMetodoPago" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FechaES" class="control-label"></label>

@@ -20,7 +20,7 @@ namespace Riviera_Business.Controllers
             foreach (TbControl ti in list)
             {
                 ti.IdEstadoNavigation = context.CEstados.Where(ce=> ce.IdEstados ==ti.IdEstado).FirstOrDefault();
-                ti.IdFormaPagoNavigation = context.CFormaPago.Where(fp => fp.IdFormaPago == ti.IdFormaPago).FirstOrDefault();
+                ti.IdMetodoPagoNavigation = context.CMetodoPago.Where(fp => fp.IdMetodoPago == ti.IdMetodoPago).FirstOrDefault();
                 ti.IdBancoNavigation = context.CBanco.Where(bc => bc.IdBanco == bc.IdBanco).FirstOrDefault();
 
                 /*
@@ -46,7 +46,7 @@ namespace Riviera_Business.Controllers
             foreach (TbControl ti in list)
             {
                 ti.IdEstadoNavigation = context.CEstados.Where(ce => ce.IdEstados == ti.IdEstado).FirstOrDefault();
-                ti.IdFormaPagoNavigation = context.CFormaPago.Where(fp => fp.IdFormaPago == ti.IdFormaPago).FirstOrDefault();
+                ti.IdMetodoPagoNavigation = context.CMetodoPago.Where(fp => fp.IdMetodoPago == ti.IdMetodoPago).FirstOrDefault();
                 ti.IdBancoNavigation = context.CBanco.Where(bc => bc.IdBanco == bc.IdBanco).FirstOrDefault();
                 ///
                 //if (ti.TipoCompraCanal == 1)
@@ -63,7 +63,7 @@ namespace Riviera_Business.Controllers
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
-            ViewBag.Formapago = context.CFormaPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdFormaPago.ToString() });
+            ViewBag.Metodopago = context.CMetodoPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdMetodoPago.ToString() });
             ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
             if (context.TbControl.Where(tc => tc.IdMovimiento == id).First() is TbControl e)
             {
@@ -77,9 +77,10 @@ namespace Riviera_Business.Controllers
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(es=> new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem {Text=es.Descripcion,Value=es.IdEstados.ToString() });
-            ViewBag.Formapago = context.CFormaPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdFormaPago.ToString() });
+            ViewBag.Metodopago = context.CMetodoPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdMetodoPago.ToString() });
             ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
             ViewBag.Asesor = context.CAsesores.Select(ase => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ase.Nombre, Value = ase.IdAsesores.ToString() });
+
             return View();
         }
 
@@ -106,7 +107,7 @@ namespace Riviera_Business.Controllers
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
-            ViewBag.Formapago = context.CFormaPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdFormaPago.ToString() });
+            ViewBag.Metodopago = context.CMetodoPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdMetodoPago.ToString() });
             ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
             ViewBag.Asesor = context.CAsesores.Select(ase => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ase.Nombre, Value = ase.IdAsesores.ToString() });
             return View();
@@ -138,7 +139,7 @@ namespace Riviera_Business.Controllers
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
-            ViewBag.Formapago = context.CFormaPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdFormaPago.ToString() });
+            ViewBag.Metodopago = context.CMetodoPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdMetodoPago.ToString() });
             ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
             ViewBag.Asesor = context.CAsesores.Select(ase => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ase.Nombre, Value = ase.IdAsesores.ToString() });
             return View();
@@ -163,11 +164,11 @@ namespace Riviera_Business.Controllers
 
 
         /// <summary>
-        /// ///////////POSIBLE FUNCION FUTURA//////////////////
+        /// /////////////////////////////77///////////POSIBLE FUNCION FUTURA///////////////////
 
         /// <returns></returns>
         [HttpGet]
-        public List<TbControl> Esconder(int opcion)
+        /*public List<TbControl> Esconder(int opcion)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             if (opcion == 1)
@@ -200,14 +201,44 @@ namespace Riviera_Business.Controllers
                 return lista2;
             }
             return null;
+        }*/
+        public List<ModeloApoyo> getProveedores(int tipo)
+        {
+            List<ModeloApoyo> list = new List<ModeloApoyo>();
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            if (tipo == 1)
+            {
+                var lista = context.TbDatosPersonaMoral.ToList();
+                foreach (TbDatosPersonaMoral campo in lista)
+                {
+                    var apoyo = new ModeloApoyo();
+                    apoyo.tipo = campo.IdDatosPm;
+                    apoyo.valor = campo.DenominacionRazonSocial;
+                    list.Add(apoyo);
+                }
+            }
+            else
+            {
+                var lista = context.TbDatosPersona.ToList();
+                foreach (TbDatosPersona campo in lista)
+                {
+                    var apoyo = new ModeloApoyo();
+                    apoyo.tipo = campo.IdDatosPersona;
+                    apoyo.valor = campo.Rfc;
+                    list.Add(apoyo);
+                }
+            }
+
+            return list;
         }
 
+        /*------------_______________________----------------------____________________________-----------------------*/
         // GET: HomeController1/Edit/5
         public ActionResult Edit(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
-            ViewBag.Formapago = context.CFormaPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdFormaPago.ToString() });
+            ViewBag.Metodopago = context.CMetodoPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdMetodoPago.ToString() });
             ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
             if (context.TbControl.Where(tc =>tc.IdMovimiento ==id).First() is TbControl e)
             {
@@ -241,14 +272,13 @@ namespace Riviera_Business.Controllers
                     objectEdit.FechaFactura = a.FechaFactura;
                     objectEdit.FechaFacturaToma = a.FechaFacturaToma;
                     objectEdit.FolioFiscal = a.FolioFiscal;
-                    objectEdit.GastoTotalEnCarro = a.GastoTotalEnCarro;
                     objectEdit.IdBanco = a.IdBanco;
                     objectEdit.IdCarros = a.IdCarros;
                     objectEdit.IdCliente = a.IdCliente;
-                    objectEdit.IdFormaPago = a.IdFormaPago;
+                    objectEdit.IdMetodoPago = a.IdMetodoPago;
                     objectEdit.Iva = a.Iva;
                     objectEdit.LeyAntilavado = a.LeyAntilavado;
-                    objectEdit.MetodoPago = a.MetodoPago;
+                    objectEdit.FormaPago = a.FormaPago;
                     objectEdit.NoFacturaArv = a.NoFacturaArv;
                     objectEdit.PagadaCobrada = a.PagadaCobrada;
                     objectEdit.PrecioPactado = a.PrecioPactado;
@@ -292,7 +322,7 @@ namespace Riviera_Business.Controllers
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
-            ViewBag.Formapago = context.CFormaPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdFormaPago.ToString() });
+            ViewBag.Metodopago = context.CMetodoPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdMetodoPago.ToString() });
             ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
             return View();
         }
@@ -320,17 +350,16 @@ namespace Riviera_Business.Controllers
                 copia.FechaFactura = a.FechaFactura;
                 copia.FechaFacturaToma = a.FechaFacturaToma;
                 copia.FolioFiscal = a.FolioFiscal;
-                copia.GastoTotalEnCarro = a.GastoTotalEnCarro;
                 copia.IdAsesorVenta = a.IdAsesorVenta;
                 copia.IdBanco = a.IdBanco;
                 copia.IdCarros = a.IdCarros;
                 copia.IdCliente = a.IdCliente;
                 copia.IdCliente = a.IdCliente;
                 copia.IdEstado = a.IdEstado;
-                copia.IdFormaPago = a.IdFormaPago;
+                copia.FormaPago = a.FormaPago;
                 copia.Iva = a.Iva;
                 copia.LeyAntilavado = a.LeyAntilavado;
-                copia.MetodoPago = a.MetodoPago;
+                copia.IdMetodoPago = a.IdMetodoPago;
                 copia.NoFacturaArv = a.NoFacturaArv;
                 copia.PagadaCobrada = a.PagadaCobrada;
                 copia.PrecioPactado = a.PrecioPactado;

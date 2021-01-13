@@ -23,14 +23,13 @@ namespace Riviera_Business.Models
         public float? Iva { get; set; }
         public float? Total { get; set; }
         public int? PagadaCobrada { get; set; }
-        public float? GastoTotalEnCarro { get; set; }
         public int? IdCliente { get; set; }
         public string VoBoFacturarSat { get; set; }
         public int? VoBoLeyAntiLavado { get; set; }
         public string ClienteVenta { get; set; }
         public string Usuarios { get; set; }
-        public int? IdFormaPago { get; set; }
-        public int? MetodoPago { get; set; }
+        public int? FormaPago { get; set; }
+        public int? IdMetodoPago { get; set; }
         public DateTime? FechaES { get; set; }
         public int? IdEstado { get; set; }
         public float? PrecioPactado { get; set; }
@@ -51,7 +50,7 @@ namespace Riviera_Business.Models
         public virtual CAsesores IdAsesorVentaNavigation { get; set; }
         public virtual CBanco IdBancoNavigation { get; set; }
         public virtual CEstados IdEstadoNavigation { get; set; }
-        public virtual CFormaPago IdFormaPagoNavigation { get; set; }
+        public virtual CMetodoPago IdMetodoPagoNavigation { get; set; }
         public virtual ICollection<TbCarrosTransaccion> TbCarrosTransaccion { get; set; }
         public virtual ICollection<TbSeguro> TbSeguro { get; set; }
     }

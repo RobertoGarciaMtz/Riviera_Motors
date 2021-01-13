@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace Riviera_Business.Models
 {
-    public partial class CFormaPago
+    public partial class CMetodoPago
     {
-        public CFormaPago()
+        public CMetodoPago()
         {
             TbControl = new HashSet<TbControl>();
         }
 
-        public int IdFormaPago { get; set; }
+        public int IdMetodoPago { get; set; }
         public string Nombre { get; set; }
         public string Usuario { get; set; }
         public int? IdEstado { get; set; }

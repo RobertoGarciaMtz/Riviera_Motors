@@ -15,7 +15,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdCarroExtra" />
             <div class="form-group">
-                <label asp-for="Manuales" class="control-label"></label>
+                <label asp-for="Manuales" class="control-label">Entrego Manuales</label>
                 <select asp-for="Manuales">
                     <option value="1">Entregado</option>
                     <option value="2">No Entregado</option>
@@ -24,7 +24,7 @@
                 <span asp-validation-for="Manuales" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CarnetServicio" class="control-label"></label>
+                <label asp-for="CarnetServicio" class="control-label">Entrego Carnet</label>
                 <select asp-for="CarnetServicio">
                     <option value="1">Entregado</option>
                     <option value="2">No Entregado</option>
@@ -33,7 +33,7 @@
                 <span asp-validation-for="CarnetServicio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Duplicado" class="control-label"></label>
+                <label asp-for="Duplicado" class="control-label">Entrego Duplicado</label>
                 <select asp-for="Duplicado">
                     <option value="1">Entregado</option>
                     <option value="2">No Entregado</option>
@@ -42,7 +42,7 @@
                 <span asp-validation-for="Duplicado" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LlantaRefaccion" class="control-label"></label>
+                <label asp-for="LlantaRefaccion" class="control-label">Traia Llanta refaccion</label>
                 <select asp-for="LlantaRefaccion">
                     <option value="1">Entregado</option>
                     <option value="2">No Entregado</option>
@@ -51,7 +51,7 @@
                 <span asp-validation-for="LlantaRefaccion" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Herramientas" class="control-label"></label>
+                <label asp-for="Herramientas" class="control-label">Traia Herramientas</label>
                 <select asp-for="Herramientas">
                     <option value="1">Entregado</option>
                     <option value="2">No Entregado</option>
@@ -60,7 +60,7 @@
                 <span asp-validation-for="Herramientas" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Gato" class="control-label"></label>
+                <label asp-for="Gato" class="control-label">Traia Gato</label>
                 <select asp-for="Gato">
                     <option value="1">Entregado</option>
                     <option value="2">No Entregado</option>
@@ -69,7 +69,7 @@
                 <span asp-validation-for="Gato" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Antena" class="control-label"></label>
+                <label asp-for="Antena" class="control-label">Traia Antena</label>
                 <select asp-for="Antena">
                     <option value="1">Entregado</option>
                     <option value="2">No Entregado</option>
@@ -88,7 +88,7 @@
                 <span asp-validation-for="Usuario" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label class="control-label">Referencia del Automovil</label>
+                <label class="control-label">Seleccionar el automovil al que pertenece este registro</label>
                 <select asp-for="IdCarro" class="form-control" asp-items="ViewBag.Caracarro"></select>
                 <span asp-validation-for="IdCarro" class="text-danger"></span>
             </div>

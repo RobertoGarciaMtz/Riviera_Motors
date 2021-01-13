@@ -10,6 +10,7 @@ namespace Riviera_Business.Models
         public string Contraseña { get; set; }
         public int? IdEstado { get; set; }
         public int? TipoUsuario { get; set; }
+        public int? Primeravez { get; set; }
 
         public virtual CEstados IdEstadoNavigation { get; set; }
     }

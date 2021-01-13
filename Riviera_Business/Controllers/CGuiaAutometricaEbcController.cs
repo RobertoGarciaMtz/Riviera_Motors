@@ -6,12 +6,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Riviera_Business.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Riviera_Business.Controllers
 {
     public class CGuiaAutometricaEbcController : Controller
     {
         // GET: HomeController1
+        
         public ActionResult Index()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -28,6 +30,7 @@ namespace Riviera_Business.Controllers
         }
 
         // GET: HomeController1/Details/5
+        
         public ActionResult Details(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -41,6 +44,7 @@ namespace Riviera_Business.Controllers
         }
 
         // GET: HomeController1/Create
+        
         public ActionResult CreaAutometrica()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -78,12 +82,13 @@ namespace Riviera_Business.Controllers
             }
             return list;
         }
-
+        
         public ActionResult CreaEBC()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.Descripcion, Value = s.IdEstados.ToString() });
             ViewBag.Marca = context.CMarcaCarro.Select(mar => new SelectListItem {Text=mar.NombreMarca,Value =mar.IdMarcaCarro.ToString() });
+            ViewBag.Version = context.CVersionCarro.Select(ver => new SelectListItem { Text = ver.VersionCarro, Value = ver.IdVersionCarro.ToString() });
             return View();
         }
         // POST: HomeController1/Create
@@ -130,6 +135,7 @@ namespace Riviera_Business.Controllers
         }
 
         // GET: HomeController1/Edit/5
+        
         public ActionResult Edit(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;

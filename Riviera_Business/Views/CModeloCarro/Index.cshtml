@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Agregar Modelo o Unidad</a>
 </p>
-<p>Todos los modelos manejados por una empresa 
+<p>Todos los modelos alguna vez manejados por una empresa (no es inventario)
     Nota: Si se quiere buscar por Marca de automoviles escribir en el buscador</p>
 <table class="table" id="dataTable">
     <thead>
@@ -46,3 +46,5 @@
 }
     </tbody>
 </table>
+<p>Para ir al inventario dar click en el enlace</p>
+<a asp-controller="TbCarros" asp-action="Index"></a>

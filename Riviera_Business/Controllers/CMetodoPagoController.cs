@@ -5,17 +5,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Riviera_Business.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Riviera_Business.Controllers
 {
-    public class CFormaPagoController : Controller
+    public class CMetodoPagoController : Controller
     {
         // GET: HomeController1
+        
         public ActionResult Index()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            var list = context.CFormaPago.ToList();
-            foreach(CFormaPago ti in list)
+            var list = context.CMetodoPago.ToList();
+            foreach(CMetodoPago ti in list)
             {
                 ti.IdEstadoNavigation = context.CEstados.Where(te => te.IdEstados == ti.IdEstado).FirstOrDefault();
             }
@@ -23,10 +25,11 @@ namespace Riviera_Business.Controllers
         }
 
         // GET: HomeController1/Details/5
+        
         public ActionResult Details(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            if (context.CFormaPago.Where(s => s.IdFormaPago == id).First() is CFormaPago e)
+            if (context.CMetodoPago.Where(s => s.IdMetodoPago == id).First() is CMetodoPago e)
             {
                 return View(e);
             }
@@ -34,6 +37,7 @@ namespace Riviera_Business.Controllers
         }
 
         // GET: HomeController1/Create
+        
         public ActionResult Create()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -44,12 +48,12 @@ namespace Riviera_Business.Controllers
         // POST: HomeController1/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CFormaPago a)
+        public ActionResult Create(CMetodoPago a)
         {
             try
             {
                 var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-                context.CFormaPago.Add(a);
+                context.CMetodoPago.Add(a);
                 context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
@@ -60,11 +64,12 @@ namespace Riviera_Business.Controllers
         }
 
         // GET: HomeController1/Edit/5
+        
         public ActionResult Edit(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estado = context.CEstados.Select(s => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = s.Descripcion, Value = s.IdEstados.ToString() });
-            if (context.CFormaPago.Where(s => s.IdFormaPago == id).First() is CFormaPago e)
+            if (context.CMetodoPago.Where(s => s.IdMetodoPago == id).First() is CMetodoPago e)
             {
                 return View(e);
             }
@@ -74,18 +79,18 @@ namespace Riviera_Business.Controllers
         // POST: HomeController1/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, CFormaPago a)
+        public ActionResult Edit(int id, CMetodoPago a)
         {
             try
             {
                 var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-                var objectEdit = context.CFormaPago.FirstOrDefault(ce => ce.IdEstado == a.IdFormaPago);
+                var objectEdit = context.CMetodoPago.FirstOrDefault(ce => ce.IdEstado == a.IdMetodoPago);
                 if (objectEdit != null)
                 {
                     objectEdit.Nombre = a.Nombre;
                     objectEdit.IdEstado = a.IdEstado;
                     objectEdit.Usuario = a.Usuario;
-                    context.CFormaPago.Update(objectEdit);
+                    context.CMetodoPago.Update(objectEdit);
                     context.SaveChanges();
                 }
 

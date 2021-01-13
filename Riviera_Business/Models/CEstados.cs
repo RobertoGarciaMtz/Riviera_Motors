@@ -9,9 +9,9 @@ namespace Riviera_Business.Models
         {
             CAsesores = new HashSet<CAsesores>();
             CCarroExtra = new HashSet<CCarroExtra>();
-            CFormaPago = new HashSet<CFormaPago>();
             CGuiaAutometricaEbc = new HashSet<CGuiaAutometricaEbc>();
             CMedioPublicitario = new HashSet<CMedioPublicitario>();
+            CMetodoPago = new HashSet<CMetodoPago>();
             CuentasPendientesCP = new HashSet<CuentasPendientesCP>();
             TbCarros = new HashSet<TbCarros>();
             TbCarrosTransaccion = new HashSet<TbCarrosTransaccion>();
@@ -35,9 +35,9 @@ namespace Riviera_Business.Models
 
         public virtual ICollection<CAsesores> CAsesores { get; set; }
         public virtual ICollection<CCarroExtra> CCarroExtra { get; set; }
-        public virtual ICollection<CFormaPago> CFormaPago { get; set; }
         public virtual ICollection<CGuiaAutometricaEbc> CGuiaAutometricaEbc { get; set; }
         public virtual ICollection<CMedioPublicitario> CMedioPublicitario { get; set; }
+        public virtual ICollection<CMetodoPago> CMetodoPago { get; set; }
         public virtual ICollection<CuentasPendientesCP> CuentasPendientesCP { get; set; }
         public virtual ICollection<TbCarros> TbCarros { get; set; }
         public virtual ICollection<TbCarrosTransaccion> TbCarrosTransaccion { get; set; }
