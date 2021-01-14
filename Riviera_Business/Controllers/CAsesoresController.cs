@@ -15,13 +15,24 @@ namespace Riviera_Business.Controllers
        
         public ActionResult Index()
         {
-            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            var list = context.CAsesores.ToList();
-            foreach (CAsesores ti in list)
+
+            if (HttpContext.Session.GetInt32("tipoUsuario") != 1) //Si el usuario no es Admin
             {
-                ti.IdEstadoNavigation = context.CEstados.Where(es =>es.IdEstados ==ti.IdEstado).FirstOrDefault();
+
+                return RedirectToAction("Index","Home");    //Regresas a Home
+
             }
-            return View(list);
+            else //Si es admin entonces regresas la vista como deberia
+            {
+                var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+                var list = context.CAsesores.ToList();
+                foreach (CAsesores ti in list)
+                {
+                    ti.IdEstadoNavigation = context.CEstados.Where(es => es.IdEstados == ti.IdEstado).FirstOrDefault();
+                }
+                return View(list);
+            }
+
         }
 
         // GET: HomeController1/Details/5

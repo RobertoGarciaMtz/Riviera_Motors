@@ -56,17 +56,25 @@
         datos utilizados en otras tablas.
     </p>
     <p class="parrafodesc">Ademas de poder visualizar los datos de manera ordenadas con filtros y tener una rapida busqueda</p>
-    <h3> Menu de uso exclusivo para el jefe</h3>
-    <p>Este menu contiene los solicitados pedidos por el Jefe</p>
     <div>
-        <ul class="nav-second-level">
-            <li class="active"><a asp-controller="ControladoresdeResumen" asp-action="Desempeno">Desempeño de Asesores de Ventas</a></li>
-            <li class="active"><a asp-controller="TbLineaTiempo">Linea de Tiempo de un solo Auto </a></li>
-            <li class="active"><a asp-controller="ControladoresdeResumen">Estadisticas de lo MAS</a></li>
-            <li class="active"><a asp-controller="ControladoresdeResumen">Consumo y utilidades</a></li>
-        </ul>
-    </div>
+        <div style="display:flex; justify-content:space-evenly">
+            <a asp-controller="ControladoresdeResumen" asp-action="Desempeno">
+                <img src="~/dist/img/graphics-2.png" height="70" width="70" />
+            </a>
+            <div style="display:flex; justify-content:flex-end">
+                <img src="~/dist/img/list.png" height="70" width="70" />
+            </div>
+            <div style="align-content:flex-start">
+                <img src="~/dist/img/time.png" height="70" width="70" />
+            </div>
+            <div style="align-content:flex-end">
+                <img src="~/dist/img/stats.png" height="70" width="70" />
+            </div>
 
+        </div>
+
+        <a asp-controller="TbCarros" asp-action="Create"><span>Agregar Nueva Oferta  Toma</span> </a>
+        <!--
     <button id="hidec">ocultar ca</button> <button id="showc">mostrarca</button>
     <button id="hidet">ocultar tb</button> <button id="showt">mostrar tb</button>
 
@@ -121,10 +129,10 @@
         </div>
     </div>
     <a asp-controller="Home" asp-action="Ejemplo">al menu</a>
-    
+        -->
+    </div>
+
 </div>
-
-
 <!--
     como trraer datos con jquery
     jQuery(document).ready(function(){

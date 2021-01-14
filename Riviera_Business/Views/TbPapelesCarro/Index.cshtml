@@ -4,6 +4,19 @@
     ViewData["Title"] = "Index";
 }
 
+<style>
+    .Entregado {
+        background-color: forestgreen;
+    }
+
+    .No_Entregado {
+        background-color: orangered;
+    }
+
+    .En_Espera {
+        background-color: lightyellow;
+    }
+</style>
 <h1>Lista de Automoviles con comprobantes</h1>
 
 <p>
@@ -71,15 +84,15 @@
             <td>
                 @if (item.FactOrigen == 1)
                 {
-                    <label value="@item.FactOrigen">Entregada</label>
+                    <label value="@item.FactOrigen" class="Entregado">Entregada</label>
                 }
                 @if (item.FactOrigen == 2)
                 {
-                    <label value="@item.FactOrigen">No Entregada</label>
+                    <label value="@item.FactOrigen" class="No_Entregado">No Entregada</label>
                 }
                 @if (item.FactOrigen == 3)
                 {
-                    <label value="@item.FactOrigen">Problemas</label>
+                    <label value="@item.FactOrigen" class="En_Espera">Problemas</label>
                 }
             </td>
             <td>
@@ -91,15 +104,15 @@
             <td>
                 @if (item.Baja == 1)
                 {
-                    <label value="@item.Baja">Entregada</label>
+                    <label value="@item.Baja" class="Entregado">Realizada</label>
                 }
                 @if (item.Baja == 2)
                 {
-                    <label value="@item.Baja">No Entregada</label>
+                    <label value="@item.Baja" class="No_Entregado">No Realizada</label>
                 }
                 @if (item.Baja == 3)
                 {
-                    <label value="@item.Baja">Problemas</label>
+                    <label value="@item.Baja" class="En_Espera">Problemas</label>
                 }
             </td>
             <td>

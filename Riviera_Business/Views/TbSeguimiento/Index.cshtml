@@ -88,10 +88,10 @@
                 @Html.DisplayNameFor(model => model.Comentarios)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdAsesorNavigation)
+                Asesor
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+                Estado
             </th>
             <th></th>
         </tr>
@@ -229,8 +229,8 @@
                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdSeguimiento">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdSeguimiento">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.IdSeguimiento" class="btn btn-succes">Editar/Llenar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdSeguimiento" class="btn btn-warning">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.IdSeguimiento">Delete</a>
             </td>
         </tr>

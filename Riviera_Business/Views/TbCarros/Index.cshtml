@@ -12,6 +12,8 @@
     $('#tableid').on('change', 'select', function () {
         if ($(this).val()) { $(this).next().show(); }
     });
+
+    
 </script>
 
 <h1>Index</h1>
@@ -84,7 +86,7 @@
                             MVA
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Transmicion)
+                            Transmision
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.ClaveVehicular)
@@ -125,10 +127,29 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.IdProveedor)
+                                @if (item.TipoCompraCanal == 1)
+                                {
+                                    @foreach (var dist in (IEnumerable<TbDatosPersonaMoral>)ViewBag.Personamoral)
+                                    {
+                                        @if (dist.IdDatosPm == item.IdProveedor)
+                                        {
+                                            @dist.DenominacionRazonSocial
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    @foreach (var dist in (IEnumerable<TbDatosPersona>)ViewBag.Persona)
+                                    {
+                                        @if (dist.IdDatosPersona == item.IdProveedor)
+                                        {
+                                            @dist.Nombre
+                                        }
+                                    }
+                                }
                             </td>
                             <td>
-                                @if (item.IdProveedor == 1)
+                                @if (item.TipoCompraCanal == 1)
                                 {
                                     <label value="@item.IdProveedor">InterAgencias</label>
                                 }
@@ -223,9 +244,9 @@
                                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
                             </td>
                             <td>
-                                <a asp-action="Edit" asp-route-id="@item.IdCarros">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.IdCarros">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.IdCarros">Delete</a>
+                                <a asp-action="Edit" asp-route-id="@item.IdCarros" class="btn btn-success">Terminar Llenado</a> |
+                                <a asp-action="Details" asp-route-id="@item.IdCarros" class="btn btn-warning ">Detalles</a> |
+                                <a asp-action="Delete" asp-route-id="@item.IdCarros" class="btn btn-dark">Eliminar</a>
                             </td>
                         </tr>
                     }

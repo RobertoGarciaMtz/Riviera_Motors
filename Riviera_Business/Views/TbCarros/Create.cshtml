@@ -26,13 +26,19 @@
         <form asp-action="Create">
             <div class="form-group">
                 <p>Seleccionar si fue Interagencias o Retail</p>
-                <label asp-for="TipoCompraCanal" class="control-label"></label>
-                <select asp-for="TipoCompraCanal" class="form-control">
+                <label asp-for="TipoCompraCanal" class="control-label">Tipo de Compra Oferta</label>
+                <select id="selectTipo" onchange="getPrrov(this)" asp-for="TipoCompraCanal" class="form-control">
                     <option value="0">------------</option>
                     <option value="1">Flotilla</option>
                     <option value="2">Individual</option>
                 </select>
                 <span asp-validation-for="TipoCompraCanal" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdProveedor" class="control-label">Proveedor</label>
+                <select asp-for="IdProveedor" id="selectProovedor" class="form-control"></select>
+                <span asp-validation-for="IdProveedor" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FechaOferta" class="control-label"></label>
@@ -43,22 +49,27 @@
     -------------------------------->
 
             <div class="form-group">
-                <label  class="control-label">Seleccionar Marca</label>
+                <label class="control-label">Seleccionar Marca</label>
                 <select onchange="marcaChanged(this)" class="form-control" asp-items="ViewBag.Marca"></select>
-                <span  class="text-danger"></span>
+                <span class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label  class="control-label">Seleccionar Modelo</label>
+                <label class="control-label">Seleccionar Modelo</label>
                 <select id="IdModelo" onchange="modeloChange(this)" class="form-control" asp-items="ViewBag.Modelo"></select>
-                <span  class="text-danger"></span>
+                <span class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IdVersion" class="control-label"></label>
                 <select asp-for="IdVersion" class="form-control" asp-items="ViewBag.Version"></select>
             </div>
+            <div class="form-group">
+                <label asp-for="Modelo" class="control-label">Año</label>
+                <input asp-for="Modelo" class="form-control" />
+                <span asp-validation-for="Modelo" class="text-danger"></span>
+            </div>
             <!------------------------------------------------------------->
             <div class="form-group">
-                <label asp-for="Transmicion" class="control-label"></label>
+                <label asp-for="Transmicion" class="control-label">Transmision</label>
                 <select asp-for="Transmicion" id="cars" class="form-control">
                     <option value="1">Manual</option>
                     <option value="2">Secuencial</option>
@@ -69,12 +80,6 @@
                 <span asp-validation-for="Transmicion" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Modelo" class="control-label">Año</label>
-                <input asp-for="Modelo" class="form-control" />
-                <span asp-validation-for="Modelo" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
                 <label asp-for="Kms" class="control-label"></label>
                 <input asp-for="Kms" class="form-control" />
                 <span asp-validation-for="Kms" class="text-danger"></span>
@@ -84,13 +89,7 @@
                 <input asp-for="PropuestaCliente" class="form-control" />
                 <span asp-validation-for="PropuestaCliente" class="text-danger"></span>
             </div>
-
-            <div class="form-group">
-                <label asp-for="IdProveedor" class="control-label"></label>
-                <input asp-for="IdProveedor" class="form-control" />
-                <span asp-validation-for="IdProveedor" class="text-danger"></span>
-            </div>
-
+            <p style="font-size:large">Llenar el dato que se tenga a disposicion </p>
             <div class="form-group">
                 <label asp-for="NoSerie" class="control-label"></label>
                 <input asp-for="NoSerie" class="form-control" />
@@ -130,9 +129,9 @@
 
 <script>
     $(document).ready(function (){
-        let listan = marcachanged();
-        let listan2 = modeloChange();
-
+        $("#esconder").on("click", function () {
+            $(".houdini").show();
+        })
         
     })
     function marcaChanged(select) {
@@ -172,5 +171,22 @@
     }
 
 
-
+    function getPrrov(select) {
+        var value = select.value
+        if (value != 0) {
+            $.ajax({
+                url: "/TbCarros/getProveedores",
+                data: { "tipo": value },
+                method: "POST",
+                success: function (z) {
+                    let selectVersion = document.getElementById("selectProovedor");
+                    let html = "";
+                    for (var i = 0; i < z.length; i++) {
+                        html += "<option value ='" + z[i].tipo + "' >" + z[i].valor + "</option>";
+                    }
+                    selectVersion.innerHTML = html;
+                }
+            });
+        }
+    }
 </script>

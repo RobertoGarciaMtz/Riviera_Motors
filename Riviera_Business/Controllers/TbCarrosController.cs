@@ -24,26 +24,50 @@ namespace Riviera_Business.Controllers
                 ti.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation = context.CMarcaCarro.Where
                     (mar => mar.IdMarcaCarro == ti.IdVersionNavigation.IdModeloNavigation.IdMarca).FirstOrDefault();
 
+                ViewBag.Persona = context.TbDatosPersona.ToList();
+                ViewBag.Personamoral = context.TbDatosPersonaMoral.ToList();
+
                 /*
-                 if(ti.TipoCompraCanal== 1){//1 Interagencias
-                    ti.IdProveedor= context.TbDatosPersona.Where(dp => dp.IdDatosPersona == ti.IdProveedor).FirstOrDefault();
-                }
+                if(ti.TipoCompraCanal== 1){//1 Interagencias
+                ti.IdProveedor= context.TbDatosPersona.Where(dp => dp.IdDatosPersona == ti.IdProveedor).FirstOrDefault();
                 
-               if(ti.TipoCompraCanal ==2){ // 2 Retail
-               }
+                foreach(TbDatosPersona a in listapersona){
+                    if(a.IdDatosPersona == ti.IdProveedor)
+                    {
+                        listaCorrecta.Add(a);
+                    }
+                }
+
+                }
+
+                if(ti.TipoCompraCanal ==2){ // 2 Retail
+
+                }
                 */
             }
             return View(list);
+
         }
+
+
 
         // GET: HomeController1/Details/5
         public ActionResult Details(int id)
         {
+            var nombre = "";
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
             ViewBag.Version = context.CVersionCarro.Select(ma => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ma.VersionCarro, Value = ma.IdVersionCarro.ToString() });
             if (context.TbCarros.Where(tc => tc.IdCarros == id).First() is TbCarros e)
             {
+                if (e.TipoCompraCanal == 1)
+                {
+                    nombre = context.TbDatosPersonaMoral.Where(dpm => dpm.IdDatosPm == e.IdProveedor).First().DenominacionRazonSocial;
+                }
+                else {
+                    nombre = context.TbDatosPersona.Where(dp => dp.IdDatosPersona == e.IdProveedor).First().Nombre;
+                }
+                ViewBag.Nombre = nombre;
                 return View(e);
             }
             return NotFound();
@@ -212,8 +236,7 @@ namespace Riviera_Business.Controllers
             var list = context.CVersionCarro.Where(y => y.IdModelo == id).ToList();
              foreach (CVersionCarro v in list){
                  v.IdModeloNavigation = null;
-                 v.CGuiaAutometricaEbc = null;
-                 v.TbCarros = null;
+                v.CGuiaAutometricaEbc = null;                
              }
             Console.WriteLine(cVersion);
             return list;

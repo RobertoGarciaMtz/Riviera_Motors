@@ -146,7 +146,6 @@ public class CCarroExtrasController : Controller
                 ObjectEdit.IdCarro = a.IdCarro;
                 context.CCarroExtra.Update(ObjectEdit);
                 context.SaveChanges();
-
             }
             return RedirectToAction(nameof(Index));
         }

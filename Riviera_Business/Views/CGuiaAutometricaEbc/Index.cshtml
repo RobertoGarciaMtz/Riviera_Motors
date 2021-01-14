@@ -4,7 +4,16 @@
     ViewData["Title"] = "Index";
 }
 
-
+<style>
+    .Autometrica{
+        background-color:lightslategray;
+        color:black;
+    }
+    .EBC{
+        background-color:royalblue;
+        color:black
+    }
+</style>
 <h1>Lista</h1>
 
 
@@ -28,7 +37,7 @@
         </tr>
     </tbody>
 </table>
-<p> style="font-size:small">Ingresar la fecha de la guia la cual se quiere ver</p>
+<p style="font-size:small">Ingresar la fecha de la guia la cual se quiere ver</p>
 
 <table class="table" id="table-seguimiento">
     <thead>
@@ -82,11 +91,11 @@
                 <td>
                     @if (item.GuiaAutometricaEbc == 1)
                     {
-                        <label value="@item.GuiaAutometricaEbc">Autometrica</label>
+                        <label value="@item.GuiaAutometricaEbc" class="Autometrica">Autometrica</label>
                     }
                     else
                     {
-                        <label value="@item.GuiaAutometricaEbc">EBC</label>
+                        <label value="@item.GuiaAutometricaEbc" class="EBC">EBC</label>
                     }
                 </td>
                 <td>

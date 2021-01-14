@@ -316,3 +316,6 @@ C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\Login_\Index.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\Signup\Index.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\Usuarios\Delete.cshtml.g.cs
+C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\CMetodoPago\Index.cshtml.g.cs
+C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\CMetodoPago\Details.cshtml.g.cs
+C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\CMetodoPago\Create.cshtml.g.cs

@@ -5,7 +5,19 @@
 }
 
 <h1>Lista de Documentacion Cliente</h1>
+<style>
+    .Entregado {
+        background-color: forestgreen;
+    }
 
+    .No_Entregado {
+        background-color: orangered;
+    }
+
+    .En_Espera {
+        background-color: darkgoldenrod;
+    }
+</style>
 <p>
     <a asp-action="Create">Agregar mas Documentacion Cliente</a>
 </p>
@@ -55,117 +67,118 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @if (item.PersonaFM == 1)
-                {
-                    <label value="@item.PersonaFM">Fisica</label>
-                }
-                else
-                {
-                    <label value="@item.PersonaFM">Moral/Representante</label>
-                }
-            </td>
-            <td>
-                @if (item.IdentificacionVig == 1)
-                {
-                    <label value="@item.IdentificacionVig">Si</label>
-                }
-                else
-                {
-                    <label value="@item.IdentificacionVig">No</label>
-                }
-            </td>
-            <td>
-                @if (item.Curp == 1)
-                {
-                    <label value="@item.Curp">Si</label>
-                }
-                else
-                {
-                    <label value="@item.Curp">No</label>
-                }
-            </td>
-            <td>
-                @if (item.CifSat == 1)
-                {
-                    <label value="@item.CifSat">Si</label>
-                }
-                else
-                {
-                    <label value="@item.CifSat">No</label>
-                }
-            </td>
-            <td>
-                @if (item.ComprobDomicilio == 1)
-                {
-                    <label value="@item.ComprobDomicilio">Si</label>
-                }
-                else
-                {
-                    <label value="@item.ComprobDomicilio">No</label>
-                }
-            </td>
-            <td>
-                @if (item.ConocimientoDuenoBeneficiario == 1)
-                {
-                    <label value="@item.ConocimientoDuenoBeneficiario">Si</label>
-                }
-                else
-                {
-                    <label value="@item.ConocimientoDuenoBeneficiario">No</label>
-                }
-            </td>
-            <td>
-                @if (item.ActaConstitutivaBoletaRpc == 1)
-                {
-                    <label value="@item.ActaConstitutivaBoletaRpc">Si</label>
-                }
-                else
-                {
-                    <label value="@item.ActaConstitutivaBoletaRpc">No</label>
-                }
-            </td>
-            <td>
-                @if (item.PoderLegarExp == 1)
-                {
-                    <label value="@item.PoderLegarExp">Si</label>
-                }
-                else
-                {
-                    <label value="@item.PoderLegarExp">No</label>
-                }
-            </td>
-            <td>
-                @if (item.ConstanciaConocimiento == 1)
-                {
-                    <label value="@item.ConstanciaConocimiento">Si</label>
-                }
-                else
-                {
-                    <label value="@item.ConstanciaConocimiento">No</label>
-                }
-            </td>
-            <!-----------------------hasta aca llega ---------------------------------->
-            <td>
-                @Html.DisplayFor(modelItem => item.Usuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MesCorrespondiente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdDatosPersonaNavigation.Curp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdDocumentos">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.IdDocumentos">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdDocumentos">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.PersonaFM == 1)
+                    {
+                        <label value="@item.PersonaFM">Fisica</label>
+                    }
+                    else
+                    {
+                        <label value="@item.PersonaFM">Moral/Representante</label>
+                    }
+                </td>
+                <td>
+                    @if (item.IdentificacionVig == 1)
+                    {
+                        <label value="@item.IdentificacionVig" class="Entregado">Si</label>
+                    }
+                    else
+                    {
+                        <label value="@item.IdentificacionVig"class="No_Entregado">No</label>
+                    }
+                </td>
+                <td>
+                    @if (item.Curp == 1)
+                    {
+                        <label value="@item.Curp" class="Entregado">Si</label>
+                    }
+                    else
+                    {
+                        <label value="@item.Curp" class="No_Entregado">No</label>
+                    }
+                </td>
+                <td>
+                    @if (item.CifSat == 1)
+                    {
+                        <label value="@item.CifSat" class="Entregado">Si</label>
+                    }
+                    else
+                    {
+                        <label value="@item.CifSat" class="No_Entregado">No</label>
+                    }
+                </td>
+                <td>
+                    @if (item.ComprobDomicilio == 1)
+                    {
+                        <label value="@item.ComprobDomicilio" class="Entregado">Si</label>
+                    }
+                    else
+                    {
+                        <label value="@item.ComprobDomicilio" class="No_Entregado">No</label>
+                    }
+                </td>
+                <td>
+                    @if (item.ConocimientoDuenoBeneficiario == 1)
+                    {
+                        <label value="@item.ConocimientoDuenoBeneficiario" class="Entregado">Si</label>
+                    }
+                    else
+                    {
+                        <label value="@item.ConocimientoDuenoBeneficiario" class="No_Entregado">No</label>
+                    }
+                </td>
+                <td>
+                    @if (item.ActaConstitutivaBoletaRpc == 1)
+                    {
+                        <label value="@item.ActaConstitutivaBoletaRpc" class="Entregado">Si</label>
+                    }
+                    else
+                    {
+                        <label value="@item.ActaConstitutivaBoletaRpc" class="No_Entregado">No</label>
+                    }
+                </td>
+                <td>
+                    @if (item.PoderLegarExp == 1)
+                    {
+                        <label value="@item.PoderLegarExp"class="Entregado">Si</label>
+                    }
+                    else
+                    {
+                        <label value="@item.PoderLegarExp" class="No_Entregado">No</label>
+                    }
+                </td>
+                <td>
+                    @if (item.ConstanciaConocimiento == 1)
+                    {
+                        <label value="@item.ConstanciaConocimiento" class="Entregado">Si</label>
+                    }
+                    else
+                    {
+                        <label value="@item.ConstanciaConocimiento" class="No_Entregado">No</label>
+                    }
+                </td>
+                <!-----------------------hasta aca llega ---------------------------------->
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MesCorrespondiente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdDatosPersonaNavigation.Curp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdDocumentos">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdDocumentos">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdDocumentos">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

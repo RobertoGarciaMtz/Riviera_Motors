@@ -32,8 +32,8 @@
                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdMedioPublicitario">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.IdMedioPublicitario">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.IdMedioPublicitario" class="btn btn-success">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdMedioPublicitario" class="btn btn-warning">Details</a> |
             </td>
         </tr>
 }
