@@ -22,19 +22,9 @@ namespace Riviera_Business.Controllers
                 ti.IdEstadoNavigation = context.CEstados.Where(ce=> ce.IdEstados ==ti.IdEstado).FirstOrDefault();
                 ti.IdMetodoPagoNavigation = context.CMetodoPago.Where(fp => fp.IdMetodoPago == ti.IdMetodoPago).FirstOrDefault();
                 ti.IdBancoNavigation = context.CBanco.Where(bc => bc.IdBanco == bc.IdBanco).FirstOrDefault();
-
-                /*
-            //if (ti.TipoVenta == 1)
-            //{
-              //  var persona = context.TbDatosPersona.Where(dp => dp.IdDatosPersona == ti.IdProveedor).FirstOrDefault();
-                //ti.TbControl.IdCliente = context.TbDatosPersona.IdDatosPersona;
-
-            }
-            if(ti.TipoVenta==2){
-                var persona = contextTbDatosPersonaMoral.Where(dpm=>dpm.IdDatosPm==ti.IdProveedor).FirstOrDefault();
-                ti.TbControl.IdCliente = context.TbDatosPersonaMoral.IdDatosPM;
-                }
-             */
+                ViewBag.Persona = context.TbDatosPersona.ToList();
+                ViewBag.Personamoral = context.TbDatosPersonaMoral.ToList();
+                ViewBag.Autos = context.TbCarros.ToList();
             }
             return View(list);
         }
@@ -48,6 +38,9 @@ namespace Riviera_Business.Controllers
                 ti.IdEstadoNavigation = context.CEstados.Where(ce => ce.IdEstados == ti.IdEstado).FirstOrDefault();
                 ti.IdMetodoPagoNavigation = context.CMetodoPago.Where(fp => fp.IdMetodoPago == ti.IdMetodoPago).FirstOrDefault();
                 ti.IdBancoNavigation = context.CBanco.Where(bc => bc.IdBanco == bc.IdBanco).FirstOrDefault();
+                ViewBag.Persona = context.TbDatosPersona.ToList();
+                ViewBag.Personamoral = context.TbDatosPersonaMoral.ToList();
+                ViewBag.Autos = context.TbCarros.ToList();
                 ///
                 //if (ti.TipoCompraCanal == 1)
                 //{
@@ -80,7 +73,7 @@ namespace Riviera_Business.Controllers
             ViewBag.Metodopago = context.CMetodoPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdMetodoPago.ToString() });
             ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
             ViewBag.Asesor = context.CAsesores.Select(ase => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ase.Nombre, Value = ase.IdAsesores.ToString() });
-
+            ViewBag.Auto = context.TbCarros.Select(au => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = au.NoSerie, Value = au.IdCarros.ToString() });
             return View();
         }
 
@@ -142,6 +135,7 @@ namespace Riviera_Business.Controllers
             ViewBag.Metodopago = context.CMetodoPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdMetodoPago.ToString() });
             ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
             ViewBag.Asesor = context.CAsesores.Select(ase => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ase.Nombre, Value = ase.IdAsesores.ToString() });
+            ViewBag.Auto = context.TbCarros.Select(au => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = au.NoSerie, Value = au.IdCarros.ToString() });
             return View();
         }
 

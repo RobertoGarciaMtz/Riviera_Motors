@@ -17,6 +17,7 @@ namespace Riviera_Business.Controllers
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             var list = context.CMarcaCarro.ToList();
+            
 
             return View(list);
         }

@@ -13,6 +13,7 @@
         if ($(this).val()) { $(this).next().show(); }
     });
 
+
     
 </script>
 
@@ -24,8 +25,12 @@
 <table border="0" cellspacing="5" cellpadding="5">
     <tbody>
         <tr>
-            <td>Fecha:</td>
+            <td>FechaInicial:</td>
             <td><input type="text" id="min" name="min"></td>
+        </tr>
+        <tr>
+            <td>FechaFinal:</td>
+            <td><input type="text" id="max" name="max"></td>
         </tr>
     </tbody>
 </table>
@@ -50,13 +55,13 @@
                             Proveedor
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.TipoCompraCanal)
+                            Tipo de compra
                         </th>
                         <th>
                             Kilometraje
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.FolioFiscal)
+                            Folio Fiscal
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.FechaFactToma)
@@ -68,32 +73,31 @@
                             @Html.DisplayNameFor(model => model.Modelo)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ColorExt)
+                            Color Externo
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ColorInt)
+                            Color Interno
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.NoSerie)
+                            Núm de serie
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.NoMotor)
+                            No. motor
                         </th>
                         <th>
-                            Numero Economico
+                            Número Economico
                         </th>
                         <th>
                             MVA
                         </th>
                         <th>
-                            Transmision
+                            Transmisión
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ClaveVehicular)
+                            Clave Vehicular
                         </th>
-
                         <th>
-                            Num Dueños
+                            Num. Dueños
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Origen)
@@ -102,13 +106,13 @@
                             @Html.DisplayNameFor(model => model.Ubicacion)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.PropuestaCliente)
+                            Propuesta de cliente
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.FechaOferta)
+                            Fecha de oferta
                         </th>
                         <th>
-                            Version Automovil
+                            Versión Automovil
                         </th>
                         <th>
                             Modelo Automovil
@@ -244,8 +248,8 @@
                                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
                             </td>
                             <td>
-                                <a asp-action="Edit" asp-route-id="@item.IdCarros" class="btn btn-success">Terminar Llenado</a> |
-                                <a asp-action="Details" asp-route-id="@item.IdCarros" class="btn btn-warning ">Detalles</a> |
+                                <a asp-action="Edit" asp-route-id="@item.IdCarros" class="btn btn-success">Llenado</a> 
+                                <a asp-action="Details" asp-route-id="@item.IdCarros" class="btn btn-warning ">Detalles</a>
                                 <a asp-action="Delete" asp-route-id="@item.IdCarros" class="btn btn-dark">Eliminar</a>
                             </td>
                         </tr>
@@ -255,3 +259,42 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            var min = $("#min").val();
+            min = min.split("/");
+            min = new Date(min[1], min[0], min[2]);
+
+            var max = $("#max").val();
+            max = max.split("/");
+            max = new Date(max[1], max[0], max[2]);
+
+            var age = data[2].split(" ")[0];
+            age = age.split("/");
+            age = new Date(age[1], age[0], age[2]);
+
+
+            if ((isNaN(min.getTime()) && isNaN(max.getTime())) ||
+                (isNaN(min.getTime()) && age.getTime() <= max.getTime()) ||
+                (min.getTime() <= age.getTime() && isNaN(max.getTime())) ||
+                (min.getTime() <= age.getTime() && age.getTime() <= max.getTime())) {
+                return true;
+            }
+            return false;
+        }
+    );
+
+
+    $(document).ready(function () {
+        var table = $("#dataTable1").DataTable({
+            scrollX: "true"
+        });
+        $('#min, #max').keyup(function () {
+            table.draw();
+        });
+    });
+
+</script>

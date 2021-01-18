@@ -7,12 +7,24 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Agregar Compra</a>
+    <a asp-action="VentaAut">Agregar Venta</a>
 </p>
 <p>
     En este apartado estaran todas las Ventas de autos realizados y las personas a las que
     pertenece o les fue realizada la transaccion
 </p>
+<table border="0" cellspacing="5" cellpadding="5">
+    <tbody>
+        <tr>
+            <td>FechaInicial:</td>
+            <td><input type="text" id="min" name="min"></td>
+        </tr>
+        <tr>
+            <td>FechaFinal:</td>
+            <td><input type="text" id="max" name="max"></td>
+        </tr>
+    </tbody>
+</table>
 
 <table class="table" id="dataTable">
     <thead>
@@ -33,7 +45,7 @@
                 @Html.DisplayNameFor(model => model.FolioFiscal)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCarros)
+                Automovil en cuestion 
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FechaFactura)
@@ -51,7 +63,7 @@
                 @Html.DisplayNameFor(model => model.PagadaCobrada)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdCliente)
+                Cliente
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.VoBoFacturarSat)
@@ -210,8 +222,8 @@
                 @Html.DisplayFor(modelItem => item.IdMetodoPagoNavigation.Nombre)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdMovimiento">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdMovimiento">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.IdMovimiento" class="btn btn-success">Llenar/Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdMovimiento" class="btn btn-warning">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.IdMovimiento">Delete</a>
             </td>
         </tr>

@@ -7,7 +7,7 @@
 <h1>Lista de Modelos</h1>
 
 <p>
-    <a asp-action="Create">Agregar Modelo o Unidad</a>
+    <a class="btn btn-success" asp-action="Create">Agregar Modelo o Unidad</a>
 </p>
 <p>Todos los modelos alguna vez manejados por una empresa (no es inventario)
     Nota: Si se quiere buscar por Marca de automoviles escribir en el buscador</p>
@@ -21,7 +21,7 @@
                 @Html.DisplayNameFor(model => model.Usuario)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdMarcaNavigation)
+                Marca
             </th>
             <th>Opciones</th>
         </tr>
@@ -39,8 +39,8 @@
                 @Html.DisplayFor(modelItem => item.IdMarcaNavigation.NombreMarca)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdModeloCarro">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.IdModeloCarro">Details</a> |
+                <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.IdModeloCarro">Editar</a> |
+                <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.IdModeloCarro">Detalles</a> |
             </td>
         </tr>
 }

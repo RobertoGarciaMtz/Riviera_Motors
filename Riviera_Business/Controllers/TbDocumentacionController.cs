@@ -44,7 +44,7 @@ namespace Riviera_Business.Controllers
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estado = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
           var lista = context.TbDatosPersona.Where(x => x.IdDatosPersona>= 0)
-          .Select(x => new { nombrecc = x.IdDatosPersona.ToString(), desc = x.Nombre + "Ap:" + x.ApellidoPaterno + "Am:" + x.ApellidoMaterno+ "Curp:" + x.Curp });
+          .Select(x => new { nombrecc = x.IdDatosPersona.ToString(), desc = x.Nombre + " " + x.ApellidoPaterno + " " + x.ApellidoMaterno+ " - Curp: " + x.Curp });
         ViewBag.Datospersona = new SelectList(lista, "nombrecc", "desc");
             return View();
         }

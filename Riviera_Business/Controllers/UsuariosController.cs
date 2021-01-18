@@ -60,7 +60,7 @@ namespace Riviera_Business.Controllers
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
-            if (context.Usuarios.Where(usu=> usu.IdEstado ==id).First() is Usuarios u)
+            if (context.Usuarios.Where(usu=> usu.IdUsuarios == id).FirstOrDefault() is Usuarios u)
             {
                 return View(u);
             }
@@ -106,10 +106,15 @@ namespace Riviera_Business.Controllers
         // POST: HomeController1/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Usuarios a)
         {
             try
             {
+                var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+                Usuarios objectdel = a;
+
+                context.Usuarios.Remove(objectdel);
+                context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch

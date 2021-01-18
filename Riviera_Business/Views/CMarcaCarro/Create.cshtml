@@ -4,8 +4,6 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Marcas</h1>
-
 <h4>Agregar Nueva Marca</h4>
 <hr />
 <p>En caso de que no exista agergar una nueva marca</p>
@@ -23,15 +21,16 @@
                 <input asp-for="Usuario" class="form-control" />
                 <span asp-validation-for="Usuario" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Agregar" class="btn btn-primary" />
+            <div class="form-group" style="text-align:right;">
+                <a class="btn btn-info" asp-action="Index">Lista de Marcas</a>
+                <input type="submit" value="Agregar" class="btn btn-primary" style="margin-left:1%;" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Lista de Marcas</a>
+    
 </div>
 
 @section Scripts {

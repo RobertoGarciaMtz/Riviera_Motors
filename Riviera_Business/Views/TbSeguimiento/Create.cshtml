@@ -4,177 +4,268 @@
     ViewData["Title"] = "Create";
 }
 
+<h1>Create</h1>
 
-<script>
-
-</script>
-<h1>Agregar</h1>
-
-<h4>Seguimiento</h4>
-<p>En este apartado se guardaran las pesonas que vengan a muestreo 
-    con todas los datos necesarios </p>
+<h4>TbSeguimiento</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="content">
+    <div class="content">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="NombreCompleto" class="control-label">Nombre Cliente</label>
-                <input asp-for="NombreCompleto" class="form-control" />
-                <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="FechaHoraLlegada" class="control-label"></label>
+                </div><div class="col-md-7">
+                    <input asp-for="FechaHoraLlegada" class="form-control" />
+                    <span asp-validation-for="FechaHoraLlegada" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Telefono" class="control-label"></label>
-                <input asp-for="Telefono" class="form-control" />
-                <span asp-validation-for="Telefono" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="FechaHoraAsignacion" class="control-label"></label>
+                </div><div class="col-md-7">
+                    <input asp-for="FechaHoraAsignacion" class="form-control" />
+                    <span asp-validation-for="FechaHoraAsignacion" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Correo" class="control-label">Correo electronico</label>
-                <input asp-for="Correo" class="form-control" />
-                <span asp-validation-for="Correo" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="IdMedioPublicitario" class="control-label"></label>
+                </div><div class="col-md-7">
+                    <select asp-for="IdMedioPublicitario" class="form-control" asp-items="ViewBag.Mediopubli"></select>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="CMedioPublicitario" class="control-label">Contacto o Medio</label>
-                <select asp-for="CMedioPublicitario" class="form-control" asp-items="ViewBag.Mediopubli"></select>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="NombreCompleto" class="control-label"></label>
+                </div><div class="col-md-7">
+                    <input asp-for="NombreCompleto" class="form-control" />
+                    <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Fecha" class="control-label">Fecha del registro</label>
-                <input asp-for="Fecha" class="form-control" />
-                <span asp-validation-for="Fecha" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="Correo" class="control-label"></label>
+                </div><div class="col-md-7">
+                    <input asp-for="Correo" class="form-control" />
+                    <span asp-validation-for="Correo" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Sexo" class="control-label"></label>
-                <input asp-for="Sexo" class="form-control" />
-                <span asp-validation-for="Sexo" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="Telefono" class="control-label"></label>
+                </div><div class="col-md-7">
+                    <input asp-for="Telefono" class="form-control" />
+                    <span asp-validation-for="Telefono" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="IdAsesor" class="control-label">Asesor que atendio</label>
-                <select asp-for="IdAsesor" class="form-control" asp-items="ViewBag.Asesor"></select>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="IdAsesor" class="control-label">Asesor de Ventas:</label>
+                </div><div class="col-md-7">
+                    <select asp-for="IdAsesor" class="form-control" asp-items="ViewBag.Asesor"></select>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="IdCarro" class="control-label">Carro Interes</label>
-                <select asp-for="IdCarro"  class="form-control" asp-items=" ViewBag.Carros"></select>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="TipoVenta" class="control-label">Tipo de venta:</label>
+                </div><div class="col-md-7">
+                    <select asp-for="TipoVenta" class="form-control">
+                        <option value="1">Seminuevos</option>
+                        <option value="2">Nuevos</option>
+                        <option value="3">Blindados</option>
+                    </select>
+                    <span asp-validation-for="TipoVenta" class="text-danger"></span>
+                </div>
             </div>
-            <!----------------------------------------------------------
-        ------------------------
-        -------------------------->
-            <div class="form-group">
-                <label asp-for="Contesto" class="control-label">Verificacion Telefonica</label>
-                <select asp-for="Contesto" class="form-control">
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="IdCarro" class="control-label">Auto de interes:</label>
+                </div><div class="col-md-7">
+                    <select asp-for="IdCarro" class="form-control" asp-items="ViewBag.Carros"></select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="AnioAuto" class="control-label">Año Modelo</label>
+                </div><div class="col-md-7">
+                    <input asp-for="AnioAuto" class="form-control" />
+                    <span asp-validation-for="AnioAuto" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="Contactado" class="control-label">Contactado: </label>
+                </div><div class="col-md-7">
+                <select asp-for="Contactado" class="form-control">
+                    <option value="0">Seleccionar</option>
                     <option value="1">Si</option>
                     <option value="2">No</option>
+                    <option value="3">Pendiente</option>
+                    <option value="4">En Proceso</option>
+                    <option value="5">Programado</option>
+                    <option value="6">Desechado</option>
                 </select>
-                <span asp-validation-for="Contesto" class="text-danger"></span>
+                    <span asp-validation-for="Contactado" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Cita" class="control-label">Cita Confirmada</label>
-                <select asp-for="Cita" class="form-control">
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="EnvioInformacion" class="control-label">Envío de información:</label>
+                </div><div class="col-md-7">
+                          <select asp-for="EnvioInformacion" class="form-control">
+                              <option value="1">Whatsapp</option>
+                              <option value="2">Correo Electronico</option>
+                          </select>
+                    <span asp-validation-for="EnvioInformacion" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="AgendoCita" class="control-label">Agendo Cita:</label>
+                </div><div class="col-md-7">
+                <select  asp-for="AgendoCita" class="form-control">
+                    <option value="0">Seleccionar</option>
                     <option value="1">Si</option>
                     <option value="2">No</option>
+                    <option value="3">Por Definir</option>
+                    <option value="4">Asistio Cita</option>
+                    <option value="5">Pendiente</option>
                 </select>
-                <span asp-validation-for="Cita" class="text-danger"></span>
+                    <span asp-validation-for="AgendoCita" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="FechaCita" class="control-label">Fecha de Cita</label>
-                <input asp-for="FechaCita" class="form-control" />
-                <span asp-validation-for="FechaCita" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="AsistioCita" class="control-label">Asistio Cita</label>
+                </div><div class="col-md-7">
+                          <select asp-for="AsistioCita" class="form-control">
+                              <option value="1">Si</option>
+                              <option value="2">No</option>
+                          </select>
+                    <span asp-validation-for="AsistioCita" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Asistio" class="control-label">Asistio a Cita</label>
-                <select asp-for="Asistio" class="form-control">
-                    <option value="1">Si</option>
-                    <option value="2">No</option>
-                </select>
-                <span asp-validation-for="Asistio" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="Confirmacion" class="control-label">Apartado de Unidad:</label>
+                </div><div class="col-md-7">
+                          <select asp-for="Confirmacion" class="form-control">
+                              <option value="1">Si</option>
+                              <option value="2">No</option>
+                          </select>
+                    <span asp-validation-for="Confirmacion" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Toma" class="control-label">Deja Vehiculo a Cuenta</label>
-                <select asp-for="Toma" class="form-control">
-                    <option value="1">Si</option>
-                    <option value="2">No</option>
-                </select>
-                <span asp-validation-for="Toma" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="UnidadToma" class="control-label">Unidad de toma:</label>
+                </div><div class="col-md-7">
+                          <select asp-for="UnidadToma" class="form-control">
+                              <option value="1">Si</option>
+                              <option value="2">No</option>
+                          </select>
+                    <span asp-validation-for="UnidadToma" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="PruebaManejo" class="control-label"></label>
-                <select asp-for="PruebaManejo" class="form-control">
-                    <option value="1">Si</option>
-                    <option value="2">No</option>
-                </select>
-                <span asp-validation-for="PruebaManejo" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="RealizoPruebaManejo" class="control-label">Realizo P.M.</label>
+                </div><div class="col-md-7">
+                          <select asp-for="RealizoPruebaManejo" class="form-control">
+                              <option value="1">Si</option>
+                              <option value="2">No</option>
+                              <option value="3">Pendiente</option>
+                              <option value="4">Reprogramada</option>
+                          </select>
+                    <span asp-validation-for="RealizoPruebaManejo" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="IdTipoCompra" class="control-label">Contado o Financiado</label>
-                <select asp-for="IdTipoCompra" class="form-control">
-                    <option value="1">Contado</option>
-                    <option value="2">Financiado</option>
-                </select>
-                <span asp-validation-for="IdTipoCompra" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="IdIngresoSolicitudBanco" class="control-label">Ingreso solicitud:</label>
+                </div><div class="col-md-7">
+                    <select asp-for="IdIngresoSolicitudBanco" class="form-control" asp-items="ViewBag.Bancos"></select>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Venta" class="control-label">Termino en Venta</label>
-                <select asp-for="Venta" class="form-control">
-                    <option value="1">Si</option>
-                    <option value="2">No</option>
-                </select>
-                <span asp-validation-for="Venta" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="DejoApartadoEnganche" class="control-label">Enganche:</label>
+                </div><div class="col-md-7">
+                          <select asp-for="DejoApartadoEnganche" class="form-control">
+                              <option value="1">Si</option>
+                              <option value="2">No</option>
+                              <option value="3">Anticipo a Cuenta</option>
+                              <option value="4">Vehiculo a Cuenta</option>
+                              <option value="5">En espera Autorizacion con T.C.</option>
+                          </select>
+                    <span asp-validation-for="DejoApartadoEnganche" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Anticipo" class="control-label">Dejo Anticipo</label>
-                <select asp-for="Anticipo" class="form-control">
-                    <option value="1">Si</option>
-                    <option value="2">No</option>
-                </select>
-                <span asp-validation-for="Anticipo" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="FechaVenta" class="control-label">Fecha de Venta:</label>
+                </div><div class="col-md-7">
+                    <input asp-for="FechaVenta" class="form-control" />
+                    <span asp-validation-for="FechaVenta" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="CantidadAnticipo" class="control-label"></label>
-                <input asp-for="CantidadAnticipo" class="form-control" />
-                <span asp-validation-for="CantidadAnticipo" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="FechaFacturado" class="control-label">Fecha Facturado:</label>
+                </div><div class="col-md-7">
+                    <input asp-for="FechaFacturado" class="form-control" />
+                    <span asp-validation-for="FechaFacturado" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Comentarios" class="control-label"></label>
-                <input asp-for="Comentarios" class="form-control" />
-                <span asp-validation-for="Comentarios" class="text-danger"></span>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="FechaEntrega" class="control-label">Fecha de entrega:</label>
+                </div><div class="col-md-7">
+                    <input asp-for="FechaEntrega" class="form-control" />
+                    <span asp-validation-for="FechaEntrega" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="IdEstado" class="control-label">Estado del seguimiento</label>
-                <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estados"></select>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="Comentarios" class="control-label">Comentarios</label>
+                </div><div class="col-md-7">
+                    <textarea rows="3" asp-for="Comentarios" class="form-control"></textarea>
+                    <span asp-validation-for="Comentarios" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="SeguimientoDesc" class="control-label">Seguimiento:</label>
+                </div><div class="col-md-7">
+                    <textarea rows="3" asp-for="SeguimientoDesc" class="form-control"></textarea>
+                    <span asp-validation-for="SeguimientoDesc" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="FechaSigMovimiento" class="control-label">Fecha Seguimiento Proximo Contacto</label>
+                </div><div class="col-md-7">
+                    <input asp-for="FechaSigMovimiento" class="form-control" />
+                    <span asp-validation-for="FechaSigMovimiento" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1"></div><div class="col-md-3">
+                    <label asp-for="IdEstado" class="control-label">Estado: </label>
+                </div><div class="col-md-7">
+                    <select asp-for="IdEstado" class="form-control" asp-items="ViewBag.Estados"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="btn-md-5 float-right">
+                    <a class="btn btn-info" asp-action="Index">Lista Seguimientos</a>
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
             </div>
         </form>
-        <!--<div class="form-group">
-        <p id="recibidor" />
-    </div>-->
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Lista Seguimiento</a>
-</div>
-<p style="font-size:small">Todos los datos son necesarios para llevar un mejor control
-    y administracion </p>
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
 
-<script>
-    function obtversion(select) {
-        var idSelected = select.value;
-        $.ajax({
-            url: "/TbSeguimiento/RecuperarVersion",
-            method: "POST",
-            data: { "id": idSelected },
-            success: function (e) {
-                console.log(e);
-                let selectModelo = document.getElementById("recibidor");
-                let html = "";
-                html += "<option value ='" + e.idVersionCarro + "' >" + e.versionCarro + "</option>";
-                selectModelo.innerHTML = html;
-            }
-        });
-    }
-
-</script>

@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="CompraAut">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="ModelOnly " class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="CompraVenta" class="control-label"></label>
                 <select asp-for="CompraVenta" class="form-control">
@@ -45,8 +45,8 @@
                 <span asp-validation-for="FolioFiscal" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdCarros" class="control-label">Carro al que pertenece</label>
-                <input asp-for="IdCarros" class="form-control" />
+                <label asp-for="IdCarros" class="control-label">Automovil que se esta comprando</label>
+                <select asp-for="IdCarros" class="form-control" asp-items="ViewBag.Auto"></select>
                 <span asp-validation-for="IdCarros" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -76,22 +76,31 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdCliente" class="control-label">Proveedor</label>
-                <select asp-for="IdCliente" class="form-control" id="selectProovedor" />
+                <select asp-for="IdCliente" class="form-control" id="selectProovedor" ></select>
                 <span asp-validation-for="IdCliente" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="VoBoFacturarSat" class="control-label"></label>
-                <input asp-for="VoBoFacturarSat" class="form-control" />
+                <label asp-for="VoBoFacturarSat" class="control-label">Factura SAt</label>
+                <select asp-for="VoBoFacturarSat" class="form-control">
+                    <option value="0">-------</option>
+                    <option value="1">Correcto</option>
+                    <option value="1">Falta</option>
+                </select>
                 <span asp-validation-for="VoBoFacturarSat" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="VoBoLeyAntiLavado" class="control-label"></label>
-                <input asp-for="VoBoLeyAntiLavado" class="form-control" />
+                <select asp-for="VoBoLeyAntiLavado" class="form-control">
+                    <option value="0">-------</option>
+                    <option value="1">Correcto</option>
+                    <option value="2">Falta</option>
+                </select>
                 <span asp-validation-for="VoBoLeyAntiLavado" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FormaPago" class="control-label">formaPago</label>
-                <select asp-for="FormaPago" >
+                <label asp-for="FormaPago" class="control-label">Forma Pago</label>
+                <select asp-for="FormaPago" class="form-control" >
                     <option value="0">----------</option>
                     <option value="1">Efectivo</option>
                     <option value="2">Transferencia electronica</option>
@@ -101,13 +110,15 @@
                 </select>
                 <span asp-validation-for="FormaPago" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="IdMetodoPago" class="control-label"></label>
-                <select asp-for="IdMetodoPago" class="form-control" asp-items="ViewBag.Metodopago"/>
+                <label asp-for="IdMetodoPago" class="control-label">Metodo Pago</label>
+                <select asp-for="IdMetodoPago" class="form-control" asp-items="ViewBag.Metodopago"></select>
                 <span asp-validation-for="IdMetodoPago" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="FechaES" class="control-label">Fecha de Llegada</label>
+                <label asp-for="FechaES" class="control-label">Fecha de Llegada Automovil</label>
                 <input asp-for="FechaES" class="form-control" />
                 <span asp-validation-for="FechaES" class="text-danger"></span>
             </div>
@@ -122,7 +133,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Debiendo" class="control-label">Quedo debiendo</label>
-                <select>
+                <select asp-for="Debiendo" class="form-control">
                     <option value="1">Si </option>
                     <option value="2">No</option>
                 </select>

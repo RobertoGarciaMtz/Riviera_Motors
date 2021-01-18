@@ -23,7 +23,7 @@
                 <span asp-validation-for="FactOrigen" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RefactCompleta" class="control-label"></label>
+                <label asp-for="RefactCompleta" class="control-label">Refacturacion Completa</label>
                 <input asp-for="RefactCompleta" class="form-control" />
                 <span asp-validation-for="RefactCompleta" class="text-danger"></span>
             </div>
@@ -33,7 +33,7 @@
                 <span asp-validation-for="Tenencias4Anos" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Baja" class="control-label"></label>
+                <label asp-for="Baja" class="control-label">Baja Placas</label>
                 <select asp-for="Baja" class="form-control">
                     <option value="1">Entregada</option>
                     <option value="2">No entregada</option>
@@ -42,7 +42,7 @@
                 <span asp-validation-for="Baja" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Verificacion" class="control-label"></label>
+                <label asp-for="Verificacion" class="control-label">Verificacion vehicular</label>
                 <select asp-for="Verificacion" class="form-control">
                     <option value="1">Tiene</option>
                     <option value="2">No Tiene</option>
@@ -61,7 +61,7 @@
                 <span asp-validation-for="Repuve" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdEmisor" class="control-label"></label>
+                <label asp-for="IdEmisor" class="control-label">Emisor</label>
                 <input asp-for="IdEmisor" class="form-control" />
                 <span asp-validation-for="IdEmisor" class="text-danger"></span>
             </div>
@@ -85,7 +85,7 @@
                 <span asp-validation-for="Usuario" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdCarro" class="control-label"></label>
+                <label asp-for="IdCarro" class="control-label">Carros al que corresponde el papeleo</label>
                 <select asp-for="IdCarro" class ="form-control" asp-items="ViewBag.Carros"></select>
             </div>
             <div class="form-group">

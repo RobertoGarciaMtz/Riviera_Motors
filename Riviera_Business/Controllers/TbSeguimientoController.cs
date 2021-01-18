@@ -17,7 +17,7 @@ namespace Riviera_Business.Controllers
             var list = context.TbSeguimiento.ToList();
             foreach (TbSeguimiento ti in list)
             {
-                ti.CMedioPublicitarioNavigation = context.CMedioPublicitario.Where(me => me.IdMedioPublicitario == ti.CMedioPublicitario).FirstOrDefault();
+                ti.IdMedioPublicitarioNavigation = context.CMedioPublicitario.Where(me => me.IdMedioPublicitario == ti.IdMedioPublicitario).FirstOrDefault();
                 ti.IdCarroNavigation = context.TbCarros.Where(car => car.IdCarros == ti.IdCarro).FirstOrDefault();
                 ti.IdCarroNavigation.IdVersionNavigation = context.CVersionCarro.Where(tc => tc.IdVersionCarro == ti.IdCarroNavigation.IdVersion).FirstOrDefault();
                 ti.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation = context.CModeloCarro.Where(mod => mod.IdModeloCarro == ti.IdCarroNavigation.IdVersionNavigation.IdModelo).FirstOrDefault();
@@ -52,6 +52,7 @@ namespace Riviera_Business.Controllers
             ViewBag.Version = context.CVersionCarro.Select(ver=> new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem {Text =ver.VersionCarro,Value=ver.IdVersionCarro.ToString() } );
             ViewBag.Mediopubli = context.CMedioPublicitario.Select(mp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = mp.Nombre, Value = mp.IdMedioPublicitario.ToString() });
             ViewBag.Asesor = context.CAsesores.Select(ase => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ase.Nombre, Value = ase.IdAsesores.ToString() });
+            ViewBag.Bancos = context.CBanco.Select(banc => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = banc.Nombre, Value = banc.IdBanco.ToString() });
             return View();
         }
 
@@ -96,6 +97,7 @@ namespace Riviera_Business.Controllers
             ViewBag.Carros = context.TbCarros.Select(car => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = car.NoSerie, Value = car.IdCarros.ToString() });
             ViewBag.Mediopubli = context.CMedioPublicitario.Select(mp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = mp.Nombre, Value = mp.IdMedioPublicitario.ToString() });
             ViewBag.Asesor = context.CAsesores.Select(ase => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ase.Nombre, Value = ase.IdAsesores.ToString() });
+            ViewBag.Bancos = context.CBanco.Select(banc => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = banc.Nombre, Value = banc.IdBanco.ToString() });
             if (context.TbSeguimiento.Where(se=> se.IdSeguimiento == id).First() is TbSeguimiento e)
             {
                 return View(e);
@@ -114,24 +116,33 @@ namespace Riviera_Business.Controllers
                 var objectEdit = context.TbSeguimiento.FirstOrDefault(se=>se.IdSeguimiento == a.IdSeguimiento);
                 if (objectEdit!= null)
                 {
-                    objectEdit.Anticipo = a.Anticipo;
-                    objectEdit.IdAsesor = a.IdAsesor;
-                    objectEdit.Asistio = a.Asistio;
-                    objectEdit.Cita = a.Cita;
-                    objectEdit.CMedioPublicitario = a.CMedioPublicitario;
-                    objectEdit.Comentarios = a.Comentarios;
-                    objectEdit.Contesto = a.Contesto;
+                    objectEdit.AgendoCita = a.AgendoCita;
+                    objectEdit.AnioAuto = a.AnioAuto;
+                    objectEdit.AsistioCita = a.AsistioCita;
+                    objectEdit.Comentarios= a.Comentarios;
+                    objectEdit.Confirmacion= a.Confirmacion;
+                    objectEdit.Contactado = a.Contactado;
                     objectEdit.Correo = a.Correo;
-                    objectEdit.Fecha = a.Fecha;
+                    objectEdit.DejoApartadoEnganche = a.DejoApartadoEnganche;
+                    objectEdit.EnvioInformacion = a.EnvioInformacion;
+                    objectEdit.FechaEntrega = a.FechaEntrega;
+                    objectEdit.FechaFacturado = a.FechaFacturado;
+                    objectEdit.FechaHoraAsignacion = a.FechaHoraAsignacion;
+                    objectEdit.FechaHoraLlegada = a.FechaHoraLlegada;
+                    objectEdit.FechaSigMovimiento = a.FechaSigMovimiento;
+                    objectEdit.FechaVenta = a.FechaVenta;
+                    objectEdit.IdAsesor = a.IdAsesor;
                     objectEdit.IdCarro = a.IdCarro;
                     objectEdit.IdEstado = a.IdEstado;
-                    objectEdit.IdTipoCompra = a.IdTipoCompra;
+                    objectEdit.IdIngresoSolicitudBanco = a.IdIngresoSolicitudBanco;
+                    objectEdit.IdMedioPublicitario = a.IdMedioPublicitario;
                     objectEdit.NombreCompleto = a.NombreCompleto;
-                    objectEdit.PruebaManejo = a.PruebaManejo;
+                    objectEdit.RealizoPruebaManejo = a.RealizoPruebaManejo;
+                    objectEdit.SeguimientoDesc = a.SeguimientoDesc;
                     objectEdit.Sexo = a.Sexo;
                     objectEdit.Telefono = a.Telefono;
-                    objectEdit.Toma = a.Toma;
-                    objectEdit.Venta = a.Venta;
+                    objectEdit.TipoVenta = a.TipoVenta;
+                    objectEdit.UnidadToma = a.UnidadToma;
                     context.TbSeguimiento.Update(objectEdit);
                     context.SaveChanges();
                 }

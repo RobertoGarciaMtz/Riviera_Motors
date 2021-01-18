@@ -12,11 +12,9 @@
 
 <style>
     .login-la {
-       position:relative;
-       left:450px;
-        top:100px;
-        color:navajowhite;
-    
+        font-weight: bold;
+        color:white;
+        font-size: 20px;
        }
 
 </style>
@@ -31,14 +29,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link href="~/css/font-awesome.css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
 
-    <link href="~/css/style.css" rel="stylesheet" type="text/css">
-    <link href="~/css/pages/signin.css" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </head>
 
@@ -74,35 +71,45 @@
         </div> <!-- /navbar-inner -->
 
     </div> <!-- /navbar -->
-
-    <img src="~/dist/img/isologo.png" style="width:150px;height:150px; position:relative; left:610px; top:30px"/>
+    <div class="content" style="text-align:center; margin-bottom: 5%">
+        <img src="~/dist/img/isologo.png" style="width:150px;height:150px; margin: 0 auto;" />
+    </div>
 
     <div class="account-container" >
 
-        <div class="content clearfix">
+        <div class="content clearfix" style="text-align:center;">
 
             <form asp-action="Index">
 
-                <h1 style="position:relative; left:600px; top:30px; font-family:'Albertus MT'">Inicia sesión</h1>
+                <h1 style="color:white; text-align:center; font-family:'Albertus MT'">Inicia sesión</h1>
 
-                <div class="login-fields">
-
-                    <div class="field">
-                        <label for="username" class="login-la">Nombre Usuario:</label>
-                        <input style = "position:relative; left:480px; top:100px; background-color:navajowhite;" type="text" asp-for="NombreUsuario" placeholder="Username" class="login username-field" />
-                    </div> <!-- /field -->
-
-                    <div class="field">
-                        <label  for="password" class="login-la">Contraseña:</label>
-                        <input style="position:relative; left:515px; top:100px; background-color:navajowhite;" type="password" asp-for="Contraseña" placeholder="Password" class="login password-field" />
-                    </div> <!-- /password -->
-
+                <div class="login-fields" style="margin-top:5%;">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-2" style="text-align:left;">
+                                <label for="username" class="login-la">Nombre Usuario:</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input style="background-color:navajowhite;" type="text" asp-for="NombreUsuario" placeholder="Usuario" class="form-control" />
+                            </div> <!-- /field -->
+                        </div>
+                        <div class="row" style="margin-top:1%">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-2" style="text-align:left;">
+                                <label for="password" class="login-la">Contraseña:</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input style="background-color:navajowhite;" type="password" asp-for="Contraseña" placeholder="Contraseña" class="form-control" />
+                            </div>
+                        </div> <!-- /password -->
+                    </div>
                 </div>
-                <div class="login-actions">
+                <div class="login-actions" style="margin-top:3%;">
 
 
 
-                    <button  style="position:relative; left:600px;top:150px;" class="button btn btn-success btn-large">Sign In</button>
+                    <button  style="position:relative;" class="btn btn-success btn-large">Sign In</button>
 
                 </div> <!-- .actions -->
 

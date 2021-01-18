@@ -9,6 +9,14 @@
 <p>
     <a asp-action="Create">Agregar Persona Moral</a>
 </p>
+<table border="0" cellspacing="5" cellpadding="5">
+    <tbody>
+        <tr>
+            <td>Fecha Constitucion:</td>
+            <td><input type="text" id="min" name="min"></td>
+        </tr>
+    </tbody>
+</table>
 <p>En este apartado apareceran todas las empresas con las cuales se ha tenido contacto</p>
 <table class="table" id="dataTable">
     <thead>
@@ -134,8 +142,8 @@
                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdDatosPm">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.IdDatosPm">Detalles</a> |
+                <a asp-action="Edit" asp-route-id="@item.IdDatosPm" class="btn btn-success">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdDatosPm" class="btn btn-warning">Detalles</a> |
                 <a asp-action="Delete" asp-route-id="@item.IdDatosPm">Delete</a>
             </td>
         </tr>

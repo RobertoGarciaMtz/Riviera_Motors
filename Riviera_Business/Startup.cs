@@ -33,7 +33,7 @@ namespace Riviera_Business
                 .AddCookie("PKAT", options => {
                     options.ReturnUrlParameter = "returnURL";
                     options.ExpireTimeSpan = TimeSpan.FromDays(1);
-                    options.LoginPath = "/Login/Index";
+                    options.LoginPath = "/Login_/Index";
                     options.LogoutPath = "/Login/Logout";
                 });
 

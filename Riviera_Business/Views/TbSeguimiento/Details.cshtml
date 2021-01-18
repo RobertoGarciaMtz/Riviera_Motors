@@ -4,23 +4,29 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Detalles</h1>
+<h1>Details</h1>
 
 <div>
-    <h4>Automovil</h4>
+    <h4>TbSeguimiento</h4>
     <hr />
     <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaHoraLlegada)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaHoraLlegada)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaHoraAsignacion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaHoraAsignacion)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.NombreCompleto)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.NombreCompleto)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefono)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Telefono)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Correo)
@@ -29,10 +35,22 @@
             @Html.DisplayFor(model => model.Correo)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Fecha)
+            @Html.DisplayNameFor(model => model.Telefono)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Fecha)
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipoVenta)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipoVenta)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AnioAuto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AnioAuto)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Sexo)
@@ -41,107 +59,70 @@
             @Html.DisplayFor(model => model.Sexo)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdAsesor)
+            @Html.DisplayNameFor(model => model.Contactado)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdAsesor)
+            @Html.DisplayFor(model => model.Contactado)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Contesto)
+            @Html.DisplayNameFor(model => model.EnvioInformacion)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Contesto)
+            @Html.DisplayFor(model => model.EnvioInformacion)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cita)
+            @Html.DisplayNameFor(model => model.AgendoCita)
         </dt>
-        <dd class="col-sm-10">
-            @if (Model.Cita == 1)
-            {
-                <label value="@Model.Cita">Si</label>
-            }
-            else
-            {
-                <label value="@Model.Cita">No</label>
-            }
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AgendoCita)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Asistio)
+            @Html.DisplayNameFor(model => model.AsistioCita)
         </dt>
-        <dd class="col-sm-10">
-            @if (Model.Asistio == 1)
-            {
-                <label value="@Model.Asistio">Si</label>
-            }
-            else
-            {
-                <label value="@Model.Asistio">No</label>
-            }
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AsistioCita)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Toma)
+            @Html.DisplayNameFor(model => model.Confirmacion)
         </dt>
-        <dd class="col-sm-10">
-            @if (Model.Toma == 1)
-            {
-                <label value="@Model.Toma">Si</label>
-            }
-            else
-            {
-                <label value="@Model.Toma">No</label>
-            }
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Confirmacion)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PruebaManejo)
+            @Html.DisplayNameFor(model => model.UnidadToma)
         </dt>
-        <dd class="col-sm-10">
-            @if (Model.PruebaManejo == 1)
-            {
-                <label value="@Model.PruebaManejo">Si</label>
-            }
-            else
-            {
-                <label value="@Model.PruebaManejo">No</label>
-            }
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UnidadToma)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdTipoCompra)
+            @Html.DisplayNameFor(model => model.RealizoPruebaManejo)
         </dt>
-        <dd class="col-sm-10">
-            @if (Model.IdTipoCompra == 1)
-            {
-                <label value="@Model.IdTipoCompra">Retail</label>
-            }
-            else
-            {
-                <label value="@Model.IdTipoCompra">Interagencias</label>
-            }
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RealizoPruebaManejo)
         </dd>
         <dt class = "col-sm-2">
-            Dejo Anticipo
+            @Html.DisplayNameFor(model => model.DejoApartadoEnganche)
         </dt>
-        <dd class="col-sm-10">
-            @if (Model.Anticipo == 1)
-            {
-                <label value="@Model.Anticipo">Si</label>
-            }
-            else
-            {
-                <label value="@Model.Anticipo">No</label>
-            }
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DejoApartadoEnganche)
         </dd>
         <dt class = "col-sm-2">
-            Termino en venta
+            @Html.DisplayNameFor(model => model.FechaVenta)
         </dt>
-        <dd class="col-sm-10">
-            @if (Model.Venta == 1)
-            {
-                <label value="@Model.Venta">Si</label>
-            }
-            else
-            {
-                <label value="@Model.Venta">No</label>
-            }
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaVenta)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaFacturado)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaFacturado)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaEntrega)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaEntrega)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Comentarios)
@@ -150,22 +131,46 @@
             @Html.DisplayFor(model => model.Comentarios)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CMedioPublicitarioNavigation)
+            @Html.DisplayNameFor(model => model.SeguimientoDesc)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CMedioPublicitarioNavigation.Nombre)
+            @Html.DisplayFor(model => model.SeguimientoDesc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaSigMovimiento)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaSigMovimiento)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdAsesorNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdAsesorNavigation.IdAsesores)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IdCarroNavigation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdCarroNavigation.NoSerie)
+            @Html.DisplayFor(model => model.IdCarroNavigation.IdCarros)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IdEstadoNavigation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdEstadoNavigation.Descripcion)
+            @Html.DisplayFor(model => model.IdEstadoNavigation.IdEstados)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdIngresoSolicitudBancoNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdIngresoSolicitudBancoNavigation.IdBanco)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdMedioPublicitarioNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdMedioPublicitarioNavigation.IdMedioPublicitario)
         </dd>
     </dl>
 </div>

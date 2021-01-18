@@ -7,7 +7,7 @@
 <h1>Lista Marcas</h1>
 
 <p>
-    <a asp-action="Create">Agregar Marca</a>
+    <a class="btn btn-success" asp-action="Create">Agregar Marca</a>
 </p>
 <p>Todas las marcas manejadas por la empresa (No son inventario)</p>
 <table class="table" id="dataTable">
@@ -32,8 +32,8 @@
                 @Html.DisplayFor(modelItem => item.Usuario)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdMarcaCarro" class="btn fc-button-active">Corregir</a> |
-                <a asp-action="Details" asp-route-id="@item.IdMarcaCarro">Detalles</a> |
+                <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.IdMarcaCarro" class="btn fc-button-active">Corregir</a> |
+                <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.IdMarcaCarro">Detalles</a> |
             </td>
         </tr>
 }

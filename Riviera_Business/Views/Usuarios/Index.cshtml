@@ -37,15 +37,47 @@
                 @Html.DisplayFor(modelItem => item.Contraseña)
             </td>
             <td>
+                @if (item.TipoUsuario == 1)
+                {
+                    <label>Administrador</label>
+                }
+                @if (item.TipoUsuario == 2)
+                {
+                    <label>Papeleo y Movimientos</label>
+                }
+                @if (item.TipoUsuario == 3)
+                {
+                    <label>Ventas Inter</label>
+                }
+                @if (item.TipoUsuario == 4)
+                {
+                    <label>Ventas Retail</label>
+                }
+                @if (item.TipoUsuario == 5)
+                {
+                    <label>Compra Autos</label>
+                }
+                @if (item.TipoUsuario == 6)
+                {
+                    <label>Contabilidad</label>
+                }
+                @if (item.TipoUsuario == 7)
+                {
+                    <label>Calidad</label>
+                }
+                @if (item.TipoUsuario == 8)
+                {
+                    <label>Solo Ver</label>
+                }
                 @Html.DisplayFor(modelItem => item.TipoUsuario)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdUsuarios">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdUsuarios">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdUsuarios">Delete</a>
+                <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.IdUsuarios">Editar</a>
+                <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.IdUsuarios">Detalles</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdUsuarios">Eliminar</a>
             </td>
         </tr>
 }

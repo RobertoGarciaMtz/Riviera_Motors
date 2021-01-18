@@ -4,11 +4,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Lista de Clientes</h1>
 
 <p>
     <a asp-action="Create">Agregar Otra Persona</a>
 </p>
+<table border="0" cellspacing="5" cellpadding="5">
+    <tbody>
+        <tr>
+            <td>Fecha Interes:</td>
+            <td><input type="text" id="min" name="min"></td>
+        </tr>
+    </tbody>
+</table>
 <p>Si la persona es "Fisica" los datos a partir de "Fecha Poder Notorial" se mostraran vacios </p>
 <table class="table"  id="dataTable">
     <thead>
@@ -83,7 +91,7 @@
                 @Html.DisplayNameFor(model => model.IdEstadoNavigation)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdPmDpNavigation)
+                Denominacion Razon Social
             </th>
             <th></th>
         </tr>
@@ -171,8 +179,8 @@
                 @Html.DisplayFor(modelItem => item.IdPmDpNavigation.DenominacionRazonSocial)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdDatosPersona">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdDatosPersona">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.IdDatosPersona" class="btn btn-success">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdDatosPersona" class="btn btn-warning">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.IdDatosPersona">Delete</a>
             </td>
         </tr>

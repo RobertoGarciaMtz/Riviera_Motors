@@ -11,56 +11,96 @@ namespace Riviera_Business.Controllers
     public class ControladoresdeResumen : Controller
     {
 
+
+        // ControladoresdeResumen/Desempeno
         public ActionResult Desempeno()
         {
+         
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             var list = context.TbSeguimiento.ToList();
             var listasesor = context.CAsesores.ToList();
-            foreach (TbSeguimiento ti in list)
-            {
-               var asesor1 = context.TbSeguimiento.Where(ass => ass.IdAsesor == listasesor[1].IdAsesores).Count();
+
+            int[] emptyStringArray = new int[0] { };
+                var asesor1 = context.TbSeguimiento.Where(ass => ass.IdAsesor == listasesor[1].IdAsesores).Count();
                 var asesor2 = context.TbSeguimiento.Where(ass => ass.IdAsesor == listasesor[2].IdAsesores).Count();
                 var asesor3 = context.TbSeguimiento.Where(ass => ass.IdAsesor == listasesor[3].IdAsesores).Count();
+            emptyStringArray[0] = asesor1;
+            emptyStringArray[1] = asesor2;
+            emptyStringArray[2] = asesor3;
 
+            ViewBag.pruebas = context.TbSeguimiento.Where(man => man.RealizoPruebaManejo == 1).Count();
+
+            var anticipos = context.TbSeguimiento.Where(ant => ant.DejoApartadoEnganche == 1).Count();
+
+            var tventa = context.TbSeguimiento.Where(tv => tv.UnidadToma == 1).Count();
+
+            var ncitas = context.TbSeguimiento.Where(nc => nc.AgendoCita == 1).Count();
+
+            int[] mediopubli = new int[0] { };
+            var medio1 = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 1).Count();
+            var medio2 = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 2).Count();
+            var medio3 = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 3).Count();
+            var medio4 = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 4).Count();
+            var medio5 = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 5).Count();
+            var medio6 = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 6).Count();
+            var medio7 = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 7).Count();
+
+            mediopubli[0] = medio1;
+            mediopubli[1] = medio2;
+            mediopubli[2] = medio3;
+            mediopubli[3] = medio4;
+            mediopubli[4] = medio5;
+            mediopubli[5] = medio6;
+            mediopubli[6] = medio7;
+
+            var carros = context.TbCarros.ToList();
+            foreach (var carro in carros) {
+                var gastos = context.TbGastos.Where(gas => gas.IdCarro == carro.IdCarros).Select(x => x.Monto).Sum();
+                var gasto_compra = context.TbControl.Where(tc => tc.IdCarros == carro.IdCarros && tc.CompraVenta == 1).Select(x => x.PrecioPactado);
+                var ganancia = context.TbControl.Where(tc => tc.IdCarros == carro.IdCarros && tc.CompraVenta == 2).Select( x => x.PrecioPactado );
+                //var utilidad = ganancia - (gasto_compra + gastos.Value);
             }
+
+            //Llenar los suficientes campos
+            //Imprimir en consola que te devuelva bien los valores
+            //Guardar en ViewBag cada variable
+            //Manipula los datos desde la vista
+            //en la vista ViewBag.pruebas
             return View(list);
         }
+
+
+
         // GET: HomeController1
-        public ActionResult Desempeno1()
-        {
+        public ActionResult Desempeno1() {
             //los necesarios
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             var list = context.TbSeguimiento.ToList();
             var list2 = context.CAsesores.ToList();
             var list3 = context.TbControl.ToList();
             var list4 = context.TbPapelesCarro.ToList();
-            //para contar de los asesores
-            int mascitas = context.TbSeguimiento.Where(seg => seg.IdAsesor == 1).Count();
-            int mascitas2 = context.TbSeguimiento.Where(seg => seg.IdAsesor == 2).Count();
-            int mascitas3 = context.TbSeguimiento.Where(seg => seg.IdAsesor == 3).Count();
-            int mascitas4 = context.TbSeguimiento.Where(seg => seg.IdAsesor == 4).Count();
-            //los demas parametros 
-            int tventa = context.TbSeguimiento.Where(seg => seg.Venta == 1).Count();
-            int valor = context.TbSeguimiento.Where(seg => seg.Cita == 1).Count();
-            int valor2 = context.TbSeguimiento.Where(seg => seg.Anticipo == 1).Count();
-            int valor3 = context.TbSeguimiento.Where(seg => seg.PruebaManejo == 1).Count();
             ///// se va a separar
             int[] redsocial = { };
             int c = 0;
             List<CMedioPublicitario> medios = new List<CMedioPublicitario>();
             foreach(CMedioPublicitario ti in medios)
             {
-                redsocial[c] = context.TbSeguimiento.Where(s=>s.CMedioPublicitario==ti.IdMedioPublicitario).Count();
+                redsocial[c] = context.TbSeguimiento.Where(s=>s.IdMedioPublicitario==ti.IdMedioPublicitario).Count();
                     c++;
             }
             return View();
         }
+
         [HttpGet]
-        public int mayorcitas()
+        public float Utilidades()
         {
-            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            int val=context.TbSeguimiento.Where(seg=>seg.IdAsesor==1).Count();
-            return val;
+            float total=0;
+            //utilidad en interagencias
+
+            //utilidad en interagencias
+
+            //utilidad en exportacion 
+            return total;
         }
         /// <summary>
         /// ////////////
@@ -192,25 +232,6 @@ namespace Riviera_Business.Controllers
             return utilidad;
         }
 
-        // GET: HomeController1/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
 
-        // POST: HomeController1/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

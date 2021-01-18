@@ -85,8 +85,13 @@ namespace Riviera_Business.Controllers
                 if (objectEdit != null)
                 {
                     objectEdit.IdControl = a.IdControl;
-                    objectEdit.NomSeguro = a.NomSeguro;
-                    objectEdit.PolizaSeguro = a.PolizaSeguro;
+                    objectEdit.Aseguradora = a.Aseguradora;
+                    objectEdit.Correo = a.Correo;
+                    objectEdit.NombreCliente = a.NombreCliente;
+                    objectEdit.NumPoliza = a.NumPoliza;
+                    objectEdit.Telefono = a.Telefono;
+                    objectEdit.TipoPoliza = a.TipoPoliza;
+                    objectEdit.Version = a.Version;
                     context.TbSeguro.Update(objectEdit);
                     context.SaveChanges();
                 }

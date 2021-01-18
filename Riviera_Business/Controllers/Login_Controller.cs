@@ -78,6 +78,13 @@ namespace Riviera_Business.Controllers
 
         }
 
+        [HttpGet]
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync("PKAT");
+            return RedirectToAction("Index", "Login_");
+        }
+
 
     }
 }

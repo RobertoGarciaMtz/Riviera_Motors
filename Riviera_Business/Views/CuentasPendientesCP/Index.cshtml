@@ -75,7 +75,7 @@
                 Marca
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdConceptoNavigation)
+                Concepto
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IdEstadoNavigation)
@@ -87,6 +87,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @if (item.CuentasCobrarPagarOtras == 1)
+                {
+                    <label value="@item.CuentasCobrarPagarOtras" class="">Cuenta por Cobrar</label>
+                }
+                @if (item.CuentasCobrarPagarOtras == 2)
+                {
+                    <label value="@item.CuentasCobrarPagarOtras" class="">Cuenta por Pagar</label>
+                }
+                @if (item.CuentasCobrarPagarOtras == 3)
+                {
+                    <label value="@item.CuentasCobrarPagarOtras" class="">Otras Cuentas </label>
+                }
+
                 @Html.DisplayFor(modelItem => item.CuentasCobrarPagarOtras)
             </td>
             <td>
@@ -129,8 +142,8 @@
                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdCuentaPendiente">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdCuentaPendiente">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.IdCuentaPendiente" class="btn btn-success">Edit</a> 
+                <a asp-action="Details" asp-route-id="@item.IdCuentaPendiente" class="btn btn-warning">Details</a> 
                 <a asp-action="Delete" asp-route-id="@item.IdCuentaPendiente">Delete</a>
             </td>
         </tr>

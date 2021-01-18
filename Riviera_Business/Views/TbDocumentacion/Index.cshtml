@@ -58,7 +58,10 @@
                 @Html.DisplayNameFor(model => model.MesCorrespondiente)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdDatosPersonaNavigation)
+                Nombre
+            </th>
+            <th>
+                Persona correspondiente de documentacion
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IdEstadoNavigation)
@@ -69,116 +72,166 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @if (item.PersonaFM == 1)
-                    {
-                        <label value="@item.PersonaFM">Fisica</label>
-                    }
-                    else
-                    {
-                        <label value="@item.PersonaFM">Moral/Representante</label>
-                    }
-                </td>
-                <td>
-                    @if (item.IdentificacionVig == 1)
-                    {
-                        <label value="@item.IdentificacionVig" class="Entregado">Si</label>
-                    }
-                    else
-                    {
-                        <label value="@item.IdentificacionVig"class="No_Entregado">No</label>
-                    }
-                </td>
-                <td>
-                    @if (item.Curp == 1)
-                    {
-                        <label value="@item.Curp" class="Entregado">Si</label>
-                    }
-                    else
-                    {
-                        <label value="@item.Curp" class="No_Entregado">No</label>
-                    }
-                </td>
-                <td>
-                    @if (item.CifSat == 1)
-                    {
-                        <label value="@item.CifSat" class="Entregado">Si</label>
-                    }
-                    else
-                    {
-                        <label value="@item.CifSat" class="No_Entregado">No</label>
-                    }
-                </td>
-                <td>
-                    @if (item.ComprobDomicilio == 1)
-                    {
-                        <label value="@item.ComprobDomicilio" class="Entregado">Si</label>
-                    }
-                    else
-                    {
-                        <label value="@item.ComprobDomicilio" class="No_Entregado">No</label>
-                    }
-                </td>
-                <td>
-                    @if (item.ConocimientoDuenoBeneficiario == 1)
-                    {
-                        <label value="@item.ConocimientoDuenoBeneficiario" class="Entregado">Si</label>
-                    }
-                    else
-                    {
-                        <label value="@item.ConocimientoDuenoBeneficiario" class="No_Entregado">No</label>
-                    }
-                </td>
-                <td>
-                    @if (item.ActaConstitutivaBoletaRpc == 1)
-                    {
-                        <label value="@item.ActaConstitutivaBoletaRpc" class="Entregado">Si</label>
-                    }
-                    else
-                    {
-                        <label value="@item.ActaConstitutivaBoletaRpc" class="No_Entregado">No</label>
-                    }
-                </td>
-                <td>
-                    @if (item.PoderLegarExp == 1)
-                    {
-                        <label value="@item.PoderLegarExp"class="Entregado">Si</label>
-                    }
-                    else
-                    {
-                        <label value="@item.PoderLegarExp" class="No_Entregado">No</label>
-                    }
-                </td>
-                <td>
-                    @if (item.ConstanciaConocimiento == 1)
-                    {
-                        <label value="@item.ConstanciaConocimiento" class="Entregado">Si</label>
-                    }
-                    else
-                    {
-                        <label value="@item.ConstanciaConocimiento" class="No_Entregado">No</label>
-                    }
-                </td>
-                <!-----------------------hasta aca llega ---------------------------------->
-                <td>
-                    @Html.DisplayFor(modelItem => item.Usuario)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MesCorrespondiente)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdDatosPersonaNavigation.Curp)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdDocumentos">Editar</a> |
-                    <a asp-action="Details" asp-route-id="@item.IdDocumentos">Detalles</a> |
-                    <a asp-action="Delete" asp-route-id="@item.IdDocumentos">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @if (item.PersonaFM == 1)
+                {
+                    <label value="@item.PersonaFM">Fisica</label>
+                }
+                else
+                {
+                    <label value="@item.PersonaFM">Moral/Representante</label>
+                }
+            </td>
+            <td>
+                @if (item.IdentificacionVig == 1)
+                {
+                    <label value="@item.IdentificacionVig" class="Entregado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.IdentificacionVig" class="No_Entregado">No</label>
+                }
+            </td>
+            <td>
+                @if (item.Curp == 1)
+                {
+                    <label value="@item.Curp" class="Entregado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.Curp" class="No_Entregado">No</label>
+                }
+            </td>
+            <td>
+                @if (item.CifSat == 1)
+                {
+                    <label value="@item.CifSat" class="Entregado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.CifSat" class="No_Entregado">No</label>
+                }
+            </td>
+            <td>
+                @if (item.ComprobDomicilio == 1)
+                {
+                    <label value="@item.ComprobDomicilio" class="Entregado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.ComprobDomicilio" class="No_Entregado">No</label>
+                }
+            </td>
+            <td>
+                @if (item.ConocimientoDuenoBeneficiario == 1)
+                {
+                    <label value="@item.ConocimientoDuenoBeneficiario" class="Entregado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.ConocimientoDuenoBeneficiario" class="No_Entregado">No</label>
+                }
+            </td>
+            <td>
+                @if (item.ActaConstitutivaBoletaRpc == 1)
+                {
+                    <label value="@item.ActaConstitutivaBoletaRpc" class="Entregado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.ActaConstitutivaBoletaRpc" class="No_Entregado">No</label>
+                }
+            </td>
+            <td>
+                @if (item.PoderLegarExp == 1)
+                {
+                    <label value="@item.PoderLegarExp" class="Entregado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.PoderLegarExp" class="No_Entregado">No</label>
+                }
+            </td>
+            <td>
+                @if (item.ConstanciaConocimiento == 1)
+                {
+                    <label value="@item.ConstanciaConocimiento" class="Entregado">Si</label>
+                }
+                else
+                {
+                    <label value="@item.ConstanciaConocimiento" class="No_Entregado">No</label>
+                }
+            </td>
+            <!-----------------------hasta aca llega ---------------------------------->
+            <td>
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                @if (item.MesCorrespondiente == 1)
+                {
+                    <label>Enero</label>
+                }
+                @if (item.MesCorrespondiente == 2)
+                {
+                    <label>Febrero</label>
+                }
+                @if (item.MesCorrespondiente == 3)
+                {
+                    <label>Marzo</label>
+                }
+                @if (item.MesCorrespondiente == 4)
+                {
+                    <label>Abril</label>
+                }
+                @if (item.MesCorrespondiente == 5)
+                {
+                    <label>Mayo</label>
+                }
+                @if (item.MesCorrespondiente == 6)
+                {
+                    <label>Junio</label>
+                }
+                @if (item.MesCorrespondiente == 7)
+                {
+                    <label>Julio</label>
+                }
+                @if (item.MesCorrespondiente == 8)
+                {
+                    <label>Agosto</label>
+                }
+                @if (item.MesCorrespondiente == 9)
+                {
+                    <label>Septiembre</label>
+                }
+                @if (item.MesCorrespondiente == 10)
+                {
+                    <label>Octubre</label>
+                }
+                @if (item.MesCorrespondiente == 11)
+                {
+                    <label>Noviembre</label>
+                }
+                @if (item.MesCorrespondiente == 12)
+                {
+                    <label>Diciembre</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDatosPersonaNavigation.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDatosPersonaNavigation.Curp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdDocumentos" class="btn btn-success">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdDocumentos" class="btn btn-warning">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdDocumentos">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

@@ -162,6 +162,7 @@ namespace Riviera_Business.Controllers
         // GET: HomeController1/Create
         public ActionResult Create()
         {
+
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
             ViewBag.Version = context.CVersionCarro.Select(ma => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ma.VersionCarro, Value = ma.IdVersionCarro.ToString() });
@@ -180,6 +181,19 @@ namespace Riviera_Business.Controllers
             {
                 var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
                 context.TbCarros.Add(a);
+
+                TbLineaTiempo linea = new TbLineaTiempo();
+                linea.IdCarro = a.IdCarros;
+                linea.Fecha = DateTime.Today;
+                linea.IdEstado = a.IdEstado;
+
+                context.TbLineaTiempo.Add(linea);
+
+                //Order by
+                context.TbControl.OrderBy( x => x.IdCarros).Take(1);
+                //Order by Descending
+                context.TbControl.OrderByDescending(x => x.IdCarros).Take(10);
+
                 Console.WriteLine("Valor del id" + a.IdVersion);
                 Console.WriteLine("Aqui si entramos");
                 Console.WriteLine("Aqui si entramos"+a);

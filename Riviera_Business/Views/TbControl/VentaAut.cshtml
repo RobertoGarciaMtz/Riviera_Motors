@@ -21,8 +21,8 @@
                 <span asp-validation-for="CompraVenta" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TipoVenta" class="control-label"></label>
-                <select asp-for="TipoVenta" onchange="getPrrov(this)">
+                <label asp-for="TipoVenta" class="control-label">Tipo Venta</label>
+                <select asp-for="TipoVenta" onchange="getPrrov(this)" class="form-control">
                     <option value="0">-----------</option>
                     <option value="1">Inter Agencias</option>
                     <option value="2">Retail</option>
@@ -35,18 +35,13 @@
                 <span asp-validation-for="NoFacturaArv" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="FechaFacturaToma" class="control-label"></label>
-                <input asp-for="FechaFacturaToma" class="form-control" />
-                <span asp-validation-for="FechaFacturaToma" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="FolioFiscal" class="control-label"></label>
                 <input asp-for="FolioFiscal" class="form-control" />
                 <span asp-validation-for="FolioFiscal" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdCarros" class="control-label"></label>
-                <input asp-for="IdCarros" class="form-control" />
+                <label asp-for="IdCarros" class="control-label">Automovil Vendido</label>
+                <select asp-for="IdCarros" class="form-control" asp-items="ViewBag.Auto"></select>
                 <span asp-validation-for="IdCarros" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -75,7 +70,7 @@
                 <span asp-validation-for="PagadaCobrada" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdCliente" class="control-label"></label>
+                <label asp-for="IdCliente" class="control-label">Cliente</label>
                 <select asp-for="IdCliente" id="selectProovedor" class="form-control"></select>
                 <span asp-validation-for="IdCliente" class="text-danger"></span>
             </div>
@@ -112,8 +107,8 @@
                 <span asp-validation-for="FormaPago" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdMetodoPago" class="control-label"></label>
-                <select asp-for="IdMetodoPago" class="form-control" asp-items="ViewBag.Metodopago" />
+                <label asp-for="IdMetodoPago" class="control-label">Metodo de Pago</label>
+                <select asp-for="IdMetodoPago" class="form-control" asp-items="ViewBag.Metodopago"></select>
                 <span asp-validation-for="IdMetodoPago" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -156,11 +151,6 @@
                 <span asp-validation-for="BajaCambProp" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ComprobarId" class="control-label"></label>
-                <input asp-for="ComprobarId" class="form-control" />
-                <span asp-validation-for="ComprobarId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="ConstanciaFiscal" class="control-label"></label>
                 <input asp-for="ConstanciaFiscal" class="form-control" />
                 <span asp-validation-for="ConstanciaFiscal" class="text-danger"></span>
@@ -176,11 +166,11 @@
                 <span asp-validation-for="ComprobantesPago" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdBanco" class="control-label"></label>
+                <label asp-for="IdBanco" class="control-label">Banco al que fue depositado</label>
                 <select asp-for="IdBanco" class="form-control" asp-items="ViewBag.Banco"></select>
             </div>
             <div class="form-group">
-                <label asp-for="AnticipoSN" class="control-label"></label>
+                <label asp-for="AnticipoSN" class="control-label">Dejo Anticipo</label>
                 <input asp-for="AnticipoSN" class="form-control" />
                 <span asp-validation-for="AnticipoSN" class="text-danger"></span>
             </div>
@@ -190,7 +180,7 @@
                 <span asp-validation-for="Anticipo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdAsesorVenta" class="control-label"></label>
+                <label asp-for="IdAsesorVenta" class="control-label">Asesor de Venta</label>
                 <select asp-for="IdAsesorVenta" class="form-control" asp-items="ViewBag.Asesor"></select>
             </div>
             <div class="form-group">

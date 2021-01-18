@@ -32,6 +32,7 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <a>Persona Fisica o moral</a>
                 <select asp-for="PersonaFM" onchange="ocultar(this)" class="form-control">
                     <option value="1">Fisica</option>
                     <option value="2">Moral/Representante</option>
@@ -39,7 +40,7 @@
                 <span asp-validation-for="PersonaFM" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdentificacionVig" class="control-label"></label>
+                <label asp-for="IdentificacionVig" class="control-label">Identificacion Vigente</label>
                 <select asp-for="IdentificacionVig" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
@@ -114,12 +115,27 @@
                 <span asp-validation-for="Usuario" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdDatosPersona" class="control-label"></label>
+                <label asp-for="IdDatosPersona" class="control-label">Persona a la que corresponde</label>
                 <select asp-for="IdDatosPersona" class="form-control" asp-items="ViewBag.Datospersona"></select>
             </div>
             <div class="form-group">
                 <label asp-for="MesCorrespondiente" class="control-label"></label>
-                <input asp-for="MesCorrespondiente" class="form-control" />
+                <select asp-for="MesCorrespondiente" class="form-control">
+                    <option value="0">Elegir Mes</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiempre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </select>
+                
                 <span asp-validation-for="MesCorrespondiente" class="text-danger"></span>
             </div>
             <div class="form-group">
