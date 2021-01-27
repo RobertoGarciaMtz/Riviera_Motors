@@ -41,6 +41,11 @@ namespace Riviera_Business.Controllers
                 ViewBag.Persona = context.TbDatosPersona.ToList();
                 ViewBag.Personamoral = context.TbDatosPersonaMoral.ToList();
                 ViewBag.Autos = context.TbCarros.ToList();
+                 ViewBag.Estados = context.CEstados.Select(es=> new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem {Text=es.Descripcion,Value=es.IdEstados.ToString() });
+            ViewBag.Metodopago = context.CMetodoPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdMetodoPago.ToString() });
+            ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
+            ViewBag.Asesor = context.CAsesores.Select(ase => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ase.Nombre, Value = ase.IdAsesores.ToString() });
+            ViewBag.Auto = context.TbCarros.Select(au => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = au.NoSerie, Value = au.IdCarros.ToString() });
                 ///
                 //if (ti.TipoCompraCanal == 1)
                 //{
@@ -234,6 +239,8 @@ namespace Riviera_Business.Controllers
             ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
             ViewBag.Metodopago = context.CMetodoPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdMetodoPago.ToString() });
             ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
+            ViewBag.Asesor = context.CAsesores.Select(ase => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ase.Nombre, Value = ase.IdAsesores.ToString() });
+            ViewBag.Auto = context.TbCarros.Select(au => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = au.NoSerie, Value = au.IdCarros.ToString() });
             if (context.TbControl.Where(tc =>tc.IdMovimiento ==id).First() is TbControl e)
             {
                 return View(e);
@@ -320,6 +327,8 @@ namespace Riviera_Business.Controllers
             ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
             return View();
         }
+
+
 
         [HttpPost]
         public ActionResult LlenadoExtra(TbControl a)

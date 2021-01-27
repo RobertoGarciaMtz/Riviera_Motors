@@ -14,7 +14,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdDocumentos" />
             <div class="form-group">
-                <select asp-for="PersonaFM">
+                <label asp-for="PersonaFM" class="control-label"></label>
+                <select asp-for="PersonaFM" class="form-control">
                     <option value="1">Fisica</option>
                     <option value="2">Moral/Representante</option>
                 </select>
@@ -22,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdentificacionVig" class="control-label"></label>
-                <select asp-for="IdentificacionVig">
+                <select asp-for="IdentificacionVig" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
@@ -30,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Curp" class="control-label"></label>
-                <select asp-for="Curp">
+                <select asp-for="Curp" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
@@ -38,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="CifSat" class="control-label"></label>
-                <select asp-for="CifSat">
+                <select asp-for="CifSat" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
@@ -46,7 +47,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ComprobDomicilio" class="control-label"></label>
-                <select asp-for="ComprobDomicilio">
+                <select asp-for="ComprobDomicilio" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
@@ -54,7 +55,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ConocimientoDuenoBeneficiario" class="control-label"></label>
-                <select asp-for="ConocimientoDuenoBeneficiario">
+                <select asp-for="ConocimientoDuenoBeneficiario" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
@@ -62,7 +63,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ActaConstitutivaBoletaRpc" class="control-label"></label>
-                <select asp-for="ActaConstitutivaBoletaRpc">
+                <select asp-for="ActaConstitutivaBoletaRpc" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
@@ -70,7 +71,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="PoderLegarExp" class="control-label"></label>
-                <select asp-for="PoderLegarExp">
+                <select asp-for="PoderLegarExp" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
@@ -78,7 +79,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ConstanciaConocimiento" class="control-label"></label>
-                <select asp-for="ConstanciaConocimiento">
+                <select asp-for="ConstanciaConocimiento" class="form-control">
                     <option value="1">Si</option>
                     <option value="2">No</option>
                 </select>
@@ -96,7 +97,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdDatosPersona" class="control-label"></label>
-                <select asp-for="IdDatosPersona" class="form-control" asp-items="ViewBag.DatosPersona"></select>
+                <select asp-for="IdDatosPersona" class="form-control selectdos" asp-items="ViewBag.DatosPersona"></select>
                 <span asp-validation-for="IdDatosPersona" class="text-danger"></span>
             </div>
             <div class="form-group">

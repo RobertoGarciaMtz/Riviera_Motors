@@ -7,14 +7,16 @@
 <h1>Cuentas en general</h1>
 
 <style>
-    .CuentasPP{
-        background-color:orangered;
+    .CuentasPP {
+        background-color: orangered;
     }
-    .CuentasPC{
-        background-color:forestgreen;
+
+    .CuentasPC {
+        background-color: forestgreen;
     }
-    .OtrasC{
-        background-color:cornflowerblue;
+
+    .OtrasC {
+        background-color: cornflowerblue;
     }
 </style>
 
@@ -26,16 +28,16 @@
 <table border="0" cellspacing="5" cellpadding="5">
     <tbody>
         <tr>
-            <td>FechaInicial:</td>
+            <td>Fecha Inicial:</td>
             <td><input type="text" id="min" name="min"></td>
         </tr>
         <tr>
-            <td>FechaFinal:</td>
+            <td>Fecha Final:</td>
             <td><input type="text" id="max" name="max"></td>
         </tr>
     </tbody>
 </table>
-<table class="table" id="dataTable">
+<table class="table" id="dataTable1">
     <thead>
         <tr>
             <th>
@@ -84,75 +86,109 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @if (item.CuentasCobrarPagarOtras == 1)
-                {
-                    <label value="@item.CuentasCobrarPagarOtras" class="">Cuenta por Cobrar</label>
-                }
-                @if (item.CuentasCobrarPagarOtras == 2)
-                {
-                    <label value="@item.CuentasCobrarPagarOtras" class="">Cuenta por Pagar</label>
-                }
-                @if (item.CuentasCobrarPagarOtras == 3)
-                {
-                    <label value="@item.CuentasCobrarPagarOtras" class="">Otras Cuentas </label>
-                }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.CuentasCobrarPagarOtras == 1)
+                    {
+                        <label value="@item.CuentasCobrarPagarOtras" class="">Cuenta por Cobrar</label>
+                    }
+                    @if (item.CuentasCobrarPagarOtras == 2)
+                    {
+                        <label value="@item.CuentasCobrarPagarOtras" class="">Cuenta por Pagar</label>
+                    }
+                    @if (item.CuentasCobrarPagarOtras == 3)
+                    {
+                        <label value="@item.CuentasCobrarPagarOtras" class="">Otras Cuentas </label>
+                    }
 
-                @Html.DisplayFor(modelItem => item.CuentasCobrarPagarOtras)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Folio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdProveedor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Anticipo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Importe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Detalle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.VersionCarro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdConceptoNavigation.DescripcionConcepto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdCuentaPendiente" class="btn btn-success">Edit</a> 
-                <a asp-action="Details" asp-route-id="@item.IdCuentaPendiente" class="btn btn-warning">Details</a> 
-                <a asp-action="Delete" asp-route-id="@item.IdCuentaPendiente">Delete</a>
-            </td>
-        </tr>
-}
+                    @Html.DisplayFor(modelItem => item.CuentasCobrarPagarOtras)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Folio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdProveedor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Anticipo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Importe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Detalle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCarroNavigation.NoSerie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.VersionCarro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.ModeloCarro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdConceptoNavigation.DescripcionConcepto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdCuentaPendiente" class="btn btn-success">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.IdCuentaPendiente" class="btn btn-warning">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdCuentaPendiente">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
-<script>
-    $document.ready(function (select) {
 
+<script>
+
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            var min = $("#min").val();
+            min = min.split("/");
+            min = new Date(min[2], min[1], min[0]);
+
+            var max = $("#max").val();
+            max = max.split("/");
+            max = new Date(max[2], max[1], max[0]);
+
+            var age = data[2].split(" ")[0];
+            age = age.split("/");
+            age = new Date(age[2], age[1], age[0]);
+
+            if ((isNaN(min.getTime()) && isNaN(max.getTime())) ||
+                (isNaN(min.getTime()) && age.getTime() <= max.getTime()) ||
+                (min.getTime() <= age.getTime() && isNaN(max.getTime())) ||
+                (min.getTime() <= age.getTime() && age.getTime() <= max.getTime())) {
+                return true;
+            }
+            return false;
+        }
+    );
+
+
+    $(document).ready(function () {
+        var table = $("#dataTable1").DataTable({
+            scrollX: "true"
+        });
+        $('#min, #max').keyup(function () {
+            table.draw();
+        });
     });
+
 </script>

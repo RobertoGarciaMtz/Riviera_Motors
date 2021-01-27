@@ -5,6 +5,18 @@
 }
 
 <h1>Index</h1>
+<style>
+    .retail {
+        background-color: #88F070;
+    }
+    .interagencias {
+        background-color: #86DAF9;
+    }
+    .expo {
+        background-color: #B786F9;
+    }
+
+</style>
 
 <p>
     <a asp-action="Create">Agregar mas Precios</a>
@@ -51,15 +63,15 @@
             <td>
                 @if (item.TipoVenta == 1)
                 {
-                    <label>Precio Retail</label>
+                    <label class="retail">Precio Retail</label>
                 }
                 @if (item.TipoVenta == 2)
                 {
-                    <label>Precio InterAgencia</label>
+                    <label class="interagencias">Precio InterAgencia</label>
                 }
                 @if (item.TipoVenta == 3)
                 {
-                    <label>Precio Expo</label>
+                    <label class="expo">Precio Expo</label>
                 }
             </td>
             <td>

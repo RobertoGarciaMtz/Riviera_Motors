@@ -7,6 +7,13 @@
 
 /* eslint-disable camelcase */
 
+
+$(document).ready(function () {
+
+    $(".selectdos").select2();
+
+});
+
 (function ($) {
   'use strict'
 
@@ -103,6 +110,7 @@
       $('.nav-sidebar').removeClass('text-sm')
     }
   })
+  var $text_sm_sidebar_container = $('<div />', { class: 'mb-1' }).append($text_sm_sidebar_checkbox).append('<span>Sidebar nav small text</span>')
   var $text_sm_sidebar_container = $('<div />', { class: 'mb-1' }).append($text_sm_sidebar_checkbox).append('<span>Sidebar nav small text</span>')
   $container.append($text_sm_sidebar_container)
 

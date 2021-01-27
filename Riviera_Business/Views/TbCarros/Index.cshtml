@@ -12,8 +12,6 @@
     $('#tableid').on('change', 'select', function () {
         if ($(this).val()) { $(this).next().show(); }
     });
-
-
     
 </script>
 
@@ -22,18 +20,7 @@
 <p>
     <a class="btn btn-success" asp-action="Create">Llenar otra Oferta</a>
 </p>
-<table border="0" cellspacing="5" cellpadding="5">
-    <tbody>
-        <tr>
-            <td>FechaInicial:</td>
-            <td><input type="text" id="min" name="min"></td>
-        </tr>
-        <tr>
-            <td>FechaFinal:</td>
-            <td><input type="text" id="max" name="max"></td>
-        </tr>
-    </tbody>
-</table>
+
 <div class="container">
     <div class="row">
         <div class="col-md-1"></div>
@@ -47,7 +34,20 @@
             <p>En caso de no  haber sido aceptadoo se procedera a pulsar el boton de eliminar y dentro tendra mas instrucciones</p>
     </div>
         <div class="col-md-12">
-            <table class="table" id="dataTable">
+            <table border="0" cellspacing="5" cellpadding="5">
+                <tbody>
+                    <tr>
+                        <td>Fecha Inicial:</td>
+                        <td><input type="text" id="min" name="min"></td>
+                    </tr>
+                    <tr>
+                        <td>Fecha Final:</td>
+                        <td><input type="text" id="max" name="max"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table" id="dataTable1">
 
                 <thead>
                     <tr>
@@ -248,7 +248,7 @@
                                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
                             </td>
                             <td>
-                                <a asp-action="Edit" asp-route-id="@item.IdCarros" class="btn btn-success">Llenado</a> 
+                                <a asp-action="Edit" asp-route-id="@item.IdCarros" class="btn btn-success">Llenado</a>
                                 <a asp-action="Details" asp-route-id="@item.IdCarros" class="btn btn-warning ">Detalles</a>
                                 <a asp-action="Delete" asp-route-id="@item.IdCarros" class="btn btn-dark">Eliminar</a>
                             </td>
@@ -266,15 +266,15 @@
         function (settings, data, dataIndex) {
             var min = $("#min").val();
             min = min.split("/");
-            min = new Date(min[1], min[0], min[2]);
+            min = new Date(min[2], min[1], min[0]);
 
             var max = $("#max").val();
             max = max.split("/");
-            max = new Date(max[1], max[0], max[2]);
+            max = new Date(max[2], max[1], max[0]);
 
-            var age = data[2].split(" ")[0];
+            var age = data[19].split(" ")[0];
             age = age.split("/");
-            age = new Date(age[1], age[0], age[2]);
+            age = new Date(age[2], age[1], age[0]);
 
 
             if ((isNaN(min.getTime()) && isNaN(max.getTime())) ||

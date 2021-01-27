@@ -46,7 +46,7 @@
                 <span asp-validation-for="TipoCompraCanal" class="text-danger"></span>
             </div>
             <div class="col-md-3">
-                <select asp-for="IdProveedor" id="selectProovedor" class="form-control"></select>
+                <select asp-for="IdProveedor" id="selectProovedor" class="form-control selectdos"></select>
                 <span asp-validation-for="IdProveedor" class="text-danger"></span>
             </div>
             <div class="col-md-4">
@@ -58,28 +58,32 @@
     -------------------------------->
         <div class="row">
             <div class="col-md-1"></div>
-            <div class="col-md-4">
-                <label class="control-label">Seleccionar Marca:</label>
-            </div>
-            <div class="col-md-3">
-                <label class="control-label">Seleccionar Modelo:</label>
-            </div>
+            <!-- <div class="col-md-4">
+        <label class="control-label">Seleccionar Marca:</label>
+    </div>
+    <div class="col-md-3">
+        <label class="control-label">Seleccionar Modelo:</label>
+    </div>-->
             <div class="col-md-3">
                 <label asp-for="IdVersion" class="control-label">Seleccionar Versión</label>
             </div>
         </div>
         <div class="row">
             <div class="col-md-1"></div>
-            <div class="col-md-4">
-                <select onchange="marcaChanged(this)" class="form-control" asp-items="ViewBag.Marca"></select>
-                <span class="text-danger"></span>
-            </div>
+            <!--<div class="col-md-4">
+        <select onchange="marcaChanged(this)" class="form-control" id="marcaSelect" asp-items="ViewBag.Marca"></select>
+        <span class="text-danger"></span>
+    </div>
+    <div class="col-md-3">
+        <select id="IdModelo" onchange="modeloChange(this)" class="form-control">
+            <option value="0">Modelo</option>
+        </select>
+        <span class="text-danger"></span>
+    </div>-->
             <div class="col-md-3">
-                <select id="IdModelo" onchange="modeloChange(this)" class="form-control" asp-items="ViewBag.Modelo"></select>
-                <span class="text-danger"></span>
-            </div>
-            <div class="col-md-3">
-                <select asp-for="IdVersion" class="form-control" asp-items="ViewBag.Version"></select>
+                <select asp-for="IdVersion" id="IdVersion" class="form-control" asp-items="ViewBag.Version">
+                    <option value="0">Version</option>
+                </select>
             </div>
         </div>
         <div class="row">
@@ -186,7 +190,10 @@
 }*@
 
 <script>
-    $(document).ready(function (){
+    $(document).ready(function () {
+
+        $('#marcaSelect').select2();
+
         $("#esconder").on("click", function () {
             $(".houdini").show();
         })
@@ -205,8 +212,8 @@
                 for (var i = 0; i < e.length; i++) {
                     html += "<option value ='" + e[i].idModeloCarro + "' >" + e[i].modeloCarro + "</option>";
                 }
-                return e;
                 selectModelo.innerHTML = html;
+                return e;
             }
         });
     }
@@ -243,6 +250,7 @@
                         html += "<option value ='" + z[i].tipo + "' >" + z[i].valor + "</option>";
                     }
                     selectVersion.innerHTML = html;
+                    $("#selectProovedor").select2();
                 }
             });
         }

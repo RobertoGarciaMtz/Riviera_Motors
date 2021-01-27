@@ -49,8 +49,6 @@ namespace Riviera_Business.Controllers
 
         }
 
-
-
         // GET: HomeController1/Details/5
         public ActionResult Details(int id)
         {
@@ -180,23 +178,35 @@ namespace Riviera_Business.Controllers
             try
             {
                 var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+
+                a.IdEstado = 1;
+
                 context.TbCarros.Add(a);
+
+                /*
+                T
+
+                //Order by
+                context.TbControl.OrderBy( x => x.IdCarros).Take(1);
+                //Order by Descending
+                context.TbControl.OrderByDescending(x => x.IdCarros).Take(10);*/
+
+                Console.WriteLine("Valor del id" + a.IdVersion);
+                Console.WriteLine("Aqui si entramos");
+                Console.WriteLine("Aqui si entramos"+a);
+                
+                
+                context.SaveChanges();
+
 
                 TbLineaTiempo linea = new TbLineaTiempo();
                 linea.IdCarro = a.IdCarros;
                 linea.Fecha = DateTime.Today;
                 linea.IdEstado = a.IdEstado;
 
+                Console.WriteLine(linea);
+
                 context.TbLineaTiempo.Add(linea);
-
-                //Order by
-                context.TbControl.OrderBy( x => x.IdCarros).Take(1);
-                //Order by Descending
-                context.TbControl.OrderByDescending(x => x.IdCarros).Take(10);
-
-                Console.WriteLine("Valor del id" + a.IdVersion);
-                Console.WriteLine("Aqui si entramos");
-                Console.WriteLine("Aqui si entramos"+a);
                 context.SaveChanges();
                 Console.WriteLine("Aqui no entramos ");
                 return RedirectToAction(nameof(Index));

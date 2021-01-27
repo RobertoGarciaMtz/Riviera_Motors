@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Desempeno";
+}
+
+<h1>Desempeno</h1>
+@foreach (var list in ViewBag.seguimientos)
+{
+    <div>
+        Numero de seguimientos hasta el momento
+        <p> @list.IdSeguimiento</p>
+    </div>
+}
+
+
+
+
+    <div>
+        Numero de Pruebas de manejo
+        <p>@ViewBag.npruebas</p>
+    </div>
+
+    <div>
+        Numemro de citas
+        <p>@ViewBag.ncitas</p>
+    </div>
+
+    <div>
+        Numero de Anticipos
+        <p>@ViewBag.nanticipos</p>
+    </div>
+
+@ViewBag.tventa

@@ -70,6 +70,8 @@ namespace Riviera_Business.Controllers
             try
             {
                 var context  = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+                if (a.IdTipoGasto == 1 || a.IdTipoGasto == 2)
+                    a.IdCarro = 4;
                 context.TbGastos.Add(a);
                 context.SaveChanges();
                 return RedirectToAction(nameof(Index));

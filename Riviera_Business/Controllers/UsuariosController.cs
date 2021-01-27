@@ -111,10 +111,11 @@ namespace Riviera_Business.Controllers
             try
             {
                 var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-                Usuarios objectdel = a;
-
+                var objectdel = context.Usuarios.FirstOrDefault(usu=>usu.IdUsuarios==a.IdUsuarios);
+                if (objectdel != null) { 
                 context.Usuarios.Remove(objectdel);
                 context.SaveChanges();
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch

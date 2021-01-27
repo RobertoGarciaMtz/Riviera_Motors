@@ -16,7 +16,7 @@
             <input type="hidden" asp-for="IdCarroExtra" />
             <div class="form-group">
                 <label asp-for="Manuales" class="control-label">Entrego Manuales</label>
-                <select asp-for="Manuales">
+                <select asp-for="Manuales" class="form-control">
                     <option value="1">Entregado</option>
                     <option value="2">No Entregado</option>
                     <option value="3">En Espera</option>
@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="CarnetServicio" class="control-label">Entrego Carnet</label>
-                <select asp-for="CarnetServicio">
+                <select asp-for="CarnetServicio" class="form-control">
                     <option value="1">Entregado</option>
                     <option value="2">No Entregado</option>
                     <option value="3">En Espera</option>
@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Duplicado" class="control-label">Entrego Duplicado</label>
-                <select asp-for="Duplicado">
+                <select asp-for="Duplicado" class="form-control">
                     <option value="1">Entregado</option>
                     <option value="2">No Entregado</option>
                     <option value="3">En Espera</option>
@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="LlantaRefaccion" class="control-label">Traia Llanta refaccion</label>
-                <select asp-for="LlantaRefaccion">
+                <select asp-for="LlantaRefaccion" class="form-control">
                     <option value="1">Entregado</option>
                     <option value="2">No Entregado</option>
                     <option value="3">En Espera</option>
@@ -52,7 +52,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Herramientas" class="control-label">Traia Herramientas</label>
-                <select asp-for="Herramientas">
+                <select asp-for="Herramientas" class="form-control">
                     <option value="1">Entregado</option>
                     <option value="2">No Entregado</option>
                     <option value="3">En Espera</option>
@@ -61,7 +61,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Gato" class="control-label">Traia Gato</label>
-                <select asp-for="Gato">
+                <select asp-for="Gato" class="form-control">
                     <option value="1">Entregado</option>
                     <option value="2">No Entregado</option>
                     <option value="3">En Espera</option>
@@ -70,7 +70,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Antena" class="control-label">Traia Antena</label>
-                <select asp-for="Antena">
+                <select asp-for="Antena" class="form-control">
                     <option value="1">Entregado</option>
                     <option value="2">No Entregado</option>
                     <option value="3">En Espera</option>
@@ -89,7 +89,7 @@
             </div>
             <div class="form-group">
                 <label class="control-label">Seleccionar el automovil al que pertenece este registro</label>
-                <select asp-for="IdCarro" class="form-control" asp-items="ViewBag.Caracarro"></select>
+                <select asp-for="IdCarro" class="form-control selectdos" asp-items="ViewBag.Caracarro"></select>
                 <span asp-validation-for="IdCarro" class="text-danger"></span>
             </div>
             <div class="form-group">

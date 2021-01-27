@@ -215,10 +215,6 @@ C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbConta\Index.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbConta\Create.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbConta\Edit.cshtml.g.cs
-C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbDatosPersona\Index.cshtml.g.cs
-C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbDatosPersona\Details.cshtml.g.cs
-C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbDatosPersona\Create.cshtml.g.cs
-C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbDatosPersona\Edit.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbDatosPersonaMoral\Index.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbDatosPersonaMoral\Details.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbDatosPersonaMoral\Create.cshtml.g.cs
@@ -319,3 +315,8 @@ C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbSeguimiento\Details.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbSeguimiento\Create.cshtml.g.cs
 C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbSeguimiento\Edit.cshtml.g.cs
+C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\ControladoresdeResumen\Desempeno.cshtml.g.cs
+C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbControl\TbDatosPersona\Create.cshtml.g.cs
+C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbControl\TbDatosPersona\Details.cshtml.g.cs
+C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbControl\TbDatosPersona\Edit.cshtml.g.cs
+C:\Users\01\source\repos\Riviera_Business\Riviera_Business\obj\Debug\netcoreapp3.1\Razor\Views\TbControl\TbDatosPersona\Index.cshtml.g.cs

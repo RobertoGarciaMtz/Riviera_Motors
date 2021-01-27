@@ -15,7 +15,7 @@
             <input type="hidden" asp-for="IdPapelesCarro" />
             <div class="form-group">
                 <label asp-for="FactOrigen" class="control-label"></label>
-                <select asp-for="FactOrigen">
+                <select asp-for="FactOrigen" class="form-control">
                     <option value="1">Entregada</option>
                     <option value="2">No entregada</option>
                     <option value="3">Problemas</option>
@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Baja" class="control-label"></label>
-                <select asp-for="Baja">
+                <select asp-for="Baja" class="form-control">
                     <option value="1">Entregada</option>
                     <option value="2">No entregada</option>
                     <option value="3">Problemas</option>
@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Verificacion" class="control-label"></label>
-                <select asp-for="Verificacion">
+                <select asp-for="Verificacion" class="form-control">
                     <option value="1">Entregada</option>
                     <option value="2">No entregada</option>
                     <option value="3">Problemas</option>
@@ -67,11 +67,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Transunionfolio" class="control-label"></label>
-                <select asp-for="Transunionfolio">
-                    <option value="1">Entregada</option>
-                    <option value="2">No entregada</option>
-                    <option value="3">Problemas</option>
-                </select>
+                <input asp-for="Transunionfolio" class="form-control"/>
                 <span asp-validation-for="Transunionfolio" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -91,7 +87,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdCarro" class="control-label"></label>
-                <select asp-for="IdCarro" class="form-control" asp-items="ViewBag.Carros"></select>
+                <select asp-for="IdCarro" class="form-control selectdos" asp-items="ViewBag.Carros"></select>
                 <span asp-validation-for="IdCarro" class="text-danger"></span>
             </div>
             <div class="form-group">

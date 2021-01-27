@@ -46,7 +46,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdCarros" class="control-label">Automovil que se esta comprando</label>
-                <select asp-for="IdCarros" class="form-control" asp-items="ViewBag.Auto"></select>
+                <select asp-for="IdCarros" class="form-control selectdos" asp-items="ViewBag.Auto"></select>
                 <span asp-validation-for="IdCarros" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -76,7 +76,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdCliente" class="control-label">Proveedor</label>
-                <select asp-for="IdCliente" class="form-control" id="selectProovedor" ></select>
+                <select asp-for="IdCliente" class="form-control selectdos" id="selectProovedor" ></select>
                 <span asp-validation-for="IdCliente" class="text-danger"></span>
             </div>
 
@@ -98,25 +98,8 @@
                 </select>
                 <span asp-validation-for="VoBoLeyAntiLavado" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="FormaPago" class="control-label">Forma Pago</label>
-                <select asp-for="FormaPago" class="form-control" >
-                    <option value="0">----------</option>
-                    <option value="1">Efectivo</option>
-                    <option value="2">Transferencia electronica</option>
-                    <option value="3">Fondo </option>
-                    <option value="4">Tarjeta Credito</option>
-                    <option value="5">Tarjeta Debito</option>
-                </select>
-                <span asp-validation-for="FormaPago" class="text-danger"></span>
-            </div>
 
-            <div class="form-group">
-                <label asp-for="IdMetodoPago" class="control-label">Metodo Pago</label>
-                <select asp-for="IdMetodoPago" class="form-control" asp-items="ViewBag.Metodopago"></select>
-                <span asp-validation-for="IdMetodoPago" class="text-danger"></span>
-            </div>
-
+            
             <div class="form-group">
                 <label asp-for="FechaES" class="control-label">Fecha de Llegada Automovil</label>
                 <input asp-for="FechaES" class="form-control" />

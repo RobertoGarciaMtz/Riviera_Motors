@@ -5,11 +5,11 @@
 }
 <h1>Lista de Aditamentos con los que venia</h1>
 <style>
-    .Entregado{
-        background-color:forestgreen;
+    .Entregado {
+        background-color: lightgreen;
     }
     .No_Entregado{
-        background-color: orangered;
+        background-color: #ff726f;
     }
     .En_Espera {
         background-color:darkgoldenrod;
@@ -186,9 +186,8 @@
                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdCarroExtra" class="btn btn-success" >Correccion o terminar</a> |
-                <a asp-action="Details" asp-route-id="@item.IdCarroExtra" class="btn btn-warning">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdCarroExtra" class="btn btn warning">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdCarroExtra" class="btn btn-success" >Correccion o terminar</a>
+                <a asp-action="Details" asp-route-id="@item.IdCarroExtra" class="btn btn-warning">Detalles</a> 
             </td>
         </tr>
 }

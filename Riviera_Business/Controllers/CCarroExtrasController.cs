@@ -49,7 +49,7 @@ public class CCarroExtrasController : Controller
         var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
         ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
         var lista = context.TbCarros.Where(x => x.IdCarros >= 0)
-            .Select(x => new { noserie = x.IdCarros.ToString(), desc = x.IdCarros.ToString() + "-NumeroSerie:" + x.NoSerie + "-Color:" + x.ColorExt + "-NumMotor:" + x.NoMotor });
+            .Select(x => new { noserie = x.IdCarros.ToString(), desc = x.IdCarros.ToString() + "-NumeroSerie:" + x.NoSerie + "-MVA:" + x.MvaOpc + "-NumEco:" + x.NumEconomicoOpc });
         ViewBag.Caracarro = new SelectList(lista, "noserie", "desc");
         return View();
     }
@@ -81,7 +81,7 @@ public class CCarroExtrasController : Controller
         var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
         ViewBag.Estados = context.CEstados.Select(es => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = es.Descripcion, Value = es.IdEstados.ToString() });
         var lista = context.TbCarros.Where(x => x.IdCarros >= 0)
-            .Select(x => new { noserie = x.IdCarros.ToString(), desc = x.IdCarros.ToString() + "-NumeroSerie:" + x.NoSerie + "-Color:" + x.ColorExt + "-NumMotor:" + x.NoMotor });
+            .Select(x => new { noserie = x.IdCarros.ToString(), desc = x.IdCarros.ToString() + "-NumeroSerie:" + x.NoSerie + "-MVA:" + x.MvaOpc + "-NumEco:" + x.NumEconomicoOpc });
         ViewBag.Caracarro = new SelectList(lista, "noserie", "desc");
         if (context.CCarroExtra.Where(s => s.IdCarroExtra == id).First() is CCarroExtra e)
         {

@@ -10,91 +10,68 @@ namespace Riviera_Business.Controllers
 {
     public class ControladoresdeResumen : Controller
     {
-
-
         // ControladoresdeResumen/Desempeno
-        public ActionResult Desempeno()
+        public ActionResult Desempeno(int id)
         {
          
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            var list = context.TbSeguimiento.ToList();
+            ViewBag.seguimientos  = context.TbSeguimiento.ToList();
             var listasesor = context.CAsesores.ToList();
 
-            int[] emptyStringArray = new int[0] { };
-                var asesor1 = context.TbSeguimiento.Where(ass => ass.IdAsesor == listasesor[1].IdAsesores).Count();
-                var asesor2 = context.TbSeguimiento.Where(ass => ass.IdAsesor == listasesor[2].IdAsesores).Count();
-                var asesor3 = context.TbSeguimiento.Where(ass => ass.IdAsesor == listasesor[3].IdAsesores).Count();
-            emptyStringArray[0] = asesor1;
-            emptyStringArray[1] = asesor2;
-            emptyStringArray[2] = asesor3;
+            int[] emptyStringArray = new int[3] ;
+            emptyStringArray[0] = context.TbSeguimiento.Where(ass => ass.IdAsesor == listasesor[1].IdAsesores).Count();
+            emptyStringArray[1] = context.TbSeguimiento.Where(ass => ass.IdAsesor == listasesor[2].IdAsesores).Count();
+            emptyStringArray[2] = context.TbSeguimiento.Where(ass => ass.IdAsesor == listasesor[3].IdAsesores).Count();
 
-            ViewBag.pruebas = context.TbSeguimiento.Where(man => man.RealizoPruebaManejo == 1).Count();
+            Array.Sort(emptyStringArray);
 
-            var anticipos = context.TbSeguimiento.Where(ant => ant.DejoApartadoEnganche == 1).Count();
+            ViewBag.npruebas= context.TbSeguimiento.Where(man => man.RealizoPruebaManejo == 1).Count();
 
-            var tventa = context.TbSeguimiento.Where(tv => tv.UnidadToma == 1).Count();
+            ViewBag.nanticipos = context.TbSeguimiento.Where(ant => ant.DejoApartadoEnganche == 1).Count();
 
-            var ncitas = context.TbSeguimiento.Where(nc => nc.AgendoCita == 1).Count();
+            ViewBag.ncitas = context.TbSeguimiento.Where(nc => nc.AgendoCita == 1).Count();
 
-            int[] mediopubli = new int[0] { };
-            var medio1 = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 1).Count();
-            var medio2 = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 2).Count();
-            var medio3 = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 3).Count();
-            var medio4 = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 4).Count();
-            var medio5 = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 5).Count();
-            var medio6 = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 6).Count();
-            var medio7 = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 7).Count();
+            
 
-            mediopubli[0] = medio1;
-            mediopubli[1] = medio2;
-            mediopubli[2] = medio3;
-            mediopubli[3] = medio4;
-            mediopubli[4] = medio5;
-            mediopubli[5] = medio6;
-            mediopubli[6] = medio7;
+            int[] mediopubli = new int[7];
+            mediopubli[0] = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 1).Count();
+            mediopubli[1] = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 2).Count();
+            mediopubli[2] = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 3).Count();
+            mediopubli[3] = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 4).Count();
+            mediopubli[4] = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 5).Count();
+            mediopubli[5] = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 6).Count();
+            mediopubli[6] = context.TbSeguimiento.Where(mpp => mpp.IdMedioPublicitario == 7).Count();
 
-            var carros = context.TbCarros.ToList();
-            foreach (var carro in carros) {
-                var gastos = context.TbGastos.Where(gas => gas.IdCarro == carro.IdCarros).Select(x => x.Monto).Sum();
-                var gasto_compra = context.TbControl.Where(tc => tc.IdCarros == carro.IdCarros && tc.CompraVenta == 1).Select(x => x.PrecioPactado);
-                var ganancia = context.TbControl.Where(tc => tc.IdCarros == carro.IdCarros && tc.CompraVenta == 2).Select( x => x.PrecioPactado );
-                //var utilidad = ganancia - (gasto_compra + gastos.Value);
-            }
+
+            Console.WriteLine(""+emptyStringArray[0]);
+            Console.WriteLine(""+emptyStringArray[1]);
+            Console.WriteLine(""+emptyStringArray[2]);
+            Console.WriteLine();
 
             //Llenar los suficientes campos
             //Imprimir en consola que te devuelva bien los valores
             //Guardar en ViewBag cada variable
             //Manipula los datos desde la vista
             //en la vista ViewBag.pruebas
-            return View(list);
-        }
-
-
-
-        // GET: HomeController1
-        public ActionResult Desempeno1() {
-            //los necesarios
-            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            var list = context.TbSeguimiento.ToList();
-            var list2 = context.CAsesores.ToList();
-            var list3 = context.TbControl.ToList();
-            var list4 = context.TbPapelesCarro.ToList();
-            ///// se va a separar
-            int[] redsocial = { };
-            int c = 0;
-            List<CMedioPublicitario> medios = new List<CMedioPublicitario>();
-            foreach(CMedioPublicitario ti in medios)
-            {
-                redsocial[c] = context.TbSeguimiento.Where(s=>s.IdMedioPublicitario==ti.IdMedioPublicitario).Count();
-                    c++;
-            }
             return View();
         }
 
+
+
+
         [HttpGet]
-        public float Utilidades()
-        {
-            float total=0;
+        public float Utilidades(int id) {
+
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            var carros = context.TbCarros.ToList();
+            foreach (var carro in carros)
+            {
+                ViewBag.gastos = context.TbGastos.Where(gas => gas.IdCarro == carro.IdCarros).Select(x => x.Monto).Sum();
+                ViewBag.gasto_compra = context.TbControl.Where(tc => tc.IdCarros == carro.IdCarros && tc.CompraVenta == 1).Select(x => x.PrecioPactado);
+                ViewBag.ganancia = context.TbControl.Where(tc => tc.IdCarros == carro.IdCarros && tc.CompraVenta == 2).Select(x => x.PrecioPactado).Sum();
+                //var utilidad = ganancia - (gasto_compra + gastos.Value);
+            }
+            var total = 0;
             //utilidad en interagencias
 
             //utilidad en interagencias
@@ -102,6 +79,21 @@ namespace Riviera_Business.Controllers
             //utilidad en exportacion 
             return total;
         }
+
+        [HttpGet]
+        public int  NSeguros()
+        {
+            int[] infoseguros = new int[5];
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            infoseguros[0] = context.TbSeguro.Count();
+            infoseguros[1] = context.TbSeguro.Where(seg=>seg.TipoPoliza==1).Count();
+            infoseguros[2] = context.TbSeguro.Where(seg=> seg.TipoPoliza==2).Count();
+            infoseguros[3] = context.TbSeguro.Where(seg => seg.TipoPoliza == 3).Count();
+            infoseguros[4] = context.TbSeguro.Where(seg => seg.TipoPoliza == 4).Count();
+             
+            return infoseguros[0];
+        }
+
         /// <summary>
         /// ////////////
         // GET: HomeController1/Create
@@ -143,6 +135,9 @@ namespace Riviera_Business.Controllers
             if(opcion == 2)//el color mas vendido 
             {
                 int[] colores= { };
+
+                
+
                 colores[0] = context.TbCarros.Where(car => car.ColorExt == "Rojo").Count();
                 colores[1] = context.TbCarros.Where(car => car.ColorExt == "Azul").Count();
                 colores[2] = context.TbCarros.Where(car => car.ColorExt == "Amarillo").Count();

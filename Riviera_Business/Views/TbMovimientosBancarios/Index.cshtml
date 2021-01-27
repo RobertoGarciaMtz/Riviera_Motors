@@ -10,7 +10,19 @@
     <a asp-action="Create">Create New</a>
 </p>
 <p>Lista de todos los bancos  sus trasnsacciones </p>
-<table class="table" >
+<table border="0" cellspacing="5" cellpadding="5">
+    <tbody>
+        <tr>
+            <td>Fecha Inicial:</td>
+            <td><input type="text" id="min" name="min"></td>
+        </tr>
+        <tr>
+            <td>Fecha Final:</td>
+            <td><input type="text" id="max" name="max"></td>
+        </tr>
+    </tbody>
+</table>
+<table class="table" id="dataTable1" >
     <thead>
         <tr>
             <th>
@@ -59,3 +71,42 @@
 }
     </tbody>
 </table>
+
+<script>
+
+    $.fn.dataTable.ext.search.push(
+        function (settings, data, dataIndex) {
+            var min = $("#min").val();
+            min = min.split("/");
+            min = new Date(min[2], min[1], min[0]);
+
+            var max = $("#max").val();
+            max = max.split("/");
+            max = new Date(max[2], max[1], max[0]);
+
+            var age = data[5].split(" ")[0];
+            age = age.split("/");
+            age = new Date(age[2], age[1], age[0]);
+
+
+            if ((isNaN(min.getTime()) && isNaN(max.getTime())) ||
+                (isNaN(min.getTime()) && age.getTime() <= max.getTime()) ||
+                (min.getTime() <= age.getTime() && isNaN(max.getTime())) ||
+                (min.getTime() <= age.getTime() && age.getTime() <= max.getTime())) {
+                return true;
+            }
+            return false;
+        }
+    );
+
+
+    $(document).ready(function () {
+        var table = $("#dataTable1").DataTable({
+            scrollX: "true"
+        });
+        $('#min, #max').keyup(function () {
+            table.draw();
+        });
+    });
+
+</script>

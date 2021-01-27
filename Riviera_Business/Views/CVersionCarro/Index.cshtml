@@ -46,8 +46,8 @@
                 @Html.DisplayFor(modelItem => item.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdVersionCarro">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.IdVersionCarro">Detalles</a> |
+                <a asp-action="Edit" asp-route-id="@item.IdVersionCarro" class="btn btn-success">Editar</a> 
+                <a asp-action="Details" asp-route-id="@item.IdVersionCarro" class="btn btn-info">Detalles</a> 
             </td>
         </tr>
 }

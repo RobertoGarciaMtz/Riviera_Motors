@@ -20,7 +20,7 @@ namespace Riviera_Business.Controllers
             if (HttpContext.Session.GetInt32("tipoUsuario") ==1 || HttpContext.Session.GetInt32("tipoUsuario")==6) //Si el usuario no es Admin
             {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            var list = context.CuentasPendientesCP.ToList();
+            var list = context.CuentasPendientesCP.Where(cpc=>cpc.CuentasCobrarPagarOtras==1).ToList();
             foreach (CuentasPendientesCP ti in list)
             {
                 
@@ -38,8 +38,55 @@ namespace Riviera_Business.Controllers
             return RedirectToAction("Index", "Home");    //Regresas a Home
         }
 
+
+        public ActionResult IndexPP()
+        {
+
+            if (HttpContext.Session.GetInt32("tipoUsuario") == 1 || HttpContext.Session.GetInt32("tipoUsuario") == 6) //Si el usuario no es Admin
+            {
+                var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+                var list = context.CuentasPendientesCP.Where(cpp=>cpp.CuentasCobrarPagarOtras==2).ToList();
+                foreach (CuentasPendientesCP ti in list)
+                {
+
+                    ti.IdCarroNavigation = context.TbCarros.Where(car => car.IdCarros == ti.IdCarro).FirstOrDefault();
+                    ti.IdConceptoNavigation = context.CConcepto.Where(con => con.IdCConcepto == ti.IdConcepto).FirstOrDefault();
+                    ti.IdEstadoNavigation = context.CEstados.Where(te => te.IdEstados == ti.IdEstado).FirstOrDefault();
+                    /* ti.IdCarroNavigation.IdVersionNavigation = context.CVersionCarro.Where(tc => tc.IdVersionCarro == ti.IdCarroNavigation.IdVersion).FirstOrDefault();
+                       ti.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation = context.CModeloCarro.Where(mod => mod.IdModeloCarro == ti.IdCarroNavigation.IdVersionNavigation.IdModelo).FirstOrDefault();
+                       ti.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation = context.CMarcaCarro.Where
+                           (mar => mar.IdMarcaCarro == ti.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarca).FirstOrDefault();
+                          */
+                }
+                return View(list);
+            }
+            return RedirectToAction("Index", "Home");    //Regresas a Home
+        }
         // GET: HomeController1/Details/5
-        
+        public ActionResult IndexOC()
+        {
+
+            if (HttpContext.Session.GetInt32("tipoUsuario") == 1 || HttpContext.Session.GetInt32("tipoUsuario") == 6) //Si el usuario no es Admin
+            {
+                var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+                var list = context.CuentasPendientesCP.Where(oc=>oc.CuentasCobrarPagarOtras==3).ToList();
+                foreach (CuentasPendientesCP ti in list)
+                {
+
+                    ti.IdCarroNavigation = context.TbCarros.Where(car => car.IdCarros == ti.IdCarro).FirstOrDefault();
+                    ti.IdConceptoNavigation = context.CConcepto.Where(con => con.IdCConcepto == ti.IdConcepto).FirstOrDefault();
+                    ti.IdEstadoNavigation = context.CEstados.Where(te => te.IdEstados == ti.IdEstado).FirstOrDefault();
+                    /* ti.IdCarroNavigation.IdVersionNavigation = context.CVersionCarro.Where(tc => tc.IdVersionCarro == ti.IdCarroNavigation.IdVersion).FirstOrDefault();
+                       ti.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation = context.CModeloCarro.Where(mod => mod.IdModeloCarro == ti.IdCarroNavigation.IdVersionNavigation.IdModelo).FirstOrDefault();
+                       ti.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation = context.CMarcaCarro.Where
+                           (mar => mar.IdMarcaCarro == ti.IdCarroNavigation.IdVersionNavigation.IdModeloNavigation.IdMarca).FirstOrDefault();
+                          */
+                }
+                return View(list);
+            }
+            return RedirectToAction("Index", "Home");    //Regresas a Home
+        }
+
         public ActionResult Details(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
