@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Riviera_Business.Models.TbControl>
+
+@{
+    ViewData["Title"] = "Utilidad";
+    var mes = ViewBag.mes;
+}
+
+<h1>Utilidad</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@for (var i = 0; i < 12; i++)
+{
+    @mes;
+}
+

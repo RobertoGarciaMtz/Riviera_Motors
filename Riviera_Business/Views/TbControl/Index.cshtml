@@ -29,9 +29,6 @@
 <table class="table" id="dataTable1">
     <thead>
         <tr>
-            <th id="desaparecer">
-                @Html.DisplayNameFor(model => model.CompraVenta)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.TipoVenta)
             </th>
@@ -139,9 +136,6 @@
                 }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TipoVenta)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.NoFacturaArv)
             </td>
             <td>
@@ -192,6 +186,16 @@
                         @if (dist.IdDatosPersona == item.IdCliente)
                         {
                             @dist.Nombre
+                        }
+                    }
+                }
+                @if (item.TipoVenta == 3)
+                {
+                    @foreach(var dist  in (IEnumerable<TbExportacion>)ViewBag.Exportacion)
+                    {
+                        @if(dist.IdExportacion == item.IdCliente)
+                        {
+                            
                         }
                     }
                 }

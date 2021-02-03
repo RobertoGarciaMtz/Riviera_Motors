@@ -60,6 +60,15 @@ namespace Riviera_Business.Controllers
                 var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
                 context.TbPapelesCarro.Add(a);
                 context.SaveChanges();
+
+                TbLineaTiempo linea = new TbLineaTiempo();
+                linea.IdCarro = a.IdCarro;
+                linea.Fecha = DateTime.Today;
+                linea.IdEstado = 16;
+
+                context.TbLineaTiempo.Add(linea);
+                context.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -106,6 +115,15 @@ namespace Riviera_Business.Controllers
                     objectEdit.Verificacion = a.Verificacion;
                     context.TbPapelesCarro.Update(objectEdit);
                     context.SaveChanges();
+
+                    TbLineaTiempo linea = new TbLineaTiempo();
+                    linea.IdCarro = a.IdCarro;
+                    linea.Fecha = DateTime.Today;
+                    linea.IdEstado = 17;
+
+                    context.TbLineaTiempo.Add(linea);
+                    context.SaveChanges();
+
                 }
                 return RedirectToAction(nameof(Index));
             }

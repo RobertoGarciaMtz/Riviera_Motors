@@ -17,7 +17,7 @@ namespace Riviera_Business.Controllers
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             ViewBag.seguimientos  = context.TbSeguimiento.ToList();
             var listasesor = context.CAsesores.ToList();
-
+            ViewBag.asesores = listasesor;
             int[] emptyStringArray = new int[3] ;
             emptyStringArray[0] = context.TbSeguimiento.Where(ass => ass.IdAsesor == listasesor[1].IdAsesores).Count();
             emptyStringArray[1] = context.TbSeguimiento.Where(ass => ass.IdAsesor == listasesor[2].IdAsesores).Count();
@@ -57,7 +57,30 @@ namespace Riviera_Business.Controllers
         }
 
 
+        [HttpPost]
+        public string[] Search(int id)
+        {
+            string[] data = new string[4];
 
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            data[0] = context.TbSeguimiento.Where(ass => ass.IdAsesor == id).Count().ToString();
+            data[1] = context.TbSeguimiento.Where(ass => ass.IdAsesor == id && ass.RealizoPruebaManejo == 1).Count().ToString();
+            data[2] = context.TbSeguimiento.Where(ass => ass.IdAsesor == id && ass.AgendoCita == 1).Count().ToString();
+            data[3] = context.TbSeguimiento.Where(ass => ass.IdAsesor == id && ass.DejoApartadoEnganche == 1).Count().ToString();
+
+            return data;
+        }
+
+
+        [HttpGet]
+        public ActionResult Utilidad (int id)
+        {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            DateTime thisDay = DateTime.Today;
+            ViewBag.mes = thisDay.Month;
+            ViewBag.anio = thisDay.Year;
+            return View();
+        }
 
         [HttpGet]
         public float Utilidades(int id) {
@@ -122,68 +145,13 @@ namespace Riviera_Business.Controllers
         /// </summary>
         // POST: HomeController1/Create
         [HttpGet]
-        public String Elmas(int opcion)
+        public ActionResult Elmas(int opcion)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            string elmas = null;
-            if (opcion == 1)///el auto mas vendido
-            {
-                var versiones = context.CVersionCarro.Where(ver => ver.IdVersionCarro >= 0).ToList();
-                var control = context.TbControl.Where(cont => cont.CompraVenta == 2 ).ToList();
 
-            }
-            if(opcion == 2)//el color mas vendido 
-            {
-                int[] colores= { };
-
-                
-
-                colores[0] = context.TbCarros.Where(car => car.ColorExt == "Rojo").Count();
-                colores[1] = context.TbCarros.Where(car => car.ColorExt == "Azul").Count();
-                colores[2] = context.TbCarros.Where(car => car.ColorExt == "Amarillo").Count();
-                colores[3] = context.TbCarros.Where(car => car.ColorExt == "Blanco").Count();
-                colores[4] = context.TbCarros.Where(car => car.ColorExt == "Negro").Count();
-                colores[5] = context.TbCarros.Where(car => car.ColorExt == "Plata").Count();
-                colores[6] = context.TbCarros.Where(car => car.ColorExt == "Gris").Count();
-                colores[7] = context.TbCarros.Where(car => car.ColorExt == "Naranja").Count();
-                colores[8] = context.TbCarros.Where(car => car.ColorExt == "Verde").Count();
-                colores[9] = context.TbCarros.Where(car => car.ColorExt == "Violeta").Count();
-                colores[10] = context.TbCarros.Where(car => car.ColorExt == "Cafe").Count();
-
-            }
-            if(opcion == 3)//mejor proveedor
-            {
-                int[] contenedor = new int[0];
-                int[] provedor1 = new int[0];
-                int i = 0, j,gu;
-                List<TbCarros> mejorprov = context.TbCarros.Where(car => car.IdProveedor != null).ToList();
-                foreach(TbCarros c in mejorprov)
-                {
-                    contenedor[i]= (int)mejorprov[i].IdProveedor;
-                    i++;
-                }
-                 gu=contenedor[0];
-                for (i = 1; i < contenedor.Length; ++i)
-                {
-                    if (gu < contenedor[i])
-                        gu = contenedor[i];
-                }
-                for (i = 0; i < contenedor.Length; i++) {
-                    for (j = 0; j < contenedor.Length; j++) { 
-                        {
-                        if (gu == contenedor[j])
-                            provedor1[i]++;
-                        }
-                    }
-                    gu -= 1;
-                }
-            }
-            if (opcion == 4)//la marca mas vendida
-            {
-
-            }
-
-                return elmas;
+            context.Query<Modelo_Tops_Aux>();
+          
+                return View();
         }
 
         // GET: HomeController1/Edit/5

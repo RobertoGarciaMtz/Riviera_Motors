@@ -66,6 +66,15 @@ public class CCarroExtrasController : Controller
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             context.CCarroExtra.Add(a);
             context.SaveChanges();
+
+            TbLineaTiempo linea = new TbLineaTiempo();
+            linea.IdCarro = a.IdCarro;
+            linea.Fecha = DateTime.Today;
+            linea.IdEstado = 18;
+
+            context.TbLineaTiempo.Add(linea);
+            context.SaveChanges();
+
             return RedirectToAction(nameof(Index));
         }
         catch

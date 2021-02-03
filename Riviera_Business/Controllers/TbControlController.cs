@@ -25,6 +25,7 @@ namespace Riviera_Business.Controllers
                 ViewBag.Persona = context.TbDatosPersona.ToList();
                 ViewBag.Personamoral = context.TbDatosPersonaMoral.ToList();
                 ViewBag.Autos = context.TbCarros.ToList();
+                ViewBag.Exportacion = context.TbExportacion.ToList();
             }
             return View(list);
         }
@@ -92,6 +93,15 @@ namespace Riviera_Business.Controllers
                 var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
                 context.TbControl.Add(a);
                 context.SaveChanges();
+
+                TbLineaTiempo linea = new TbLineaTiempo();
+                linea.IdCarro = a.IdCarros;
+                linea.Fecha = DateTime.Today;
+                linea.IdEstado = 19;
+
+                context.TbLineaTiempo.Add(linea);
+                context.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -153,6 +163,21 @@ namespace Riviera_Business.Controllers
                 var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
                 context.TbControl.Add(a);
                 context.SaveChanges();
+
+                TbLineaTiempo linea = new TbLineaTiempo();
+                linea.IdCarro = a.IdCarros;
+                linea.Fecha = DateTime.Today;
+                linea.IdEstado = 23;
+
+                context.TbLineaTiempo.Add(linea);
+                context.SaveChanges();
+
+                var carro = context.TbCarros.Where(tc => tc.IdCarros == a.IdCarros).FirstOrDefault();
+                carro.IdEstado = 23;
+                context.TbCarros.Update(carro);
+
+                context.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -288,7 +313,15 @@ namespace Riviera_Business.Controllers
                     objectEdit.Total = a.Total;
                     objectEdit.VoBoFacturarSat = a.VoBoFacturarSat;
                     objectEdit.VoBoLeyAntiLavado = a.VoBoLeyAntiLavado;
-                    
+
+                    TbLineaTiempo linea = new TbLineaTiempo();
+                    linea.IdCarro = a.IdCarros;
+                    linea.Fecha = DateTime.Today;
+                    linea.IdEstado = a.IdEstado;
+
+                    context.TbLineaTiempo.Add(linea);
+                    context.SaveChanges();
+
                 }
                 return RedirectToAction(nameof(Index));
             }

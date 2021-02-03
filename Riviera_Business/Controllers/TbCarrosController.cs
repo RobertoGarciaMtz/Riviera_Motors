@@ -202,7 +202,7 @@ namespace Riviera_Business.Controllers
                 TbLineaTiempo linea = new TbLineaTiempo();
                 linea.IdCarro = a.IdCarros;
                 linea.Fecha = DateTime.Today;
-                linea.IdEstado = a.IdEstado;
+                linea.IdEstado = 14;
 
                 Console.WriteLine(linea);
 
@@ -314,6 +314,15 @@ namespace Riviera_Business.Controllers
                     objectEdit.FechaOferta = a.FechaOferta;
                     context.TbCarros.Update(objectEdit);
                     context.SaveChanges();
+
+                    TbLineaTiempo linea = new TbLineaTiempo();
+                    linea.IdCarro = a.IdCarros;
+                    linea.Fecha = DateTime.Today;
+                    linea.IdEstado = 15;
+
+                    context.TbLineaTiempo.Add(linea);
+                    context.SaveChanges();
+
                 }
                 return RedirectToAction(nameof(Index));
             }
