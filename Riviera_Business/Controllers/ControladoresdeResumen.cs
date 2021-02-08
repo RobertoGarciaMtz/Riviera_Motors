@@ -114,7 +114,7 @@ namespace Riviera_Business.Controllers
             infoseguros[3] = context.TbSeguro.Where(seg => seg.TipoPoliza == 3).Count();
             infoseguros[4] = context.TbSeguro.Where(seg => seg.TipoPoliza == 4).Count();
              
-            return infoseguros[0];
+            return 0;
         }
 
         /// <summary>
@@ -147,11 +147,151 @@ namespace Riviera_Business.Controllers
         [HttpGet]
         public ActionResult Elmas(int opcion)
         {
+            IDictionary<string, int> diccionario = new Dictionary<string, int>();
+            IDictionary<string, int> diccionario1 = new Dictionary<string, int>();
+            IDictionary<string, int> diccionario2 = new Dictionary<string, int>();
+            IDictionary<string, int> diccionario3 = new Dictionary<string, int>();
+            IDictionary<string, int> diccionario4 = new Dictionary<string, int>();
+            IDictionary<string, int> diccionario5 = new Dictionary<string, int>();
+            /////////////////////////////////
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            var data = context.CMedioPublicitario
+                .Join(context.TbSeguimiento,
+                medio => medio.IdMedioPublicitario,
+                        seguimiento => seguimiento.IdMedioPublicitario,(medio, seguimiento) => new{
+                            medio, seguimiento});
+            Console.WriteLine(data);
+            foreach (var top in data){
+                if( ! diccionario.ContainsKey( top.medio.Nombre )){
+                    diccionario.Add(new KeyValuePair<string, int>( top.medio.Nombre.ToString(), 1 ));
+                }
+                else{
+                    diccionario[top.medio.Nombre] = diccionario[top.medio.Nombre] + 1;
+                }
+            }
+            ViewBag.datos = from pair in diccionario
+                        orderby pair.Value descending
+                        select pair;
 
-            context.Query<Modelo_Tops_Aux>();
-          
-                return View();
+            ///////////////////////////////////////////////////
+            var data2 = context.TbControl
+                .Where(tc => tc.TipoVenta == 2 && tc.CompraVenta==1)
+                .Join(  context.TbDatosPersonaMoral,
+                        control=>control.IdCliente,
+                        cliente=>cliente.IdDatosPm,
+                        (control,cliente)=>new {control,cliente});
+
+            foreach (var top in data2){
+                if (!diccionario1.ContainsKey(top.cliente.DenominacionRazonSocial)){
+                    diccionario1.Add(new KeyValuePair<string, int>(top.cliente.DenominacionRazonSocial.ToString(), 1));
+                }
+                else{
+                    diccionario1[top.cliente.DenominacionRazonSocial] = diccionario1[top.cliente.DenominacionRazonSocial] + 1;
+                }
+            }
+
+            ViewBag.datos2 = from pair in diccionario1
+                            orderby pair.Value descending
+                            select pair;
+
+            ///////////////////////////////////////////////////////
+            var data3 = context.TbControl
+                .Where(tca => tca.TipoVenta == 2 && tca.CompraVenta == 2)
+                .Join(context.TbDatosPersonaMoral,
+                    control => control.IdCliente,
+                    cliente => cliente.IdDatosPm,
+                    (control, cliente) => new { control, cliente });
+
+            foreach (var top in data3){
+                if (!diccionario2.ContainsKey(top.cliente.DenominacionRazonSocial)){
+                    diccionario2.Add(new KeyValuePair<string, int>(top.cliente.DenominacionRazonSocial.ToString(), 1));
+                }
+                else
+                {
+                    diccionario2[top.cliente.DenominacionRazonSocial] = diccionario2[top.cliente.DenominacionRazonSocial] + 1;
+                }
+            }
+
+            ViewBag.datos3 = from pair in diccionario2
+                             orderby pair.Value descending
+                             select pair;
+            ///////////////////////////////////////////////////////////////////
+            var data4 = context.TbCarros.ToList();
+            foreach (var top in data4){
+                if (!diccionario3.ContainsKey(top.ColorExt))
+                {
+                    diccionario3.Add(new KeyValuePair<string, int>(top.ColorExt.ToString(), 1));
+                }
+                else
+                {
+                    diccionario3[top.ColorExt] = diccionario3[top.ColorExt] + 1;
+                }
+            }
+
+            ViewBag.datos4 = from pair in diccionario3
+                             orderby pair.Value descending
+                             select pair;
+            /////////////////////////////////////////////////////////////////////////////////
+            var data5 = context.TbControl
+                .Join( 
+                    context.CAsesores, 
+                    control => control.IdAsesorVenta, 
+                    asesor => asesor.IdAsesores,
+                    (control, asesor) => new{  control, asesor }
+                ).Where(jo => jo.control.TipoVenta == 1 && jo.control.CompraVenta == 2);
+            foreach (var top in data5)
+            {
+                if (!diccionario4.ContainsKey(top.asesor.Nombre))
+                {
+                    diccionario4.Add(new KeyValuePair<string, int>(top.asesor.Nombre.ToString(), 1));
+                }
+                else
+                {
+                    diccionario4[top.asesor.Nombre] = diccionario4[top.asesor.Nombre] + 1;
+                }
+            }
+
+            ViewBag.datos5 = from pair in diccionario4
+                             orderby pair.Value descending
+                             select pair;
+            ///////////////////////////////////////////////////
+            var data6 = context.TbCarros.ToList();
+            foreach( var carro in data6)
+            {
+                carro.IdVersionNavigation = context.CVersionCarro.Where(cv => cv.IdVersionCarro == carro.IdVersion).FirstOrDefault();
+                carro.IdVersionNavigation.IdModeloNavigation = context.CModeloCarro.Where(cm => cm.IdModeloCarro == carro.IdVersionNavigation.IdModelo).FirstOrDefault();
+                if (!diccionario5.ContainsKey(carro.IdVersionNavigation.IdModeloNavigation.ModeloCarro))
+                {
+                    diccionario5.Add(new KeyValuePair<string, int>(carro.IdVersionNavigation.IdModeloNavigation.ModeloCarro.ToString(), 1));
+                }
+                else
+                {
+                    diccionario5[carro.IdVersionNavigation.IdModeloNavigation.ModeloCarro] = diccionario5[carro.IdVersionNavigation.IdModeloNavigation.ModeloCarro] + 1;
+                }
+            }
+
+            ViewBag.datos6 = from pair in diccionario5
+                             orderby pair.Value descending
+                             select pair;
+
+            /* foreach (var carro in data6)
+            {
+                carro.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation = context.CMarcaCarro.Where(cm => cm.IdMarcaCarro == carro.IdVersionNavigation.IdModeloNavigation.IdMarca).FirstOrDefault();
+                if (!diccionario.ContainsKey(carro.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca))
+                {
+                    diccionario.Add(new KeyValuePair<string, int>(carro.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca.ToString(), 1));
+                }
+                else
+                {
+                    diccionario[carro.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca] = diccionario[carro.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation.NombreMarca] + 1;
+                }
+            }
+
+            ViewBag.datos6 = from pair in diccionario
+                             orderby pair.Value descending
+                             select pair;
+            /////////////////////////////////////////// */
+            return View();
         }
 
         // GET: HomeController1/Edit/5

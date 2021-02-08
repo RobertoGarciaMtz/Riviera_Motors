@@ -27,23 +27,6 @@ namespace Riviera_Business.Controllers
                 ViewBag.Persona = context.TbDatosPersona.ToList();
                 ViewBag.Personamoral = context.TbDatosPersonaMoral.ToList();
 
-                /*
-                if(ti.TipoCompraCanal== 1){//1 Interagencias
-                ti.IdProveedor= context.TbDatosPersona.Where(dp => dp.IdDatosPersona == ti.IdProveedor).FirstOrDefault();
-                
-                foreach(TbDatosPersona a in listapersona){
-                    if(a.IdDatosPersona == ti.IdProveedor)
-                    {
-                        listaCorrecta.Add(a);
-                    }
-                }
-
-                }
-
-                if(ti.TipoCompraCanal ==2){ // 2 Retail
-
-                }
-                */
             }
             return View(list);
 

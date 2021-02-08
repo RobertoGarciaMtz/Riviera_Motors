@@ -156,10 +156,8 @@ namespace Riviera_Business.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult VentaAut(TbControl a)
-        {
-            try
-            {
+        public ActionResult VentaAut(TbControl a)  {
+            try {
                 var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
                 context.TbControl.Add(a);
                 context.SaveChanges();
@@ -187,45 +185,6 @@ namespace Riviera_Business.Controllers
         }
 
 
-        /// <summary>
-        /// /////////////////////////////77///////////POSIBLE FUNCION FUTURA///////////////////
-
-        /// <returns></returns>
-        [HttpGet]
-        /*public List<TbControl> Esconder(int opcion)
-        {
-            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            if (opcion == 1)
-            {
-                List<TbControl> comprados = new List<TbControl>();
-                var lista1 = context.TbControl.Where(cont => cont.CompraVenta == opcion).ToList();
-                foreach (TbControl ti in lista1)
-                {
-                    ti.IdAsesorVentaNavigation = null;
-                    ti.IdBancoNavigation = null;
-                    ti.IdEstadoNavigation = null;
-                    ti.IdFormaPagoNavigation = null;
-                    ti.TbCarrosTransaccion = null;
-                    ti.TbSeguro = null;
-                }
-                return lista1;
-            }
-            if (opcion == 2)
-            {
-                var lista2 = context.TbControl.Where(cont2 => cont2.CompraVenta == opcion).ToList();
-                foreach (TbControl ti in lista2)
-                {
-                    ti.IdAsesorVentaNavigation = null;
-                    ti.IdBancoNavigation = null;
-                    ti.IdEstadoNavigation = null;
-                    ti.IdFormaPagoNavigation = null;
-                    ti.TbCarrosTransaccion = null;
-                    ti.TbSeguro = null;
-                }
-                return lista2;
-            }
-            return null;
-        }*/
         public List<ModeloApoyo> getProveedores(int tipo)
         {
             List<ModeloApoyo> list = new List<ModeloApoyo>();
@@ -241,14 +200,23 @@ namespace Riviera_Business.Controllers
                     list.Add(apoyo);
                 }
             }
-            else
-            {
+            if(tipo==2){
                 var lista = context.TbDatosPersona.ToList();
                 foreach (TbDatosPersona campo in lista)
                 {
                     var apoyo = new ModeloApoyo();
                     apoyo.tipo = campo.IdDatosPersona;
                     apoyo.valor = campo.Rfc;
+                    list.Add(apoyo);
+                }
+            }
+            if(tipo == 3)  {
+                var lista = context.TbExportacion.ToList();
+                foreach (TbExportacion campo in lista)
+                {
+                    var apoyo = new ModeloApoyo();
+                    apoyo.tipo = campo.IdExportacion;
+                    apoyo.valor = campo.IdPersona.ToString();
                     list.Add(apoyo);
                 }
             }

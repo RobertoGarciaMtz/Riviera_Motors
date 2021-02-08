@@ -63,13 +63,17 @@
                 <img src="~/dist/img/DESEMPEÑO DE ASESORES.png" height="31" width="133" />
             </a>
             
-            <div style="display:flex; justify-content:flex-end">
-                <img src="~/dist/img/list.png" height="70" width="70" />
-                <img src="~/dist/img/RESUMEN DE ESTADISTICAS.png" height="31" width="133" />
+            <div  style="display:flex; justify-content:flex-end">
+                <a asp-controller="ControladoresdeResumen" asp-action="Elmas">
+                    <img src="~/dist/img/list.png" height="70" width="70" />
+                    <img src="~/dist/img/RESUMEN DE ESTADISTICAS.png" height="31" width="133" />
+                </a>
             </div>
             <div style="align-content:flex-start">
-                <img src="~/dist/img/time.png" height="70" width="70" />
-                <img src="~/dist/img/LINEA DE TIEMPO DE OPERADORES.png" height="31" width="150" />
+                <a asp-controller="TbLineaTiempo" asp-action="Index">
+                    <img src="~/dist/img/time.png" height="70" width="70" />
+                    <img src="~/dist/img/LINEA DE TIEMPO DE OPERADORES.png" height="31" width="150" />
+                </a>
             </div>
             <div style="align-content:flex-end">
                 <img src="~/dist/img/stats.png" height="70" width="70" />
