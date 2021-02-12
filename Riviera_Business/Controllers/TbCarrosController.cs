@@ -122,7 +122,7 @@ namespace Riviera_Business.Controllers
                     objectEdit.NumEconomicoOpc = copia.NumEconomicoOpc;
                     objectEdit.Origen = copia.Origen;
                     objectEdit.PropuestaCliente = copia.PropuestaCliente;
-                    objectEdit.Transmicion = copia.Transmicion;
+                    objectEdit.Transmision = copia.Transmicion;
                     objectEdit.IdProveedor = copia.IdProveedor;
                     objectEdit.Ubicacion = copia.Ubicacion;
                     objectEdit.FechaOferta = copia.FechaOferta;
@@ -162,7 +162,7 @@ namespace Riviera_Business.Controllers
             {
                 var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
 
-                a.IdEstado = 1;
+                a.IdEstado = 14;
 
                 context.TbCarros.Add(a);
 
@@ -291,7 +291,7 @@ namespace Riviera_Business.Controllers
                     objectEdit.NumEconomicoOpc = a.NumEconomicoOpc;
                     objectEdit.Origen = a.Origen;
                     objectEdit.PropuestaCliente = a.PropuestaCliente;
-                    objectEdit.Transmicion = a.Transmicion;
+                    objectEdit.Transmision = a.Transmision;
                     objectEdit.IdProveedor = a.IdProveedor;
                     objectEdit.Ubicacion = a.Ubicacion;
                     objectEdit.FechaOferta = a.FechaOferta;

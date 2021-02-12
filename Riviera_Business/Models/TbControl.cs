@@ -8,7 +8,6 @@ namespace Riviera_Business.Models
         public TbControl()
         {
             TbCarrosTransaccion = new HashSet<TbCarrosTransaccion>();
-            TbSeguro = new HashSet<TbSeguro>();
         }
 
         public int IdMovimiento { get; set; }
@@ -52,6 +51,5 @@ namespace Riviera_Business.Models
         public virtual CEstados IdEstadoNavigation { get; set; }
         public virtual CMetodoPago IdMetodoPagoNavigation { get; set; }
         public virtual ICollection<TbCarrosTransaccion> TbCarrosTransaccion { get; set; }
-        public virtual ICollection<TbSeguro> TbSeguro { get; set; }
     }
 }

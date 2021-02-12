@@ -16,9 +16,8 @@ namespace Riviera_Business.Controllers
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
             var list = context.TbSeguro.ToList();
-            foreach (TbSeguro ti in list)
-            {
-                ti.IdControlNavigation = context.TbControl.Where(tc=> tc.IdMovimiento == ti.IdControl).FirstOrDefault();
+            foreach (TbSeguro ti in list) {
+                ti.IdAutoPerteneceNavigation = context.CVersionCarro.Where(ver => ver.IdVersionCarro == ti.IdAutoPertenece).FirstOrDefault();
             }
             return View(list);
         }
@@ -27,7 +26,7 @@ namespace Riviera_Business.Controllers
         public ActionResult Details(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            ViewBag.Control = context.TbControl.Select(cont => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = cont.FolioFiscal, Value = cont.IdMovimiento.ToString() });
+            ViewBag.Version = context.CVersionCarro.Select(cont => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = cont.VersionCarro, Value = cont.IdVersionCarro.ToString() });
             if (context.TbSeguro.Where(seg => seg.IdSeguro == id).First() is TbSeguro e)
             {
                 return View(e);
@@ -39,7 +38,7 @@ namespace Riviera_Business.Controllers
         public ActionResult Create()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            ViewBag.Control = context.TbControl.Select(cont => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = cont.FolioFiscal, Value = cont.IdMovimiento.ToString() });
+            ViewBag.Version = context.CVersionCarro.Select(cont => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = cont.VersionCarro, Value = cont.IdVersionCarro.ToString() });
             return View();
         }
 
@@ -65,7 +64,7 @@ namespace Riviera_Business.Controllers
         public ActionResult Edit(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            ViewBag.Control = context.TbControl.Select(cont => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = cont.FolioFiscal, Value = cont.IdMovimiento.ToString() });
+            ViewBag.Version = context.CVersionCarro.Select(cont => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = cont.VersionCarro, Value = cont.IdVersionCarro.ToString() });
             if (context.TbSeguro.Where(seg=>seg.IdSeguro == id ).First() is TbSeguro e)
             {
                 return View(e);
@@ -84,7 +83,7 @@ namespace Riviera_Business.Controllers
                 var objectEdit = context.TbSeguro.FirstOrDefault(seg => seg.IdSeguro == a.IdSeguro);
                 if (objectEdit != null)
                 {
-                    objectEdit.IdControl = a.IdControl;
+                    objectEdit.IdAutoPertenece = a.IdAutoPertenece;     
                     objectEdit.Aseguradora = a.Aseguradora;
                     objectEdit.Correo = a.Correo;
                     objectEdit.NombreCliente = a.NombreCliente;

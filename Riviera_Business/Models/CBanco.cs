@@ -9,6 +9,7 @@ namespace Riviera_Business.Models
         {
             TbConta = new HashSet<TbConta>();
             TbControl = new HashSet<TbControl>();
+            TbMovimientosBancarios = new HashSet<TbMovimientosBancarios>();
             TbSeguimiento = new HashSet<TbSeguimiento>();
         }
 
@@ -17,6 +18,7 @@ namespace Riviera_Business.Models
 
         public virtual ICollection<TbConta> TbConta { get; set; }
         public virtual ICollection<TbControl> TbControl { get; set; }
+        public virtual ICollection<TbMovimientosBancarios> TbMovimientosBancarios { get; set; }
         public virtual ICollection<TbSeguimiento> TbSeguimiento { get; set; }
     }
 }

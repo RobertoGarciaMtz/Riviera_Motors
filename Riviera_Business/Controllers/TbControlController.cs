@@ -43,17 +43,18 @@ namespace Riviera_Business.Controllers
                 ViewBag.Personamoral = context.TbDatosPersonaMoral.ToList();
                 ViewBag.Autos = context.TbCarros.ToList();
                  ViewBag.Estados = context.CEstados.Select(es=> new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem {Text=es.Descripcion,Value=es.IdEstados.ToString() });
-            ViewBag.Metodopago = context.CMetodoPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdMetodoPago.ToString() });
-            ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
-            ViewBag.Asesor = context.CAsesores.Select(ase => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ase.Nombre, Value = ase.IdAsesores.ToString() });
-            ViewBag.Auto = context.TbCarros.Select(au => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = au.NoSerie, Value = au.IdCarros.ToString() });
-                ///
-                //if (ti.TipoCompraCanal == 1)
-                //{
-                //  var persona = context.TbDatosPersona.Where(dp => dp.IdDatosPersona == ti.IdProveedor).FirstOrDefault();
-                //ti.persona.IdDatosPersona = persona.IdDatosPersona;
-                //}
+                ViewBag.Metodopago = context.CMetodoPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdMetodoPago.ToString() });
+                ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
+                ViewBag.Asesor = context.CAsesores.Select(ase => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ase.Nombre, Value = ase.IdAsesores.ToString() });
+                ViewBag.Auto = context.TbCarros.Select(au => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = au.NoSerie, Value = au.IdCarros.ToString() });
+
             }
+
+            foreach (var item in list) 
+            {
+                Console.WriteLine(item.TipoVenta);
+            }
+
             return View(list);
         }
 
@@ -79,7 +80,7 @@ namespace Riviera_Business.Controllers
             ViewBag.Metodopago = context.CMetodoPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdMetodoPago.ToString() });
             ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
             ViewBag.Asesor = context.CAsesores.Select(ase => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ase.Nombre, Value = ase.IdAsesores.ToString() });
-            ViewBag.Auto = context.TbCarros.Select(au => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = au.NoSerie, Value = au.IdCarros.ToString() });
+            ViewBag.Auto = context.TbCarros.Where(est=>est.IdEstado==14 || est.IdEstado==15).Select(au => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = au.NoSerie, Value = au.IdCarros.ToString() });
             return View();
         }
 
@@ -98,11 +99,16 @@ namespace Riviera_Business.Controllers
                 linea.IdCarro = a.IdCarros;
                 linea.Fecha = DateTime.Today;
                 linea.IdEstado = 19;
-
                 context.TbLineaTiempo.Add(linea);
                 context.SaveChanges();
 
-                return RedirectToAction(nameof(Index));
+                var carro = context.TbCarros.Where(tc => tc.IdCarros == a.IdCarros).FirstOrDefault();
+                carro.IdEstado = 19;
+
+                context.TbCarros.Update(carro);
+                context.SaveChanges();
+
+                return RedirectToAction(nameof(IndexdeCompras));
             }
             catch
             {
@@ -150,7 +156,7 @@ namespace Riviera_Business.Controllers
             ViewBag.Metodopago = context.CMetodoPago.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdMetodoPago.ToString() });
             ViewBag.Banco = context.CBanco.Select(fp => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = fp.Nombre, Value = fp.IdBanco.ToString() });
             ViewBag.Asesor = context.CAsesores.Select(ase => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ase.Nombre, Value = ase.IdAsesores.ToString() });
-            ViewBag.Auto = context.TbCarros.Select(au => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = au.NoSerie, Value = au.IdCarros.ToString() });
+            ViewBag.Auto = context.TbCarros.Where(con=>con.IdEstado>=19&&con.IdEstado<=23).Select(au => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = au.NoSerie, Value = au.IdCarros.ToString() });
             return View();
         }
 

@@ -34,7 +34,7 @@ namespace Riviera_Business.Models
         public string NoMotor { get; set; }
         public string NumEconomicoOpc { get; set; }
         public string MvaOpc { get; set; }
-        public int? Transmicion { get; set; }
+        public int? Transmision { get; set; }
         public string ClaveVehicular { get; set; }
         public int? IdEstado { get; set; }
         public string Usuario { get; set; }

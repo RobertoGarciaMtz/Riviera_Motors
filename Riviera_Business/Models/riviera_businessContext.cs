@@ -6,7 +6,7 @@ namespace Riviera_Business.Models
 {
     public partial class riviera_businessContext : DbContext
     {
-        public riviera_businessContext(String V)
+        public riviera_businessContext(string V)
         {
         }
 
@@ -32,7 +32,10 @@ namespace Riviera_Business.Models
         public virtual DbSet<CPreAcondicionamiento> CPreAcondicionamiento { get; set; }
         public virtual DbSet<CTipoGasto> CTipoGasto { get; set; }
         public virtual DbSet<CVersionCarro> CVersionCarro { get; set; }
+        public virtual DbSet<CompraPorCarro> CompraPorCarro { get; set; }
         public virtual DbSet<CuentasPendientesCP> CuentasPendientesCP { get; set; }
+        public virtual DbSet<GastoPorCarro> GastoPorCarro { get; set; }
+        public virtual DbSet<IngresoPorCarro> IngresoPorCarro { get; set; }
         public virtual DbSet<TbAdecuaciones> TbAdecuaciones { get; set; }
         public virtual DbSet<TbCarros> TbCarros { get; set; }
         public virtual DbSet<TbCarrosTransaccion> TbCarrosTransaccion { get; set; }
@@ -52,11 +55,13 @@ namespace Riviera_Business.Models
         public virtual DbSet<TbSeguimiento> TbSeguimiento { get; set; }
         public virtual DbSet<TbSeguro> TbSeguro { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<VwUtilidad> VwUtilidad { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseMySql("server=localhost;database=riviera_business;user=root;password=1234", x => x.ServerVersion("8.0.13-mysql"));
             }
         }
@@ -463,6 +468,17 @@ namespace Riviera_Business.Models
                     .HasConstraintName("FK_CModelo_CVersion");
             });
 
+            modelBuilder.Entity<CompraPorCarro>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("compra_por_carro");
+
+                entity.Property(e => e.IdCarros)
+                    .HasColumnName("Id_Carros")
+                    .HasColumnType("int(11)");
+            });
+
             modelBuilder.Entity<CuentasPendientesCP>(entity =>
             {
                 entity.HasKey(e => e.IdCuentaPendiente)
@@ -537,6 +553,28 @@ namespace Riviera_Business.Models
                     .WithMany(p => p.CuentasPendientesCP)
                     .HasForeignKey(d => d.IdEstado)
                     .HasConstraintName("FK_CP_Estado");
+            });
+
+            modelBuilder.Entity<GastoPorCarro>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("gasto_por_carro");
+
+                entity.Property(e => e.IdCarro)
+                    .HasColumnName("Id_Carro")
+                    .HasColumnType("int(11)");
+            });
+
+            modelBuilder.Entity<IngresoPorCarro>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("ingreso_por_carro");
+
+                entity.Property(e => e.IdCarros)
+                    .HasColumnName("Id_Carros")
+                    .HasColumnType("int(11)");
             });
 
             modelBuilder.Entity<TbAdecuaciones>(entity =>
@@ -711,7 +749,7 @@ namespace Riviera_Business.Models
                     .HasColumnName("Tipo_Compra_Canal")
                     .HasColumnType("int(11)");
 
-                entity.Property(e => e.Transmicion).HasColumnType("int(11)");
+                entity.Property(e => e.Transmision).HasColumnType("int(11)");
 
                 entity.Property(e => e.Ubicacion)
                     .HasColumnType("varchar(100)")
@@ -1614,6 +1652,9 @@ namespace Riviera_Business.Models
 
                 entity.ToTable("tb_movimientos_bancarios");
 
+                entity.HasIndex(e => e.IdBanco)
+                    .HasName("FK_MB_Bancos_idx");
+
                 entity.Property(e => e.IdTbMovimientosBancarios)
                     .HasColumnName("idTb_Movimientos_Bancarios")
                     .HasColumnType("int(11)");
@@ -1628,6 +1669,15 @@ namespace Riviera_Business.Models
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.Fecha).HasColumnType("date");
+
+                entity.Property(e => e.IdBanco)
+                    .HasColumnName("Id_Banco")
+                    .HasColumnType("int(11)");
+
+                entity.HasOne(d => d.IdBancoNavigation)
+                    .WithMany(p => p.TbMovimientosBancarios)
+                    .HasForeignKey(d => d.IdBanco)
+                    .HasConstraintName("FK_MB_Bancos");
             });
 
             modelBuilder.Entity<TbPapelesCarro>(entity =>
@@ -1870,8 +1920,6 @@ namespace Riviera_Business.Models
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.Confirmacion).HasColumnType("int(11)");
-
                 entity.Property(e => e.Contactado).HasColumnType("int(11)");
 
                 entity.Property(e => e.Correo)
@@ -1882,6 +1930,12 @@ namespace Riviera_Business.Models
                 entity.Property(e => e.DejoApartadoEnganche)
                     .HasColumnName("Dejo_Apartado_Enganche")
                     .HasColumnType("int(11)");
+
+                entity.Property(e => e.DejoAutoCuenta)
+                    .HasColumnName("Dejo_Auto_Cuenta")
+                    .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
 
                 entity.Property(e => e.EnvioInformacion)
                     .HasColumnName("Envio_Informacion")
@@ -1931,6 +1985,10 @@ namespace Riviera_Business.Models
                     .HasColumnName("Id_Medio_Publicitario")
                     .HasColumnType("int(11)");
 
+                entity.Property(e => e.IngresoSolicitudSn)
+                    .HasColumnName("Ingreso_Solicitud_SN")
+                    .HasColumnType("int(11)");
+
                 entity.Property(e => e.NombreCompleto)
                     .HasColumnName("Nombre_Completo")
                     .HasColumnType("varchar(200)")
@@ -1944,11 +2002,6 @@ namespace Riviera_Business.Models
                 entity.Property(e => e.SeguimientoDesc)
                     .HasColumnName("Seguimiento_Desc")
                     .HasColumnType("text")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
-                entity.Property(e => e.Sexo)
-                    .HasColumnType("varchar(45)")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
@@ -1999,8 +2052,8 @@ namespace Riviera_Business.Models
 
                 entity.ToTable("tb_seguro");
 
-                entity.HasIndex(e => e.IdControl)
-                    .HasName("FK_Seguro_Control_idx");
+                entity.HasIndex(e => e.IdAutoPertenece)
+                    .HasName("FK_Seguro_Autos_idx");
 
                 entity.Property(e => e.IdSeguro)
                     .HasColumnName("Id_Seguro")
@@ -2016,8 +2069,8 @@ namespace Riviera_Business.Models
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.IdControl)
-                    .HasColumnName("Id_Control")
+                entity.Property(e => e.IdAutoPertenece)
+                    .HasColumnName("Id_Auto_Pertenece")
                     .HasColumnType("int(11)");
 
                 entity.Property(e => e.NombreCliente)
@@ -2043,10 +2096,10 @@ namespace Riviera_Business.Models
 
                 entity.Property(e => e.Version).HasColumnType("int(11)");
 
-                entity.HasOne(d => d.IdControlNavigation)
+                entity.HasOne(d => d.IdAutoPerteneceNavigation)
                     .WithMany(p => p.TbSeguro)
-                    .HasForeignKey(d => d.IdControl)
-                    .HasConstraintName("FK_Seguro_Control");
+                    .HasForeignKey(d => d.IdAutoPertenece)
+                    .HasConstraintName("FK_Seguro_Autos");
             });
 
             modelBuilder.Entity<Usuarios>(entity =>
@@ -2090,6 +2143,17 @@ namespace Riviera_Business.Models
                     .WithMany(p => p.Usuarios)
                     .HasForeignKey(d => d.IdEstado)
                     .HasConstraintName("FK_Usuarios_Estado");
+            });
+
+            modelBuilder.Entity<VwUtilidad>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("vw_utilidad");
+
+                entity.Property(e => e.IdCarros)
+                    .HasColumnName("Id_Carros")
+                    .HasColumnType("int(11)");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -34,7 +34,7 @@
                 @Html.DisplayNameFor(model => model.Telefono)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdControlNavigation)
+                Vehiculo a asegurar
             </th>
             <th></th>
         </tr>
@@ -79,7 +79,7 @@
                 @Html.DisplayFor(modelItem => item.Telefono)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdControlNavigation.IdMovimiento)
+                @Html.DisplayFor(modelItem => item.IdAutoPerteneceNavigation.VersionCarro)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdSeguro">Edit</a> |

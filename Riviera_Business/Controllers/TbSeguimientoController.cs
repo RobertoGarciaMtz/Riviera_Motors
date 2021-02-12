@@ -116,12 +116,13 @@ namespace Riviera_Business.Controllers
                 var objectEdit = context.TbSeguimiento.FirstOrDefault(se=>se.IdSeguimiento == a.IdSeguimiento);
                 if (objectEdit!= null)
                 {
+
                     objectEdit.AgendoCita = a.AgendoCita;
                     objectEdit.AnioAuto = a.AnioAuto;
                     objectEdit.AsistioCita = a.AsistioCita;
-                    objectEdit.Comentarios= a.Comentarios;
-                    objectEdit.Confirmacion= a.Confirmacion;
-                    objectEdit.Contactado = a.Contactado;
+                    objectEdit.Comentarios= a.Comentarios;                         
+                    objectEdit.DejoAutoCuenta = a.DejoAutoCuenta;
+                    objectEdit.Contactado = a.Contactado;                               
                     objectEdit.Correo = a.Correo;
                     objectEdit.DejoApartadoEnganche = a.DejoApartadoEnganche;
                     objectEdit.EnvioInformacion = a.EnvioInformacion;
@@ -139,7 +140,6 @@ namespace Riviera_Business.Controllers
                     objectEdit.NombreCompleto = a.NombreCompleto;
                     objectEdit.RealizoPruebaManejo = a.RealizoPruebaManejo;
                     objectEdit.SeguimientoDesc = a.SeguimientoDesc;
-                    objectEdit.Sexo = a.Sexo;
                     objectEdit.Telefono = a.Telefono;
                     objectEdit.TipoVenta = a.TipoVenta;
                     objectEdit.UnidadToma = a.UnidadToma;

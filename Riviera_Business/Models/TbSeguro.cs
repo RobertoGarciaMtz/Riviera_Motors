@@ -11,10 +11,10 @@ namespace Riviera_Business.Models
         public int? Version { get; set; }
         public string NumPoliza { get; set; }
         public int? TipoPoliza { get; set; }
-        public int? IdControl { get; set; }
         public string Correo { get; set; }
         public string Telefono { get; set; }
+        public int? IdAutoPertenece { get; set; }
 
-        public virtual TbControl IdControlNavigation { get; set; }
+        public virtual CVersionCarro IdAutoPerteneceNavigation { get; set; }
     }
 }

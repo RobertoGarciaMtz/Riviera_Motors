@@ -16,14 +16,14 @@ namespace Riviera_Business.Models
         public int? TipoVenta { get; set; }
         public int? IdCarro { get; set; }
         public int? AnioAuto { get; set; }
-        public string Sexo { get; set; }
         public int? Contactado { get; set; }
         public int? EnvioInformacion { get; set; }
         public int? AgendoCita { get; set; }
         public int? AsistioCita { get; set; }
-        public int? Confirmacion { get; set; }
         public int? UnidadToma { get; set; }
+        public string DejoAutoCuenta { get; set; }
         public int? RealizoPruebaManejo { get; set; }
+        public int? IngresoSolicitudSn { get; set; }
         public int? IdIngresoSolicitudBanco { get; set; }
         public int? DejoApartadoEnganche { get; set; }
         public DateTime? FechaVenta { get; set; }

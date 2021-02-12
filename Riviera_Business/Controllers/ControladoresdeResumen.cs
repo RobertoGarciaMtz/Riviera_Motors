@@ -76,9 +76,33 @@ namespace Riviera_Business.Controllers
         public ActionResult Utilidad (int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            DateTime thisDay = DateTime.Today;
-            ViewBag.mes = thisDay.Month;
-            ViewBag.anio = thisDay.Year;
+
+            var carros = context.VwUtilidad
+                .Join(
+                    context.TbCarros,
+                    utilidad => utilidad.IdCarros,
+                    carro => carro.IdCarros,
+                    (utilidad, carro) =>
+                    new
+                    {
+                        utilidad.IdCarros,
+                        utilidad.Compra,
+                        utilidad.Gastos,
+                        utilidad.Venta,
+                        carro.NoSerie,
+                        utilidad_vehiculo = utilidad.Venta - (utilidad.Compra + utilidad.Gastos) 
+                    }
+                ).ToList();
+            foreach( var carro in carros)
+            {
+                Console.WriteLine( carro.NoSerie );
+                Console.WriteLine(carro.IdCarros);
+                Console.WriteLine(carro.Compra);
+                Console.WriteLine(carro.Venta);
+                Console.WriteLine(carro.Gastos);
+                Console.WriteLine(carro.utilidad_vehiculo);
+            }
+            ViewBag.carros = carros;
             return View();
         }
 

@@ -28,6 +28,8 @@ namespace Riviera_Business.Controllers
         // GET: TbMovimientosBancarios/Create
         public ActionResult Create()
         {
+            var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
+            ViewBag.Bancos = context.CBanco.Select(ban => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ban.Nombre,Value=ban.IdBanco.ToString() }); ; ;
             return View();
         }
 
@@ -53,7 +55,8 @@ namespace Riviera_Business.Controllers
         public ActionResult Edit(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
-            if(context.TbMovimientosBancarios.Where(mb=>mb.IdTbMovimientosBancarios==id).First() is TbMovimientosBancarios e)
+            ViewBag.Bancos = context.CBanco.Select(ban => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem { Text = ban.Nombre, Value = ban.IdBanco.ToString() }); ; ;
+            if (context.TbMovimientosBancarios.Where(mb=>mb.IdTbMovimientosBancarios==id).First() is TbMovimientosBancarios e)
             {
                 return View(e);
             }

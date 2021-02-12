@@ -10,5 +10,8 @@ namespace Riviera_Business.Models
         public DateTime? Fecha { get; set; }
         public string Concepto { get; set; }
         public float? Saldo { get; set; }
+        public int? IdBanco { get; set; }
+
+        public virtual CBanco IdBancoNavigation { get; set; }
     }
 }

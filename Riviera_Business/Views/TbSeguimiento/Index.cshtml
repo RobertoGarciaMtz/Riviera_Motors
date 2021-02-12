@@ -78,9 +78,6 @@
                 @Html.DisplayNameFor(model => model.AsistioCita)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Confirmacion)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.UnidadToma)
             </th>
             <th>
@@ -202,17 +199,6 @@
                         <label class="negacion"> No</label>
                     }
                     @Html.DisplayFor(modelItem => item.AsistioCita)
-                </td>
-                <td>
-                    @if (item.Confirmacion == 1)
-                    {
-                        <label class="afirmacion"> Si</label>
-                    }
-                    @if (item.Confirmacion == 2)
-                    {
-                        <label class="negacion"> No</label>
-                    }
-                    @Html.DisplayFor(modelItem => item.Confirmacion)
                 </td>
                 <td>
                     @if (item.UnidadToma == 1)
