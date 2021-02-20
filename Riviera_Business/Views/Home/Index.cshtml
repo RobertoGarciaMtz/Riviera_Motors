@@ -46,15 +46,16 @@
     });
 </script>
 
-<div class="text-center" style="background-color:azure">
-    
-    <img src="dist/img/SIST CENTRALIZADO R B.png" alt="AdminLTE Logo" height="50" width="350" style="opacity: .8">
-    <p class="parrafodesc">
-        El proposito de este sistema es agilizar todos los procesos que conlleva la empresa,
-        asi como poder utilizarse de manera ordenada y sin la necesidad de traer de manera manual
-        datos utilizados en otras tablas.
-    </p>
-    <p class="parrafodesc">Ademas de poder visualizar los datos de manera ordenadas con filtros y tener una rapida busqueda</p>
+<div class="row"  style="background-color:azure">
+    <div class="text-center">
+
+        <img src="dist/img/SIST_CENTRALIZADO_R_B.png" alt="AdminLTE Logo" height="50" width="350" style="opacity: .8">
+        <p class="parrafodesc">
+            El proposito de este sistema es agilizar todos los procesos que conlleva la empresa,
+            asi como poder utilizarse de manera ordenada y sin la necesidad de traer de manera manual
+            datos utilizados en otras tablas.
+        </p>
+        <p class="parrafodesc">Ademas de poder visualizar los datos de manera ordenadas con filtros y tener una rapida busqueda</p>
     <div style="height:20px;width:100px"></div>
     <div>
         <div style="display:flex; justify-content:space-evenly">
@@ -76,8 +77,10 @@
                 </a>
             </div>
             <div style="align-content:flex-end">
-                <img src="~/dist/img/stats.png" height="70" width="70" />
-                <img src="~/dist/img/CONSUMOS Y UTILIDADES.png" height="31" width="133" />
+                <a asp-controller="ControladoresdeResumen" asp-action="Utilidad">
+                    <img src="~/dist/img/stats.png" height="70" width="70" />
+                    <img src="~/dist/img/CONSUMOS Y UTILIDADES.png" height="31" width="133" />
+                </a>
             </div>
 
         </div>
@@ -140,7 +143,7 @@
     <a asp-controller="Home" asp-action="Ejemplo">al menu</a>
         -->
     </div>
-
+    </div>
 </div>
 <!--
     como trraer datos con jquery

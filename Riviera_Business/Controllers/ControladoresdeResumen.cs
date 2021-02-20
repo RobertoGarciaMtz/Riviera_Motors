@@ -83,27 +83,16 @@ namespace Riviera_Business.Controllers
                     utilidad => utilidad.IdCarros,
                     carro => carro.IdCarros,
                     (utilidad, carro) =>
-                    new
-                    {
-                        utilidad.IdCarros,
-                        utilidad.Compra,
-                        utilidad.Gastos,
-                        utilidad.Venta,
-                        carro.NoSerie,
-                        utilidad_vehiculo = utilidad.Venta - (utilidad.Compra + utilidad.Gastos) 
+                    new ZUtilidad{
+                        IdCarros=utilidad.IdCarros,
+                        Compra=utilidad.Compra,
+                        Gastos=utilidad.Gastos,
+                        Venta=utilidad.Venta,
+                        Numero_serie=carro.NoSerie,
+                        Utilidad = (float?)(utilidad.Venta - (utilidad.Compra + utilidad.Gastos))
                     }
                 ).ToList();
-            foreach( var carro in carros)
-            {
-                Console.WriteLine( carro.NoSerie );
-                Console.WriteLine(carro.IdCarros);
-                Console.WriteLine(carro.Compra);
-                Console.WriteLine(carro.Venta);
-                Console.WriteLine(carro.Gastos);
-                Console.WriteLine(carro.utilidad_vehiculo);
-            }
-            ViewBag.carros = carros;
-            return View();
+            return View( carros );
         }
 
         [HttpGet]
@@ -193,10 +182,10 @@ namespace Riviera_Business.Controllers
                     diccionario[top.medio.Nombre] = diccionario[top.medio.Nombre] + 1;
                 }
             }
-            ViewBag.datos = from pair in diccionario
+            var info = from pair in diccionario
                         orderby pair.Value descending
                         select pair;
-
+            ViewBag.datos = info.Take(3);
             ///////////////////////////////////////////////////
             var data2 = context.TbControl
                 .Where(tc => tc.TipoVenta == 2 && tc.CompraVenta==1)
@@ -214,10 +203,10 @@ namespace Riviera_Business.Controllers
                 }
             }
 
-            ViewBag.datos2 = from pair in diccionario1
+            info = from pair in diccionario1
                             orderby pair.Value descending
                             select pair;
-
+            ViewBag.datos2 = info.Take(3);
             ///////////////////////////////////////////////////////
             var data3 = context.TbControl
                 .Where(tca => tca.TipoVenta == 2 && tca.CompraVenta == 2)
@@ -236,9 +225,10 @@ namespace Riviera_Business.Controllers
                 }
             }
 
-            ViewBag.datos3 = from pair in diccionario2
+            info = from pair in diccionario2
                              orderby pair.Value descending
                              select pair;
+            ViewBag.datos3 = info.Take(3);
             ///////////////////////////////////////////////////////////////////
             var data4 = context.TbCarros.ToList();
             foreach (var top in data4){
@@ -252,9 +242,10 @@ namespace Riviera_Business.Controllers
                 }
             }
 
-            ViewBag.datos4 = from pair in diccionario3
+            info = from pair in diccionario3
                              orderby pair.Value descending
                              select pair;
+            ViewBag.datos4 = info.Take(3);
             /////////////////////////////////////////////////////////////////////////////////
             var data5 = context.TbControl
                 .Join( 
@@ -275,9 +266,10 @@ namespace Riviera_Business.Controllers
                 }
             }
 
-            ViewBag.datos5 = from pair in diccionario4
+            info = from pair in diccionario4
                              orderby pair.Value descending
                              select pair;
+            ViewBag.datos5 = info.Take(3);
             ///////////////////////////////////////////////////
             var data6 = context.TbCarros.ToList();
             foreach( var carro in data6)
@@ -294,10 +286,10 @@ namespace Riviera_Business.Controllers
                 }
             }
 
-            ViewBag.datos6 = from pair in diccionario5
+            info = from pair in diccionario5
                              orderby pair.Value descending
                              select pair;
-
+            ViewBag.datos6 = info.Take(3);
             /* foreach (var carro in data6)
             {
                 carro.IdVersionNavigation.IdModeloNavigation.IdMarcaNavigation = context.CMarcaCarro.Where(cm => cm.IdMarcaCarro == carro.IdVersionNavigation.IdModeloNavigation.IdMarca).FirstOrDefault();

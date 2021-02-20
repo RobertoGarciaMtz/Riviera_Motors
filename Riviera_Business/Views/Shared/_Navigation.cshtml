@@ -11,18 +11,18 @@
 
 
         <li class="nav-item d-none d-sm-inline-block">
-            <a asp-controller="Home" asp-action="Index" class="nav-link">Home</a>
+            <a asp-controller="Home" asp-action="Index" class="nav-link">Inicio</a>
         </li>
 
         <li class="nav-item d-none d-sm-inline-block">
-            <a asp-controller="Login_" asp-action="LogOut" class="nav-link">Log Out</a>
+            <a asp-controller="Login_" asp-action="LogOut" class="nav-link">Cerrar Sesión</a>
         </li>
     </ul>
 
     <!-- SEARCH FORM -->
     <form class="form-inline ml-3">
         <div class="input-group input-group-sm">
-            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search">
             <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit">
                     <i class="fas fa-search"></i>
@@ -122,10 +122,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-                <a asp-controller="Usuarios" asp-action="Index" class="d-block" id="nombreusuario">Lista Usuario</a>
-            </div>
-            <div class="info">
-                <a asp-controller="Signup" asp-action="Index" class="d-block" id="nombreusuario">Usuario</a>
+                <a asp-controller="Usuarios" asp-action="Index" class="d-block" id="nombreusuario"><strong>Lista Usuario</strong></a>
             </div>
         </div>
         }
@@ -155,21 +152,21 @@
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Coleccion
+                            Colecciones
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a a asp-controller="CMarcaCarro" asp-action="Index" class="nav-link ">
+                            <a href="Marca/Index" class="nav-link ">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Marcas</p>
+                                <p>Marca</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a asp-controller="CModeloCarro" asp-action="Index" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Modelos</p>
+                                <p>Modelo</p>
                             </a>
                         </li>
                         <li class="nav-item">

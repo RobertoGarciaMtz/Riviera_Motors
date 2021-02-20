@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Riviera_Business.Models.VwUtilidad>
+﻿@model IEnumerable<Riviera_Business.Models.ZUtilidad>
 
 @{
     ViewData["Title"] = "Utilidad";
@@ -10,13 +10,21 @@
     <a asp-action="Create">Create New</a>
 </p>
 
-@foreach (var carro in ViewBag.carros)
-{
-    <p>@carro.NoSerie </p>
-    <p>@carro.IdCarros </p>
-    <p>@carro.Compra </p>
-    <p>@carro.Gasto </p>
-    <p>@carro.Venta </p>
-    <p>@carro.utilidad_vehiculo </p>
-}
+<table id="dataTable">
+    @foreach (var item in Model)
+    {
+        <p>Numero de serie</p>
+        <p>@item.Numero_serie</p>
+        <p>idcarro</p>
+        <p>@item.IdCarros </p>
+        <p>precio compra</p>
+        <p>@item.Compra </p>
+        <p>Gastos realizados</p>
+        <p>@item.Gastos </p>
+        <p>Precio de venta</p>
+        <p>@item.Venta </p>
+        <p>Resultado de utilidad</p>
+        <p>@item.Utilidad </p>
+    }
 
+</table>

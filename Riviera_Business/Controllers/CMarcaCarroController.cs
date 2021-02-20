@@ -8,11 +8,13 @@ using Riviera_Business.Models;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Riviera_Business.Controllers
-{
+{   
+    [Route("Marca")]
     public class CMarcaCarroController : Controller
     {
         // GET: HomeController1
         
+        [Route("Index")]
         public ActionResult Index()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -23,7 +25,8 @@ namespace Riviera_Business.Controllers
         }
 
         // GET: HomeController1/Details/5
-        
+
+        [Route("Detalles/{id:int}")]
         public ActionResult Details(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -35,7 +38,8 @@ namespace Riviera_Business.Controllers
         }
 
         // GET: HomeController1/Create
-        
+
+        [Route("Agregar")]
         public ActionResult Create()
         {
             return View();
@@ -43,6 +47,7 @@ namespace Riviera_Business.Controllers
 
         // POST: HomeController1/Create
         [HttpPost]
+        [Route("Agregar")]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CMarcaCarro a)
         {
@@ -60,7 +65,8 @@ namespace Riviera_Business.Controllers
         }
 
         // GET: HomeController1/Edit/5
-        
+
+        [Route("Editar/{id:int}")]
         public ActionResult Edit(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
