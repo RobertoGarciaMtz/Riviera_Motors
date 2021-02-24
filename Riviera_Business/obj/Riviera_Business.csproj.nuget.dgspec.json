@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\01\\source\\repos\\Riviera_Business\\Riviera_Business\\Riviera_Business.csproj": {}
+    "C:\\Users\\Eduar\\Documents\\Roberto\\Riviera_Motors\\Riviera_Business\\Riviera_Business.csproj": {}
   },
   "projects": {
-    "C:\\Users\\01\\source\\repos\\Riviera_Business\\Riviera_Business\\Riviera_Business.csproj": {
+    "C:\\Users\\Eduar\\Documents\\Roberto\\Riviera_Motors\\Riviera_Business\\Riviera_Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\01\\source\\repos\\Riviera_Business\\Riviera_Business\\Riviera_Business.csproj",
+        "projectUniqueName": "C:\\Users\\Eduar\\Documents\\Roberto\\Riviera_Motors\\Riviera_Business\\Riviera_Business.csproj",
         "projectName": "Riviera_Business",
-        "projectPath": "C:\\Users\\01\\source\\repos\\Riviera_Business\\Riviera_Business\\Riviera_Business.csproj",
-        "packagesPath": "C:\\Users\\01\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\01\\source\\repos\\Riviera_Business\\Riviera_Business\\obj\\",
+        "projectPath": "C:\\Users\\Eduar\\Documents\\Roberto\\Riviera_Motors\\Riviera_Business\\Riviera_Business.csproj",
+        "packagesPath": "C:\\Users\\Eduar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Eduar\\Documents\\Roberto\\Riviera_Motors\\Riviera_Business\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\01\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Eduar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -92,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

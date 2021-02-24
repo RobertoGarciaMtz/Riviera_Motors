@@ -9,10 +9,11 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Riviera_Business.Controllers
 {
+    [Route("Metodo_Pago")]
     public class CMetodoPagoController : Controller
     {
         // GET: HomeController1
-        
+        [Route("Index")]
         public ActionResult Index()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -25,7 +26,7 @@ namespace Riviera_Business.Controllers
         }
 
         // GET: HomeController1/Details/5
-        
+        [Route("Detalles")]
         public ActionResult Details(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -37,7 +38,7 @@ namespace Riviera_Business.Controllers
         }
 
         // GET: HomeController1/Create
-        
+        [Route("Agregar")]
         public ActionResult Create()
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -47,6 +48,7 @@ namespace Riviera_Business.Controllers
 
         // POST: HomeController1/Create
         [HttpPost]
+        [Route("Agregar")]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CMetodoPago a)
         {
@@ -64,7 +66,7 @@ namespace Riviera_Business.Controllers
         }
 
         // GET: HomeController1/Edit/5
-        
+        [Route("Editar")]
         public ActionResult Edit(int id)
         {
             var context = HttpContext.RequestServices.GetService(typeof(riviera_businessContext)) as riviera_businessContext;
@@ -78,6 +80,7 @@ namespace Riviera_Business.Controllers
 
         // POST: HomeController1/Edit/5
         [HttpPost]
+        [Route("Editar")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, CMetodoPago a)
         {

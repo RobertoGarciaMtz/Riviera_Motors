@@ -4,13 +4,11 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Agregar</h1>
-
-<h4>Modelo o Unidad Carro</h4>
+<h1 class="text-center"><strong>Agregar</strong> nuevo modelo</h1>
 <hr />
-<p>Agregar un nuevo modelo en caso de no existir</p>
 <div class="row">
-    <div class="col-md-4">
+    <p>Agregar un nuevo modelo en caso de no existir</p>
+    <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -30,8 +28,8 @@
             </div>
 
             <div class="form-group" style="text-align:right;">
-                <a asp-action="Index" class="btn btn-info">Ver Modelos</a>
-                <input type="submit" value="Agregar" class="btn btn-primary" style="margin-left:1%;"/>
+                <a asp-action="Index" class="btn btn-info">Lista de Modelos</a>
+                <input type="submit" value="Agregar" class="btn btn-primary ml-1" />
             </div>
         </form>
     </div>

@@ -4,19 +4,16 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Lista Bancos</h1>
-
-<p>
-    <a asp-action="Create">Agregar Banco</a>
-</p>
+<h1>Bancos Disponibles</h1>
+<a asp-action="Create" class="btn btn-success">Agregar Banco</a>
 <p>Lista de bancos utilizados hasta el momento</p>
-<table class="table" id="dataTable">
-    <thead>
+<table id="dataTable" style="width:100%">
+    <thead class="bg-secondary">
         <tr>
             <th>
-                Nombre Banco
+                Banco
             </th>
-            <th></th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -26,8 +23,8 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdBanco" class="btn btn-success">Editar Nombre</a> 
-                <a asp-action="Details" asp-route-id="@item.IdBanco" class="btn  btn-info">Details</a> 
+                <a asp-action="Edit" asp-route-id="@item.IdBanco" class="btn btn-success mr-2">Editar</a> 
+                <a asp-action="Details" asp-route-id="@item.IdBanco" class="btn btn-info">Detalles</a> 
             </td>
         </tr>
 }

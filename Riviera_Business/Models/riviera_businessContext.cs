@@ -61,7 +61,7 @@ namespace Riviera_Business.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=localhost;database=riviera_business;user=root;password=1234", x => x.ServerVersion("8.0.13-mysql"));
+                optionsBuilder.UseMySql("server=localhost;database=riviera_business;user=root;password=12345", x => x.ServerVersion("8.0.13-mysql"));
             }
         }
 

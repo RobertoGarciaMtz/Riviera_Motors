@@ -4,19 +4,16 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Lista Estados</h1>
-
-<p>
-    <a asp-action="Create">Agregar Nuevo</a>
-</p>
+<h1>Lista de Estados</h1>
+<a class="btn btn-success" asp-action="Create">Agregar Nuevo</a>
 <p>En este apartado estan los estados que pueden tener tanto un Automovil como un proceso</p>
-<table class="table">
+<table id="dataTable" style="width:100%;">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
+                Estado
             </th>
-            <th></th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -26,8 +23,8 @@
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdEstados">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.IdEstados">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.IdEstados" class="btn btn-sm btn-success">Editar</a>
+                <a asp-action="Details" asp-route-id="@item.IdEstados" class="btn btn-sm btn-info">Details</a> |
             </td>
         </tr>
 }

@@ -4,22 +4,20 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Agregar</h1>
-
-<h4>Version Carro</h4>
+<h1 class="text-center"><strong>Agregar</strong> nueva versión</h1>
 <hr />
-<p>En este apartado se agregara una nueva version de automovil en caso de no existir</p>
 <div class="row">
-    <div class="col-md-4">
+    <p>En este apartado se agregara una nueva version de automovil en caso de no existir</p>
+    <div class="col-md-12">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label class="control-label">Seleccionar Marca</label>
-                <select id="marcacarro" onchange="obtmarca(this)"  class="form-control" asp-items="ViewBag.Marcas"></select>
+                <select id="marcacarro" onchange="obtmarca(this)" class="form-control" asp-items="ViewBag.Marcas"></select>
             </div>
             <div class="form-group">
                 <label asp-for="IdModelo" class="control-label">Seleccionar Modelo</label>
-                <select asp-for="IdModelo" class ="form-control" id="IdModelo" asp-items="ViewBag.Modelo"></select>
+                <select asp-for="IdModelo" class="form-control" id="IdModelo" asp-items="ViewBag.Modelo"></select>
             </div>
             <div class="form-group">
                 <label asp-for="VersionCarro" class="control-label">Agregar una Version</label>
@@ -32,15 +30,16 @@
                 <span asp-validation-for="Usuario" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group text-right">
                 <input type="submit" value="Agregar" class="btn btn-primary" />
+                <a asp-action="Index">Lista de Versiones</a>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Lista de Versiones</a>
+    
 </div>
 
 @section Scripts {

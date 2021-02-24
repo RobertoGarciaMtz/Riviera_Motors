@@ -13,7 +13,6 @@ namespace Riviera_Business.Controllers
     public class CMarcaCarroController : Controller
     {
         // GET: HomeController1
-        
         [Route("Index")]
         public ActionResult Index()
         {

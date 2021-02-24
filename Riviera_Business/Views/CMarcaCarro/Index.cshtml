@@ -4,22 +4,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Lista Marcas</h1>
-
-<p>
-    <a class="btn btn-success" asp-action="Create">Agregar Marca</a>
-</p>
-<p>Todas las marcas manejadas por la empresa (No son inventario)</p>
-<table class="table" id="dataTable">
-    <thead>
+    <h1 class="text-center">Marcas Disponibles</h1><br />
+    <a class="btn btn-success mb-3" asp-action="Create">Agregar nueva marca</a>
+    <p>Todas las marcas manejadas por la empresa (No son inventario)</p>
+<table class="" style="width:100%;" id="dataTable">
+    <thead class="bg-secondary">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NombreMarca)
+                Marca Vehiculo 
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Usuario)
+                Agregado por
             </th>
-            <th></th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -32,12 +29,14 @@
                 @Html.DisplayFor(modelItem => item.Usuario)
             </td>
             <td>
-                <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.IdMarcaCarro" class="btn fc-button-active">Corregir</a> |
-                <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.IdMarcaCarro">Detalles</a> |
+                <a class="btn btn-sm btn-info mr-2" asp-action="Edit" asp-route-id="@item.IdMarcaCarro">Corregir</a>
+                <a class="btn btn-sm btn-secondary" asp-action="Details" asp-route-id="@item.IdMarcaCarro">Detalles</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
-<p>Para ir a inventario dar click en el enlace:</p>
-<a asp-controller="TbCarros" asp-action="Index">Inventario</a>
+<div class="text-center">
+    <p class="">Para ir a inventario dar click en el enlace:</p>
+    <a class="btn btn-sm btn-outline-primary" asp-controller="TbCarros" asp-action="Index">Inventario</a>
+</div>

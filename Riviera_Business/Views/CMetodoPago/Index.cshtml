@@ -4,24 +4,21 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<h1 class="text-center">Metodos de pago</h1>
+<a class="btn btn-success" asp-action="Create">Agregar metodos de pago</a>
+<table class="table" style="width:100%;">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                Nombre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Usuario)
+                Usuario
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+                Estado
             </th>
-            <th></th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -37,9 +34,8 @@
                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.IdEstados)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdMetodoPago">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdMetodoPago">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdMetodoPago">Delete</a>
+                <a class="btn btn-success btn-sm" asp-action="Edit" asp-route-id="@item.IdMetodoPago">Editar</a> |
+                <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.IdMetodoPago">Detalles</a> |
             </td>
         </tr>
 }

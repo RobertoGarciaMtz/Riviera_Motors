@@ -4,29 +4,26 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Lista de Versiones</h1>
-
-<p>
-    <a class="btn btn-success" asp-action="Create">Agregar Nueva Version</a>
-</p>
+<h1 class="text-center">Versiones disponibles</h1>
+<a class="btn btn-success mb-3" asp-action="Create">Agregar Nueva Version</a>
 <p>Lista de versiones de automoviles manejadas por la empresa</p>
-<table class="table" id="dataTable">
+<table class="" style="width:100%" id="dataTable">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.VersionCarro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Usuario)
+                Marca
             </th>
             <th>
                 Modelo
             </th>
             <th>
-                Marca
+                Versión
             </th>
             <th>
-                Opciones
+                Agregado por
+            </th>
+            <th>
+                Acciones
             </th>
         </tr>
     </thead>
@@ -34,20 +31,20 @@
     @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdModeloNavigation.ModeloCarro)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.VersionCarro)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Usuario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdModeloNavigation.ModeloCarro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdModeloNavigation.IdMarcaNavigation.NombreMarca)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdVersionCarro" class="btn btn-success">Editar</a> 
-                <a asp-action="Details" asp-route-id="@item.IdVersionCarro" class="btn btn-info">Detalles</a> 
+                <a asp-action="Edit" asp-route-id="@item.IdVersionCarro" class="btn btn-sm btn-success mr-2">Editar</a>
+                <a asp-action="Details" asp-route-id="@item.IdVersionCarro" class="btn btn-sm btn-info">Detalles</a>
             </td>
         </tr>
 }

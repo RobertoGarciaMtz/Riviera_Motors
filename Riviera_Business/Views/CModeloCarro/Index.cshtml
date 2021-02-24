@@ -4,26 +4,23 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Lista de Modelos</h1>
-
-<p>
-    <a class="btn btn-success" asp-action="Create">Agregar Modelo o Unidad</a>
-</p>
+<h1 class="text-center">Modelos disponibles</h1>
+<a class="btn btn-success mb-3" asp-action="Create">Agregar Modelo o Unidad</a>
 <p>Todos los modelos alguna vez manejados por una empresa (no es inventario)
     Nota: Si se quiere buscar por Marca de automoviles escribir en el buscador</p>
-<table class="table" id="dataTable">
-    <thead>
+<table class="" width="100%" id="dataTable">
+    <thead class="bg-secondary">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ModeloCarro)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Usuario)
+                Modelo
             </th>
             <th>
                 Marca
             </th>
-            <th>Opciones</th>
+            <th>
+                Agregado por
+            </th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -33,18 +30,20 @@
                 @Html.DisplayFor(modelItem => item.ModeloCarro)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Usuario)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.IdMarcaNavigation.NombreMarca)
             </td>
             <td>
-                <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.IdModeloCarro">Editar</a> |
-                <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.IdModeloCarro">Detalles</a> |
+                @Html.DisplayFor(modelItem => item.Usuario)
+            </td>
+            <td>
+                <a class="btn btn-sm btn-info mr-2" asp-action="Edit" asp-route-id="@item.IdModeloCarro">Editar</a>
+                <a class="btn btn-sm btn-secondary" asp-action="Details" asp-route-id="@item.IdModeloCarro">Detalles</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
-<p>Para ir al inventario dar click en el enlace</p>
-<a asp-controller="TbCarros" asp-action="Index"></a>
+<div class="text-center">
+    <p>Para ir al inventario dar click en el enlace</p>
+    <a class="btn btn-sm btn-outline-info" asp-controller="TbCarros" asp-action="Index">Inventario</a>
+</div>

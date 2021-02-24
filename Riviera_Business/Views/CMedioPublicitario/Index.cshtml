@@ -4,22 +4,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Lista Medio</h1>
-
-<p>
-    <a asp-action="Create">Agregar Nuevo Medio</a>
-</p>
+<h1>Lista de medios publicitarios</h1>
+<a class="btn btn-success" asp-action="Create">Agregar Nuevo Medio</a>
 <p>Lista de Medios Publicitarios o Cartera manejados por la empresa</p>
-<table class="table" id="dataTable">
+<table class="table" id="dataTable" style="width: 100%;">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                Nombre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdEstadoNavigation)
+                Estado
             </th>
-            <th></th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -32,8 +29,8 @@
                 @Html.DisplayFor(modelItem => item.IdEstadoNavigation.Descripcion)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdMedioPublicitario" class="btn btn-success">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.IdMedioPublicitario" class="btn btn-warning">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.IdMedioPublicitario" class="btn btn-info btn-sm">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdMedioPublicitario" class="btn btn-primary btn-sm">Detalles</a> |
             </td>
         </tr>
 }
